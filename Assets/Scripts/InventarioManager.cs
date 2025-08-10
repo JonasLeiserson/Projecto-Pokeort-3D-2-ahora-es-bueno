@@ -6,23 +6,27 @@ public class InventarioManager : MonoBehaviour {
     public static InventarioManager instance;
     public GameObject InventarioUI; 
     public Transform itemsParent; 
-    public InventorySlot[] slots; 
+    public GameObject inventorySlotPrefab;
+
+    public List<InventorySlot> slots = new List<InventorySlot>();
 
     void Awake() {
         instance = this;
     }
 
-    void Start() {
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-    }
-
     public void UpdateUI() {
-        for (int i = 0; i < slots.Length; i++) {
-            if (i < Inventario.instance.items.Count) {
-                slots[i].AddItem(Inventario.instance.items[i]);
-            } else {
-                slots[i].ClearSlot();
-            }
+        foreach (Transform child in itemsParent) {
+            Destroy(child.gameObject);
+        }
+        slots.Clear();
+        
+        foreach (Item item in Inventario.instance.items)
+        {
+            GameObject newSlot = Instantiate(inventorySlotPrefab, itemsParent);
+            InventorySlot InventorySlot = newSlot.GetComponent<InventorySlot>();
+
+            slots.Add(InventorySlot);
+            InventorySlot.AddItem(item);
         }
     }
 }

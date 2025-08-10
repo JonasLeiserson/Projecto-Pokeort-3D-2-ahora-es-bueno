@@ -12,12 +12,27 @@ public class Inventario : MonoBehaviour {
     }
     
     public void Add(Item item) {
-        items.Add(item);
+        Debug.Log("anadiendo: " + item.itemName);
+        Item existingItem = items.Find(x => x.itemName == item.itemName);
+        
+        if (existingItem != null) {
+            existingItem.cantidad += item.cantidad;
+        }
+        else
+        {
+            items.Add(item);
+        }
         InventarioManager.instance.UpdateUI();
     }
     
     public void Remove(Item item) {
-        items.Remove(item);
+        Debug.Log("removiendo: " + item.itemName);
+
+        item.cantidad--;
+
+        if (item.cantidad <= 0) {
+            items.Remove(item);
+        }
         InventarioManager.instance.UpdateUI();
     }
 }
