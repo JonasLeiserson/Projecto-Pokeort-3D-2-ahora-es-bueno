@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CombateNPCManager : MonoBehaviour
+public class CombateSalvajeManager : MonoBehaviour
 {
     public UIManager uiManager;
     public Button botonAtaque;
@@ -13,8 +13,16 @@ public class CombateNPCManager : MonoBehaviour
     public Button botonAtacar;
 
     public GameObject player;
+    public GameObject[] pokeorts;
+    GameObject encontrado;
+
+    float playerPosX;
+    float playerPosY;
+    float playerPosZ;
+    float playerRotY;
+
+    string encounteredPokemonTag;
     MovimientoJugador movementScript;
-    public GameObject[] NPCs;
 
     Pokedex pokedex;
     List<PokeortInstance> pokeortAmigos;
@@ -23,34 +31,23 @@ public class CombateNPCManager : MonoBehaviour
     GameObject pokeortElegidoGO;
     int cantidadJugador;
 
-    string encounteredNPCTag;
-    GameObject NPC;
-    Pokedex pokedexEnemigo;
-    List<PokeortInstance> pokeortEnemigos;
-    int indexPokeortEnemigo;
-    PokeortInstance pokeortEnemigo;
     GameObject pokeortEnemigoGO;
-    int cantidadEnemigo;
-
-    float playerPosX;
-    float playerPosY;
-    float playerPosZ;
-    float playerRotY;
+    PokemonManager pokeortEnemigoManager;
+    PokeortInstance pokeortEnemigo;
 
     Attack ataqueElegido;
     Attack ataqueElegidoEnemigo;
 
-    void Awake()
-    {
+    void Awake() {
         //recepcion de datos
-        encounteredNPCTag = PlayerPrefs.GetString("EncounteredPokemon");
+        encounteredPokemonTag = PlayerPrefs.GetString("EncounteredPokemon");
         playerPosX = PlayerPrefs.GetFloat("PosX");
         playerPosY = PlayerPrefs.GetFloat("PosY");
         playerPosZ = PlayerPrefs.GetFloat("PosZ");
         playerRotY = PlayerPrefs.GetFloat("RotY");
 
         //buscar pokeort encontrado por su tag
-        NPC = NPCs.FirstOrDefault(n => n.CompareTag(encounteredNPCTag));
+        encontrado = pokeorts.FirstOrDefault(p => p.CompareTag(encounteredPokemonTag));
     }
 
     // Start is called before the first frame update
@@ -62,32 +59,28 @@ public class CombateNPCManager : MonoBehaviour
         Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
         Quaternion playerRotation = new Quaternion(0, playerRotY, 0, 0);
         player = Instantiate(player, playerPosition, playerRotation);
-        player.tag = "Untagged";
         GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
 
         GameObject cameraPositioner = GameObject.Find("CameraPositioner");
         Transform cameraPositionerTransform = cameraPositioner.transform;
         cameraPositionerTransform.position = playerPosition;
         cameraPositionerTransform.rotation = playerRotation;
+        
 
         movementScript = player.GetComponent<MovimientoJugador>();
         movementScript.enabled = false;
 
-        //posicion npc enemigo (diagonal derecha)
-        float distanciaNPCEnemigo = 12f;
+        //posicion pokeort enemigo (diagonal derecha)
+        float distanciaEnemigo = 10f;
         Vector3 direccionDiagonal = player.transform.forward + player.transform.right;
         Vector3 direccionNormalizada = direccionDiagonal.normalized;
-        Vector3 nuevaPosicionEnemigo = player.transform.position + (direccionNormalizada * distanciaNPCEnemigo);
+        Vector3 nuevaPosicionEnemigo = player.transform.position + (direccionNormalizada * distanciaEnemigo);
         nuevaPosicionEnemigo.y = player.transform.position.y;
-        NPC = Instantiate(NPC, nuevaPosicionEnemigo, Quaternion.identity);
 
-
-        //cargar pokeorts enemigos en inventario
-        pokedexEnemigo = NPC.GetComponent<PokedexManager>().pokedex;
-        pokeortEnemigos = pokedexEnemigo.pokeorts;
-        indexPokeortEnemigo = 0;
-        pokeortEnemigo = pokeortEnemigos[indexPokeortEnemigo];
-        cantidadEnemigo = pokeortEnemigos.Count;
+        //instanciar y cargar pokeort encontrado
+        pokeortEnemigoGO = InstanciarPokeort(10f, encontrado, player.transform);
+        pokeortEnemigoManager = pokeortEnemigoGO.GetComponent<PokemonManager>();
+        pokeortEnemigo = pokeortEnemigoManager.currentPokemonInstance;
 
         //cargar pokeorts en inventario
         pokedex = player.GetComponent<PokedexManager>().pokedex;
@@ -96,11 +89,17 @@ public class CombateNPCManager : MonoBehaviour
         pokeortElegido = pokeortAmigos[indexPokeortElegido];
         cantidadJugador = pokeortAmigos.Count;
 
+        //posicion pokeort amigo
+        float distanciaAmigo = 2f;
+        Vector3 nuevaPosicionAmigo = player.transform.position + (direccionNormalizada * distanciaAmigo);
+        nuevaPosicionAmigo.y = player.transform.position.y;
+
         //instanciar pokeort amigo
         pokeortElegidoGO = InstanciarPokeort(2f, pokeortElegido.pokemonData.PokeortPrefab, player.transform);
 
-        //instanciar pokeort amigo
-        pokeortEnemigoGO = InstanciarPokeort(10f, pokeortEnemigo.pokemonData.PokeortPrefab, player.transform);
+        //cancelar movimiento pokeorts
+        pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
+        pokeortEnemigoGO.GetComponent<MovimientoPokeorts>().enabled = false;
 
         //UI
         Cursor.visible = true;
@@ -112,34 +111,42 @@ public class CombateNPCManager : MonoBehaviour
         uiManager.CargarAtaques(pokeortElegido.equippedAttacks, botonAtaque, textoBotonAtaque, botonAtacar);
     }
 
-    public bool AtaqueAmigo(GameObject botonClickeado)
-    {
+    public bool AtaqueAmigo(GameObject botonClickeado) {
         TextMeshProUGUI nombreAtaque = botonClickeado.GetComponentInChildren<TextMeshProUGUI>();
         ataqueElegido = pokeortElegido.equippedAttacks.FirstOrDefault(a => a.attackName == nombreAtaque.text);
         return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo);
     }
 
-    public bool AtaqueEnemigo()
-    {
+    public bool AtaqueEnemigo() {
         int random = Random.Range(0, pokeortEnemigo.equippedAttacks.Count);
         ataqueElegidoEnemigo = pokeortEnemigo.equippedAttacks[random];
         return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido);
     }
 
-    void Derrotado(float distancia, ref int index, ref List<PokeortInstance> pokeorts, ref PokeortInstance pokeortDerrotadoInstance, ref GameObject pokeortDerrotadoGO, ref int cantidad)
+    void Derrotado(ref PokeortInstance pokeortDerrotadoInstance, ref GameObject pokeortDerrotadoGO)
     {
         Destroy(pokeortDerrotadoGO);
 
-        cantidad--;
-        if (cantidad > 0)
+        if (pokeortDerrotadoInstance == pokeortElegido)
         {
-            index++;
-            pokeortDerrotadoInstance = pokeortEnemigos[index];
-            pokeortDerrotadoGO = InstanciarPokeort(distancia, pokeortDerrotadoInstance.pokemonData.PokeortPrefab, player.transform);
+            cantidadJugador--;
+            if (cantidadJugador > 0)
+            {
+                indexPokeortElegido++;
+                pokeortDerrotadoInstance = pokeortAmigos[indexPokeortElegido];
+                pokeortDerrotadoGO = InstanciarPokeort(2f, pokeortDerrotadoInstance.pokemonData.PokeortPrefab, player.transform);
+                pokeortDerrotadoGO.GetComponent<MovimientoPokeorts>().enabled = false;
+            }
+            else
+            {
+                Debug.Log("Batalla Finalizada");
+                return;
+            }
         }
         else
         {
             Debug.Log("Batalla Finalizada");
+            return;
         }
     }
 
@@ -152,20 +159,19 @@ public class CombateNPCManager : MonoBehaviour
         return Instantiate(prefab, nuevaPosicion, Quaternion.identity);
     }
 
-
     public void CheckBattleState(GameObject botonClickeado)
     {
         if (pokeortEnemigo.currentSpeed > pokeortElegido.currentSpeed)
         {
-            if (!AtaqueEnemigo()) 
+            if (!AtaqueEnemigo())
             {
-                Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
+                Derrotado(ref pokeortElegido, ref pokeortElegidoGO);
                 return;
             }
 
             if (!AtaqueAmigo(botonClickeado))
             {
-                Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo);
+                Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
                 return;
             }
             AtaqueEnemigo();
@@ -174,13 +180,13 @@ public class CombateNPCManager : MonoBehaviour
         {
             if (!AtaqueAmigo(botonClickeado))
             {
-                Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo);
+                Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
                 return;
             }
 
             if (!AtaqueEnemigo())
             {
-                Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
+                Derrotado(ref pokeortElegido, ref pokeortElegidoGO);
                 return;
             }
         }
@@ -191,13 +197,13 @@ public class CombateNPCManager : MonoBehaviour
             {
                 if (!AtaqueEnemigo())
                 {
-                    Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
+                    Derrotado(ref pokeortElegido, ref pokeortElegidoGO);
                     return;
                 }
 
                 if (!AtaqueAmigo(botonClickeado))
                 {
-                    Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo);
+                    Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
                     return;
                 }
                 AtaqueEnemigo();
@@ -206,13 +212,13 @@ public class CombateNPCManager : MonoBehaviour
             {
                 if (!AtaqueAmigo(botonClickeado))
                 {
-                    Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo);
+                    Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
                     return;
                 }
 
                 if (!AtaqueEnemigo())
                 {
-                    Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
+                    Derrotado(ref pokeortElegido, ref pokeortElegidoGO);
                     return;
                 }
             }
@@ -222,6 +228,6 @@ public class CombateNPCManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }
