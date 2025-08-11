@@ -214,7 +214,8 @@ MonoBehaviour:
   player: {fileID: 3183447003146668400, guid: e65ad50409fdaee49b335ab8302cae92, type: 3}
   pokeorts:
   - {fileID: 8651629261895725157, guid: 11d89dccc9dab684db9321e57e4a7f19, type: 3}
-  - {fileID: 4724784557452475609, guid: 96fa202932f52b84c8fc614541205100, type: 3}
+  - {fileID: 4724784557452475609, guid: e34987e507ce42a469050eecde493b92, type: 3}
+  - {fileID: 4203461898131196937, guid: a904e7696e00f3e438537642faa3cb6f, type: 3}
 --- !u!4 &282042653
 Transform:
   m_ObjectHideFlags: 0

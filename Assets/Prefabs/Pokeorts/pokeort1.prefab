@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8651629261895725178}
   - component: {fileID: 114113856821060524}
   - component: {fileID: 114573214189081202}
-  - component: {fileID: 114587519995691022}
   - component: {fileID: 114376459469891560}
   m_Layer: 0
   m_Name: pokeort1
@@ -149,18 +148,6 @@ MonoBehaviour:
     currentSpAttack: 0
     currentSpDefense: 0
     currentSpeed: 0
---- !u!114 &114587519995691022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8651629261895725157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e297fc97c47600147a187a00f49718e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114376459469891560
 MonoBehaviour:
   m_ObjectHideFlags: 0

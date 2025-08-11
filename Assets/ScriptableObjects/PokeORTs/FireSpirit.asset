@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
+  m_Name: FireSpirit
+  m_EditorClassIdentifier: 
+  PokeortPrefab: {fileID: 2203570101914794581, guid: a904e7696e00f3e438537642faa3cb6f,
+    type: 3}
+  pokemonName: Fueguito
+  primaryType: 2
+  secondaryType: 0
+  baseHP: 60
+  baseAttack: 40
+  baseDefense: 20
+  baseSpAttack: 60
+  baseSpDefense: 45
+  baseSpeed: 25
+  learnableAttacks:
+  - {fileID: 11400000, guid: 6368df7c7c12b7a4a8444d8154b9ee4a, type: 2}
+  - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}

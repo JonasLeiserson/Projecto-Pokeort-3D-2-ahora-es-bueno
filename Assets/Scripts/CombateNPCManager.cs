@@ -142,6 +142,7 @@ public class CombateNPCManager : MonoBehaviour
             Debug.Log("Batalla Finalizada");
         }
     }
+
     GameObject InstanciarPokeort(float distancia, GameObject prefab, Transform posicionBase)
     {
         Vector3 direccionDiagonal = posicionBase.forward + posicionBase.right;

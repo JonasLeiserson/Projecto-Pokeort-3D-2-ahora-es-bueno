@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4724784557452475608}
   - component: {fileID: 4724784557452475602}
   - component: {fileID: 114017196560406830}
+  - component: {fileID: 114014204838775212}
   m_Layer: 0
   m_Name: Pokeort2
   m_TagString: Pokeort2
@@ -152,6 +153,8 @@ MonoBehaviour:
   currentPokemonInstance:
     pokemonData: {fileID: 0}
     equippedAttacks: []
+    type1: 0
+    type2: 0
     level: 0
     currentHP: 0
     currentAttack: 0
@@ -159,3 +162,15 @@ MonoBehaviour:
     currentSpAttack: 0
     currentSpDefense: 0
     currentSpeed: 0
+--- !u!114 &114014204838775212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724784557452475609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e297fc97c47600147a187a00f49718e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
