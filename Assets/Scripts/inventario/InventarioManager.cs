@@ -29,4 +29,13 @@ public class InventarioManager : MonoBehaviour {
             InventorySlot.AddItem(item);
         }
     }
+
+    public void EsconderInventario()
+    {
+        InventarioUI.SetActive(false);
+    }
+    public void MostrarInventario()
+    {
+        InventarioUI.SetActive(true);
+    }
 }

@@ -5,18 +5,41 @@ public class MovimientoJugador : MonoBehaviour
     public float MovimientoVelocidad = 5f; 
     public float FuerzaSalto = 8f; 
     public float Gravedad = 20f;
+    private float Stamina = 100f;
     
     public Transform CamaraPosicion; 
     private CharacterController controller;
     private Vector3 moveDirection;
-
+    private InventarioManager inventarioManager;
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        inventarioManager = GetComponent<InventarioManager>();
+
     }
 
     void Update()
     {
+            if(Input.GetKey(KeyCode.I))
+            {
+                inventarioManager.MostrarInventario();
+            }
+            if(Input.GetKey(KeyCode.P))
+            {
+                inventarioManager.MostrarInventario();
+            }
+            if(Stamina > 30)
+            {
+                if(Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    MovimientoVelocidad = 10f; 
+                    Stamina -= 5;
+                }
+            }
+            if(Input.GetKeyUp(KeyCode.LeftShift))
+            {
+               MovimientoVelocidad = 5f; 
+            }
             transform.rotation = Quaternion.Euler(0, CamaraPosicion.eulerAngles.y, 0);
 
             if (controller.isGrounded)
