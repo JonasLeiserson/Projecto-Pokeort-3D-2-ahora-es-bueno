@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventarioManager : MonoBehaviour {
     public static InventarioManager instance;
     public GameObject InventarioUI; 
+    public GameObject BotonesIniciales; 
     public Transform itemsParent;
     public Transform lastPosition;
     public GameObject inventorySlotPrefab;
@@ -53,9 +54,12 @@ public class InventarioManager : MonoBehaviour {
     public void EsconderInventario()
     {
         InventarioUI.SetActive(false);
+        BotonesIniciales.SetActive(true);
+        
     }
     public void MostrarInventario()
     {
         InventarioUI.SetActive(true);
+        BotonesIniciales.SetActive(false);
     }
 }

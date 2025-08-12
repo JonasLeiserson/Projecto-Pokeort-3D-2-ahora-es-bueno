@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 188097479}
   - component: {fileID: 188097478}
   m_Layer: 0
-  m_Name: Inventario (1)
+  m_Name: 'Inventario '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,12 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32ea4310c73f9443b4e4214e8d9edc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
+  items: []
 --- !u!4 &188097479
 Transform:
   m_ObjectHideFlags: 0
@@ -464,7 +459,7 @@ GameObject:
   - component: {fileID: 191691994}
   - component: {fileID: 191691993}
   m_Layer: 0
-  m_Name: InventarioManager (1)
+  m_Name: InventarioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,9 +477,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9338c99e92d5f240816c6e9483f6572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventarioUI: {fileID: 0}
-  itemsParent: {fileID: 0}
-  inventorySlotPrefab: {fileID: 0}
+  InventarioUI: {fileID: 893862486}
+  itemsParent: {fileID: 518585435}
+  lastPosition: {fileID: 0}
+  inventorySlotPrefab: {fileID: 300712493859937171, guid: edfe761f8beb19541b3bc6212303c8b1,
+    type: 3}
   slots:
   - {fileID: 0}
   - {fileID: 0}
@@ -569,7 +566,7 @@ GameObject:
   - component: {fileID: 634305946}
   - component: {fileID: 634305945}
   m_Layer: 0
-  m_Name: EjemploDialogo (2)
+  m_Name: 'EjemploDialogo '
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1071,7 +1068,7 @@ GameObject:
   - component: {fileID: 1707064479}
   - component: {fileID: 1707064478}
   m_Layer: 0
-  m_Name: EjemploDialogo (3)
+  m_Name: 'EjemploDialogo '
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,7 +1287,7 @@ GameObject:
   - component: {fileID: 2140754522}
   - component: {fileID: 2140754521}
   m_Layer: 0
-  m_Name: Piso (2)
+  m_Name: 'Piso '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
