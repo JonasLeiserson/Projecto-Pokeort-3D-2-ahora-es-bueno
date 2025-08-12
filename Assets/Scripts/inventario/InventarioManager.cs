@@ -5,7 +5,8 @@ using UnityEngine;
 public class InventarioManager : MonoBehaviour {
     public static InventarioManager instance;
     public GameObject InventarioUI; 
-    public Transform itemsParent; 
+    public Transform itemsParent;
+    public Transform lastPosition;
     public GameObject inventorySlotPrefab;
 
     public List<InventorySlot> slots = new List<InventorySlot>();
@@ -27,6 +28,25 @@ public class InventarioManager : MonoBehaviour {
 
             slots.Add(InventorySlot);
             InventorySlot.AddItem(item);
+        }
+    }
+
+    void Start() {
+        EsconderInventario();
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            if (InventarioUI.activeSelf)
+            {
+                EsconderInventario();
+            }
+            else
+            {
+                MostrarInventario();
+            }
         }
     }
 

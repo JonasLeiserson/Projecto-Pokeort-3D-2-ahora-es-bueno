@@ -6,11 +6,12 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public void CargarAtaques(List<Attack> ataques, Button botonAtaque, TextMeshProUGUI textoBotonAtaque, Button botonAtacar)
+    public void CargarAtaques(List<Attack> ataques, Button botonAtaque, GameObject botonesIniciales)
     {
         Transform canvasTransform = FindObjectOfType<Canvas>().transform;
-        botonAtacar.gameObject.SetActive(false);
+        botonesIniciales.SetActive(false);
 
+        TextMeshProUGUI textoBotonAtaque = botonAtaque.GetComponentInChildren<TextMeshProUGUI>();
         RectTransform rt = botonAtaque.GetComponent<RectTransform>();
         Vector2 posicionInicial = rt.anchoredPosition;
         Vector2 posicionActual = posicionInicial;
@@ -24,7 +25,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                posicionActual.y += 34f;
+                posicionActual.y += 90f;
                 GameObject nuevoBotonGO = Instantiate(botonAtaque.gameObject, canvasTransform);
                 RectTransform nuevoBotonRT = nuevoBotonGO.GetComponent<RectTransform>();
                 nuevoBotonRT.anchoredPosition = posicionActual;

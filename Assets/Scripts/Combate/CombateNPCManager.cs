@@ -10,7 +10,7 @@ public class CombateNPCManager : MonoBehaviour
     public UIManager uiManager;
     public Button botonAtaque;
     public TextMeshProUGUI textoBotonAtaque;
-    public Button botonAtacar;
+    public GameObject botonesIniciales;
 
     public GameObject player;
     MovimientoJugador movementScript;
@@ -115,7 +115,7 @@ public class CombateNPCManager : MonoBehaviour
 
     public void cargarAtaquesUI()
     {
-        uiManager.CargarAtaques(pokeortElegido.equippedAttacks, botonAtaque, textoBotonAtaque, botonAtacar);
+        uiManager.CargarAtaques(pokeortElegido.equippedAttacks, botonAtaque, botonesIniciales);
     }
 
     public bool AtaqueAmigo(GameObject botonClickeado)

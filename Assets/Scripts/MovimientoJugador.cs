@@ -10,24 +10,14 @@ public class MovimientoJugador : MonoBehaviour
     public Transform CamaraPosicion; 
     private CharacterController controller;
     private Vector3 moveDirection;
-    private InventarioManager inventarioManager;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        inventarioManager = GetComponent<InventarioManager>();
-
     }
 
     void Update()
     {
-            if(Input.GetKey(KeyCode.I))
-            {
-                inventarioManager.MostrarInventario();
-            }
-            if(Input.GetKey(KeyCode.P))
-            {
-                inventarioManager.MostrarInventario();
-            }
             if(Stamina > 30)
             {
                 if(Input.GetKeyDown(KeyCode.LeftShift))
@@ -36,6 +26,7 @@ public class MovimientoJugador : MonoBehaviour
                     Stamina -= 5;
                 }
             }
+
             if(Input.GetKeyUp(KeyCode.LeftShift))
             {
                MovimientoVelocidad = 5f; 

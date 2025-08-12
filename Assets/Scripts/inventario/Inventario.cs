@@ -6,7 +6,7 @@ public class Inventario : MonoBehaviour {
 
     public static Inventario instance;
     public List<Item> items = new List<Item>();
-    
+
     void Awake() {
         instance = this;
     }
@@ -33,6 +33,11 @@ public class Inventario : MonoBehaviour {
         if (item.cantidad <= 0) {
             items.Remove(item);
         }
+        InventarioManager.instance.UpdateUI();
+    }
+
+    void Start() {
+        
         InventarioManager.instance.UpdateUI();
     }
 }
