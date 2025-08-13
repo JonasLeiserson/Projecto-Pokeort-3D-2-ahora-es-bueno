@@ -272,12 +272,12 @@ GameObject:
   - component: {fileID: 3827633057947717927}
   - component: {fileID: 5572384014808122926}
   m_Layer: 5
-  m_Name: btn Atacar
+  m_Name: btn Ataque
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1743904286646464166
 RectTransform:
   m_ObjectHideFlags: 0

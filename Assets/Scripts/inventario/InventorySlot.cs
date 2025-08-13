@@ -15,7 +15,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        InventarioManager.instance.MostrarDescripcionDelItem(item);
+
     }
     
     public void AddItem(Item newItem) {
