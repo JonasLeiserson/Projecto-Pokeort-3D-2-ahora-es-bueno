@@ -15,7 +15,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     }
     
     public void AddItem(Item newItem) {

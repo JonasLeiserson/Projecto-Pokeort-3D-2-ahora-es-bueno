@@ -13,7 +13,14 @@ public class InventarioManager : MonoBehaviour {
     public List<InventorySlot> slots = new List<InventorySlot>();
 
     void Awake() {
-        instance = this;
+        if (instance != null & instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     public void UpdateUI() {
