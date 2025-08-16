@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1811320761355617148}
   countText: {fileID: 2293398298486534809}
+  Descripcion: {fileID: 0}
 --- !u!1 &3081545514322122604
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,16 +9,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 {
     public Image icon;          
     public TextMeshProUGUI  countText;      
-    
-    Item item; 
+    Item item;
 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
+        InventarioManager.instance.Descripcion.text = item.description;
     }
     
     public void AddItem(Item newItem) {

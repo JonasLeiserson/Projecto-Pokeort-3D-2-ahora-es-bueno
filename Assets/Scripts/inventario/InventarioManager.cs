@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InventarioManager : MonoBehaviour {
     public static InventarioManager instance;
@@ -9,7 +10,7 @@ public class InventarioManager : MonoBehaviour {
     public Transform itemsParent;
     public Transform lastPosition;
     public GameObject inventorySlotPrefab;
-
+    public TextMeshProUGUI Descripcion; 
     public List<InventorySlot> slots = new List<InventorySlot>();
 
     void Awake() {
