@@ -159,14 +159,16 @@ public class PokeortInstance
 
     }
 
-    public bool atacar(Attack ataque, PokeortInstance enemigo)
+    public bool atacar(Attack ataque, PokeortInstance enemigo, Dialogue dialogo, DialogoManager dialogoManager)
     {
+        dialogo.dialogueLines.Clear();
+
         bool acerto = Random.Range(0, 101) <= ataque.accuracy;
 
         if (acerto)
         {
-            bool isCritic = Random.Range(0, 101) <= ataque.criticChance;
             //calculo de danio
+            bool isCritic = Random.Range(0, 101) <= ataque.criticChance;
             float e = TipoEfectividad.ObtenerEfectividad(ataque.type, enemigo.type1, enemigo.type2);
             float b = ataque.type == type1 ? 1.5f : 1;
             int v = Random.Range(85, 101);
@@ -187,22 +189,50 @@ public class PokeortInstance
             enemigo.currentHP -= danio;
             if (enemigo.currentHP <= 0) enemigo.currentHP = 0;
 
+            DialogueLine linea1 = new DialogueLine();
+            linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {ataque.attackName} e hizo {danio} de danio";
+
+            if (isCritic) linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {ataque.attackName} y fue critico! Hizo {danio} de danio";
+
+            DialogueLine linea2 = new DialogueLine();
+            linea2.dialogueText = $"{enemigo.pokemonData.pokemonName} tiene {enemigo.currentHP} de vida";
+
+            dialogo.dialogueLines.Add(linea1);
+            dialogo.dialogueLines.Add(linea2);
+
             Debug.Log($"{pokemonData.pokemonName} utilizo {ataque.attackName} e hizo {danio} de danio");
             Debug.Log($"{enemigo.pokemonData.pokemonName} tiene {enemigo.currentHP} de vida");
 
             if (enemigo.currentHP <= 0)
             {
+                DialogueLine linea3 = new DialogueLine();
+                linea3.dialogueText = $"{enemigo.pokemonData.pokemonName} fue derrotado";
+
+                dialogo.dialogueLines.Add(linea3);
                 Debug.Log($"{enemigo.pokemonData.pokemonName} fue derrotado");
+
+                dialogoManager.StartDialogue(dialogo);
                 return false;
             }
 
+            dialogoManager.StartDialogue(dialogo);
             return true;
         }
         else
         {
+            DialogueLine linea1 = new DialogueLine();
+            linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {ataque.attackName} y fallo";
+
+            DialogueLine linea2 = new DialogueLine();
+            linea2.dialogueText = $"{enemigo.pokemonData.pokemonName} se mantiene con {enemigo.currentHP} de vida";
+
+            dialogo.dialogueLines.Add(linea1);
+            dialogo.dialogueLines.Add(linea2);
+
             Debug.Log($"{pokemonData.pokemonName} utilizo {ataque.attackName} y fallo");
             Debug.Log($"{enemigo.pokemonData.pokemonName} se mantiene con {enemigo.currentHP} de vida");
 
+            dialogoManager.StartDialogue(dialogo);
             return true;
         }
         

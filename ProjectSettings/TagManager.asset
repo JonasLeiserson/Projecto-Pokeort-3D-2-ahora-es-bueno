@@ -9,6 +9,7 @@ TagManager:
   - Pokeort2
   - NPC1
   - Jugador
+  - FireSpirit
   layers:
   - Default
   - TransparentFX

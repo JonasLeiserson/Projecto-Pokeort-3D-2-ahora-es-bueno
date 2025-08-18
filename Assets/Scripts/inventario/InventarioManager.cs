@@ -8,7 +8,6 @@ public class InventarioManager : MonoBehaviour {
     public GameObject InventarioUI; 
     public GameObject BotonesIniciales; 
     public Transform itemsParent;
-    public Transform lastPosition;
     public GameObject inventorySlotPrefab;
     public TextMeshProUGUI Descripcion; 
     public List<InventorySlot> slots = new List<InventorySlot>();

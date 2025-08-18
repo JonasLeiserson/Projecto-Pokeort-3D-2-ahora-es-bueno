@@ -6,8 +6,15 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public void CargarAtaques(List<Attack> ataques, Button botonAtaque, GameObject botonesIniciales)
+    public void CargarAtaques(List<Attack> ataques, Button botonAtaque, GameObject botonesAtaque, GameObject botonesIniciales)
     {
+        if (botonesAtaque.transform.childCount >= 2)
+        {
+            botonesIniciales.SetActive(false);
+            botonesAtaque.SetActive(true);
+            return;
+        }
+
         Transform canvasTransform = FindObjectOfType<Canvas>().transform;
         botonesIniciales.SetActive(false);
 
@@ -18,23 +25,28 @@ public class UIManager : MonoBehaviour
 
         foreach (Attack ataque in ataques)
         {
-            if (!botonAtaque.gameObject.activeSelf)
+            GameObject nuevoBotonGO = Instantiate(botonAtaque.gameObject, botonesAtaque.transform);
+            nuevoBotonGO.SetActive(true);
+            RectTransform nuevoBotonRT = nuevoBotonGO.GetComponent<RectTransform>();
+            nuevoBotonRT.anchoredPosition = posicionActual;
+            posicionActual.y += 50f;
+            TextMeshProUGUI nuevoTextoBoton = nuevoBotonGO.GetComponentInChildren<TextMeshProUGUI>();
+                
+            if (nuevoTextoBoton != null)
             {
-                botonAtaque.gameObject.SetActive(true);
-                textoBotonAtaque.text = ataque.attackName;
-            }
-            else
-            {
-                posicionActual.y += 90f;
-                GameObject nuevoBotonGO = Instantiate(botonAtaque.gameObject, canvasTransform);
-                RectTransform nuevoBotonRT = nuevoBotonGO.GetComponent<RectTransform>();
-                nuevoBotonRT.anchoredPosition = posicionActual;
-                TextMeshProUGUI nuevoTextoBoton = nuevoBotonGO.GetComponentInChildren<TextMeshProUGUI>();
-                if (nuevoTextoBoton != null)
-                {
-                    nuevoTextoBoton.text = ataque.attackName;
-                }
+                nuevoTextoBoton.text = ataque.attackName;
             }
         }
+    }
+    
+    public void EsconderAtaques(GameObject botonesIniciales, GameObject botonesAtaque)
+    {
+        botonesIniciales.SetActive(true);
+        botonesAtaque.SetActive(false);
+    }
+
+    public void DialogoCombate(Dialogue dialogo, DialogoManager dialogoManager)
+    {
+        dialogoManager.StartDialogue(dialogo);
     }
 }

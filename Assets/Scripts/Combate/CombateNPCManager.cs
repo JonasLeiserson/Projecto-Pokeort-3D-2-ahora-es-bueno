@@ -9,8 +9,11 @@ public class CombateNPCManager : MonoBehaviour
 {
     public UIManager uiManager;
     public Button botonAtaque;
-    public TextMeshProUGUI textoBotonAtaque;
+    public GameObject botonesAtaque;
     public GameObject botonesIniciales;
+
+    public DialogoManager dialogoManager;
+    public Dialogue dialogoCombate;
 
     public GameObject player;
     MovimientoJugador movementScript;
@@ -113,23 +116,21 @@ public class CombateNPCManager : MonoBehaviour
 
     }
 
-    public void cargarAtaquesUI()
-    {
-        uiManager.CargarAtaques(pokeortElegido.equippedAttacks, botonAtaque, botonesIniciales);
-    }
-
+    public void cargarAtaquesUI() => uiManager.CargarAtaques(pokeortElegido.equippedAttacks, botonAtaque, botonesAtaque, botonesIniciales); 
+ 
     public bool AtaqueAmigo(GameObject botonClickeado)
     {
         TextMeshProUGUI nombreAtaque = botonClickeado.GetComponentInChildren<TextMeshProUGUI>();
         ataqueElegido = pokeortElegido.equippedAttacks.FirstOrDefault(a => a.attackName == nombreAtaque.text);
-        return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo);
+        uiManager.EsconderAtaques(botonesIniciales, botonesAtaque);
+        return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager);
     }
 
     public bool AtaqueEnemigo()
     {
         int random = Random.Range(0, pokeortEnemigo.equippedAttacks.Count);
         ataqueElegidoEnemigo = pokeortEnemigo.equippedAttacks[random];
-        return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido);
+        return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, dialogoCombate, dialogoManager);
     }
 
     void Derrotado(float distancia, ref int index, ref List<PokeortInstance> pokeorts, ref PokeortInstance pokeortDerrotadoInstance, ref GameObject pokeortDerrotadoGO, ref int cantidad)
