@@ -10,7 +10,7 @@ public class ColisionItem : MonoBehaviour
         if (other.CompareTag("Jugador"))
         {
             Debug.Log("Item Colisionado: " + item.itemName);
-            Inventario.instance.Add(item);
+            Inventario.instance.AñadirItem(item, 1);
             Destroy(gameObject);
         }
     }

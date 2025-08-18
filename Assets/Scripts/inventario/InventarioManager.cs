@@ -54,6 +54,7 @@ public class InventarioManager : MonoBehaviour {
             else
             {
                 MostrarInventario();
+                Descripcion.text = "";
             }
         }
     }

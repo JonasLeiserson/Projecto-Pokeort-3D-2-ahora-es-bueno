@@ -16,18 +16,21 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     {
         InventarioManager.instance.Descripcion.text = item.description;
     }
-    
     public void AddItem(Item newItem) {
         item = newItem;
         icon.sprite = item.icon; 
         icon.enabled = true;    
 
         countText.text = item.cantidad.ToString();
+        Inventario.instance.AñadirItem(item, 1);
     }
 
     public void ClearSlot() {
         item = null;
         icon.sprite = null;
         icon.enabled = false;   
+    }
+    public void ItemUsado() {
+        Inventario.instance.RemoverItem(item, -1);
     }
 }

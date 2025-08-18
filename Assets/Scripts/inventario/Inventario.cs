@@ -11,24 +11,25 @@ public class Inventario : MonoBehaviour {
         instance = this;
     }
     
-    public void Add(Item item) {
+    public void AñadirItem(Item item, int Cantidad) {
         Debug.Log("anadiendo: " + item.itemName);
         Item existingItem = items.Find(x => x.itemName == item.itemName);
         
         if (existingItem != null) {
-            existingItem.cantidad += item.cantidad;
+            existingItem.cantidad = item.cantidad + Cantidad;
         }
         else
         {
             items.Add(item);
+            existingItem.cantidad += item.cantidad;
         }
         InventarioManager.instance.UpdateUI();
     }
     
-    public void Remove(Item item) {
+    public void RemoverItem(Item item, int Cantidad) {
         Debug.Log("removiendo: " + item.itemName);
 
-        item.cantidad--;
+        item.cantidad = item.cantidad - Cantidad;
 
         if (item.cantidad <= 0) {
             items.Remove(item);
