@@ -22,7 +22,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         icon.enabled = true;    
 
         countText.text = item.cantidad.ToString();
-        Inventario.instance.AñadirItem(item, 1);
     }
 
     public void ClearSlot() {
@@ -31,6 +30,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         icon.enabled = false;   
     }
     public void ItemUsado() {
-        Inventario.instance.RemoverItem(item, -1);
+        Inventario.instance.RemoverItem(item, 1);
     }
 }

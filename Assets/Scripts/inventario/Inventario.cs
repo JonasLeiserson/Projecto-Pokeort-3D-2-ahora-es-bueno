@@ -8,37 +8,46 @@ public class Inventario : MonoBehaviour {
     public List<Item> items = new List<Item>();
 
     void Awake() {
-        instance = this;
+        if (instance != null && instance != this) {
+            Destroy(gameObject);
+        } else {
+            instance = this;
+        }
     }
     
     public void AñadirItem(Item item, int Cantidad) {
-        Debug.Log("anadiendo: " + item.itemName);
+        Debug.Log("Anadiendo: " + item.itemName);
+        
         Item existingItem = items.Find(x => x.itemName == item.itemName);
         
         if (existingItem != null) {
-            existingItem.cantidad = item.cantidad + Cantidad;
+            existingItem.cantidad += Cantidad;
         }
-        else
-        {
+        else {
             items.Add(item);
-            existingItem.cantidad += item.cantidad;
+            item.cantidad = Cantidad;
         }
+
         InventarioManager.instance.UpdateUI();
     }
     
     public void RemoverItem(Item item, int Cantidad) {
-        Debug.Log("removiendo: " + item.itemName);
+        Debug.Log("Removiendo: " + item.itemName);
+        
+        Item existingItem = items.Find(x => x.itemName == item.itemName);
 
-        item.cantidad = item.cantidad - Cantidad;
+        if (existingItem != null) {
+            existingItem.cantidad -= Cantidad;
 
-        if (item.cantidad <= 0) {
-            items.Remove(item);
+            if (existingItem.cantidad <= 0) {
+                items.Remove(existingItem);
+            }
         }
+        
         InventarioManager.instance.UpdateUI();
     }
 
     void Start() {
-        
         InventarioManager.instance.UpdateUI();
     }
 }
