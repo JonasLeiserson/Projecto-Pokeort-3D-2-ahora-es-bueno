@@ -203,7 +203,7 @@ public class PokeortInstance
             Debug.Log($"{pokemonData.pokemonName} utilizo {ataque.attackName} e hizo {danio} de danio");
             Debug.Log($"{enemigo.pokemonData.pokemonName} tiene {enemigo.currentHP} de vida");
 
-            if (enemigo.currentHP <= 0)
+            if (enemigo.currentHP == 0)
             {
                 DialogueLine linea3 = new DialogueLine();
                 linea3.dialogueText = $"{enemigo.pokemonData.pokemonName} fue derrotado";

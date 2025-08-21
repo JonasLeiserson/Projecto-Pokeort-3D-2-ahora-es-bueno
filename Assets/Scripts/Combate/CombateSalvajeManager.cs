@@ -160,6 +160,16 @@ public class CombateSalvajeManager : MonoBehaviour
         nuevaPosicion.y = posicionBase.position.y;
         return Instantiate(prefab, nuevaPosicion, Quaternion.identity);
     }
+    IEnumerator EjecutarAtaqueTrasDialogo(System.Func<bool> ataque)
+    {
+        // Espera hasta que el diálogo termine
+        yield return new WaitUntil(() => !dialogoManager.talking);
+
+        if (!ataque())
+        {
+            Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
+        }
+    }
 
     public void CheckBattleState(GameObject botonClickeado)
     {
@@ -171,12 +181,7 @@ public class CombateSalvajeManager : MonoBehaviour
                 return;
             }
 
-            if (!AtaqueAmigo(botonClickeado))
-            {
-                Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
-                return;
-            }
-            AtaqueEnemigo();
+            StartCoroutine(EjecutarAtaqueTrasDialogo(() => AtaqueAmigo(botonClickeado)));
         }
         else if (pokeortEnemigo.currentSpeed < pokeortElegido.currentSpeed)
         {
@@ -186,11 +191,7 @@ public class CombateSalvajeManager : MonoBehaviour
                 return;
             }
 
-            if (!AtaqueEnemigo())
-            {
-                Derrotado(ref pokeortElegido, ref pokeortElegidoGO);
-                return;
-            }
+            StartCoroutine((EjecutarAtaqueTrasDialogo(() => AtaqueEnemigo())));
         }
         else
         {
@@ -203,12 +204,7 @@ public class CombateSalvajeManager : MonoBehaviour
                     return;
                 }
 
-                if (!AtaqueAmigo(botonClickeado))
-                {
-                    Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
-                    return;
-                }
-                AtaqueEnemigo();
+                StartCoroutine(EjecutarAtaqueTrasDialogo(() => AtaqueAmigo(botonClickeado)));
             }
             else
             {
@@ -218,11 +214,7 @@ public class CombateSalvajeManager : MonoBehaviour
                     return;
                 }
 
-                if (!AtaqueEnemigo())
-                {
-                    Derrotado(ref pokeortElegido, ref pokeortElegidoGO);
-                    return;
-                }
+                StartCoroutine((EjecutarAtaqueTrasDialogo(() => AtaqueEnemigo())));
             }
         }
     }
