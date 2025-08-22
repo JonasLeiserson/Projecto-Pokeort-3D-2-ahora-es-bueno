@@ -18,5 +18,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   tipo: curacion
   valor: 100
-  cantidad: 1
+  cantidad: 0
   id: 1
