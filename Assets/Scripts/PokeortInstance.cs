@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 
 [System.Serializable]
 public class PokeortInstance
@@ -48,8 +49,6 @@ public class PokeortInstance
                 equippedAttacks.Add(data.learnableAttacks[i]);
             }
         }
-
-
     }
 
     public static class TipoEfectividad
@@ -161,80 +160,161 @@ public class PokeortInstance
 
     public bool atacar(Attack ataque, PokeortInstance enemigo, Dialogue dialogo, DialogoManager dialogoManager)
     {
-        dialogo.dialogueLines.Clear();
-
-        bool acerto = Random.Range(0, 101) <= ataque.accuracy;
-
-        if (acerto)
+        if (ataque is DamageAttack)
         {
-            //calculo de danio
-            bool isCritic = Random.Range(0, 101) <= ataque.criticChance;
-            float e = TipoEfectividad.ObtenerEfectividad(ataque.type, enemigo.type1, enemigo.type2);
-            float b = ataque.type == type1 ? 1.5f : 1;
-            int v = Random.Range(85, 101);
+            DamageAttack d = (DamageAttack)ataque;
 
-            int danio;
+            dialogo.dialogueLines.Clear();
 
-            if (ataque.isPhysic)
+            bool acerto = Random.Range(0, 101) <= d.accuracy;
+
+            if (acerto)
             {
-                danio = (int)Mathf.Round(0.01f * b * e * v * (((0.2f * level + 1) * currentAttack * ataque.power) / (25 * enemigo.currentDefense)));
-                if (isCritic) danio *= 2;
+                //calculo de danio
+                bool isCritic = Random.Range(0, 101) <= d.criticChance;
+                float e = TipoEfectividad.ObtenerEfectividad(d.type, enemigo.type1, enemigo.type2);
+                float b = d.type == type1 ? 1.5f : 1;
+                int v = Random.Range(85, 101);
+
+                int danio;
+
+                if (d.isPhysic)
+                {
+                    danio = (int)Mathf.Round(0.01f * b * e * v * (((0.2f * level + 1) * currentAttack * d.power) / (25 * enemigo.currentDefense)));
+                    if (isCritic) danio *= 2;
+                }
+                else
+                {
+                    danio = (int)Mathf.Round(0.01f * b * e * v * (((0.2f * level + 1) * currentSpAttack * d.power) / (25 * enemigo.currentSpDefense)));
+                    if (isCritic) danio *= 2;
+                }
+
+                enemigo.currentHP -= danio;
+                if (enemigo.currentHP <= 0) enemigo.currentHP = 0;
+
+                DialogueLine linea1 = new DialogueLine();
+                linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {d.attackName} e hizo {danio} de danio";
+
+                if (isCritic) linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {d.attackName} y fue critico! Hizo {danio} de danio";
+
+                DialogueLine linea2 = new DialogueLine();
+                linea2.dialogueText = $"{enemigo.pokemonData.pokemonName} tiene {enemigo.currentHP} de vida";
+
+                dialogo.dialogueLines.Add(linea1);
+                dialogo.dialogueLines.Add(linea2);
+
+                Debug.Log($"{pokemonData.pokemonName} utilizo {d.attackName} e hizo {danio} de danio");
+                Debug.Log($"{enemigo.pokemonData.pokemonName} tiene {enemigo.currentHP} de vida");
+
+                if (enemigo.currentHP == 0)
+                {
+                    DialogueLine linea3 = new DialogueLine();
+                    linea3.dialogueText = $"{enemigo.pokemonData.pokemonName} fue derrotado";
+
+                    dialogo.dialogueLines.Add(linea3);
+                    Debug.Log($"{enemigo.pokemonData.pokemonName} fue derrotado");
+
+                    dialogoManager.StartDialogue(dialogo);
+                    return false;
+                }
+
+                dialogoManager.StartDialogue(dialogo);
+                return true;
             }
             else
             {
-                danio = (int)Mathf.Round(0.01f * b * e * v * (((0.2f * level + 1) * currentSpAttack * ataque.power) / (25 * enemigo.currentSpDefense)));
-                if (isCritic) danio *= 2;
-            }
+                DialogueLine linea1 = new DialogueLine();
+                linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {d.attackName} y fallo";
 
-            enemigo.currentHP -= danio;
-            if (enemigo.currentHP <= 0) enemigo.currentHP = 0;
+                DialogueLine linea2 = new DialogueLine();
+                linea2.dialogueText = $"{enemigo.pokemonData.pokemonName} se mantiene con {enemigo.currentHP} de vida";
 
-            DialogueLine linea1 = new DialogueLine();
-            linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {ataque.attackName} e hizo {danio} de danio";
+                dialogo.dialogueLines.Add(linea1);
+                dialogo.dialogueLines.Add(linea2);
 
-            if (isCritic) linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {ataque.attackName} y fue critico! Hizo {danio} de danio";
-
-            DialogueLine linea2 = new DialogueLine();
-            linea2.dialogueText = $"{enemigo.pokemonData.pokemonName} tiene {enemigo.currentHP} de vida";
-
-            dialogo.dialogueLines.Add(linea1);
-            dialogo.dialogueLines.Add(linea2);
-
-            Debug.Log($"{pokemonData.pokemonName} utilizo {ataque.attackName} e hizo {danio} de danio");
-            Debug.Log($"{enemigo.pokemonData.pokemonName} tiene {enemigo.currentHP} de vida");
-
-            if (enemigo.currentHP == 0)
-            {
-                DialogueLine linea3 = new DialogueLine();
-                linea3.dialogueText = $"{enemigo.pokemonData.pokemonName} fue derrotado";
-
-                dialogo.dialogueLines.Add(linea3);
-                Debug.Log($"{enemigo.pokemonData.pokemonName} fue derrotado");
+                Debug.Log($"{pokemonData.pokemonName} utilizo {d.attackName} y fallo");
+                Debug.Log($"{enemigo.pokemonData.pokemonName} se mantiene con {enemigo.currentHP} de vida");
 
                 dialogoManager.StartDialogue(dialogo);
-                return false;
+                return true;
             }
 
-            dialogoManager.StartDialogue(dialogo);
-            return true;
         }
-        else
+        else if (ataque is BuffAttack)
         {
+            BuffAttack b = (BuffAttack)ataque;
+
             DialogueLine linea1 = new DialogueLine();
-            linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {ataque.attackName} y fallo";
+            linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {b.attackName}";
 
             DialogueLine linea2 = new DialogueLine();
-            linea2.dialogueText = $"{enemigo.pokemonData.pokemonName} se mantiene con {enemigo.currentHP} de vida";
+            linea2.dialogueText = $"{pokemonData.pokemonName} vio aumentado su {b.buffStat}";
+
+            switch (b.buffStat)
+            {
+                case BuffAttack.buffType.Attack:
+                    currentAttack = Mathf.RoundToInt(currentAttack * b.buffMultiplier);
+                    break;
+                case BuffAttack.buffType.Defense:
+                    currentDefense = Mathf.RoundToInt(currentDefense * b.buffMultiplier);
+                    break;
+                case BuffAttack.buffType.Speed:
+                    currentSpeed = Mathf.RoundToInt(currentSpeed * b.buffMultiplier);
+                    break;
+                case BuffAttack.buffType.SpecialAttack:
+                    currentSpAttack = Mathf.RoundToInt(currentSpAttack * b.buffMultiplier);
+                    break;
+                case BuffAttack.buffType.SpecialDefense:
+                    currentSpDefense = Mathf.RoundToInt(currentSpDefense * b.buffMultiplier);
+                    break;
+            }
 
             dialogo.dialogueLines.Add(linea1);
             dialogo.dialogueLines.Add(linea2);
 
-            Debug.Log($"{pokemonData.pokemonName} utilizo {ataque.attackName} y fallo");
-            Debug.Log($"{enemigo.pokemonData.pokemonName} se mantiene con {enemigo.currentHP} de vida");
-
+            Debug.Log($"{pokemonData.pokemonName} utilizo {b.attackName} y vio aumentado su {b.buffStat}");
             dialogoManager.StartDialogue(dialogo);
+
             return true;
         }
-        
+        else if (ataque is DebuffAttack)
+        {
+            DebuffAttack debuff = (DebuffAttack)ataque;
+
+            DialogueLine linea1 = new DialogueLine();
+            linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {debuff.attackName}";
+
+            DialogueLine linea2 = new DialogueLine();
+            linea2.dialogueText = $"{enemigo.pokemonData.pokemonName} vio reducido su {debuff.debuffStat}";
+
+            switch (debuff.debuffStat)
+            {
+                case DebuffAttack.debuffType.Attack:
+                    enemigo.currentAttack = Mathf.RoundToInt(enemigo.currentAttack * debuff.debuffMultiplier);
+                    break;
+                case DebuffAttack.debuffType.Defense:
+                    enemigo.currentDefense = Mathf.RoundToInt(enemigo.currentDefense * debuff.debuffMultiplier);
+                    break;
+                case DebuffAttack.debuffType.Speed:
+                    enemigo.currentSpeed = Mathf.RoundToInt(enemigo.currentSpeed * debuff.debuffMultiplier);
+                    break;
+                case DebuffAttack.debuffType.SpecialAttack:
+                    enemigo.currentSpAttack = Mathf.RoundToInt(enemigo.currentSpAttack * debuff.debuffMultiplier);
+                    break;
+                case DebuffAttack.debuffType.SpecialDefense:
+                    enemigo.currentSpDefense = Mathf.RoundToInt(enemigo.currentSpDefense * debuff.debuffMultiplier);
+                    break;
+            }
+
+            dialogo.dialogueLines.Add(linea1);
+            dialogo.dialogueLines.Add(linea2);
+
+            Debug.Log($"{pokemonData.pokemonName} utilizo {debuff.attackName} y vio reducido su {debuff.debuffStat}");
+            dialogoManager.StartDialogue(dialogo);
+
+            return true;
+        }
+
+        return true;
     }
 }
