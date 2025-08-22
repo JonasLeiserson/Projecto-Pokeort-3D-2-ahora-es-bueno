@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
-  m_Name: FireSpirit
+  m_Name: Ejemplo1
   m_EditorClassIdentifier: 
-  PokeortPrefab: {fileID: 2203570101914794581, guid: a904e7696e00f3e438537642faa3cb6f,
+  PokeortPrefab: {fileID: 8651629261895725157, guid: 11d89dccc9dab684db9321e57e4a7f19,
     type: 3}
-  pokemonName: Fueguito
+  pokemonName: Pancho
   primaryType: 2
   secondaryType: 0
-  baseHP: 60
-  baseAttack: 40
-  baseDefense: 20
-  baseSpAttack: 60
-  baseSpDefense: 45
-  baseSpeed: 25
+  baseHP: 100
+  baseAttack: 80
+  baseDefense: 74
+  baseSpAttack: 45
+  baseSpDefense: 85
+  baseSpeed: 45
   learnableAttacks:
-  - {fileID: 11400000, guid: 6368df7c7c12b7a4a8444d8154b9ee4a, type: 2}
+  - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
   - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}

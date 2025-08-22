@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -581,7 +581,7 @@ MonoBehaviour:
   botonesIniciales: {fileID: 240141104}
   botonesAtaque: {fileID: 5165633311610386220}
   dialogoManager: {fileID: 29452041}
-  dialogoCombate: {fileID: 11400000, guid: dd4ca681880a16d48ae0cac72eb840f5, type: 2}
+  dialogoCombate: {fileID: 11400000, guid: 309b7ae69dc859848a1120d5f3b89404, type: 2}
   player: {fileID: 3183447003146668400, guid: e65ad50409fdaee49b335ab8302cae92, type: 3}
   pokeorts:
   - {fileID: 8651629261895725157, guid: 11d89dccc9dab684db9321e57e4a7f19, type: 3}

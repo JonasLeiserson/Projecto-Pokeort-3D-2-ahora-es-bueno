@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
-  m_Name: Ejemplo1
+  m_Name: ejemplo3
   m_EditorClassIdentifier: 
-  PokeortPrefab: {fileID: 8651629261895725157, guid: 11d89dccc9dab684db9321e57e4a7f19,
-    type: 3}
-  pokemonName: Pancho
-  primaryType: 2
+  PokeortPrefab: {fileID: 0}
+  pokemonName: 
+  primaryType: 0
   secondaryType: 0
-  baseHP: 100
-  baseAttack: 80
-  baseDefense: 74
-  baseSpAttack: 45
-  baseSpDefense: 85
-  baseSpeed: 45
+  baseHP: 20
+  baseAttack: 20
+  baseDefense: 20
+  baseSpAttack: 20
+  baseSpDefense: 20
+  baseSpeed: 20
   learnableAttacks:
-  - {fileID: 11400000, guid: c107908038c8c8248874e632bcebfaba, type: 2}
   - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}

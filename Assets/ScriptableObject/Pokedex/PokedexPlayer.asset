@@ -15,7 +15,7 @@ MonoBehaviour:
   pokeorts:
   - pokemonData: {fileID: 11400000, guid: 0c3963af48f9af24e83606c9c22511ae, type: 2}
     equippedAttacks:
-    - {fileID: 11400000, guid: c107908038c8c8248874e632bcebfaba, type: 2}
+    - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
     - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
     type1: 2
     type2: 0
@@ -28,8 +28,8 @@ MonoBehaviour:
     currentSpeed: 1000
   - pokemonData: {fileID: 11400000, guid: 0c3963af48f9af24e83606c9c22511ae, type: 2}
     equippedAttacks:
-    - {fileID: 11400000, guid: c107908038c8c8248874e632bcebfaba, type: 2}
-    - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
     type1: 2
     type2: 0
     level: 100

@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Rayo de Fuego
-  m_EditorClassIdentifier: Assembly-CSharp::Attack
-  attackName: Rayo de Fuego
-  type: 2
-  power: 70
-  accuracy: 80
-  isPhysic: 0
-  criticChance: 10
+  m_Script: {fileID: 11500000, guid: 552a8fbcb378e584081116ee2ca7c18f, type: 3}
+  m_Name: Dialogo
+  m_EditorClassIdentifier: 
+  dialogueLines: []
