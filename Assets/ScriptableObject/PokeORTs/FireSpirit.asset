@@ -17,12 +17,12 @@ MonoBehaviour:
   pokemonName: Fueguito
   primaryType: 2
   secondaryType: 0
-  baseHP: 60
-  baseAttack: 40
-  baseDefense: 20
-  baseSpAttack: 60
-  baseSpDefense: 45
-  baseSpeed: 25
+  baseHP: 34
+  baseAttack: 46
+  baseDefense: 37
+  baseSpAttack: 62
+  baseSpDefense: 51
+  baseSpeed: 55
   learnableAttacks:
   - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
   - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}

@@ -16,10 +16,12 @@ MonoBehaviour:
   pokemonName: 
   primaryType: 0
   secondaryType: 0
-  baseHP: 0
-  baseAttack: 0
-  baseDefense: 0
-  baseSpAttack: 0
-  baseSpDefense: 0
-  baseSpeed: 0
-  learnableAttacks: []
+  baseHP: 48
+  baseAttack: 47
+  baseDefense: 50
+  baseSpAttack: 64
+  baseSpDefense: 68
+  baseSpeed: 40
+  learnableAttacks:
+  - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
+  - {fileID: 0}
