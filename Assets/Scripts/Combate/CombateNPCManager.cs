@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CombateNPCManager : MonoBehaviour
 {
@@ -160,23 +161,34 @@ public class CombateNPCManager : MonoBehaviour
         return Instantiate(prefab, nuevaPosicion, Quaternion.identity);
     }
 
+    IEnumerator EjecutarAtaqueTrasDialogo(System.Func<bool> ataque, PokeortInstance pokeortAtacado, GameObject pokeortAtacadoGO)
+    {
+        yield return new WaitUntil(() => !dialogoManager.talking);
+
+        if (!ataque())
+        {
+            if (pokeortAtacado == pokeortElegido)
+            {
+                Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
+            } 
+            else
+            {
+                Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo);
+            }
+        }
+    }
 
     public void CheckBattleState(GameObject botonClickeado)
     {
         if (pokeortEnemigo.currentSpeed > pokeortElegido.currentSpeed)
         {
-            if (!AtaqueEnemigo()) 
+            if (!AtaqueEnemigo())
             {
                 Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
                 return;
             }
 
-            if (!AtaqueAmigo(botonClickeado))
-            {
-                Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo);
-                return;
-            }
-            AtaqueEnemigo();
+            StartCoroutine(EjecutarAtaqueTrasDialogo(() => AtaqueAmigo(botonClickeado), pokeortEnemigo, pokeortEnemigoGO));
         }
         else if (pokeortEnemigo.currentSpeed < pokeortElegido.currentSpeed)
         {
@@ -186,11 +198,7 @@ public class CombateNPCManager : MonoBehaviour
                 return;
             }
 
-            if (!AtaqueEnemigo())
-            {
-                Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
-                return;
-            }
+            StartCoroutine((EjecutarAtaqueTrasDialogo(() => AtaqueEnemigo(), pokeortElegido, pokeortElegidoGO)));
         }
         else
         {
@@ -203,12 +211,8 @@ public class CombateNPCManager : MonoBehaviour
                     return;
                 }
 
-                if (!AtaqueAmigo(botonClickeado))
-                {
-                    Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo);
-                    return;
-                }
-                AtaqueEnemigo();
+                StartCoroutine(EjecutarAtaqueTrasDialogo(() => AtaqueAmigo(botonClickeado), pokeortEnemigo, pokeortEnemigoGO));
+
             }
             else
             {
@@ -218,11 +222,7 @@ public class CombateNPCManager : MonoBehaviour
                     return;
                 }
 
-                if (!AtaqueEnemigo())
-                {
-                    Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
-                    return;
-                }
+                StartCoroutine((EjecutarAtaqueTrasDialogo(() => AtaqueEnemigo(), pokeortElegido, pokeortElegidoGO)));
             }
         }
     }
