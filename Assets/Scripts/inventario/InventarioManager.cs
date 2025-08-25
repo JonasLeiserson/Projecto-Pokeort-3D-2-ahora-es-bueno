@@ -31,6 +31,10 @@ public class InventarioManager : MonoBehaviour {
         
         foreach (Item item in Inventario.instance.items)
         {
+            if(item.cantidad <= 0)
+            {
+                return;
+            }
             GameObject newSlot = Instantiate(inventorySlotPrefab, itemsParent);
             InventorySlot InventorySlot = newSlot.GetComponent<InventorySlot>();
 

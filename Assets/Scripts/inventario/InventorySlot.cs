@@ -30,6 +30,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         icon.enabled = false;   
     }
     public void ItemUsado() {
+        Debug.Log("MANGO");
         Inventario.instance.RemoverItem(item, 1);
+        
     }
 }
