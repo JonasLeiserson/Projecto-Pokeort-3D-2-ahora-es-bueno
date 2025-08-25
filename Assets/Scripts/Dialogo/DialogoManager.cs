@@ -19,7 +19,7 @@ public class DialogoManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
+        if (instance == null && instance != this)
         {
             instance = this;
         }
@@ -27,6 +27,8 @@ public class DialogoManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start() 
