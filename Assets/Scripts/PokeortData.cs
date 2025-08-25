@@ -8,6 +8,7 @@ public class PokeortData : ScriptableObject
     public string pokemonName;
     public PokemonType primaryType;
     public PokemonType secondaryType;
+    public Sprite icon;
 
     public int baseHP;
     public int baseAttack;
