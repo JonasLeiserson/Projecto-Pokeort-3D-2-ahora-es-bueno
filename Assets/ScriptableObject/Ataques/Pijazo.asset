@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Pijazo
   m_EditorClassIdentifier: Assembly-CSharp::DamageAttack
-  attackName: 
-  type: 0
-  power: 0
-  accuracy: 0
-  isPhysic: 0
-  criticChance: 0
+  attackName: Pijazo
+  type: 12
+  power: 10
+  accuracy: 100
+  isPhysic: 1
+  criticChance: 50

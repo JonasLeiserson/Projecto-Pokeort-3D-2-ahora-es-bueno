@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: +1CM
   m_EditorClassIdentifier: Assembly-CSharp::BuffAttack
-  attackName: 
-  type: 0
-  buffMultiplier: 0
+  attackName: +1CM
+  type: 1
+  buffMultiplier: 2
   buffStat: 0

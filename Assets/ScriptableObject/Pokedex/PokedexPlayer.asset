@@ -15,13 +15,13 @@ MonoBehaviour:
   pokeorts:
   - pokemonData: {fileID: 11400000, guid: 0c3963af48f9af24e83606c9c22511ae, type: 2}
     equippedAttacks:
-    - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
-    - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
+    - {fileID: 11400000, guid: 4bb74ee41290f9a4f92ee7a472da98b8, type: 2}
+    - {fileID: 11400000, guid: 8d36fd2f4b0241f488d59dd46c336155, type: 2}
     type1: 2
     type2: 0
     level: 1
     currentHP: 0
-    currentAttack: 1000
+    currentAttack: 2000
     currentDefense: 1
     currentSpAttack: 1000
     currentSpDefense: 1

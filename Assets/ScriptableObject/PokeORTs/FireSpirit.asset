@@ -24,5 +24,5 @@ MonoBehaviour:
   baseSpDefense: 51
   baseSpeed: 55
   learnableAttacks:
-  - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
-  - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
+  - {fileID: 11400000, guid: 8d36fd2f4b0241f488d59dd46c336155, type: 2}
+  - {fileID: 11400000, guid: 8d36fd2f4b0241f488d59dd46c336155, type: 2}
