@@ -9,7 +9,8 @@ public class InventarioManager : MonoBehaviour {
     public GameObject BotonesIniciales; 
     public Transform itemsParent;
     public GameObject inventorySlotPrefab;
-    public TextMeshProUGUI Descripcion; 
+    public TextMeshProUGUI Descripcion;
+    public Transform espaciosDePokeorts;
     public List<InventorySlot> slots = new List<InventorySlot>();
 
     void Awake() {
@@ -44,6 +45,7 @@ public class InventarioManager : MonoBehaviour {
     }
 
     void Start() {
+        espaciosDePokeorts.gameObject.SetActive(false);
         EsconderInventario();
     }
 

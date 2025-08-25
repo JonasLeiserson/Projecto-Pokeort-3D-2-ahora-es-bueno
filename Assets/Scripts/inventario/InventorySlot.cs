@@ -11,7 +11,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     public TextMeshProUGUI  countText;      
     Item item;
 
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         InventarioManager.instance.Descripcion.text = item.description;
@@ -31,6 +30,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     }
     public void ItemUsado() {
         Debug.Log("MANGO");
+        InventarioManager.instance.espaciosDePokeorts.gameObject.SetActive(true);
         Inventario.instance.RemoverItem(item, 1);
         
     }

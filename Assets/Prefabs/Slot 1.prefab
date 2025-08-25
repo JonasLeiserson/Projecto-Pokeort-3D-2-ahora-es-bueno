@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793e0ec669e342841b1d5281ed39bd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  espaciosDePokeorts: {fileID: 0}
   icon: {fileID: 1811320761355617148}
   countText: {fileID: 2293398298486534809}
 --- !u!1 &3081545514322122604
