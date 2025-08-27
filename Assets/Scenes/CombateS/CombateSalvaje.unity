@@ -242,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 255479043}
   m_Layer: 5
-  m_Name: Pokeorts Derecho
+  m_Name: PokeortsDerecho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1013,6 +1013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CasillaPokeort
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688298149172934163, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97635ca012dae564fbbaebe4f84e2095, type: 3}

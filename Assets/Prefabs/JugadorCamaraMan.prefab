@@ -171,6 +171,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokedex: {fileID: 11400000, guid: ddf7688590f404444969046688b80697, type: 2}
+  slots: []
+  pokeortParent: {fileID: 0}
+  pokedexSlotPrefab: {fileID: 5165633310631542608, guid: f3a37f6f82e09f84cae976e8e25bb3ee,
+    type: 3}
 --- !u!1 &3183447003393045275
 GameObject:
   m_ObjectHideFlags: 0

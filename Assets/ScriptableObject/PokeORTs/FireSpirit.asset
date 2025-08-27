@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
   m_Name: FireSpirit
   m_EditorClassIdentifier: 
-  PokeortPrefab: {fileID: 2203570101914794581, guid: a904e7696e00f3e438537642faa3cb6f,
+  PokeortPrefab: {fileID: 4203461898131196937, guid: a904e7696e00f3e438537642faa3cb6f,
     type: 3}
   pokemonName: Fueguito
   primaryType: 2
   secondaryType: 0
+  icon: {fileID: 0}
   baseHP: 34
   baseAttack: 46
   baseDefense: 37

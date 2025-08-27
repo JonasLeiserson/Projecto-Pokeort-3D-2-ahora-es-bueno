@@ -873,6 +873,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114700771971293528, guid: e65ad50409fdaee49b335ab8302cae92,
+        type: 3}
+      propertyPath: pokedexSlotPrefab
+      value: 
+      objectReference: {fileID: 1688298149172934163, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
     - target: {fileID: 3183447003146668396, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
       propertyPath: m_LocalPosition.x

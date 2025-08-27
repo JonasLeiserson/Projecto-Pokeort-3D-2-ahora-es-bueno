@@ -28,7 +28,6 @@ public class DialogoManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start() 

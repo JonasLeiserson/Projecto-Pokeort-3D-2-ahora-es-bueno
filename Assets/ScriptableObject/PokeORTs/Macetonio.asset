@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
   m_Name: Macetonio
   m_EditorClassIdentifier: 
-  PokeortPrefab: {fileID: 0}
+  PokeortPrefab: {fileID: 100000, guid: ea889ae7d8cb1684fb4e2b2756e48dde, type: 3}
   pokemonName: 
   primaryType: 0
   secondaryType: 0
+  icon: {fileID: 0}
   baseHP: 48
   baseAttack: 47
   baseDefense: 50
@@ -23,5 +24,5 @@ MonoBehaviour:
   baseSpDefense: 68
   baseSpeed: 40
   learnableAttacks:
-  - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
+  - {fileID: 0}
   - {fileID: 0}

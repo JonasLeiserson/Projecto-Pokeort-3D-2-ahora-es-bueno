@@ -45,7 +45,6 @@ public class InventarioManager : MonoBehaviour {
     }
 
     void Start() {
-        espaciosDePokeorts.gameObject.SetActive(false);
         EsconderInventario();
     }
 
@@ -75,5 +74,9 @@ public class InventarioManager : MonoBehaviour {
     {
         InventarioUI.SetActive(true);
         BotonesIniciales.SetActive(false);
+    }
+    public void EsconderEleccionpokeorts()
+    {
+        espaciosDePokeorts.gameObject.SetActive(false);
     }
 }
