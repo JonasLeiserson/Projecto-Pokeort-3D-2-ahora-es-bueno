@@ -2,6 +2,8 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class SaveData {
@@ -10,6 +12,7 @@ public class SaveData {
     public Inventario inventory;
     public string saveFile;
 }
+
 
 public static class SaveSystem {
     static string GetSavePath(string saveFile) {
@@ -24,12 +27,29 @@ public static class SaveSystem {
         File.WriteAllText(GetSavePath(data.saveFile), json);
     }
 
-    public static SaveData LoadGame(Button boton) {
-        string path = GetSavePath(boton.tag);
+    public static void InitSaveFileIfNeeded(string file) {
+        string path = GetSavePath(file);
+        if (!File.Exists(path)) {
+	    GameManager.instance.data.pokedex.pokeorts.Clear();
+            Inventario.instance.items.Clear();
+            SaveData initialData = new SaveData { pokedex = GameManager.instance.pokedex, playerPosition = new Vector3(0, 0, 0), inventory = Inventario.instance, saveFile = file};
+            string json = JsonUtility.ToJson(initialData);
+            File.WriteAllText(path, json);
+	    LoadGame(file);
+        }
+	else
+	{
+	    LoadGame(file);
+	}
+    }
+
+    public static SaveData LoadGame(string file) {
+        string path = GetSavePath(file);
         if (File.Exists(path)) {
             string json = File.ReadAllText(path);
             return JsonUtility.FromJson<SaveData>(json); 
         }
-        return null;
+
+	return null;
     }
 }
