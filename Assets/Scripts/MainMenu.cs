@@ -23,8 +23,8 @@ public class MainMenu : MonoBehaviour
 		file = GameManager.instance.file3;
 	    break;
 	}
-
-	GameManager.instance.data = SaveSystem.LoadGame(file);
+        GameManager.instance.data = SaveSystem.LoadGame(file);
+        GameManager.instance.AssignData(GameManager.instance.data);
         SceneManager.LoadScene("GameScene");
     }
 

@@ -31,12 +31,20 @@ public class GameManager : MonoBehaviour
 	DontDestroyOnLoad(this);
     }
 
+    public void RefreshData()
+    {
+        data.pokedex = pokedex;
+        data.playerPosition = playerPosition;
+        data.inventory = inventory;
+        data.saveFile = saveFile;
+    }
+
     public void AssignData(SaveData saveData) 
     {
-	pokedex = data.pokedex;
-	playerPosition = data.playerPosition;
-	inventory = data.inventory;
-	saveFile = data.saveFile;
+	    pokedex = data.pokedex;
+	    playerPosition = data.playerPosition;
+	    inventory = data.inventory;
+	    saveFile = data.saveFile;
     }    
 
     // Start is called before the first frame update

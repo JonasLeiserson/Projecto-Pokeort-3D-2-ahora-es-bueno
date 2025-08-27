@@ -10,6 +10,9 @@ TagManager:
   - NPC1
   - Jugador
   - FireSpirit
+  - File 1
+  - File 2
+  - File 3
   layers:
   - Default
   - TransparentFX

@@ -35,12 +35,12 @@ public static class SaveSystem {
             SaveData initialData = new SaveData { pokedex = GameManager.instance.pokedex, playerPosition = new Vector3(0, 0, 0), inventory = Inventario.instance, saveFile = file};
             string json = JsonUtility.ToJson(initialData);
             File.WriteAllText(path, json);
-	    LoadGame(file);
+	        LoadGame(file);
         }
-	else
-	{
-	    LoadGame(file);
-	}
+	    else
+	    {
+	        LoadGame(file);
+	    }
     }
 
     public static SaveData LoadGame(string file) {
