@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PokedexPlayer1
   m_EditorClassIdentifier: 
   pokeorts:
-  - pokemonData: {fileID: 11400000, guid: 0c3963af48f9af24e83606c9c22511ae, type: 2}
+  - pokemonData: {fileID: 11400000, guid: ef00c9b1997ed7f48a4af7303c7e23fa, type: 2}
     equippedAttacks:
     - {fileID: 11400000, guid: 4bb74ee41290f9a4f92ee7a472da98b8, type: 2}
     - {fileID: 11400000, guid: 8d36fd2f4b0241f488d59dd46c336155, type: 2}
@@ -21,12 +21,12 @@ MonoBehaviour:
     type2: 0
     level: 1
     currentHP: 0
-    currentAttack: 2000
+    currentAttack: 4000
     currentDefense: 1
     currentSpAttack: 1000
     currentSpDefense: 1
     currentSpeed: 1000
-  - pokemonData: {fileID: 11400000, guid: 0c3963af48f9af24e83606c9c22511ae, type: 2}
+  - pokemonData: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
     equippedAttacks:
     - {fileID: 0}
     - {fileID: 0}
