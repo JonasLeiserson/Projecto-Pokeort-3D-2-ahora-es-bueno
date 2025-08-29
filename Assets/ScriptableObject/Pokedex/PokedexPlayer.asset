@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6898b5d06d1d538479eba91e349e286c, type: 3}
-  m_Name: PokedexPlayer1
+  m_Name: PokedexPlayer
   m_EditorClassIdentifier: 
   pokeorts:
   - pokemonData: {fileID: 11400000, guid: ef00c9b1997ed7f48a4af7303c7e23fa, type: 2}

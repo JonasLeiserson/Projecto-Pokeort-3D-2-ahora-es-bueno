@@ -1,67 +1,61 @@
 fileFormatVersion: 2
-guid: b91a8c118ea38c54c89ae464a1d505b1
+guid: c6817da30b538c949ba3282860d7883d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Armature
-    100004: Bone
-    100006: Bone.001
-    100008: Bone.001_end
-    100010: Bone.002
-    100012: Bone.002_end
-    100014: Bone.003
-    100016: Bone.003_end
-    100018: Bone.004
-    100020: Bone.004_end
-    100022: Bone.005
-    100024: Bone.005_end
-    100026: Bone.006
-    100028: Bone.006_end
-    100030: Bone.007
-    100032: Bone.007_end
-    100034: Bone.008
-    100036: Bone.008_end
-    100038: Bone_end
-    100040: Cube.001
-    100042: Cube.002
-    100044: Torus
-    400000: //RootNode
-    400002: Armature
-    400004: Bone
-    400006: Bone.001
-    400008: Bone.001_end
-    400010: Bone.002
-    400012: Bone.002_end
-    400014: Bone.003
-    400016: Bone.003_end
-    400018: Bone.004
-    400020: Bone.004_end
-    400022: Bone.005
-    400024: Bone.005_end
-    400026: Bone.006
-    400028: Bone.006_end
-    400030: Bone.007
-    400032: Bone.007_end
-    400034: Bone.008
-    400036: Bone.008_end
-    400038: Bone_end
-    400040: Cube.001
-    400042: Cube.002
-    400044: Torus
+    100000: Cube
+    100002: Cube.001
+    100004: Icosphere
+    100006: //RootNode
+    100008: Sphere
+    400000: Cube
+    400002: Cube.001
+    400004: Icosphere
+    400006: //RootNode
+    400008: Sphere
     2100000: Material.001
     2100002: Material.002
-    2100004: No Name
-    2300000: Cube.001
-    2300002: Cube.002
-    2300004: Torus
-    3300000: Cube.001
-    3300002: Cube.002
-    3300004: Torus
-    4300000: Cube.001
-    4300002: Cube.002
-    4300004: Torus
-  externalObjects: {}
+    2100004: Material.003
+    2100006: Material.004
+    2300000: Cube
+    2300002: Cube.001
+    2300004: Icosphere
+    2300006: Sphere
+    3300000: Cube
+    3300002: Cube.001
+    3300004: Icosphere
+    3300006: Sphere
+    4300000: Sphere
+    4300002: Cube
+    4300004: Cube.001
+    4300006: Icosphere
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: f9ecb1f2b60e9ee4f9aa8372aba55414, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: d49b79b03703b5b44b456cfc5e66602c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 21b65eb5f7b814b468ad367fb2d91f15, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 6d903e3749754dc47a084c234b2db86d, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: palette2-gradient
+    second: {fileID: 2800000, guid: eba05d3e1a515fe4cbd1c59ead6227af, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

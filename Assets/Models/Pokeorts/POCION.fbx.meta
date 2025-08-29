@@ -1,39 +1,44 @@
 fileFormatVersion: 2
-guid: 9d9fd63873f24ee42836d7697ba21cad
+guid: ac69b23dd2da75c43a776d99a334fe79
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cube.001
-    100002: Cylinder.003
-    100004: //RootNode
-    400000: Cube.001
-    400002: Cylinder.003
-    400004: //RootNode
-    2100000: Material.001
-    2100002: textura infrumito
-    2300000: Cube.001
-    2300002: Cylinder.003
-    3300000: Cube.001
-    3300002: Cylinder.003
-    4300000: Cylinder.003
-    4300002: Cube.001
-    2186277476908879412: ImportLogs
+    100000: Cylinder
+    100002: Cylinder.001
+    100004: Cylinder.002
+    100006: //RootNode
+    400000: Cylinder
+    400002: Cylinder.001
+    400004: Cylinder.002
+    400006: //RootNode
+    2100000: Material.003
+    2100002: CORCHO
+    2100004: Material.001
+    2300000: Cylinder
+    2300002: Cylinder.001
+    2300004: Cylinder.002
+    3300000: Cylinder
+    3300002: Cylinder.001
+    3300004: Cylinder.002
+    4300000: Cylinder
+    4300002: Cylinder.001
+    4300004: Cylinder.002
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: 6a838e85173f43e45bb7723e712e473a, type: 2}
+      name: CORCHO
+    second: {fileID: 2100000, guid: 828690c83066f1e40858fcc14e70e923, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: textura infrumito
-    second: {fileID: 2100000, guid: a33030dda1589974f98be253d273733d, type: 2}
+      name: Material.001
+    second: {fileID: 2100000, guid: 7a3525ad90d81bb4f88ddfd075c009d7, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: palette2-gradient
-    second: {fileID: 2800000, guid: f06aac071d748d94683e0a209d749563, type: 3}
+      name: Material.003
+    second: {fileID: 2100000, guid: b6f6f5ab4d2f0c54aa7d305c6b4f9a4b, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

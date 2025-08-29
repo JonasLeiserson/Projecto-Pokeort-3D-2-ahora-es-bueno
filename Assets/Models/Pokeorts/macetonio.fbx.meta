@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ea889ae7d8cb1684fb4e2b2756e48dde
+guid: 7e14c3b794c977641861562bd200d35a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -18,27 +18,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.001
-    second: {fileID: 2100000, guid: f557ea2cb2130ec469545bc7980348ea, type: 2}
+    second: {fileID: 2100000, guid: d1ba4d9253a34484782e92e5a90e3449, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.002
-    second: {fileID: 2100000, guid: b2fda1f361798494c9919bf94877fd45, type: 2}
+    second: {fileID: 2100000, guid: c9ed5aecbb61bc648b76acbb6e6d493b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: maceta
-    second: {fileID: 2100000, guid: 1a81490819db491488cb0e00a672c858, type: 2}
+    second: {fileID: 2100000, guid: 93b68dda1c3d34249919ae0a0fc2f1fe, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: plantas
-    second: {fileID: 2100000, guid: 92dabfeef43190247b7c2b4e134f60f5, type: 2}
+    second: {fileID: 2100000, guid: 41c8e628c193ae5498d0c7ef7c0f193b, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: palette2-gradient
-    second: {fileID: 2800000, guid: f29027d70d363bf43bacab461ff68d0d, type: 3}
+    second: {fileID: 2800000, guid: 1bde77e799b4c7c4f85bb8047c8ba338, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
