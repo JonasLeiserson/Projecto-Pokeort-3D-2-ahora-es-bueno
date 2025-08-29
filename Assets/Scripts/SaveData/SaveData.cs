@@ -60,4 +60,15 @@ public static class SaveSystem {
 
 	    return null;
     }
+
+    public static bool DeleteSaveFile(string saveFile)
+    {
+        string path = GetSavePath(saveFile);
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            return true;
+        }
+        return false;
+    }
 }

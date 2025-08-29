@@ -9,6 +9,11 @@ public class PokedexManager : MonoBehaviour
     public Transform pokeortParent;
     public GameObject pokedexSlotPrefab;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        
+    }
+
     void Start()
     {
 	    GameObject pokeortParentOb = GameObject.Find("PokeortsDerecho");

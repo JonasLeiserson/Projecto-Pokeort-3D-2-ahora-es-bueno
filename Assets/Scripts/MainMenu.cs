@@ -28,6 +28,24 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
+    public void DeleteSaveFile(Button button)
+    {
+        switch (button.tag)
+        {
+            case "File 1":
+                file = GameManager.instance.file1;
+                break;
+            case "File 2":
+                file = GameManager.instance.file2;
+                break;
+            case "File 3":
+                file = GameManager.instance.file3;
+                break;
+        }
+
+        SaveSystem.DeleteSaveFile(file);
+    }
+
     public void QuitGame()
     {
         Application.Quit();
