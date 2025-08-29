@@ -10,20 +10,32 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame(Button button)
     {
-	switch (button.tag) {
-	    case "File 1":
-		file = GameManager.instance.file1;
-	    break;
+        Pokedex selectedPokedex = null;
 
-	    case "File 2":
-		file = GameManager.instance.file2;
-	    break;
+        switch (button.tag)
+        {
+            case "File 1":
+                file = GameManager.instance.file1;
+                selectedPokedex = GameManager.instance.PokedexPlayer1;
+                break;
+            case "File 2":
+                file = GameManager.instance.file2;
+                selectedPokedex = GameManager.instance.PokedexPlayer2;
+                break;
+            case "File 3":
+                file = GameManager.instance.file3;
+                selectedPokedex = GameManager.instance.PokedexPlayer3;
+                break;
+        }
 
-	    case "File 3":
-		file = GameManager.instance.file3;
-	    break;
-	}
-        GameManager.instance.data = SaveSystem.LoadGame(file);
+        if (selectedPokedex == null)
+        {
+            Debug.LogError("Invalid button tag or uninitialized Pokedex.");
+            return;
+        }
+
+        GameManager.instance.data = SaveSystem.InitSaveFileIfNeeded(file);
+        GameManager.instance.data.pokedex = selectedPokedex;
         GameManager.instance.AssignData(GameManager.instance.data);
         SceneManager.LoadScene("GameScene");
     }

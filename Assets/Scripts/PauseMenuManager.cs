@@ -20,14 +20,16 @@ public class PauseMenuManager : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f; // Reanuda el juego
+        Time.timeScale = 1f;
         isPaused = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f; // Pausa el juego
+        Time.timeScale = 0f;
         isPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -46,8 +48,6 @@ public class PauseMenuManager : MonoBehaviour
 
     public void SaveGame()
     {
-        GameManager.instance.RefreshData();
-        SaveSystem.SaveGame(GameManager.instance.data);
-        Debug.Log("Juego guardado.");
+        GameManager.instance.SaveGame();
     }
 }

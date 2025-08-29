@@ -11,9 +11,9 @@ public class PokedexManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-	GameObject pokeortParentOb = GameObject.Find("PokeortsDerecho");
-	pokeortParent = pokeortParentOb.transform;
-	InventarioManager.instance.EsconderEleccionpokeorts();
+	    GameObject pokeortParentOb = GameObject.Find("PokeortsDerecho");
+	    pokeortParent = pokeortParentOb.transform;
+	    InventarioManager.instance.EsconderEleccionpokeorts();
         UpdateUI();
     }
 

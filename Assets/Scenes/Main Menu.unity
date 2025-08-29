@@ -694,7 +694,10 @@ MonoBehaviour:
     playerPosition: {x: 0, y: 0, z: 0}
     inventory: {fileID: 0}
     saveFile: 
-  pokedex: {fileID: 11400000, guid: ddf7688590f404444969046688b80697, type: 2}
+  pokedex: {fileID: 0}
+  PokedexPlayer1: {fileID: 11400000, guid: ddf7688590f404444969046688b80697, type: 2}
+  PokedexPlayer2: {fileID: 11400000, guid: 9e2477283872c1147b2754fda131698b, type: 2}
+  PokedexPlayer3: {fileID: 11400000, guid: e99f425ec1e540f47b7033dc404da1f3, type: 2}
   playerPosition: {x: 0, y: 0, z: 0}
   inventory: {fileID: 0}
   saveFile: 
@@ -904,6 +907,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621480223}
   m_CullTransparentMesh: 0
+--- !u!1 &627807553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 627807555}
+  - component: {fileID: 627807554}
+  m_Layer: 0
+  m_Name: Inventario
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &627807554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627807553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32ea4310c73f9443b4e4214e8d9edc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+--- !u!4 &627807555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627807553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 307.22565, y: 138.27281, z: -13.233322}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &641960880
 GameObject:
   m_ObjectHideFlags: 0

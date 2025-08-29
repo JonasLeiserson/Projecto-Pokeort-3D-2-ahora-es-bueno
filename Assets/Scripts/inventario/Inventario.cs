@@ -14,6 +14,8 @@ public class Inventario : MonoBehaviour {
         } else {
             instance = this;
         }
+
+        DontDestroyOnLoad(gameObject);
     }
     
     public void AñadirItem(Item item, int Cantidad) {

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class SaveData {
     public Pokedex pokedex;
     public Vector3 playerPosition;
-    public Inventario inventory;
+    public List<Item> inventory;
     public string saveFile;
 }
 
@@ -27,19 +27,26 @@ public static class SaveSystem {
         File.WriteAllText(GetSavePath(data.saveFile), json);
     }
 
-    public static void InitSaveFileIfNeeded(string file) {
+    public static SaveData InitSaveFileIfNeeded(string file) {
         string path = GetSavePath(file);
         if (!File.Exists(path)) {
-	    GameManager.instance.data.pokedex.pokeorts.Clear();
             Inventario.instance.items.Clear();
-            SaveData initialData = new SaveData { pokedex = GameManager.instance.pokedex, playerPosition = new Vector3(0, 0, 0), inventory = Inventario.instance, saveFile = file};
+            SaveData initialData = new SaveData 
+            { 
+                pokedex = GameManager.instance.pokedex, 
+                playerPosition = new Vector3(0, 0, 0), 
+                inventory = Inventario.instance.items, 
+                saveFile = file
+            };
+
             string json = JsonUtility.ToJson(initialData);
             File.WriteAllText(path, json);
-	        LoadGame(file);
+
+	        return LoadGame(file);
         }
 	    else
 	    {
-	        LoadGame(file);
+	        return LoadGame(file);
 	    }
     }
 
@@ -50,6 +57,6 @@ public static class SaveSystem {
             return JsonUtility.FromJson<SaveData>(json); 
         }
 
-	return null;
+	    return null;
     }
 }

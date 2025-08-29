@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &201020216235231617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793e0ec669e342841b1d5281ed39bd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  espaciosDePokeorts: {fileID: 0}
   icon: {fileID: 1811320761355617148}
   countText: {fileID: 2293398298486534809}
 --- !u!1 &3081545514322122604
