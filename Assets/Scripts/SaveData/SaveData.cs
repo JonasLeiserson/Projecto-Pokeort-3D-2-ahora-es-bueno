@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 [System.Serializable]
 public class SaveData {
-    public Pokedex pokedex;
+    public List<PokeortInstance> pokeorts;
     public Vector3 playerPosition;
     public List<Item> inventory;
     public string saveFile;
@@ -30,10 +30,11 @@ public static class SaveSystem {
     public static SaveData InitSaveFileIfNeeded(string file) {
         string path = GetSavePath(file);
         if (!File.Exists(path)) {
+            GameManager.instance.pokedex.pokeorts.Clear();
             Inventario.instance.items.Clear();
             SaveData initialData = new SaveData 
             { 
-                pokedex = GameManager.instance.pokedex, 
+                pokeorts = GameManager.instance.pokedex.pokeorts, 
                 playerPosition = new Vector3(0, 0, 0), 
                 inventory = Inventario.instance.items, 
                 saveFile = file
@@ -58,5 +59,16 @@ public static class SaveSystem {
         }
 
 	    return null;
+    }
+
+    public static bool DeleteSaveFile(string saveFile)
+    {
+        string path = GetSavePath(saveFile);
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            return true;
+        }
+        return false;
     }
 }

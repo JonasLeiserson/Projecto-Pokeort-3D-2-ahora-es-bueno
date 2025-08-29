@@ -13,10 +13,8 @@ public class GameManager : MonoBehaviour
 
     public SaveData data;
 
+    public List<PokeortInstance> pokeorts;
     public Pokedex pokedex;
-    public Pokedex PokedexPlayer1;
-    public Pokedex PokedexPlayer2;
-    public Pokedex PokedexPlayer3;
 
     public Vector3 playerPosition;
     public List<Item> inventory;
@@ -55,7 +53,7 @@ public class GameManager : MonoBehaviour
             inventory = Inventario.instance.items;
         }
 
-        data.pokedex = pokedex;
+        data.pokeorts = pokeorts;
         data.playerPosition = playerPosition;
         data.inventory = inventory;
         data.saveFile = saveFile;
@@ -63,10 +61,12 @@ public class GameManager : MonoBehaviour
 
     public void AssignData(SaveData saveData) 
     {
-	    pokedex = saveData.pokedex;
+	    pokeorts = saveData.pokeorts;
 	    playerPosition = saveData.playerPosition;
 	    inventory = saveData.inventory;
 	    saveFile = saveData.saveFile;
+
+        pokedex.pokeorts = pokeorts;
     }    
 
     public void SaveGame()
@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
             if (player != null)
             {
                 player.transform.position = playerPosition;
+                player.GetComponent<PokedexManager>().pokedex = pokedex;
             }
 
             Inventario.instance.items = inventory;
