@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &201020216235231617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 133.06584, y: 0, z: 42.926792, w: 6.9817204}
+  m_margin: {x: 133.06584, y: 0, z: 28.158573, w: 6.9817204}
   m_textInfo:
     textComponent: {fileID: 2293398298486534809}
     characterCount: 1

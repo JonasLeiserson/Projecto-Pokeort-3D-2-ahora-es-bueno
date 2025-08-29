@@ -102,7 +102,9 @@ public class CombateSalvajeManager : MonoBehaviour
 
         //cancelar movimiento pokeorts
         pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
+        pokeortElegidoGO.GetComponent<EncuentroPokemon>().enabled = false;
         pokeortEnemigoGO.GetComponent<MovimientoPokeorts>().enabled = false;
+        pokeortEnemigoGO.GetComponent<EncuentroPokemon>().enabled = false;
 
         //UI
         Cursor.visible = true;

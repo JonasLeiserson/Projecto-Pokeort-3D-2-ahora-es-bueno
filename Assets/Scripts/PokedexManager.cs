@@ -36,6 +36,7 @@ public class PokedexManager : MonoBehaviour
         {
           
             GameObject newSlot = Instantiate(pokedexSlotPrefab, pokeortParent);
+            newSlot.transform.localScale = new Vector3(0.5f, 0.3f, 0.3f);
             PokedexSlot pokedexSlot = newSlot.GetComponent<PokedexSlot>();
 
             slots.Add(pokedexSlot);

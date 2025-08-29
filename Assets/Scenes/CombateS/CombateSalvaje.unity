@@ -226,6 +226,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &214008908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 214008910}
+  - component: {fileID: 214008909}
+  m_Layer: 5
+  m_Name: PokedexManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &214008909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214008908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7875974c5e9bc4f98b023a60c08672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokedex: {fileID: 11400000, guid: ddf7688590f404444969046688b80697, type: 2}
+  slots:
+  - {fileID: 0}
+  pokeortParent: {fileID: 255479043}
+  pokedexSlotPrefab: {fileID: 1688298149172934163, guid: 97635ca012dae564fbbaebe4f84e2095,
+    type: 3}
+--- !u!224 &214008910
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214008908}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.36529997, y: 0.36529997, z: 0.36529997}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1114.1528, y: 433.89}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &240141104 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1414509506300161951, guid: f3a37f6f82e09f84cae976e8e25bb3ee,
@@ -241,6 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 255479043}
+  - component: {fileID: 255479044}
   m_Layer: 5
   m_Name: PokeortsDerecho
   m_TagString: Untagged
@@ -257,7 +312,7 @@ RectTransform:
   m_GameObject: {fileID: 255479042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.5, y: 12, z: 1}
+  m_LocalScale: {x: 8.5, y: 10.21212, z: 1}
   m_Children: []
   m_Father: {fileID: 1104529331}
   m_RootOrder: 2
@@ -267,6 +322,30 @@ RectTransform:
   m_AnchoredPosition: {x: 361, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &255479044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255479042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2095666955, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 1
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 1
+  m_ConstraintCount: 2
 --- !u!114 &330677448 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5572384014808122926, guid: f3a37f6f82e09f84cae976e8e25bb3ee,
@@ -485,7 +564,7 @@ RectTransform:
   m_GameObject: {fileID: 1516036549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 16.479, y: 13.586, z: 1}
+  m_LocalScale: {x: 19.334812, y: 13.586, z: 1}
   m_Children: []
   m_Father: {fileID: 1104529331}
   m_RootOrder: 0
@@ -599,6 +678,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1629941160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1629941161}
+  m_Layer: 5
+  m_Name: Pokedex
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1629941161
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629941160}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.36529997, y: 0.36529997, z: 0.36529997}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3049.967, y: 1187.7637}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1695799269 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1975937922371122731, guid: f3a37f6f82e09f84cae976e8e25bb3ee,
@@ -611,6 +725,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5165633311610386219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1799328762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1688298149177355901, guid: 97635ca012dae564fbbaebe4f84e2095,
+    type: 3}
+  m_PrefabInstance: {fileID: 1688298148156798405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1840137853
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,6 +885,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1947759264 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1688298149554910568, guid: 97635ca012dae564fbbaebe4f84e2095,
+    type: 3}
+  m_PrefabInstance: {fileID: 1688298148156798405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1970773160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,8 +1157,90 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1688298149177355901, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_text
+      value: pancho
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688298149177355901, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688298149177355901, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688298149177355901, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688298149177355901, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688298149177355901, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903203457317915331, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 1947759264}
+    - target: {fileID: 1903203457317915331, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: pokemonNameText
+      value: 
+      objectReference: {fileID: 1799328762}
+    - target: {fileID: 1903203457317915331, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: pokemonLevelText
+      value: 
+      objectReference: {fileID: 1688298148156798406}
+    - target: {fileID: 8168532233198849398, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168532233198849398, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168532233198849398, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168532233198849398, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168532233198849398, guid: 97635ca012dae564fbbaebe4f84e2095,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97635ca012dae564fbbaebe4f84e2095, type: 3}
+--- !u!114 &1688298148156798406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8168532233198849398, guid: 97635ca012dae564fbbaebe4f84e2095,
+    type: 3}
+  m_PrefabInstance: {fileID: 1688298148156798405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5165633311610386219
 PrefabInstance:
   m_ObjectHideFlags: 0
