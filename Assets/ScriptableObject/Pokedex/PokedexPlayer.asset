@@ -35,9 +35,9 @@ MonoBehaviour:
     currentSpAttack: 21312
     currentSpDefense: 1321
     currentSpeed: 321321
-  - pokemonData: {fileID: 11400000, guid: ed8a91fd39b172341b49345822d05767, type: 2}
+  - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
     equippedAttacks: []
-    type1: 2
+    type1: 6
     type2: 0
     level: 123
     currentHP: 213123

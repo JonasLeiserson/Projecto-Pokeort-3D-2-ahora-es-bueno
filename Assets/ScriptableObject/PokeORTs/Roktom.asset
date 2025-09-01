@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
-  m_Name: Macetonio
+  m_Name: Roktom
   m_EditorClassIdentifier: 
-  PokeortPrefab: {fileID: 100000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
-  pokemonName: Macetonio
-  primaryType: 4
+  PokeortPrefab: {fileID: 100006, guid: c6817da30b538c949ba3282860d7883d, type: 3}
+  pokemonName: Roktom
+  primaryType: 6
   secondaryType: 0
   icon: {fileID: 0}
-  baseHP: 48
-  baseAttack: 47
+  baseHP: 100
+  baseAttack: 30
   baseDefense: 50
-  baseSpAttack: 64
-  baseSpDefense: 68
-  baseSpeed: 40
+  baseSpAttack: 35
+  baseSpDefense: 40
+  baseSpeed: 30
   learnableAttacks:
-  - {fileID: 11400000, guid: 8d36fd2f4b0241f488d59dd46c336155, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
