@@ -8,13 +8,21 @@ public class PokedexSlot : MonoBehaviour
     public TextMeshProUGUI pokemonNameText;
     public TextMeshProUGUI pokemonLevelText;
 
-    private PokeortInstance currentPokeort;
-
     public void AddPokeort(PokeortInstance pokeort)
     {
-        currentPokeort = pokeort;
-        icon.sprite = pokeort.pokemonData.icon;
-        pokemonNameText.text = pokeort.pokemonData.pokemonName;
-        pokemonLevelText.text = "Lvl: " + pokeort.level.ToString();
+        if (pokeort.pokemonData.icon != null)
+        {
+            icon.sprite = pokeort.pokemonData.icon;
+        }
+
+        if (pokeort.pokemonData.pokemonName != null)
+        {
+            pokemonNameText.text = pokeort.pokemonData.pokemonName;
+        }
+
+        if (pokeort.level != 0)
+        {
+            pokemonLevelText.text = "Lvl: " + pokeort.level.ToString();
+        }
     }
 }

@@ -6,7 +6,7 @@ using TMPro;
 public class InventarioManager : MonoBehaviour {
     public static InventarioManager instance;
     public GameObject InventarioUI; 
-    public GameObject BotonesIniciales; 
+    GameObject combatButtons; 
     public Transform itemsParent;
     public GameObject inventorySlotPrefab;
     public TextMeshProUGUI Descripcion;
@@ -45,6 +45,7 @@ public class InventarioManager : MonoBehaviour {
     }
 
     void Start() {
+        combatButtons = CombateSalvajeManager.instance.combatButtons;
         EsconderInventario();
     }
 
@@ -67,13 +68,13 @@ public class InventarioManager : MonoBehaviour {
     public void EsconderInventario()
     {
         InventarioUI.SetActive(false);
-        BotonesIniciales.SetActive(true);
+        combatButtons.SetActive(true);
         
     }
     public void MostrarInventario()
     {
         InventarioUI.SetActive(true);
-        BotonesIniciales.SetActive(false);
+        combatButtons.SetActive(false);
     }
     public void EsconderEleccionpokeorts()
     {

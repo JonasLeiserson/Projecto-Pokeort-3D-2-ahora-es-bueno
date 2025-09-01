@@ -8,10 +8,19 @@ public class PokedexManager : MonoBehaviour
     public List<PokedexSlot> slots = new List<PokedexSlot>(); 
     public Transform pokeortParent;
     public GameObject pokedexSlotPrefab;
+
+    public static PokedexManager instance;
     // Start is called before the first frame update
     private void Awake()
     {
-        
+        if (instance != this && instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     void Start()
@@ -19,7 +28,7 @@ public class PokedexManager : MonoBehaviour
 	    GameObject pokeortParentOb = GameObject.Find("PokeortsDerecho");
 	    pokeortParent = pokeortParentOb.transform;
 	    InventarioManager.instance.EsconderEleccionpokeorts();
-        UpdateUI();
+        UpdateUI(); 
     }
 
 
@@ -28,18 +37,17 @@ public class PokedexManager : MonoBehaviour
     {
         
     }
-    
-     public void UpdateUI() 
+
+    public void UpdateUI()
     {
-        foreach (Transform child in pokeortParent) 
+        foreach (Transform child in pokeortParent)
         {
             Destroy(child.gameObject);
         }
-        slots.Clear(); 
+        slots.Clear();
 
         foreach (PokeortInstance pokeort in pokedex.pokeorts)
         {
-          
             GameObject newSlot = Instantiate(pokedexSlotPrefab, pokeortParent);
             newSlot.transform.localScale = new Vector3(0.5f, 0.3f, 0.3f);
             PokedexSlot pokedexSlot = newSlot.GetComponent<PokedexSlot>();

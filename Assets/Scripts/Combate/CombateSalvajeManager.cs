@@ -7,10 +7,13 @@ using TMPro;
 
 public class CombateSalvajeManager : MonoBehaviour
 {
+    public static CombateSalvajeManager instance;
+
     public UIManager uiManager;
     public Button botonAtaque;
     public GameObject botonesIniciales;
     public GameObject botonesAtaque;
+    public GameObject combatButtons;
 
     public DialogoManager dialogoManager;
     public Dialogue dialogoCombate;
@@ -42,6 +45,15 @@ public class CombateSalvajeManager : MonoBehaviour
     Attack ataqueElegidoEnemigo;
 
     void Awake() {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
         //recepcion de datos
         encounteredPokemonTag = PlayerPrefs.GetString("EncounteredPokemon");
         playerPosX = PlayerPrefs.GetFloat("PosX");

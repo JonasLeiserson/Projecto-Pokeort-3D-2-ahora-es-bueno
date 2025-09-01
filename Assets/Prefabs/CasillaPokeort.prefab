@@ -231,9 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf90754f80221148bd30dbed8916d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  pokemonNameText: {fileID: 0}
-  pokemonLevelText: {fileID: 0}
+  icon: {fileID: 1688298149554910568}
+  pokemonNameText: {fileID: 1688298149177355901}
+  pokemonLevelText: {fileID: 8168532233198849398}
 --- !u!1 &1688298149177355891
 GameObject:
   m_ObjectHideFlags: 0
