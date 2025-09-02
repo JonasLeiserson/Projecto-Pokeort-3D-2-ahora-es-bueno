@@ -8,7 +8,7 @@ public class PokedexManager : MonoBehaviour
     public List<PokedexSlot> slots = new List<PokedexSlot>(); 
     public Transform pokeortParent;
     public GameObject pokedexSlotPrefab;
-
+    private Item ItemElejido
     public static PokedexManager instance;
     // Start is called before the first frame update
     private void Awake()
@@ -26,7 +26,7 @@ public class PokedexManager : MonoBehaviour
     void Start()
     {
 	    GameObject pokeortParentOb = GameObject.Find("PokeortsDerecho");
-	    pokeortParent = pokeortParentOb.transform;
+	    pokeort  bParent = pokeortParentOb.transform;
 	    InventarioManager.instance.EsconderEleccionpokeorts();
         UpdateUI(); 
     }
@@ -37,6 +37,13 @@ public class PokedexManager : MonoBehaviour
     {
         
     }
+
+        public void ShowPokeorts(Item item)
+    {
+        ItemElejido = item;
+        InventarioManager.instance.espaciosDePokeorts.gameObject.SetActive(true);
+    }
+
 
     public void UpdateUI()
     {
