@@ -241,9 +241,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PokeortsSpawneables:
-  - {fileID: 7457370000201179032, guid: 0ad1737e29a6ae54d97862d9166481c6, type: 3}
+  - {fileID: 8651629261895725157, guid: 11d89dccc9dab684db9321e57e4a7f19, type: 3}
+  - {fileID: 4724784557452475609, guid: e34987e507ce42a469050eecde493b92, type: 3}
   - {fileID: 4203461898131196937, guid: a904e7696e00f3e438537642faa3cb6f, type: 3}
-  - {fileID: 7457370000201179032, guid: 0ad1737e29a6ae54d97862d9166481c6, type: 3}
+  - {fileID: 7511928090184555776, guid: bbcc1d499ff820146a8a5577fcc42a0e, type: 3}
   CamaraJugador: {fileID: 0}
   IntervaloDeSpawn: 5
   areaDeSpawn: {fileID: 1232607738}

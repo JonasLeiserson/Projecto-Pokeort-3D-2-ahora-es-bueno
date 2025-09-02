@@ -1,44 +1,37 @@
 fileFormatVersion: 2
-guid: 9d9fd63873f24ee42836d7697ba21cad
+guid: da4ebc87b00dc8a49a61c12a5a8dd7b4
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cube.001
-    100002: Cylinder.003
-    100004: //RootNode
-    400000: Cube.001
-    400002: Cylinder.003
-    400004: //RootNode
-    2100000: Material.001
-    2100002: textura infrumito
-    2300000: Cube.001
-    2300002: Cylinder.003
-    3300000: Cube.001
-    3300002: Cylinder.003
-    4300000: Cylinder.003
-    4300002: Cube.001
+    100000: //RootNode
+    400000: //RootNode
+    2100000: textura infrumito
+    2100002: Material.002
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube.001
     2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: 6a838e85173f43e45bb7723e712e473a, type: 2}
+      name: Material.002
+    second: {fileID: 2100000, guid: 77c9034630021e84f84dd006913aea14, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: textura infrumito
-    second: {fileID: 2100000, guid: a33030dda1589974f98be253d273733d, type: 2}
+    second: {fileID: 2100000, guid: 0d7d5c4abdbee9c48a5d4323195c3061, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: palette2-gradient
-    second: {fileID: 2800000, guid: f06aac071d748d94683e0a209d749563, type: 3}
+    second: {fileID: 2800000, guid: af70d263cd7b14f4ca510d296822be73, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
