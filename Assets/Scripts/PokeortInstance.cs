@@ -317,4 +317,16 @@ public class PokeortInstance
 
         return true;
     }
+    public Curar(int valorDeUso)
+    {
+        currentHP += cantidadACurar;
+
+        int maxHP = Mathf.RoundToInt(((2 * pokemonData.baseHP + (hpIVs * (level / 100))) * level) / 100 + level + 10); // Debes tener la variable hpIVs disponible para este calculo
+        if (currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
+
+        Debug.Log($"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}");
+    }
 }

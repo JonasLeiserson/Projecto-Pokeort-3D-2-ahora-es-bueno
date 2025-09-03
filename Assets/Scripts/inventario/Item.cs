@@ -12,6 +12,6 @@ public class Item : ScriptableObject
     public string tipo;
     public int valor;
     public int cantidad;
-
+    public int ValorDeUso;
     public int id;
 }

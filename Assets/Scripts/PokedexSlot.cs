@@ -30,13 +30,13 @@ public class PokedexSlot : MonoBehaviour
     }
     public void Clickeado()
     {
-        Debug.Log("Item " + PokedexManager.instance.currentItem.itemName + " usado en" + pokeortInstance.pokemonData.pokemonName);
+        Debug.Log("Item " + PokedexManager.instance.ItemElejido.itemName + " usado en" + pokeortInstance.pokemonData.pokemonName);
 
-        if(PokedexManager.instance.currentItem.Tipo == "curacion")
+        if(PokedexManager.instance.ItemElejido.tipo == "curacion")
         {
-            pokeortInstance.Heal(PokedexManager.instance.currentItem.ValorDeUso); 
+            pokeortInstance.Curar(PokedexManager.instance.ItemElejido.ValorDeUso); 
         }
          InventarioManager.instance.EsconderEleccionpokeorts();
-         PokedexManager.instance.currentItem = null;
+         PokedexManager.instance.ItemElejido = null;
     }
 }
