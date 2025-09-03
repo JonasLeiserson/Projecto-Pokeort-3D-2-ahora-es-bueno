@@ -13,11 +13,39 @@ public class PokeortInstance
     public PokemonType type2;
     public int level;
     public int currentHP;
+    public int maxHP;
     public int currentAttack;
+    public int maxAttack;
     public int currentDefense;
+    public int maxDefense;
     public int currentSpAttack;
+    public int maxSpAttack;
     public int currentSpDefense;
+    public int maxSpDefense;
     public int currentSpeed;
+    public int maxSpeed;
+
+    private readonly int hpIVs;
+    private readonly int attackIVs;
+    private readonly int defenseIVs;
+    private readonly int spAttackIVs;
+    private readonly int spDefenseIVs;
+    private readonly int speedIVs;
+
+    public enum StatusCondition
+    {
+        None,
+        Burn,
+        Freeze,
+        Paralysis,
+        Poison,
+        Sleep
+    }
+
+    public StatusCondition currentStatus = StatusCondition.None;
+
+    public int experiencePoints;
+    public int experienceToNextLevel;
 
     public PokeortInstance(PokeortData data, int initialLevel)
     {
@@ -34,12 +62,23 @@ public class PokeortInstance
         int spDefenseIVs = Random.Range(0, 32);
         int speedIVs = Random.Range(0, 32);
 
-        currentHP = Mathf.RoundToInt(((2 * data.baseHP + (hpIVs * (level / 100))) * level) / 100 + level + 10);
-        currentAttack = Mathf.RoundToInt(((2 * data.baseAttack + (attackIVs * (level / 100))) * level) / 100 + 5);
-        currentDefense = Mathf.RoundToInt(((2 * data.baseDefense + (defenseIVs * (level / 100))) * level) / 100 + 5);
-        currentSpAttack = Mathf.RoundToInt(((2 * data.baseSpAttack + (spAttackIVs * (level / 100))) * level) / 100 + 5);
-        currentSpDefense = Mathf.RoundToInt(((2 * data.baseSpDefense + (spDefenseIVs * (level / 100))) * level) / 100 + 5);
-        currentSpeed = Mathf.RoundToInt(((2 * data.baseSpeed + (speedIVs * (level / 100))) * level) / 100 + 5);
+        maxHP = Mathf.RoundToInt(((2 * data.baseHP + (hpIVs * (level / 100))) * level) / 100 + level + 10);
+        currentHP = maxHP;
+
+        maxAttack = Mathf.RoundToInt(((2 * data.baseAttack + (attackIVs * (level / 100))) * level) / 100 + 5);
+        currentAttack = maxAttack;
+
+        maxDefense = Mathf.RoundToInt(((2 * data.baseDefense + (defenseIVs * (level / 100))) * level) / 100 + 5);
+        currentDefense = maxDefense;
+
+        maxSpAttack = Mathf.RoundToInt(((2 * data.baseSpAttack + (spAttackIVs * (level / 100))) * level) / 100 + 5);
+        currentSpAttack = maxSpAttack;
+
+        maxSpDefense = Mathf.RoundToInt(((2 * data.baseSpDefense + (spDefenseIVs * (level / 100))) * level) / 100 + 5);
+        currentSpDefense = maxSpDefense;
+
+        maxSpeed = Mathf.RoundToInt(((2 * data.baseSpeed + (speedIVs * (level / 100))) * level) / 100 + 5);
+        currentSpeed = maxSpeed;
 
         if (data.learnableAttacks != null && data.learnableAttacks.Count > 0)
         {
@@ -317,16 +356,39 @@ public class PokeortInstance
 
         return true;
     }
-    public Curar(int valorDeUso)
+    public void Curar(int valor)
     {
+        int cantidadACurar = maxHP * valor / 100;
         currentHP += cantidadACurar;
 
-        int maxHP = Mathf.RoundToInt(((2 * pokemonData.baseHP + (hpIVs * (level / 100))) * level) / 100 + level + 10); // Debes tener la variable hpIVs disponible para este calculo
         if (currentHP > maxHP)
         {
             currentHP = maxHP;
         }
 
         Debug.Log($"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}");
+    }
+
+    public void SubirDeNivel()
+    {
+        level++;
+
+        maxHP = Mathf.RoundToInt(((2 * pokemonData.baseHP + hpIVs * (level / 100)) * level) / 100 + level + 10);
+        currentHP = maxHP;
+
+        maxAttack = Mathf.RoundToInt(((2 * pokemonData.baseAttack + (attackIVs * (level / 100))) * level) / 100 + 5);
+        currentAttack = maxAttack;
+
+        maxDefense = Mathf.RoundToInt(((2 * pokemonData.baseDefense + (defenseIVs * (level / 100))) * level) / 100 + 5);
+        currentDefense = maxDefense;
+
+        maxSpAttack = Mathf.RoundToInt(((2 * pokemonData.baseSpAttack + (spAttackIVs * (level / 100))) * level) / 100 + 5);
+        currentSpAttack = maxSpAttack;
+
+        maxSpDefense = Mathf.RoundToInt(((2 * pokemonData.baseSpDefense + (spDefenseIVs * (level / 100))) * level) / 100 + 5);
+        currentSpDefense = maxSpDefense;
+
+        maxSpeed = Mathf.RoundToInt(((2 * pokemonData.baseSpeed + (speedIVs * (level / 100))) * level) / 100 + 5);
+        currentSpeed = maxSpeed;
     }
 }
