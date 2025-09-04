@@ -45,7 +45,35 @@ public class PokeortInstance
     public StatusCondition currentStatus = StatusCondition.None;
 
     public int experiencePoints;
-    public int experienceToNextLevel;
+
+    public enum ExperienceScale
+    {
+        Fast,
+        Medium,
+        Slow
+    }
+
+    public ExperienceScale experienceScale;
+    int CalculateExperienceToNextLevel()
+    {
+        int experienceToNextLevel = 0;
+        switch (experienceScale)
+        {
+            case ExperienceScale.Fast:
+                experienceToNextLevel = Mathf.RoundToInt(0.8f * Mathf.Pow(level, 3));
+                break;
+            case ExperienceScale.Medium:
+                experienceToNextLevel = Mathf.RoundToInt(Mathf.Pow(level, 3));
+                break;
+            case ExperienceScale.Slow:
+                experienceToNextLevel = Mathf.RoundToInt(1.25f * Mathf.Pow(level, 3));
+                break;
+        }
+
+        return experienceToNextLevel;
+    }
+
+    int experienceToNextLevel;
 
     public PokeortInstance(PokeortData data, int initialLevel)
     {
@@ -390,5 +418,8 @@ public class PokeortInstance
 
         maxSpeed = Mathf.RoundToInt(((2 * pokemonData.baseSpeed + (speedIVs * (level / 100))) * level) / 100 + 5);
         currentSpeed = maxSpeed;
+
+        experiencePoints = experiencePoints - experienceToNextLevel;
+        experienceToNextLevel = CalculateExperienceToNextLevel();
     }
 }

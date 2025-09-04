@@ -45,7 +45,7 @@ public class InventarioManager : MonoBehaviour {
     }
 
     void Start() {
-        combatButtons = CombateSalvajeManager.instance.combatButtons;
+        combatButtons = CargarAtaques.instance.combatButtons;
         EsconderInventario();
     }
 

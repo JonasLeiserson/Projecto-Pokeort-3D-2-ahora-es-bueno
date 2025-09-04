@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,7 +158,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &138683426
 GameObject:
@@ -391,6 +391,38 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5165633311610386219}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1589253732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589253733}
+  m_Layer: 0
+  m_Name: Configurables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1589253733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589253732}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 258.75125, y: 171.69484, z: -138.27373}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1840137854}
+  - {fileID: 1896162925}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1627421939
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,12 +522,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840137853}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 295.73953, y: 147.98486, z: 163.23885}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 36.98828, y: -23.709976, z: 301.51257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1589253733}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1840137855
 MonoBehaviour:
@@ -557,8 +589,55 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1896162924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1896162925}
+  - component: {fileID: 1896162926}
+  m_Layer: 0
+  m_Name: CargarAtaques
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1896162925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896162924}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1589253733}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1896162926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896162924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582dc5f9771fe34983dc4e72a10ce8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botonAtaque: {fileID: 330677448}
+  botonesIniciales: {fileID: 240141104}
+  botonesAtaque: {fileID: 5165633311610386220}
+  combatButtons: {fileID: 688299369}
 --- !u!1 &1924885059
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,11 +667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07cf543a9e3f8de4389b9a2b865fe065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 1840137855}
-  botonAtaque: {fileID: 330677448}
-  botonesIniciales: {fileID: 240141104}
-  botonesAtaque: {fileID: 5165633311610386220}
-  combatButtons: {fileID: 688299369}
   dialogoManager: {fileID: 29452041}
   dialogoCombate: {fileID: 11400000, guid: 309b7ae69dc859848a1120d5f3b89404, type: 2}
   player: {fileID: 3183447003146668400, guid: e65ad50409fdaee49b335ab8302cae92, type: 3}
@@ -601,6 +675,51 @@ MonoBehaviour:
   - {fileID: 4724784557452475609, guid: e34987e507ce42a469050eecde493b92, type: 3}
   - {fileID: 4203461898131196937, guid: a904e7696e00f3e438537642faa3cb6f, type: 3}
   - {fileID: 7511928090184555776, guid: bbcc1d499ff820146a8a5577fcc42a0e, type: 3}
+  pokeortAmigos: []
+  pokeortElegido:
+    pokemonData: {fileID: 0}
+    equippedAttacks: []
+    type1: 0
+    type2: 0
+    level: 0
+    currentHP: 0
+    maxHP: 0
+    currentAttack: 0
+    maxAttack: 0
+    currentDefense: 0
+    maxDefense: 0
+    currentSpAttack: 0
+    maxSpAttack: 0
+    currentSpDefense: 0
+    maxSpDefense: 0
+    currentSpeed: 0
+    maxSpeed: 0
+    currentStatus: 0
+    experiencePoints: 0
+    experienceScale: 0
+  pokeortElegidoGO: {fileID: 0}
+  pokeortEnemigoGO: {fileID: 0}
+  pokeortEnemigo:
+    pokemonData: {fileID: 0}
+    equippedAttacks: []
+    type1: 0
+    type2: 0
+    level: 0
+    currentHP: 0
+    maxHP: 0
+    currentAttack: 0
+    maxAttack: 0
+    currentDefense: 0
+    maxDefense: 0
+    currentSpAttack: 0
+    maxSpAttack: 0
+    currentSpDefense: 0
+    maxSpDefense: 0
+    currentSpeed: 0
+    maxSpeed: 0
+    currentStatus: 0
+    experiencePoints: 0
+    experienceScale: 0
 --- !u!4 &1924885061
 Transform:
   m_ObjectHideFlags: 0
@@ -613,7 +732,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1970773160
 GameObject:
@@ -659,7 +778,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2104117641
 GameObject:
@@ -979,11 +1098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1924885060}
+      objectReference: {fileID: 1896162926}
     - target: {fileID: 5165633311495860037, guid: f3a37f6f82e09f84cae976e8e25bb3ee,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: cargarAtaquesUI
+      value: CargarAtaquesUI
       objectReference: {fileID: 0}
     - target: {fileID: 5165633312211584876, guid: f3a37f6f82e09f84cae976e8e25bb3ee,
         type: 3}

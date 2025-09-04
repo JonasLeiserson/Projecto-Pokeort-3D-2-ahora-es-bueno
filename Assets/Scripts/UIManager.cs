@@ -6,6 +6,20 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
+    private void Awake()
+    {
+        if (instance == null && instance != this)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void CargarAtaques(List<Attack> ataques, Button botonAtaque, GameObject botonesAtaque, GameObject botonesIniciales)
     {
         if (botonesAtaque.transform.childCount >= 2)

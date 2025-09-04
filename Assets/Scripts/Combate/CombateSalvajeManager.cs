@@ -9,12 +9,6 @@ public class CombateSalvajeManager : MonoBehaviour
 {
     public static CombateSalvajeManager instance;
 
-    public UIManager uiManager;
-    public Button botonAtaque;
-    public GameObject botonesIniciales;
-    public GameObject botonesAtaque;
-    public GameObject combatButtons;
-
     public DialogoManager dialogoManager;
     public Dialogue dialogoCombate;
 
@@ -31,15 +25,15 @@ public class CombateSalvajeManager : MonoBehaviour
     MovimientoJugador movementScript;
 
     Pokedex pokedex;
-    List<PokeortInstance> pokeortAmigos;
-    PokeortInstance pokeortElegido;
+    public List<PokeortInstance> pokeortAmigos;
+    public PokeortInstance pokeortElegido;
     int indexPokeortElegido;
-    GameObject pokeortElegidoGO;
+    public GameObject pokeortElegidoGO;
     int cantidadJugador;
 
-    GameObject pokeortEnemigoGO;
+    public GameObject pokeortEnemigoGO;
     PokemonManager pokeortEnemigoManager;
-    PokeortInstance pokeortEnemigo;
+    public PokeortInstance pokeortEnemigo;
 
     Attack ataqueElegido;
     Attack ataqueElegidoEnemigo;
@@ -124,12 +118,10 @@ public class CombateSalvajeManager : MonoBehaviour
 
     }
 
-    public void cargarAtaquesUI() => uiManager.CargarAtaques(pokeortElegido.equippedAttacks, botonAtaque, botonesAtaque, botonesIniciales);
-
     public bool AtaqueAmigo(GameObject botonClickeado) {
         TextMeshProUGUI nombreAtaque = botonClickeado.GetComponentInChildren<TextMeshProUGUI>();
         ataqueElegido = pokeortElegido.equippedAttacks.FirstOrDefault(a => a.attackName == nombreAtaque.text);
-        uiManager.EsconderAtaques(botonesIniciales, botonesAtaque);
+        CargarAtaques.instance.EsconderAtaques();
         return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager);
     }
 
@@ -176,7 +168,6 @@ public class CombateSalvajeManager : MonoBehaviour
     }
     IEnumerator EjecutarAtaqueTrasDialogo(System.Func<bool> ataque, PokeortInstance pokeortAtacado, GameObject pokeortAtacadoGO)
     {
-        // Espera hasta que el diálogo termine
         yield return new WaitUntil(() => !dialogoManager.talking);
 
         if (!ataque())
