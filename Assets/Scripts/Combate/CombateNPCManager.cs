@@ -117,13 +117,13 @@ public class CombateNPCManager : MonoBehaviour
 
     }
 
-    public void cargarAtaquesUI() => uiManager.CargarAtaques(pokeortElegido.equippedAttacks, botonAtaque, botonesAtaque, botonesIniciales); 
+    public void cargarAtaquesUI() => uiManager.CargarAtaques(); 
  
     public bool AtaqueAmigo(GameObject botonClickeado)
     {
         TextMeshProUGUI nombreAtaque = botonClickeado.GetComponentInChildren<TextMeshProUGUI>();
         ataqueElegido = pokeortElegido.equippedAttacks.FirstOrDefault(a => a.attackName == nombreAtaque.text);
-        uiManager.EsconderAtaques(botonesIniciales, botonesAtaque);
+        uiManager.EsconderAtaques();
         return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager);
     }
 

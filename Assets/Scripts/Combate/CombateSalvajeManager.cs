@@ -121,7 +121,7 @@ public class CombateSalvajeManager : MonoBehaviour
     public bool AtaqueAmigo(GameObject botonClickeado) {
         TextMeshProUGUI nombreAtaque = botonClickeado.GetComponentInChildren<TextMeshProUGUI>();
         ataqueElegido = pokeortElegido.equippedAttacks.FirstOrDefault(a => a.attackName == nombreAtaque.text);
-        CargarAtaques.instance.EsconderAtaques();
+        UIManager.instance.EsconderAtaques();
         return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager);
     }
 

@@ -8,6 +8,11 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    public Button botonAtaque;
+    public GameObject botonesIniciales;
+    public GameObject botonesAtaque;
+    public GameObject combatButtons;
+
     private void Awake()
     {
         if (instance == null && instance != this)
@@ -20,7 +25,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void CargarAtaques(List<Attack> ataques, Button botonAtaque, GameObject botonesAtaque, GameObject botonesIniciales)
+    public void CargarAtaques()
     {
         if (botonesAtaque.transform.childCount >= 2)
         {
@@ -37,7 +42,7 @@ public class UIManager : MonoBehaviour
         Vector2 posicionInicial = rt.anchoredPosition;
         Vector2 posicionActual = posicionInicial;
 
-        foreach (Attack ataque in ataques)
+        foreach (Attack ataque in CombateSalvajeManager.instance.pokeortElegido.equippedAttacks)
         {
             GameObject nuevoBotonGO = Instantiate(botonAtaque.gameObject, botonesAtaque.transform);
             nuevoBotonGO.SetActive(true);
@@ -53,7 +58,7 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    public void EsconderAtaques(GameObject botonesIniciales, GameObject botonesAtaque)
+    public void EsconderAtaques()
     {
         botonesIniciales.SetActive(true);
         botonesAtaque.SetActive(false);
