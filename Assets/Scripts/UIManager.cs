@@ -13,6 +13,9 @@ public class UIManager : MonoBehaviour
     public GameObject botonesAtaque;
     public GameObject combatButtons;
 
+    public Slider sliderAmigo;
+    public Slider sliderEnemigo;
+
     private void Awake()
     {
         if (instance == null && instance != this)
@@ -67,5 +70,11 @@ public class UIManager : MonoBehaviour
     public void DialogoCombate(Dialogue dialogo, DialogoManager dialogoManager)
     {
         dialogoManager.StartDialogue(dialogo);
+    }
+
+    public void ActualizarBarraDeVida(Slider barraDeVida, float vidaActual, float vidaMaxima)
+    {
+        Debug.Log("pancho");
+        barraDeVida.value = vidaActual / vidaMaxima;
     }
 }
