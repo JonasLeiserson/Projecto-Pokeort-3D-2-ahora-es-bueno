@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: New Damage Attack
   m_EditorClassIdentifier: Assembly-CSharp::DamageAttack
-  attackName: 
-  type: 0
-  power: 0
-  accuracy: 0
+  attackName: Hola
+  type: 3
+  power: 50
+  accuracy: 100
   isPhysic: 0
-  criticChance: 0
+  criticChance: 10
