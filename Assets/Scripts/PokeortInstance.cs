@@ -396,7 +396,7 @@ public class PokeortInstance
 
         Debug.Log($"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}");
     }
-    public void Potenciar(int valor, string TipoPotenciador)
+    public void Potenciar(int valor, Item.AtributoPotenciador atributo)
     {
         int cantidadACurar = maxHP * valor / 100;
         currentHP += cantidadACurar;
