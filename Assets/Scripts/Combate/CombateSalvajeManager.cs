@@ -133,6 +133,11 @@ public class CombateSalvajeManager : MonoBehaviour
 
     void Derrotado(ref PokeortInstance pokeortDerrotadoInstance, ref GameObject pokeortDerrotadoGO)
     {
+        DialogueLine line1 = new DialogueLine();
+        line1.speakerName = "Sistema";
+        line1.dialogueText = pokeortDerrotadoInstance.pokemonData.pokemonName + " ha sido derrotado.";
+        dialogoCombate.dialogueLines.Add(line1);
+
         Destroy(pokeortDerrotadoGO);
 
         if (pokeortDerrotadoInstance == pokeortElegido)
@@ -147,12 +152,22 @@ public class CombateSalvajeManager : MonoBehaviour
             }
             else
             {
+                DialogueLine line2 = new DialogueLine();
+                line2.speakerName = "Sistema";
+                line2.dialogueText = "No tienes más Pokeorts. Has perdido la batalla.";
+                dialogoCombate.dialogueLines.Add(line2);
+
                 Debug.Log("Batalla Finalizada");
                 return;
             }
         }
         else
         {
+            DialogueLine line2 = new DialogueLine();
+            line2.speakerName = "Sistema";
+            line2.dialogueText = "Has derrotado a " + pokeortDerrotadoInstance.pokemonData.pokemonName + ".";
+            dialogoCombate.dialogueLines.Add(line2);
+
             Debug.Log("Batalla Finalizada");
             return;
         }
@@ -166,9 +181,13 @@ public class CombateSalvajeManager : MonoBehaviour
         nuevaPosicion.y = posicionBase.position.y;
         return Instantiate(prefab, nuevaPosicion, Quaternion.identity);
     }
+
     IEnumerator EjecutarAtaqueTrasDialogo(System.Func<bool> ataque, PokeortInstance pokeortAtacado, GameObject pokeortAtacadoGO)
     {
         yield return new WaitUntil(() => !dialogoManager.talking);
+
+        Slider slider = (pokeortAtacado == pokeortElegido) ? UIManager.instance.sliderAmigo : UIManager.instance.sliderEnemigo;
+        UIManager.instance.ActualizarBarraDeVida(slider, pokeortAtacado.currentHP, pokeortAtacado.maxHP);
 
         if (!ataque())
         {
@@ -180,7 +199,11 @@ public class CombateSalvajeManager : MonoBehaviour
     {
         if (pokeortEnemigo.currentSpeed > pokeortElegido.currentSpeed)
         {
-            if (!AtaqueEnemigo())
+
+            bool ataque = AtaqueEnemigo();
+            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido.currentHP, pokeortElegido.maxHP);
+
+            if (!ataque)
             {
                 Derrotado(ref pokeortElegido, ref pokeortElegidoGO);
                 return;
@@ -190,7 +213,10 @@ public class CombateSalvajeManager : MonoBehaviour
         }
         else if (pokeortEnemigo.currentSpeed < pokeortElegido.currentSpeed)
         {
-            if (!AtaqueAmigo(botonClickeado))
+            bool ataque = AtaqueAmigo(botonClickeado);
+            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo.currentHP, pokeortEnemigo.maxHP);
+
+            if (!ataque)
             {
                 Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
                 return;
@@ -203,7 +229,10 @@ public class CombateSalvajeManager : MonoBehaviour
             int random = Random.Range(0, 2);
             if (random == 0)
             {
-                if (!AtaqueEnemigo())
+                bool ataque = AtaqueEnemigo();
+                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido.currentHP, pokeortElegido.maxHP);
+
+                if (!ataque)
                 {
                     Derrotado(ref pokeortElegido, ref pokeortElegidoGO);
                     return;
@@ -214,7 +243,10 @@ public class CombateSalvajeManager : MonoBehaviour
             }
             else
             {
-                if (!AtaqueAmigo(botonClickeado))
+                bool ataque = AtaqueAmigo(botonClickeado);
+                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo.currentHP, pokeortEnemigo.maxHP);
+
+                if (!ataque)
                 {
                     Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
                     return;
