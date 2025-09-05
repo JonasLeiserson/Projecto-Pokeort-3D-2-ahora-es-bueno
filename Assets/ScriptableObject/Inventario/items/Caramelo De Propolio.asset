@@ -16,7 +16,9 @@ MonoBehaviour:
   description: te da cirrosis
   icon: {fileID: 21300000, guid: 973f202d5e05f824fbdabd5fbc2c280e, type: 3}
   prefab: {fileID: 0}
-  tipo: caramelo
   valor: 1000
   cantidad: 10
+  ValorDeUso: 0
   id: 2
+  tipo: 3
+  atributoPotenciador: 0

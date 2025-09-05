@@ -396,6 +396,18 @@ public class PokeortInstance
 
         Debug.Log($"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}");
     }
+    public void Potenciar(int valor, string TipoPotenciador)
+    {
+        int cantidadACurar = maxHP * valor / 100;
+        currentHP += cantidadACurar;
+
+        if (currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
+
+        Debug.Log($"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}");
+    }
 
     public void SubirDeNivel()
     {

@@ -32,11 +32,22 @@ public class PokedexSlot : MonoBehaviour
     {
         Debug.Log("Item " + PokedexManager.instance.ItemElejido.itemName + " usado en" + pokeortInstance.pokemonData.pokemonName);
 
-        if(PokedexManager.instance.ItemElejido.tipo == "curacion")
+        switch (PokedexManager.instance.ItemElejido.tipo)
         {
-            pokeortInstance.Curar(PokedexManager.instance.ItemElejido.ValorDeUso); 
+            case Item.Tipo.curacion:
+                pokeortInstance.Curar(PokedexManager.instance.ItemElejido.ValorDeUso);
+                break;
+            case Item.Tipo.pokeortbola:
+                break;
+            case Item.Tipo.potenciador:
+                pokeortInstance.Potenciar(PokedexManager.instance.ItemElejido.ValorDeUso, PokedexManager.instance.ItemElejido.atributoPotenciador);
+                break;
+            case Item.Tipo.baya:
+                break;
+            case Item.Tipo.otro:
+                break;
         }
-         InventarioManager.instance.EsconderEleccionpokeorts();
+        InventarioManager.instance.EsconderEleccionpokeorts();
          PokedexManager.instance.ItemElejido = null;
     }
 }

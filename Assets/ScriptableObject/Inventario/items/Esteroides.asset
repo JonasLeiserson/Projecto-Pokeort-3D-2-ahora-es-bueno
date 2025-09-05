@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 099c62d102048f4479cb9f12622fc6e8, type: 3}
-  m_Name: Pocion De Vida
+  m_Name: Esteroides
   m_EditorClassIdentifier: 
-  itemName: Pocion De Vida
-  description: cura 10pv
-  icon: {fileID: 21300000, guid: 25965d81c6bdb9f4698a80a95822143e, type: 3}
+  itemName: Esteroides
+  description: +atk
+  icon: {fileID: 0}
   prefab: {fileID: 0}
-  valor: 100
-  cantidad: 10
-  ValorDeUso: 0
-  id: 1
-  tipo: 0
-  atributoPotenciador: 0
+  valor: 50
+  cantidad: 2
+  ValorDeUso: 5
+  id: 3
+  tipo: 2
+  atributoPotenciador: 1
