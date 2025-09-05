@@ -74,7 +74,14 @@ public class UIManager : MonoBehaviour
 
     public void ActualizarBarraDeVida(Slider barraDeVida, float vidaActual, float vidaMaxima)
     {
-        Debug.Log("pancho");
+        Image imagen = barraDeVida.fillRect.GetComponent<Image>();
+
+        Debug.Log(barraDeVida.value + "=" + vidaActual / vidaMaxima);
         barraDeVida.value = vidaActual / vidaMaxima;
+
+        imagen.color = Color.Lerp(Color.red, Color.green, barraDeVida.value);
+
+        Debug.Log("Health Percentage: " + barraDeVida.value);
+
     }
 }
