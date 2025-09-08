@@ -38,7 +38,8 @@ public class CombateSalvajeManager : MonoBehaviour
     Attack ataqueElegido;
     Attack ataqueElegidoEnemigo;
 
-    List<PokeortInstance> PokeortsUtilizados;
+    List<PokeortInstance> PokeortsUtilizados = new List<PokeortInstance>();
+    bool ganaste = false;
 
     void Awake() {
         if (instance != null && instance != this)
@@ -98,6 +99,7 @@ public class CombateSalvajeManager : MonoBehaviour
         pokeortAmigos = pokedex.pokeorts;
         indexPokeortElegido = 0;
         pokeortElegido = pokeortAmigos[indexPokeortElegido];
+        PokeortsUtilizados.Add(pokeortElegido);
         cantidadJugador = pokeortAmigos.Count;
 
         //posicion pokeort amigo
@@ -160,6 +162,7 @@ public class CombateSalvajeManager : MonoBehaviour
                 dialogoCombate.dialogueLines.Add(line2);
 
                 Debug.Log("Batalla Finalizada");
+                TerminarBatalla();
                 return;
             }
         }
@@ -171,6 +174,8 @@ public class CombateSalvajeManager : MonoBehaviour
             dialogoCombate.dialogueLines.Add(line2);
 
             Debug.Log("Batalla Finalizada");
+            ganaste = true;
+            TerminarBatalla();
             return;
         }
     }
@@ -261,24 +266,30 @@ public class CombateSalvajeManager : MonoBehaviour
 
     public void TerminarBatalla()
     {
-        foreach (PokeortInstance pokeort in PokeortsUtilizados)
+        if (ganaste)
         {
-            int baseA = Mathf.RoundToInt(Mathf.Pow(2 * pokeortEnemigo.level + 10, 5 / 2));
-            int baseB = Mathf.RoundToInt(Mathf.Pow(pokeortEnemigo.level + pokeort.level + 10, 5 / 2));
-            int baseC = Mathf.RoundToInt(pokeortEnemigo.baseXP * pokeortEnemigo.level / PokeortsUtilizados.Count / 5);
+            foreach (PokeortInstance pokeort in PokeortsUtilizados)
+            {
+                int baseA = Mathf.RoundToInt(Mathf.Pow(2 * pokeortEnemigo.level + 10, 5 / 2));
+                int baseB = Mathf.RoundToInt(Mathf.Pow(pokeortEnemigo.level + pokeort.level + 10, 5 / 2));
+                int baseC = Mathf.RoundToInt(pokeortEnemigo.pokemonData.baseXP * pokeortEnemigo.level / PokeortsUtilizados.Count / 5);
 
-            int xp = baseC * baseA / baseB + 1;
-            pokeort.experiencePoints += xp;
+                int xp = baseC * baseA / baseB + 1;
+                pokeort.experiencePoints += xp;
 
-            pokeort.ChequearNivel();
+                pokeort.ChequearNivel();
+            }
         }
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+            && Input.GetKeyDown(KeyCode.A))
+        {
+            pokedex.pokeorts.Add(pokeortEnemigo);
+            Debug.Log(pokeortEnemigo.pokemonData.pokemonName + " añadido a la pokedex." );
+        }
     }
 }

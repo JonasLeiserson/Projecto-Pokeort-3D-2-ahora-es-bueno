@@ -17,5 +17,16 @@ public class PokeortData : ScriptableObject
     public int baseSpDefense;
     public int baseSpeed;
 
+    public int baseXP;
+
+    public enum ExperienceScale
+    {
+        Fast,
+        Medium,
+        Slow
+    }
+
+    public ExperienceScale experienceScale;
+
     public List<Attack> learnableAttacks;
 }

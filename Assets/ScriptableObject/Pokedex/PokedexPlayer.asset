@@ -19,59 +19,19 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
     type1: 2
     type2: 0
-    level: 123
-    currentHP: 213123
-    maxHP: 0
-    currentAttack: 213123
-    maxAttack: 0
-    currentDefense: 312321
-    maxDefense: 0
-    currentSpAttack: 21312
-    maxSpAttack: 0
-    currentSpDefense: 1321
-    maxSpDefense: 0
-    currentSpeed: 321321
-    maxSpeed: 0
+    level: 3
+    currentHP: 15
+    maxHP: 15
+    currentAttack: 7
+    maxAttack: 7
+    currentDefense: 7
+    maxDefense: 7
+    currentSpAttack: 8
+    maxSpAttack: 8
+    currentSpDefense: 8
+    maxSpDefense: 8
+    currentSpeed: 8
+    maxSpeed: 8
     currentStatus: 0
-    experiencePoints: 0
-    experienceScale: 0
-  - pokemonData: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
-    equippedAttacks: []
-    type1: 2
-    type2: 0
-    level: 123
-    currentHP: 213123
-    maxHP: 0
-    currentAttack: 213123
-    maxAttack: 0
-    currentDefense: 312321
-    maxDefense: 0
-    currentSpAttack: 21312
-    maxSpAttack: 0
-    currentSpDefense: 1321
-    maxSpDefense: 0
-    currentSpeed: 321321
-    maxSpeed: 0
-    currentStatus: 0
-    experiencePoints: 0
-    experienceScale: 0
-  - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
-    equippedAttacks: []
-    type1: 6
-    type2: 0
-    level: 123
-    currentHP: 213123
-    maxHP: 0
-    currentAttack: 213123
-    maxAttack: 0
-    currentDefense: 312321
-    maxDefense: 0
-    currentSpAttack: 21312
-    maxSpAttack: 0
-    currentSpDefense: 1321
-    maxSpDefense: 0
-    currentSpeed: 321321
-    maxSpeed: 0
-    currentStatus: 0
-    experiencePoints: 0
-    experienceScale: 0
+    experiencePoints: 9
+    experienceToNextLevel: 22

@@ -8,20 +8,34 @@ public class PokeortInstance
     public PokeortData pokemonData;
     public List<Attack> equippedAttacks = new List<Attack>();
 
-    // Estadísticas que varían
+    [Header("Types")]
     public PokemonType type1;
     public PokemonType type2;
+
+    [Header("Stats")]
     public int level;
+
+    [Space(10)]
     public int currentHP;
     public int maxHP;
+
+    [Space(10)]
     public int currentAttack;
     public int maxAttack;
+
+    [Space(10)]
     public int currentDefense;
     public int maxDefense;
+
+    [Space(10)]
     public int currentSpAttack;
     public int maxSpAttack;
+
+    [Space(10)]
     public int currentSpDefense;
     public int maxSpDefense;
+
+    [Space(10)]
     public int currentSpeed;
     public int maxSpeed;
 
@@ -32,8 +46,6 @@ public class PokeortInstance
     private readonly int spDefenseIVs;
     private readonly int speedIVs;
 
-    public int baseXP;
-
     public enum StatusCondition
     {
         None,
@@ -43,31 +55,24 @@ public class PokeortInstance
         Poison,
         Sleep
     }
-
+    [Header("Battle Status")]
     public StatusCondition currentStatus = StatusCondition.None;
 
+    [Header("XP Data")]
     public int experiencePoints;
-
-    public enum ExperienceScale
-    {
-        Fast,
-        Medium,
-        Slow
-    }
-
-    public ExperienceScale experienceScale;
     int CalculateExperienceToNextLevel()
     {
+        PokeortData.ExperienceScale experienceScale = pokemonData.experienceScale;
         int experienceToNextLevel = 0;
         switch (experienceScale)
         {
-            case ExperienceScale.Fast:
+            case PokeortData.ExperienceScale.Fast:
                 experienceToNextLevel = Mathf.RoundToInt(0.8f * Mathf.Pow(level, 3));
                 break;
-            case ExperienceScale.Medium:
+            case PokeortData.ExperienceScale.Medium:
                 experienceToNextLevel = Mathf.RoundToInt(Mathf.Pow(level, 3));
                 break;
-            case ExperienceScale.Slow:
+            case PokeortData.ExperienceScale.Slow:
                 experienceToNextLevel = Mathf.RoundToInt(1.25f * Mathf.Pow(level, 3));
                 break;
         }
@@ -75,7 +80,7 @@ public class PokeortInstance
         return experienceToNextLevel;
     }
 
-    int experienceToNextLevel;
+    public int experienceToNextLevel;
 
     public PokeortInstance(PokeortData data, int initialLevel)
     {
@@ -118,6 +123,8 @@ public class PokeortInstance
                 equippedAttacks.Add(data.learnableAttacks[i]);
             }
         }
+
+        experienceToNextLevel = CalculateExperienceToNextLevel();
     }
 
     public static class TipoEfectividad
@@ -437,6 +444,7 @@ public class PokeortInstance
 
             experiencePoints -= experienceToNextLevel;
             experienceToNextLevel = CalculateExperienceToNextLevel();
+            Debug.Log(pokemonData.pokemonName + " subio al nivel " + level + experienceToNextLevel);
         }
     }
 }
