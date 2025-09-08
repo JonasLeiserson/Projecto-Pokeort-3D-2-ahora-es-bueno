@@ -10,7 +10,7 @@ public class PokemonManager : MonoBehaviour
     {
         if (pokemonTemplate != null)
         {
-            currentPokemonInstance = new PokeortInstance(pokemonTemplate, 100);
+            currentPokemonInstance = new PokeortInstance(pokemonTemplate, 1);
         }
         else
         {

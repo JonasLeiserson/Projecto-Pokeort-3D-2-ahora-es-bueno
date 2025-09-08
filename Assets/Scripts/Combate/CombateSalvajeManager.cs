@@ -38,6 +38,8 @@ public class CombateSalvajeManager : MonoBehaviour
     Attack ataqueElegido;
     Attack ataqueElegidoEnemigo;
 
+    List<PokeortInstance> PokeortsUtilizados;
+
     void Awake() {
         if (instance != null && instance != this)
         {
@@ -255,6 +257,23 @@ public class CombateSalvajeManager : MonoBehaviour
                 StartCoroutine((EjecutarAtaqueTrasDialogo(() => AtaqueEnemigo(), pokeortElegido, pokeortElegidoGO)));
             }
         }
+    }
+
+    public void TerminarBatalla()
+    {
+        foreach (PokeortInstance pokeort in PokeortsUtilizados)
+        {
+            int baseA = Mathf.RoundToInt(Mathf.Pow(2 * pokeortEnemigo.level + 10, 5 / 2));
+            int baseB = Mathf.RoundToInt(Mathf.Pow(pokeortEnemigo.level + pokeort.level + 10, 5 / 2));
+            int baseC = Mathf.RoundToInt(pokeortEnemigo.baseXP * pokeortEnemigo.level / PokeortsUtilizados.Count / 5);
+
+            int xp = baseC * baseA / baseB + 1;
+            pokeort.experiencePoints += xp;
+
+            pokeort.ChequearNivel();
+        }
+
+
     }
 
     // Update is called once per frame

@@ -32,6 +32,8 @@ public class PokeortInstance
     private readonly int spDefenseIVs;
     private readonly int speedIVs;
 
+    public int baseXP;
+
     public enum StatusCondition
     {
         None,
@@ -227,9 +229,9 @@ public class PokeortInstance
 
     public bool atacar(Attack ataque, PokeortInstance enemigo, Dialogue dialogo, DialogoManager dialogoManager)
     {
-        if (ataque is DamageAttack)
+        if (ataque is DamageAttack d)
         {
-            DamageAttack d = (DamageAttack)ataque;
+            d = (DamageAttack)ataque;
 
             dialogo.dialogueLines.Clear();
 
@@ -307,9 +309,9 @@ public class PokeortInstance
             }
 
         }
-        else if (ataque is BuffAttack)
+        else if (ataque is BuffAttack b)
         {
-            BuffAttack b = (BuffAttack)ataque;
+            b = (BuffAttack)ataque;
 
             DialogueLine linea1 = new DialogueLine();
             linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {b.attackName}";
@@ -344,9 +346,9 @@ public class PokeortInstance
 
             return true;
         }
-        else if (ataque is DebuffAttack)
+        else if (ataque is DebuffAttack debuff)
         {
-            DebuffAttack debuff = (DebuffAttack)ataque;
+            debuff = (DebuffAttack)ataque;
 
             DialogueLine linea1 = new DialogueLine();
             linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {debuff.attackName}";
@@ -357,19 +359,19 @@ public class PokeortInstance
             switch (debuff.debuffStat)
             {
                 case DebuffAttack.debuffType.Attack:
-                    enemigo.currentAttack = Mathf.RoundToInt(enemigo.currentAttack * debuff.debuffMultiplier);
+                    enemigo.currentAttack = Mathf.RoundToInt(enemigo.currentAttack / debuff.debuffMultiplier);
                     break;
                 case DebuffAttack.debuffType.Defense:
-                    enemigo.currentDefense = Mathf.RoundToInt(enemigo.currentDefense * debuff.debuffMultiplier);
+                    enemigo.currentDefense = Mathf.RoundToInt(enemigo.currentDefense / debuff.debuffMultiplier);
                     break;
                 case DebuffAttack.debuffType.Speed:
-                    enemigo.currentSpeed = Mathf.RoundToInt(enemigo.currentSpeed * debuff.debuffMultiplier);
+                    enemigo.currentSpeed = Mathf.RoundToInt(enemigo.currentSpeed / debuff.debuffMultiplier);
                     break;
                 case DebuffAttack.debuffType.SpecialAttack:
-                    enemigo.currentSpAttack = Mathf.RoundToInt(enemigo.currentSpAttack * debuff.debuffMultiplier);
+                    enemigo.currentSpAttack = Mathf.RoundToInt(enemigo.currentSpAttack / debuff.debuffMultiplier);
                     break;
                 case DebuffAttack.debuffType.SpecialDefense:
-                    enemigo.currentSpDefense = Mathf.RoundToInt(enemigo.currentSpDefense * debuff.debuffMultiplier);
+                    enemigo.currentSpDefense = Mathf.RoundToInt(enemigo.currentSpDefense / debuff.debuffMultiplier);
                     break;
             }
 
@@ -409,29 +411,32 @@ public class PokeortInstance
         Debug.Log($"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}");
     }
 
-    public void SubirDeNivel()
+    public void ChequearNivel()
     {
-        level++;
+        if (experiencePoints >= experienceToNextLevel)
+        {
+            level++;
 
-        maxHP = Mathf.RoundToInt(((2 * pokemonData.baseHP + hpIVs * (level / 100)) * level) / 100 + level + 10);
-        currentHP = maxHP;
+            maxHP = Mathf.RoundToInt(((2 * pokemonData.baseHP + hpIVs * (level / 100)) * level) / 100 + level + 10);
+            currentHP = maxHP;
 
-        maxAttack = Mathf.RoundToInt(((2 * pokemonData.baseAttack + (attackIVs * (level / 100))) * level) / 100 + 5);
-        currentAttack = maxAttack;
+            maxAttack = Mathf.RoundToInt(((2 * pokemonData.baseAttack + (attackIVs * (level / 100))) * level) / 100 + 5);
+            currentAttack = maxAttack;
 
-        maxDefense = Mathf.RoundToInt(((2 * pokemonData.baseDefense + (defenseIVs * (level / 100))) * level) / 100 + 5);
-        currentDefense = maxDefense;
+            maxDefense = Mathf.RoundToInt(((2 * pokemonData.baseDefense + (defenseIVs * (level / 100))) * level) / 100 + 5);
+            currentDefense = maxDefense;
 
-        maxSpAttack = Mathf.RoundToInt(((2 * pokemonData.baseSpAttack + (spAttackIVs * (level / 100))) * level) / 100 + 5);
-        currentSpAttack = maxSpAttack;
+            maxSpAttack = Mathf.RoundToInt(((2 * pokemonData.baseSpAttack + (spAttackIVs * (level / 100))) * level) / 100 + 5);
+            currentSpAttack = maxSpAttack;
 
-        maxSpDefense = Mathf.RoundToInt(((2 * pokemonData.baseSpDefense + (spDefenseIVs * (level / 100))) * level) / 100 + 5);
-        currentSpDefense = maxSpDefense;
+            maxSpDefense = Mathf.RoundToInt(((2 * pokemonData.baseSpDefense + (spDefenseIVs * (level / 100))) * level) / 100 + 5);
+            currentSpDefense = maxSpDefense;
 
-        maxSpeed = Mathf.RoundToInt(((2 * pokemonData.baseSpeed + (speedIVs * (level / 100))) * level) / 100 + 5);
-        currentSpeed = maxSpeed;
+            maxSpeed = Mathf.RoundToInt(((2 * pokemonData.baseSpeed + (speedIVs * (level / 100))) * level) / 100 + 5);
+            currentSpeed = maxSpeed;
 
-        experiencePoints = experiencePoints - experienceToNextLevel;
-        experienceToNextLevel = CalculateExperienceToNextLevel();
+            experiencePoints -= experienceToNextLevel;
+            experienceToNextLevel = CalculateExperienceToNextLevel();
+        }
     }
 }
