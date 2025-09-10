@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PokedexManager : MonoBehaviour
+public class PokedexUIManager : MonoBehaviour
 {
     public Pokedex pokedex;
-    public List<PokedexSlot> slots = new List<PokedexSlot>(); 
+    public List<PokedexSlot> slots = new List<PokedexSlot>();
     public Transform pokeortParent;
     public GameObject pokedexSlotPrefab;
     public Item ItemElejido;
+<<<<<<< Updated upstream:Assets/Scripts/PokedexManager.cs
     public bool UsandoItem;
     public static PokedexManager instance;
+=======
+    public static PokedexUIManager instance;
+>>>>>>> Stashed changes:Assets/Scripts/PokedexUIManager.cs
     // Start is called before the first frame update
     private void Awake()
     {
@@ -26,18 +30,25 @@ public class PokedexManager : MonoBehaviour
 
     void Start()
     {
-	    GameObject pokeortParentOb = GameObject.Find("PokeortsDerecho");
-	    pokeortParent = pokeortParentOb.transform;
-	    InventarioManager.instance.EsconderEleccionpokeorts();
-        UpdateUI(); 
+        GameObject pokeortParentOb = GameObject.Find("PokeortsDerecho");
+        pokeortParent = pokeortParentOb.transform;
+        EsconderEleccionpokeorts();
+        UpdateUI();
     }
 
 
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream:Assets/Scripts/PokedexManager.cs
     }
         public void ShowPokeorts(Item item)
+=======
+
+    }
+
+    public void ShowPokeorts(Item item)
+>>>>>>> Stashed changes:Assets/Scripts/PokedexUIManager.cs
     {
         ItemElejido = item;
         InventarioManager.instance.espaciosDePokeorts.gameObject.SetActive(true);
@@ -62,4 +73,10 @@ public class PokedexManager : MonoBehaviour
             pokedexSlot.AddPokeort(pokeort);
         }
     }
+
+    public void EsconderEleccionpokeorts()
+    {
+        pokeortParent.gameObject.SetActive(false);
+    }
 }
+

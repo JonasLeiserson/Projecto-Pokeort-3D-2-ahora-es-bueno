@@ -95,17 +95,12 @@ public class CombateSalvajeManager : MonoBehaviour
         pokeortEnemigo = pokeortEnemigoManager.currentPokemonInstance;
 
         //cargar pokeorts en inventario
-        pokedex = player.GetComponent<PokedexManager>().pokedex;
+        pokedex = PokedexPlayerManager.instance.pokedex;
         pokeortAmigos = pokedex.pokeorts;
         indexPokeortElegido = 0;
         pokeortElegido = pokeortAmigos[indexPokeortElegido];
         PokeortsUtilizados.Add(pokeortElegido);
         cantidadJugador = pokeortAmigos.Count;
-
-        //posicion pokeort amigo
-        float distanciaAmigo = 2f;
-        Vector3 nuevaPosicionAmigo = player.transform.position + (direccionNormalizada * distanciaAmigo);
-        nuevaPosicionAmigo.y = player.transform.position.y;
 
         //instanciar pokeort amigo
         pokeortElegidoGO = InstanciarPokeort(2f, pokeortElegido.pokemonData.PokeortPrefab, player.transform);

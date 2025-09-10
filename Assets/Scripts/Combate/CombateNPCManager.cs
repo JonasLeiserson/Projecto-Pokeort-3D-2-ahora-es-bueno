@@ -87,14 +87,14 @@ public class CombateNPCManager : MonoBehaviour
 
 
         //cargar pokeorts enemigos en inventario
-        pokedexEnemigo = NPC.GetComponent<PokedexManager>().pokedex;
+        pokedexEnemigo = NPC.GetComponent<PokedexManagerNPC>().pokedex;
         pokeortEnemigos = pokedexEnemigo.pokeorts;
         indexPokeortEnemigo = 0;
         pokeortEnemigo = pokeortEnemigos[indexPokeortEnemigo];
         cantidadEnemigo = pokeortEnemigos.Count;
 
         //cargar pokeorts en inventario
-        pokedex = player.GetComponent<PokedexManager>().pokedex;
+        pokedex = player.GetComponent<PokedexManagerNPC>().pokedex;
         pokeortAmigos = pokedex.pokeorts;
         indexPokeortElegido = 0;
         pokeortElegido = pokeortAmigos[indexPokeortElegido];

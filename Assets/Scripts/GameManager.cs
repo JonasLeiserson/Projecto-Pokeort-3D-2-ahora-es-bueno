@@ -84,9 +84,9 @@ public class GameManager : MonoBehaviour
             if (player != null)
             {
                 player.transform.position = playerPosition;
-                player.GetComponent<PokedexManager>().pokedex = pokedex;
             }
 
+            PokedexPlayerManager.instance.pokedex = pokedex;
             Inventario.instance.items = inventory;
         }
     }

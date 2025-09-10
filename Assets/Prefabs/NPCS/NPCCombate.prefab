@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6653245723020113749}
   - component: {fileID: 6653245723020113750}
   - component: {fileID: 6653245723020113738}
-  - component: {fileID: 1018907158338383314}
+  - component: {fileID: 114849163689226466}
   m_Layer: 0
   m_Name: NPCCombate
   m_TagString: NPC1
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1018907158338383314
+--- !u!114 &114849163689226466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6653245723020113744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f7875974c5e9bc4f98b023a60c08672, type: 3}
+  m_Script: {fileID: 11500000, guid: e38e2d218c299ab4bac07a35f8b78c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pokedex: {fileID: 11400000, guid: cbe4434279ca9b54da3cd3982f7afe60, type: 2}

@@ -30,7 +30,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     }
     public void ItemUsado() {
         Debug.Log("MANGO");
-        PokedexManager.instance.ShowPokeorts(item); 
+        PokedexUIManager.instance.ShowPokeorts(item); 
         InventarioManager.instance.espaciosDePokeorts.gameObject.SetActive(true);
         PokedexManager.instance.UsandoItem == true;
         Inventario.instance.RemoverItem(item, 1);

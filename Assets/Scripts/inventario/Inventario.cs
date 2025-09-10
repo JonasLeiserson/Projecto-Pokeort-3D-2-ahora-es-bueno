@@ -7,7 +7,6 @@ public class Inventario : MonoBehaviour {
     public static Inventario instance;
     public List<Item> items = new List<Item>();
     
-
     void Awake() {
         if (instance != null && instance != this) {
             Destroy(gameObject);

@@ -45,7 +45,10 @@ public class InventarioManager : MonoBehaviour {
     }
 
     void Start() {
-        combatButtons = UIManager.instance.combatButtons;
+        if (UIManager.instance.combatButtons != null)
+        {
+            combatButtons = UIManager.instance.combatButtons;
+        }
         EsconderInventario();
     }
 
@@ -75,9 +78,5 @@ public class InventarioManager : MonoBehaviour {
     {
         InventarioUI.SetActive(true);
         combatButtons.SetActive(false);
-    }
-    public void EsconderEleccionpokeorts()
-    {
-        espaciosDePokeorts.gameObject.SetActive(false);
     }
 }
