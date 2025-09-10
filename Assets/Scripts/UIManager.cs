@@ -84,4 +84,8 @@ public class UIManager : MonoBehaviour
         Debug.Log("Health Percentage: " + barraDeVida.value);
 
     }
+    public void CambioPokeort()
+    {
+         InventarioManager.instance.espaciosDePokeorts.gameObject.SetActive(true);
+    }
 }

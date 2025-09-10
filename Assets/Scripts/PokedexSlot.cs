@@ -30,24 +30,32 @@ public class PokedexSlot : MonoBehaviour
     }
     public void Clickeado()
     {
-        Debug.Log("Item " + PokedexManager.instance.ItemElejido.itemName + " usado en" + pokeortInstance.pokemonData.pokemonName);
-
-        switch (PokedexManager.instance.ItemElejido.tipo)
+        if(PokedexManager.instance.UsandoItem == true)
         {
-            case Item.Tipo.curacion:
-                pokeortInstance.Curar(PokedexManager.instance.ItemElejido.ValorDeUso);
-                break;
-            case Item.Tipo.pokeortbola:
-                break;
-            case Item.Tipo.potenciador:
-                pokeortInstance.Potenciar(PokedexManager.instance.ItemElejido.ValorDeUso, PokedexManager.instance.ItemElejido.atributoPotenciador);
-                break;
-            case Item.Tipo.baya:
-                break;
-            case Item.Tipo.otro:
-                break;
+            Debug.Log("Item " + PokedexManager.instance.ItemElejido.itemName + " usado en" + pokeortInstance.pokemonData.pokemonName);
+
+            switch (PokedexManager.instance.ItemElejido.tipo)
+            {
+                case Item.Tipo.curacion:
+                    pokeortInstance.Curar(PokedexManager.instance.ItemElejido.ValorDeUso);
+                    break;
+                case Item.Tipo.pokeortbola:
+                    break;
+                case Item.Tipo.potenciador:
+                    pokeortInstance.Potenciar(PokedexManager.instance.ItemElejido.ValorDeUso, PokedexManager.instance.ItemElejido.atributoPotenciador);
+                    break;
+                case Item.Tipo.baya:
+                    break;
+                case Item.Tipo.otro:
+                    break;
         }
-        InventarioManager.instance.EsconderEleccionpokeorts();
-         PokedexManager.instance.ItemElejido = null;
+                InventarioManager.instance.EsconderEleccionpokeorts();
+                PokedexManager.instance.ItemElejido = null;
+        }
+        else
+        {
+            CombateSalvajeManager.instance.indexPokeortElegido = 0;
+            CombateSalvajeManager.instance.pokeortElegido =  CombateSalvajeManager.instance.pokeortAmigos[CombateSalvajeManager.instance.indexPokeortElegido];
+        }
     }
 }

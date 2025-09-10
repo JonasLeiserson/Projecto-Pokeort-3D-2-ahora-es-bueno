@@ -9,6 +9,7 @@ public class PokedexManager : MonoBehaviour
     public Transform pokeortParent;
     public GameObject pokedexSlotPrefab;
     public Item ItemElejido;
+    public bool UsandoItem;
     public static PokedexManager instance;
     // Start is called before the first frame update
     private void Awake()
@@ -35,9 +36,7 @@ public class PokedexManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
-
         public void ShowPokeorts(Item item)
     {
         ItemElejido = item;

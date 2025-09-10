@@ -27,7 +27,7 @@ public class CombateSalvajeManager : MonoBehaviour
     Pokedex pokedex;
     public List<PokeortInstance> pokeortAmigos;
     public PokeortInstance pokeortElegido;
-    int indexPokeortElegido;
+    public int indexPokeortElegido;
     public GameObject pokeortElegidoGO;
     int cantidadJugador;
 
