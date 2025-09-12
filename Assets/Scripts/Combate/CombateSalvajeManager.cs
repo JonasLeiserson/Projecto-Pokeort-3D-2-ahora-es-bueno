@@ -108,6 +108,10 @@ public class CombateSalvajeManager : MonoBehaviour
         pokeortEnemigoGO.GetComponent<MovimientoPokeorts>().enabled = false;
         pokeortEnemigoGO.GetComponent<EncuentroPokemon>().enabled = false;
 
+        UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
+        UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
+
+
         //UI
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -185,8 +189,8 @@ public class CombateSalvajeManager : MonoBehaviour
     {
         yield return new WaitUntil(() => !dialogoManager.talking);
 
-        Slider slider = (pokeortAtacado == pokeortElegido) ? UIManager.instance.sliderAmigo : UIManager.instance.sliderEnemigo;
-        UIManager.instance.ActualizarBarraDeVida(slider, pokeortAtacado.currentHP, pokeortAtacado.maxHP);
+        GameObject slider = (pokeortAtacado == pokeortElegido) ? UIManager.instance.sliderAmigo : UIManager.instance.sliderEnemigo;
+        UIManager.instance.ActualizarBarraDeVida(slider, pokeortAtacado);
 
         if (!ataque())
         {
@@ -200,7 +204,7 @@ public class CombateSalvajeManager : MonoBehaviour
         {
 
             bool ataque = AtaqueEnemigo();
-            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido.currentHP, pokeortElegido.maxHP);
+            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
 
             if (!ataque)
             {
@@ -213,7 +217,7 @@ public class CombateSalvajeManager : MonoBehaviour
         else if (pokeortEnemigo.currentSpeed < pokeortElegido.currentSpeed)
         {
             bool ataque = AtaqueAmigo(botonClickeado);
-            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo.currentHP, pokeortEnemigo.maxHP);
+            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
 
             if (!ataque)
             {
@@ -229,7 +233,7 @@ public class CombateSalvajeManager : MonoBehaviour
             if (random == 0)
             {
                 bool ataque = AtaqueEnemigo();
-                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido.currentHP, pokeortElegido.maxHP);
+                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
 
                 if (!ataque)
                 {
@@ -243,7 +247,7 @@ public class CombateSalvajeManager : MonoBehaviour
             else
             {
                 bool ataque = AtaqueAmigo(botonClickeado);
-                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo.currentHP, pokeortEnemigo.maxHP);
+                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
 
                 if (!ataque)
                 {

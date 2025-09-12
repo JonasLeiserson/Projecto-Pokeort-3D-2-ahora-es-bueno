@@ -94,6 +94,7 @@ public class CombateNPCManager : MonoBehaviour
         pokeortEnemigos = pokedexEnemigo.pokeorts;
         indexPokeortEnemigo = 0;
         pokeortEnemigo = pokeortEnemigos[indexPokeortEnemigo];
+        pokeortsDerrotadosEnemigo.Add(pokeortEnemigo);
         cantidadEnemigo = pokeortEnemigos.Count;
 
         //cargar pokeorts en inventario
@@ -101,6 +102,7 @@ public class CombateNPCManager : MonoBehaviour
         pokeortAmigos = pokedex.pokeorts;
         indexPokeortElegido = 0;
         pokeortElegido = pokeortAmigos[indexPokeortElegido];
+        pokeortsUtilizados.Add(pokeortElegido);
         cantidadJugador = pokeortAmigos.Count;
 
         //instanciar pokeort amigo
@@ -112,6 +114,9 @@ public class CombateNPCManager : MonoBehaviour
         //frenar movimiento pokeorts
         pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
         pokeortEnemigoGO.GetComponent<MovimientoPokeorts>().enabled = false;
+
+        UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
+        UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
 
         //UI
         Cursor.visible = true;
@@ -202,8 +207,8 @@ public class CombateNPCManager : MonoBehaviour
     IEnumerator EjecutarAtaqueTrasDialogo(System.Func<bool> ataque, PokeortInstance pokeortAtacado, GameObject pokeortAtacadoGO)
     {
         yield return new WaitUntil(() => !dialogoManager.talking);
-        Slider slider = (pokeortAtacado == pokeortElegido) ? UIManager.instance.sliderAmigo : UIManager.instance.sliderEnemigo;
-        UIManager.instance.ActualizarBarraDeVida(slider, pokeortAtacado.currentHP, pokeortAtacado.maxHP);
+        GameObject slider = (pokeortAtacado == pokeortElegido) ? UIManager.instance.sliderAmigo : UIManager.instance.sliderEnemigo;
+        UIManager.instance.ActualizarBarraDeVida(slider, pokeortAtacado);
 
         if (!ataque())
         {
@@ -224,7 +229,7 @@ public class CombateNPCManager : MonoBehaviour
         {
 
             bool ataque = AtaqueEnemigo();
-            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido.currentHP, pokeortElegido.maxHP);
+            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
 
             if (!ataque)
             {
@@ -237,7 +242,7 @@ public class CombateNPCManager : MonoBehaviour
         else if (pokeortEnemigo.currentSpeed < pokeortElegido.currentSpeed)
         {
             bool ataque = AtaqueAmigo(botonClickeado);
-            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo.currentHP, pokeortEnemigo.maxHP);
+            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
 
             if (!ataque)
             {
@@ -253,7 +258,7 @@ public class CombateNPCManager : MonoBehaviour
             if (random == 0)
             {
                 bool ataque = AtaqueEnemigo();
-                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido.currentHP, pokeortElegido.maxHP);
+                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
 
                 if (!ataque)
                 {
@@ -267,7 +272,7 @@ public class CombateNPCManager : MonoBehaviour
             else
             {
                 bool ataque = AtaqueAmigo(botonClickeado);
-                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo.currentHP, pokeortEnemigo.maxHP);
+                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
 
                 if (!ataque)
                 {
@@ -300,6 +305,7 @@ public class CombateNPCManager : MonoBehaviour
                     int baseC = Mathf.RoundToInt(pokeortEnemigo.pokemonData.baseXP * pokeortEnemigo.level / pokeortsUtilizados.Count / 5);
 
                     int xp = baseC * baseA / baseB + 1;
+                    Debug.Log(xp);
                     pokeort.experiencePoints += xp;
 
                     pokeort.ChequearNivel();

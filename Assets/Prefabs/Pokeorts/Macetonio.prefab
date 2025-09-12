@@ -13,7 +13,12 @@ GameObject:
   - component: {fileID: 80130971427214640}
   - component: {fileID: 114669277455718112}
   - component: {fileID: 114035195687606370}
+<<<<<<< Updated upstream
   - component: {fileID: 54733862800387016}
+=======
+  - component: {fileID: 54244327301930770}
+  - component: {fileID: 1895482468154722616}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Macetonio
   m_TagString: Untagged
@@ -107,7 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6ed79587cb1c74e86c3973a31af842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
 --- !u!54 &54733862800387016
+=======
+--- !u!54 &54244327301930770
+>>>>>>> Stashed changes
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,6 +132,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+<<<<<<< Updated upstream
+=======
+--- !u!65 &1895482468154722616
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530276922107362725}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 6.746063, z: 4}
+  m_Center: {x: -0.03887558, y: 2.454041, z: -1.523125}
+>>>>>>> Stashed changes
 --- !u!1001 &2402791057877901054
 PrefabInstance:
   m_ObjectHideFlags: 0

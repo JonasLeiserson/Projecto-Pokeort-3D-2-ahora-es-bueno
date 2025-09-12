@@ -18,7 +18,7 @@ MonoBehaviour:
     - {fileID: 0}
     type1: 0
     type2: 0
-    level: 0
+    level: 10
     currentHP: 0
     maxHP: 0
     currentAttack: 0
@@ -34,11 +34,11 @@ MonoBehaviour:
     currentStatus: 0
     experiencePoints: 0
     experienceToNextLevel: 0
-  - pokemonData: {fileID: 0}
+  - pokemonData: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
     equippedAttacks: []
     type1: 0
     type2: 0
-    level: 0
+    level: 10
     currentHP: 0
     maxHP: 0
     currentAttack: 0

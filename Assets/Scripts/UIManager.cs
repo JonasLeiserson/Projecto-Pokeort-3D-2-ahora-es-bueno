@@ -13,8 +13,8 @@ public class UIManager : MonoBehaviour
     public GameObject botonesAtaque;
     public GameObject combatButtons;
 
-    public Slider sliderAmigo;
-    public Slider sliderEnemigo;
+    public GameObject sliderAmigo;
+    public GameObject sliderEnemigo;
 
     public bool enCombate = false;
 
@@ -115,17 +115,23 @@ public class UIManager : MonoBehaviour
         dialogoManager.StartDialogue(dialogo);
     }
 
-    public void ActualizarBarraDeVida(Slider barraDeVida, float vidaActual, float vidaMaxima)
+    public void ActualizarBarraDeVida(GameObject barraDeVida, PokeortInstance pokeort)
     {
-        Image imagen = barraDeVida.fillRect.GetComponent<Image>();
+        Slider slider = barraDeVida.GetComponentInChildren<Slider>();
+        Image imagen = slider.fillRect.GetComponent<Image>();
 
-        Debug.Log(barraDeVida.value + "=" + vidaActual / vidaMaxima);
-        barraDeVida.value = vidaActual / vidaMaxima;
+        TextMeshProUGUI textoVida = barraDeVida.GetComponentInChildren<TextMeshProUGUI>();
+        int vidaActual = pokeort.currentHP;
+        int vidaMaxima = pokeort.maxHP;
+        textoVida.text = pokeort.pokemonData.pokemonName;
 
-        imagen.color = Color.Lerp(Color.red, Color.green, barraDeVida.value);
+        Debug.Log($"{slider.value} = {(float)vidaActual / vidaMaxima}");
+        slider.value = (float)vidaActual / vidaMaxima;
 
-        Debug.Log("Health Percentage: " + barraDeVida.value);
+        imagen.color = Color.Lerp(Color.red, Color.green, slider.value);
 
+
+        Debug.Log("Health Percentage: " + slider.value);
     }
     public void CambioPokeort()
     {

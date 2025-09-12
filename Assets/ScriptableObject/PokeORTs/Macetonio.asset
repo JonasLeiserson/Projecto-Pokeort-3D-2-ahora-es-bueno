@@ -24,8 +24,8 @@ MonoBehaviour:
   baseSpAttack: 64
   baseSpDefense: 68
   baseSpeed: 40
-  baseXP: 20
+  baseXP: 40
   experienceScale: 0
   learnableAttacks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
+  - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
