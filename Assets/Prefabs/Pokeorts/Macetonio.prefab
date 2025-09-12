@@ -13,12 +13,15 @@ GameObject:
   - component: {fileID: 80130971427214640}
   - component: {fileID: 114669277455718112}
   - component: {fileID: 114035195687606370}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   - component: {fileID: 54733862800387016}
 =======
   - component: {fileID: 54244327301930770}
   - component: {fileID: 1895482468154722616}
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 80c3611 (mi bomo y shader)
   m_Layer: 0
   m_Name: Macetonio
   m_TagString: Untagged
@@ -112,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6ed79587cb1c74e86c3973a31af842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 --- !u!54 &54733862800387016
 =======
@@ -148,6 +152,8 @@ BoxCollider:
   m_Size: {x: 4, y: 6.746063, z: 4}
   m_Center: {x: -0.03887558, y: 2.454041, z: -1.523125}
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 80c3611 (mi bomo y shader)
 --- !u!1001 &2402791057877901054
 PrefabInstance:
   m_ObjectHideFlags: 0
