@@ -11,13 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CombateS/CombateNPC.unity
     guid: 021a1acad309985429e734b474451a17
-  - enabled: 1
-    path: Assets/Prefabs/UIPrefabs/CombateS/CombateSalvaje.unity
-    guid: 6688ac3c3e4860c4a94058bc331fc506
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 24e6ba2ec77699d4fb3663533b33d38d
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: d8a785fd23ad2fe4894190509173ecf2
+  - enabled: 1
+    path: Assets/Scenes/CombateS/CombateSalvaje.unity
+    guid: 7a8491507bcf2e34198651808b2d3438
   m_configObjects: {}
