@@ -266,6 +266,10 @@ public class PokeortInstance
                 }
 
                 enemigo.currentHP -= danio;
+                if(enemigo != CombateSalvajeManager.instance.pokeortEnemigo)
+                {
+                    
+                }
                 if (enemigo.currentHP <= 0) enemigo.currentHP = 0;
 
                 DialogueLine linea1 = new DialogueLine();
