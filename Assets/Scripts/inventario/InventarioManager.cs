@@ -6,7 +6,7 @@ using TMPro;
 public class InventarioManager : MonoBehaviour {
     public static InventarioManager instance;
     public GameObject InventarioUI; 
-    GameObject combatButtons; 
+    public GameObject combatButtons; 
     public Transform itemsParent;
     public GameObject inventorySlotPrefab;
     public TextMeshProUGUI Descripcion;
@@ -16,12 +16,16 @@ public class InventarioManager : MonoBehaviour {
     void Awake() {
         if (instance != null & instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
             instance = this;
         }
+
+        DontDestroyOnLoad(gameObject);
+
+        PersistentRoot.Instance.AddToRoot(gameObject);
     }
 
     public void UpdateUI() {
@@ -45,10 +49,6 @@ public class InventarioManager : MonoBehaviour {
     }
 
     void Start() {
-        if (UIManager.instance.combatButtons != null)
-        {
-            combatButtons = UIManager.instance.combatButtons;
-        }
         EsconderInventario();
     }
 

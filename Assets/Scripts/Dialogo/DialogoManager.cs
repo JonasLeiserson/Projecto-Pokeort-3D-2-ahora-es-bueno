@@ -15,7 +15,7 @@ public class DialogoManager : MonoBehaviour
     private int currentLineIndex;
     public bool talking;
 
-    private static DialogoManager instance;
+    public static DialogoManager instance;
 
     void Awake()
     {
@@ -28,6 +28,9 @@ public class DialogoManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        DontDestroyOnLoad(gameObject);
+
+        PersistentRoot.Instance.AddToRoot(gameObject);
     }
 
     void Start() 

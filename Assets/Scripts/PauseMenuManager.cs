@@ -6,6 +6,24 @@ public class PauseMenuManager : MonoBehaviour
 
     private bool isPaused = false;
 
+    public static PauseMenuManager instance;
+
+    void Awake()
+    {
+        if (instance != this && instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(gameObject);
+
+        PersistentRoot.Instance.AddToRoot(gameObject);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

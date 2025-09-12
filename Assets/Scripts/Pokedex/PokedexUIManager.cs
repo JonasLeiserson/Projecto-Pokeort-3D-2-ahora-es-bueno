@@ -4,34 +4,31 @@ using UnityEngine;
 
 public class PokedexUIManager : MonoBehaviour
 {
-    public Pokedex pokedex;
     public List<PokedexSlot> slots = new List<PokedexSlot>();
     public Transform pokeortParent;
     public GameObject pokedexSlotPrefab;
     public Item ItemElejido;
-<<<<<<< Updated upstream:Assets/Scripts/PokedexManager.cs
     public bool UsandoItem;
-    public static PokedexManager instance;
-=======
     public static PokedexUIManager instance;
->>>>>>> Stashed changes:Assets/Scripts/PokedexUIManager.cs
-    // Start is called before the first frame update
+
     private void Awake()
     {
         if (instance != this && instance != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
             instance = this;
         }
+
+        DontDestroyOnLoad(gameObject);
+
+        PersistentRoot.Instance.AddToRoot(gameObject);
     }
 
     void Start()
     {
-        GameObject pokeortParentOb = GameObject.Find("PokeortsDerecho");
-        pokeortParent = pokeortParentOb.transform;
         EsconderEleccionpokeorts();
         UpdateUI();
     }
@@ -40,15 +37,9 @@ public class PokedexUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream:Assets/Scripts/PokedexManager.cs
-    }
-        public void ShowPokeorts(Item item)
-=======
 
     }
-
     public void ShowPokeorts(Item item)
->>>>>>> Stashed changes:Assets/Scripts/PokedexUIManager.cs
     {
         ItemElejido = item;
         InventarioManager.instance.espaciosDePokeorts.gameObject.SetActive(true);
@@ -63,7 +54,7 @@ public class PokedexUIManager : MonoBehaviour
         }
         slots.Clear();
 
-        foreach (PokeortInstance pokeort in pokedex.pokeorts)
+        foreach (PokeortInstance pokeort in PokedexPlayerManager.instance.pokedex.pokeorts)
         {
             GameObject newSlot = Instantiate(pokedexSlotPrefab, pokeortParent);
             newSlot.transform.localScale = new Vector3(0.5f, 0.3f, 0.3f);

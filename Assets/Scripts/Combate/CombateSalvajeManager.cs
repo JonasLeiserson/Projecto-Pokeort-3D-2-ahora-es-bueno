@@ -9,7 +9,7 @@ public class CombateSalvajeManager : MonoBehaviour
 {
     public static CombateSalvajeManager instance;
 
-    public DialogoManager dialogoManager;
+    readonly DialogoManager dialogoManager = DialogoManager.instance;
     public Dialogue dialogoCombate;
 
     public GameObject player;
@@ -60,6 +60,8 @@ public class CombateSalvajeManager : MonoBehaviour
 
         //buscar pokeort encontrado por su tag
         encontrado = pokeorts.FirstOrDefault(p => p.CompareTag(encounteredPokemonTag));
+
+        
     }
 
     // Start is called before the first frame update
@@ -73,12 +75,6 @@ public class CombateSalvajeManager : MonoBehaviour
         player = Instantiate(player, playerPosition, playerRotation);
         GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
 
-        GameObject cameraPositioner = GameObject.Find("CameraPositioner");
-        Transform cameraPositionerTransform = cameraPositioner.transform;
-        cameraPositionerTransform.position = playerPosition;
-        cameraPositionerTransform.rotation = playerRotation;
-        
-
         movementScript = player.GetComponent<MovimientoJugador>();
         movementScript.enabled = false;
 
@@ -90,6 +86,7 @@ public class CombateSalvajeManager : MonoBehaviour
         nuevaPosicionEnemigo.y = player.transform.position.y;
 
         //instanciar y cargar pokeort encontrado
+        Debug.Log(encontrado.name);
         pokeortEnemigoGO = InstanciarPokeort(10f, encontrado, player.transform);
         pokeortEnemigoManager = pokeortEnemigoGO.GetComponent<PokemonManager>();
         pokeortEnemigo = pokeortEnemigoManager.currentPokemonInstance;

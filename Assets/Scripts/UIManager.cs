@@ -26,6 +26,10 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        DontDestroyOnLoad(gameObject);
+
+        PersistentRoot.Instance.AddToRoot(gameObject);
     }
 
     public void CargarAtaques()

@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 3183447003146668398}
   - component: {fileID: 114839458380205088}
   - component: {fileID: 135850443345933522}
-  - component: {fileID: 114700771971293528}
   m_Layer: 0
   m_Name: JugadorCamaraMan
   m_TagString: Player
@@ -158,23 +157,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114700771971293528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3183447003146668400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f7875974c5e9bc4f98b023a60c08672, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pokedex: {fileID: 11400000, guid: ddf7688590f404444969046688b80697, type: 2}
-  slots: []
-  pokeortParent: {fileID: 0}
-  pokedexSlotPrefab: {fileID: 1688298149172934163, guid: 97635ca012dae564fbbaebe4f84e2095,
-    type: 3}
 --- !u!1 &3183447003393045275
 GameObject:
   m_ObjectHideFlags: 0
