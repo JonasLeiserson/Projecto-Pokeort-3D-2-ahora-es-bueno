@@ -1,0 +1,254 @@
+fileFormatVersion: 2
+guid: 7a5071653a534b3448e7e4c25f63b37f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: BASEtecho
+    100002: BASEtecho.001
+    100004: BASEtecho.002
+    100006: BASEtecho.004
+    100008: BASEtecho.006
+    100010: BASEtecho.007
+    100012: BASEtecho.008
+    100014: BASEtecho.009
+    100016: //RootNode
+    100018: Cube
+    100020: Cube.001
+    100022: Cube.002
+    100024: Cube.003
+    100026: Cube.004
+    100028: Cube.005
+    100030: Cube.006
+    100032: Cube.007
+    100034: Cube.008
+    100036: Cube.009
+    100038: Cube.010
+    100040: Cube.011
+    100042: Cube.012
+    100044: Cylinder
+    100046: Cylinder.001
+    100048: Plane
+    100050: Plane.001
+    100052: Plane.002
+    100054: techo maloo
+    100056: techo maloo.002
+    400000: BASEtecho
+    400002: BASEtecho.001
+    400004: BASEtecho.002
+    400006: BASEtecho.004
+    400008: BASEtecho.006
+    400010: BASEtecho.007
+    400012: BASEtecho.008
+    400014: BASEtecho.009
+    400016: //RootNode
+    400018: Cube
+    400020: Cube.001
+    400022: Cube.002
+    400024: Cube.003
+    400026: Cube.004
+    400028: Cube.005
+    400030: Cube.006
+    400032: Cube.007
+    400034: Cube.008
+    400036: Cube.009
+    400038: Cube.010
+    400040: Cube.011
+    400042: Cube.012
+    400044: Cylinder
+    400046: Cylinder.001
+    400048: Plane
+    400050: Plane.001
+    400052: Plane.002
+    400054: techo maloo
+    400056: techo maloo.002
+    2100000: Material.041
+    2100002: Material.045
+    2100004: Material.043
+    2100006: Material.004
+    2100008: Material.008
+    2100010: Material.011
+    2100012: Material.012
+    2100014: Material.006
+    2100016: Material.001
+    2100018: Material.032
+    2100020: Material.013
+    2100022: Material.014
+    2100024: Material.005
+    2100026: Material.007
+    2100028: Material.039
+    2100030: Material.040
+    2100032: Material.023
+    2100034: Material.002
+    2100036: Material.046
+    2100038: Material.015
+    2100040: Material.010
+    2300000: BASEtecho
+    2300002: BASEtecho.001
+    2300004: BASEtecho.002
+    2300006: BASEtecho.004
+    2300008: BASEtecho.006
+    2300010: BASEtecho.007
+    2300012: BASEtecho.008
+    2300014: BASEtecho.009
+    2300016: Cube
+    2300018: Cube.001
+    2300020: Cube.002
+    2300022: Cube.003
+    2300024: Cube.004
+    2300026: Cube.005
+    2300028: Cube.006
+    2300030: Cube.007
+    2300032: Cube.008
+    2300034: Cube.009
+    2300036: Cube.010
+    2300038: Cube.011
+    2300040: Cube.012
+    2300042: Cylinder
+    2300044: Cylinder.001
+    2300046: Plane
+    2300048: Plane.001
+    2300050: Plane.002
+    2300052: techo maloo
+    2300054: techo maloo.002
+    3300000: BASEtecho
+    3300002: BASEtecho.001
+    3300004: BASEtecho.002
+    3300006: BASEtecho.004
+    3300008: BASEtecho.006
+    3300010: BASEtecho.007
+    3300012: BASEtecho.008
+    3300014: BASEtecho.009
+    3300016: Cube
+    3300018: Cube.001
+    3300020: Cube.002
+    3300022: Cube.003
+    3300024: Cube.004
+    3300026: Cube.005
+    3300028: Cube.006
+    3300030: Cube.007
+    3300032: Cube.008
+    3300034: Cube.009
+    3300036: Cube.010
+    3300038: Cube.011
+    3300040: Cube.012
+    3300042: Cylinder
+    3300044: Cylinder.001
+    3300046: Plane
+    3300048: Plane.001
+    3300050: Plane.002
+    3300052: techo maloo
+    3300054: techo maloo.002
+    4300000: BASEtecho
+    4300002: BASEtecho.001
+    4300004: BASEtecho.002
+    4300006: BASEtecho.004
+    4300008: BASEtecho.006
+    4300010: BASEtecho.007
+    4300012: BASEtecho.008
+    4300014: BASEtecho.009
+    4300016: Cube
+    4300018: Cube.001
+    4300020: Cube.002
+    4300022: Cube.003
+    4300024: Cube.004
+    4300026: Cube.005
+    4300028: Cube.006
+    4300030: Cube.007
+    4300032: Cube.008
+    4300034: Cylinder
+    4300036: Cylinder.001
+    4300038: techo maloo
+    4300040: techo maloo.002
+    4300042: Cube.011
+    4300044: Plane
+    4300046: Cube.012
+    4300048: Plane.001
+    4300050: Cube.009
+    4300052: Plane.002
+    4300054: Cube.010
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
