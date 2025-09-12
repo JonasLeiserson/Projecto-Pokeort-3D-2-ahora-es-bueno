@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
   m_Name: Macetonio
   m_EditorClassIdentifier: 
-  PokeortPrefab: {fileID: 100000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+  PokeortPrefab: {fileID: 1530276922107362725, guid: 25d90ec4728004b4c84ccdb9b312296b,
+    type: 3}
   pokemonName: Macetonio
   primaryType: 4
   secondaryType: 0

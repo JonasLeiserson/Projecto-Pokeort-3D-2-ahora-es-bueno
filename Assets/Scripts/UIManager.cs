@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public Slider sliderAmigo;
     public Slider sliderEnemigo;
 
+    public bool enCombate = false;
+
     private void Awake()
     {
         if (instance == null && instance != this)
@@ -34,35 +36,72 @@ public class UIManager : MonoBehaviour
 
     public void CargarAtaques()
     {
-        if (botonesAtaque.transform.childCount >= 2)
+        if (CombateSalvajeManager.instance != null)
         {
-            botonesIniciales.SetActive(false);
-            botonesAtaque.SetActive(true);
-            return;
-        }
-
-        Transform canvasTransform = FindObjectOfType<Canvas>().transform;
-        botonesIniciales.SetActive(false);
-
-        TextMeshProUGUI textoBotonAtaque = botonAtaque.GetComponentInChildren<TextMeshProUGUI>();
-        RectTransform rt = botonAtaque.GetComponent<RectTransform>();
-        Vector2 posicionInicial = rt.anchoredPosition;
-        Vector2 posicionActual = posicionInicial;
-
-        foreach (Attack ataque in CombateSalvajeManager.instance.pokeortElegido.equippedAttacks)
-        {
-            GameObject nuevoBotonGO = Instantiate(botonAtaque.gameObject, botonesAtaque.transform);
-            nuevoBotonGO.SetActive(true);
-            RectTransform nuevoBotonRT = nuevoBotonGO.GetComponent<RectTransform>();
-            nuevoBotonRT.anchoredPosition = posicionActual;
-            posicionActual.y += 50f;
-            TextMeshProUGUI nuevoTextoBoton = nuevoBotonGO.GetComponentInChildren<TextMeshProUGUI>();
-                
-            if (nuevoTextoBoton != null)
+            if (botonesAtaque.transform.childCount >= 2)
             {
-                nuevoTextoBoton.text = ataque.attackName;
+                botonesIniciales.SetActive(false);
+                botonesAtaque.SetActive(true);
+                return;
+            }
+
+            Transform canvasTransform = FindObjectOfType<Canvas>().transform;
+            botonesIniciales.SetActive(false);
+
+            TextMeshProUGUI textoBotonAtaque = botonAtaque.GetComponentInChildren<TextMeshProUGUI>();
+            RectTransform rt = botonAtaque.GetComponent<RectTransform>();
+            Vector2 posicionInicial = rt.anchoredPosition;
+            Vector2 posicionActual = posicionInicial;
+
+            foreach (Attack ataque in CombateSalvajeManager.instance.pokeortElegido.equippedAttacks)
+            {
+                GameObject nuevoBotonGO = Instantiate(botonAtaque.gameObject, botonesAtaque.transform);
+                nuevoBotonGO.SetActive(true);
+                RectTransform nuevoBotonRT = nuevoBotonGO.GetComponent<RectTransform>();
+                nuevoBotonRT.anchoredPosition = posicionActual;
+                posicionActual.y += 50f;
+                TextMeshProUGUI nuevoTextoBoton = nuevoBotonGO.GetComponentInChildren<TextMeshProUGUI>();
+
+                if (nuevoTextoBoton != null)
+                {
+                    nuevoTextoBoton.text = ataque.attackName;
+                }
             }
         }
+        else
+        {
+            if (botonesAtaque.transform.childCount >= 2)
+            {
+                botonesIniciales.SetActive(false);
+                botonesAtaque.SetActive(true);
+                return;
+            }
+
+            Transform canvasTransform = FindObjectOfType<Canvas>().transform;
+            botonesIniciales.SetActive(false);
+
+            TextMeshProUGUI textoBotonAtaque = botonAtaque.GetComponentInChildren<TextMeshProUGUI>();
+            RectTransform rt = botonAtaque.GetComponent<RectTransform>();
+            Vector2 posicionInicial = rt.anchoredPosition;
+            Vector2 posicionActual = posicionInicial;
+
+            foreach (Attack ataque in CombateNPCManager.instance.pokeortElegido.equippedAttacks)
+            {
+                GameObject nuevoBotonGO = Instantiate(botonAtaque.gameObject, botonesAtaque.transform);
+                nuevoBotonGO.SetActive(true);
+                RectTransform nuevoBotonRT = nuevoBotonGO.GetComponent<RectTransform>();
+                nuevoBotonRT.anchoredPosition = posicionActual;
+                posicionActual.y += 50f;
+                TextMeshProUGUI nuevoTextoBoton = nuevoBotonGO.GetComponentInChildren<TextMeshProUGUI>();
+
+                if (nuevoTextoBoton != null)
+                {
+                    nuevoTextoBoton.text = ataque.attackName;
+                }
+            }
+        }
+
+        
     }
     
     public void EsconderAtaques()

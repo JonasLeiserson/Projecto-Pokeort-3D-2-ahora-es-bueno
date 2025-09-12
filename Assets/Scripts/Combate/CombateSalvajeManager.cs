@@ -61,7 +61,7 @@ public class CombateSalvajeManager : MonoBehaviour
         //buscar pokeort encontrado por su tag
         encontrado = pokeorts.FirstOrDefault(p => p.CompareTag(encounteredPokemonTag));
 
-        
+        UIManager.instance.combatButtons.SetActive(true);
     }
 
     // Start is called before the first frame update

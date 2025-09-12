@@ -21,5 +21,9 @@ public class btnAtaqueScript : MonoBehaviour
         {
             CombateSalvajeManager.instance.CheckBattleState(click);
         }
+        else
+        {
+            CombateNPCManager.instance.CheckBattleState(click);
+        }
     }
 }

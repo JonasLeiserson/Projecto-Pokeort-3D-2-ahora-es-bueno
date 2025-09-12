@@ -1,19 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CombateNPCManager : MonoBehaviour
 {
-    public UIManager uiManager;
-    public Button botonAtaque;
-    public GameObject botonesAtaque;
-    public GameObject botonesIniciales;
-
-    public DialogoManager dialogoManager;
+    DialogoManager dialogoManager = DialogoManager.instance;
     public Dialogue dialogoCombate;
 
     public GameObject player;
@@ -22,10 +16,11 @@ public class CombateNPCManager : MonoBehaviour
 
     Pokedex pokedex;
     List<PokeortInstance> pokeortAmigos;
-    PokeortInstance pokeortElegido;
+    public PokeortInstance pokeortElegido;
     int indexPokeortElegido;
     GameObject pokeortElegidoGO;
     int cantidadJugador;
+    List<PokeortInstance> pokeortsUtilizados = new List<PokeortInstance>();
 
     string encounteredNPCTag;
     GameObject NPC;
@@ -35,6 +30,7 @@ public class CombateNPCManager : MonoBehaviour
     PokeortInstance pokeortEnemigo;
     GameObject pokeortEnemigoGO;
     int cantidadEnemigo;
+    List<PokeortInstance> pokeortsDerrotadosEnemigo = new List<PokeortInstance>();
 
     float playerPosX;
     float playerPosY;
@@ -44,8 +40,20 @@ public class CombateNPCManager : MonoBehaviour
     Attack ataqueElegido;
     Attack ataqueElegidoEnemigo;
 
+    bool ganaste = false;
+    public static CombateNPCManager instance;
+
     void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
         //recepcion de datos
         encounteredNPCTag = PlayerPrefs.GetString("EncounteredPokemon");
         playerPosX = PlayerPrefs.GetFloat("PosX");
@@ -55,6 +63,8 @@ public class CombateNPCManager : MonoBehaviour
 
         //buscar pokeort encontrado por su tag
         NPC = NPCs.FirstOrDefault(n => n.CompareTag(encounteredNPCTag));
+
+        UIManager.instance.combatButtons.SetActive(true);
     }
 
     // Start is called before the first frame update
@@ -66,13 +76,7 @@ public class CombateNPCManager : MonoBehaviour
         Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
         Quaternion playerRotation = new Quaternion(0, playerRotY, 0, 0);
         player = Instantiate(player, playerPosition, playerRotation);
-        player.tag = "Untagged";
-        GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
-
-        GameObject cameraPositioner = GameObject.Find("CameraPositioner");
-        Transform cameraPositionerTransform = cameraPositioner.transform;
-        cameraPositionerTransform.position = playerPosition;
-        cameraPositionerTransform.rotation = playerRotation;
+        GameObject.Find("Camara Principal").SetActive(false);
 
         movementScript = player.GetComponent<MovimientoJugador>();
         movementScript.enabled = false;
@@ -85,7 +89,6 @@ public class CombateNPCManager : MonoBehaviour
         nuevaPosicionEnemigo.y = player.transform.position.y;
         NPC = Instantiate(NPC, nuevaPosicionEnemigo, Quaternion.identity);
 
-
         //cargar pokeorts enemigos en inventario
         pokedexEnemigo = NPC.GetComponent<PokedexManagerNPC>().pokedex;
         pokeortEnemigos = pokedexEnemigo.pokeorts;
@@ -94,7 +97,7 @@ public class CombateNPCManager : MonoBehaviour
         cantidadEnemigo = pokeortEnemigos.Count;
 
         //cargar pokeorts en inventario
-        pokedex = player.GetComponent<PokedexManagerNPC>().pokedex;
+        pokedex = PokedexPlayerManager.instance.pokedex;
         pokeortAmigos = pokedex.pokeorts;
         indexPokeortElegido = 0;
         pokeortElegido = pokeortAmigos[indexPokeortElegido];
@@ -113,17 +116,13 @@ public class CombateNPCManager : MonoBehaviour
         //UI
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-
-
     }
 
-    public void cargarAtaquesUI() => uiManager.CargarAtaques(); 
- 
     public bool AtaqueAmigo(GameObject botonClickeado)
     {
         TextMeshProUGUI nombreAtaque = botonClickeado.GetComponentInChildren<TextMeshProUGUI>();
         ataqueElegido = pokeortElegido.equippedAttacks.FirstOrDefault(a => a.attackName == nombreAtaque.text);
-        uiManager.EsconderAtaques();
+        UIManager.instance.EsconderAtaques();
         return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager);
     }
 
@@ -142,13 +141,52 @@ public class CombateNPCManager : MonoBehaviour
         if (cantidad > 0)
         {
             index++;
-            pokeortDerrotadoInstance = pokeortEnemigos[index];
+            pokeortDerrotadoInstance = pokeorts[index];
+
+            if (pokeortDerrotadoInstance == pokeortElegido)
+            {
+                pokeortsUtilizados.Add(pokeortDerrotadoInstance);
+            }
+            else
+            {
+                pokeortsDerrotadosEnemigo.Add(pokeortDerrotadoInstance);
+            }
+
             pokeortDerrotadoGO = InstanciarPokeort(distancia, pokeortDerrotadoInstance.pokemonData.PokeortPrefab, player.transform);
             pokeortDerrotadoGO.GetComponent<MovimientoPokeorts>().enabled = false;
     }
         else
         {
-            Debug.Log("Batalla Finalizada");
+            if (pokeortDerrotadoInstance == pokeortElegido)
+            {
+                DialogueLine line1 = new DialogueLine();
+                line1.speakerName = "Sistema";
+                line1.dialogueText = "No tienes más Pokeorts.";
+                dialogoCombate.dialogueLines.Add(line1);
+
+                DialogueLine line2 = new DialogueLine();
+                line2.speakerName = "Sistema";
+                line2.dialogueText = "Has perdido la batalla.";
+                dialogoCombate.dialogueLines.Add(line2);
+            }
+            else
+            {
+                DialogueLine line1 = new DialogueLine();
+                line1.speakerName = "Sistema";
+                line1.dialogueText = "El rival no tiene mas pokeorts.";
+                dialogoCombate.dialogueLines.Add(line1);
+
+                DialogueLine line2 = new DialogueLine();
+                line2.speakerName = "Sistema";
+                line2.dialogueText = "Has ganado la batalla.";
+                dialogoCombate.dialogueLines.Add(line2);
+
+                ganaste = true;
+            }
+
+
+            TerminarBatalla();
+            return;
         }
     }
 
@@ -164,6 +202,8 @@ public class CombateNPCManager : MonoBehaviour
     IEnumerator EjecutarAtaqueTrasDialogo(System.Func<bool> ataque, PokeortInstance pokeortAtacado, GameObject pokeortAtacadoGO)
     {
         yield return new WaitUntil(() => !dialogoManager.talking);
+        Slider slider = (pokeortAtacado == pokeortElegido) ? UIManager.instance.sliderAmigo : UIManager.instance.sliderEnemigo;
+        UIManager.instance.ActualizarBarraDeVida(slider, pokeortAtacado.currentHP, pokeortAtacado.maxHP);
 
         if (!ataque())
         {
@@ -182,7 +222,11 @@ public class CombateNPCManager : MonoBehaviour
     {
         if (pokeortEnemigo.currentSpeed > pokeortElegido.currentSpeed)
         {
-            if (!AtaqueEnemigo())
+
+            bool ataque = AtaqueEnemigo();
+            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido.currentHP, pokeortElegido.maxHP);
+
+            if (!ataque)
             {
                 Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
                 return;
@@ -192,7 +236,10 @@ public class CombateNPCManager : MonoBehaviour
         }
         else if (pokeortEnemigo.currentSpeed < pokeortElegido.currentSpeed)
         {
-            if (!AtaqueAmigo(botonClickeado))
+            bool ataque = AtaqueAmigo(botonClickeado);
+            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo.currentHP, pokeortEnemigo.maxHP);
+
+            if (!ataque)
             {
                 Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo);
                 return;
@@ -205,7 +252,10 @@ public class CombateNPCManager : MonoBehaviour
             int random = Random.Range(0, 2);
             if (random == 0)
             {
-                if (!AtaqueEnemigo())
+                bool ataque = AtaqueEnemigo();
+                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido.currentHP, pokeortElegido.maxHP);
+
+                if (!ataque)
                 {
                     Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
                     return;
@@ -216,7 +266,10 @@ public class CombateNPCManager : MonoBehaviour
             }
             else
             {
-                if (!AtaqueAmigo(botonClickeado))
+                bool ataque = AtaqueAmigo(botonClickeado);
+                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo.currentHP, pokeortEnemigo.maxHP);
+
+                if (!ataque)
                 {
                     Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo);
                     return;
@@ -231,5 +284,27 @@ public class CombateNPCManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    
+    public void TerminarBatalla()
+    {
+        if (ganaste)
+        {
+            foreach (PokeortInstance pokeort in pokeortsUtilizados)
+            {
+                foreach (PokeortInstance pokeortEnemigo in pokeortsDerrotadosEnemigo)
+                {
+                    int baseA = Mathf.RoundToInt(Mathf.Pow(2 * pokeortEnemigo.level + 10, 5 / 2));
+                    int baseB = Mathf.RoundToInt(Mathf.Pow(pokeortEnemigo.level + pokeort.level + 10, 5 / 2));
+                    int baseC = Mathf.RoundToInt(pokeortEnemigo.pokemonData.baseXP * pokeortEnemigo.level / pokeortsUtilizados.Count / 5);
+
+                    int xp = baseC * baseA / baseB + 1;
+                    pokeort.experiencePoints += xp;
+
+                    pokeort.ChequearNivel();
+                }
+            }
+        }
     }
 }

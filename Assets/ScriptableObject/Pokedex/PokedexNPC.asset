@@ -13,26 +13,45 @@ MonoBehaviour:
   m_Name: PokedexNPC
   m_EditorClassIdentifier: 
   pokeorts:
-  - pokemonData: {fileID: 11400000, guid: 0c3963af48f9af24e83606c9c22511ae, type: 2}
-    equippedAttacks: []
+  - pokemonData: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
+    equippedAttacks:
+    - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
     type1: 0
     type2: 0
     level: 1
-    currentHP: 0
+    currentHP: 1
+    maxHP: 1
     currentAttack: 1
+    maxAttack: 1
     currentDefense: 1
+    maxDefense: 1
     currentSpAttack: 1
+    maxSpAttack: 1
     currentSpDefense: 1
+    maxSpDefense: 1
     currentSpeed: 1
-  - pokemonData: {fileID: 11400000, guid: dd87afc918522b640b3eadb27463e39c, type: 2}
+    maxSpeed: 1
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 0
+  - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
     equippedAttacks:
-    - {fileID: 11400000, guid: 9064c95c60a88c541a545e4d0b5034d9, type: 2}
+    - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
     type1: 1
     type2: 0
     level: 1
-    currentHP: 0
-    currentAttack: 2147483647
-    currentDefense: 2147483647
-    currentSpAttack: 435435345
+    currentHP: 1
+    maxHP: 1
+    currentAttack: 1
+    maxAttack: 1
+    currentDefense: 1
+    maxDefense: 1
+    currentSpAttack: 1
+    maxSpAttack: 1
     currentSpDefense: 1
+    maxSpDefense: 1
     currentSpeed: 1
+    maxSpeed: 1
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 0

@@ -594,15 +594,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07cf543a9e3f8de4389b9a2b865fe065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogoManager: {fileID: 656000823}
   dialogoCombate: {fileID: 11400000, guid: 0f4bfab01e9bf15409102f6720039693, type: 2}
   player: {fileID: 3183447003146668400, guid: e65ad50409fdaee49b335ab8302cae92, type: 3}
   pokeorts:
   - {fileID: 7511928090184555776, guid: bbcc1d499ff820146a8a5577fcc42a0e, type: 3}
   - {fileID: 4203461898131196937, guid: a904e7696e00f3e438537642faa3cb6f, type: 3}
-  - {fileID: 8651629261895725157, guid: 11d89dccc9dab684db9321e57e4a7f19, type: 3}
-  - {fileID: 4724784557452475609, guid: e34987e507ce42a469050eecde493b92, type: 3}
-  - {fileID: 7457370000201179032, guid: 0ad1737e29a6ae54d97862d9166481c6, type: 3}
+  - {fileID: 1530276922107362725, guid: 25d90ec4728004b4c84ccdb9b312296b, type: 3}
   pokeortAmigos: []
   pokeortElegido:
     pokemonData: {fileID: 0}
@@ -698,6 +695,7 @@ MonoBehaviour:
   combatButtons: {fileID: 1467515626}
   sliderAmigo: {fileID: 1467515622}
   sliderEnemigo: {fileID: 1467515621}
+  enCombate: 0
 --- !u!4 &1368548657
 Transform:
   m_ObjectHideFlags: 0
@@ -738,6 +736,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CargarAtaques
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601521151109891831, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601521151109891831, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Salvaje
       objectReference: {fileID: 0}
     - target: {fileID: 3601521151620157985, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
         type: 3}

@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1530276922107362725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6663166157315448014}
+  - component: {fileID: 6839720344080129479}
+  - component: {fileID: 80130971427214640}
+  - component: {fileID: 114669277455718112}
+  - component: {fileID: 114035195687606370}
+  m_Layer: 0
+  m_Name: Macetonio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6663166157315448014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530276922107362725}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 129.08963, y: -188.8189, z: 103.4834}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2402791057877763198}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6839720344080129479
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530276922107362725}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0981674, y: 6.746063, z: 3.766922}
+  m_Center: {x: -0.03887558, y: 2.4540405, z: -1.5231247}
+--- !u!114 &80130971427214640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530276922107362725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6274670ecc370846a672ae4c880bf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokemonTemplate: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
+  currentPokemonInstance:
+    pokemonData: {fileID: 0}
+    equippedAttacks: []
+    type1: 0
+    type2: 0
+    level: 0
+    currentHP: 0
+    maxHP: 0
+    currentAttack: 0
+    maxAttack: 0
+    currentDefense: 0
+    maxDefense: 0
+    currentSpAttack: 0
+    maxSpAttack: 0
+    currentSpDefense: 0
+    maxSpDefense: 0
+    currentSpeed: 0
+    maxSpeed: 0
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 0
+--- !u!114 &114669277455718112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530276922107362725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e297fc97c47600147a187a00f49718e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114035195687606370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530276922107362725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e6ed79587cb1c74e86c3973a31af842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &2402791057877901054
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6663166157315448014}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_Name
+      value: macetonio
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7067039
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.008609518
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7070544
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.023865666
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e14c3b794c977641861562bd200d35a, type: 3}
+--- !u!4 &2402791057877763198 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 7e14c3b794c977641861562bd200d35a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2402791057877901054}
+  m_PrefabAsset: {fileID: 0}

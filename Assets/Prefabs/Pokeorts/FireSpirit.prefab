@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4203461898131196937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.694, y: 0.32232, z: 8.4446}
+  m_LocalPosition: {x: 21.694, y: 0.384, z: 8.4446}
   m_LocalScale: {x: 0.40801057, y: 0.40801057, z: 0.40801057}
   m_Children:
   - {fileID: 5341606427775942179}
@@ -111,11 +111,20 @@ MonoBehaviour:
     type2: 0
     level: 0
     currentHP: 0
+    maxHP: 0
     currentAttack: 0
+    maxAttack: 0
     currentDefense: 0
+    maxDefense: 0
     currentSpAttack: 0
+    maxSpAttack: 0
     currentSpDefense: 0
+    maxSpDefense: 0
     currentSpeed: 0
+    maxSpeed: 0
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 0
 --- !u!114 &1286243128785672430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,15 +150,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: da4ebc87b00dc8a49a61c12a5a8dd7b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.08817974
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: da4ebc87b00dc8a49a61c12a5a8dd7b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.189719
+      value: 6.69
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: da4ebc87b00dc8a49a61c12a5a8dd7b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.040185
+      value: -6.01
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: da4ebc87b00dc8a49a61c12a5a8dd7b4, type: 3}
       propertyPath: m_LocalRotation.x
