@@ -71,7 +71,7 @@ public class InventarioManager : MonoBehaviour {
     public void EsconderInventario()
     {
         InventarioUI.SetActive(false);
-        if (UIManager.instance.enCombate) combatButtons.SetActive(true);
+        if (CombateSalvajeManager.instance != null || CombateNPCManager.instance != null) combatButtons.SetActive(true);
     }
     public void MostrarInventario()
     {

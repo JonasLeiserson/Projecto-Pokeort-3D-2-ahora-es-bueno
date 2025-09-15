@@ -10,6 +10,7 @@ public class PokedexUIManager : MonoBehaviour
     public Item ItemElejido;
     public bool UsandoItem;
     public static PokedexUIManager instance;
+    public GameObject panelPokedex;
 
     private void Awake()
     {
@@ -42,7 +43,7 @@ public class PokedexUIManager : MonoBehaviour
     public void ShowPokeorts(Item item)
     {
         ItemElejido = item;
-        InventarioManager.instance.espaciosDePokeorts.gameObject.SetActive(true);
+        MostrarEleccionPokeorts();
     }
 
 
@@ -54,12 +55,15 @@ public class PokedexUIManager : MonoBehaviour
         }
         slots.Clear();
 
+        int index = 0;
         foreach (PokeortInstance pokeort in PokedexPlayerManager.instance.pokedex.pokeorts)
         {
             GameObject newSlot = Instantiate(pokedexSlotPrefab, pokeortParent);
             newSlot.transform.localScale = new Vector3(0.5f, 0.3f, 0.3f);
             PokedexSlot pokedexSlot = newSlot.GetComponent<PokedexSlot>();
 
+            pokedexSlot.index = index;
+            index++;
             slots.Add(pokedexSlot);
             pokedexSlot.AddPokeort(pokeort);
         }
@@ -67,7 +71,16 @@ public class PokedexUIManager : MonoBehaviour
 
     public void EsconderEleccionpokeorts()
     {
-        pokeortParent.gameObject.SetActive(false);
+        panelPokedex.gameObject.SetActive(false);
+
+        if (CombateNPCManager.instance != null || CombateSalvajeManager.instance != null)
+            UIManager.instance.combatButtons.SetActive(true);           
+    }
+
+    public void MostrarEleccionPokeorts() 
+    {
+        UpdateUI();
+        panelPokedex.SetActive(true);
     }
 }
 

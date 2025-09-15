@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
   m_Name: Roktom
   m_EditorClassIdentifier: 
-  PokeortPrefab: {fileID: 100006, guid: c6817da30b538c949ba3282860d7883d, type: 3}
+  PokeortPrefab: {fileID: 7511928090184555776, guid: bbcc1d499ff820146a8a5577fcc42a0e,
+    type: 3}
   pokemonName: Roktom
   primaryType: 6
   secondaryType: 0
@@ -24,7 +25,7 @@ MonoBehaviour:
   baseSpDefense: 40
   baseSpeed: 30
   baseXP: 40
-  experienceScale: 0
+  experienceScale: 2
   learnableAttacks:
   - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
   - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}

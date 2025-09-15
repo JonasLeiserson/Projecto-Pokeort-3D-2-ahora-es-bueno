@@ -111,7 +111,6 @@ public class CombateSalvajeManager : MonoBehaviour
         UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
         UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
 
-
         //UI
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -276,6 +275,14 @@ public class CombateSalvajeManager : MonoBehaviour
                 pokeort.ChequearNivel();
             }
         }
+    }
+
+    public void CambiarPokeort()
+    {
+        Destroy(pokeortElegidoGO);
+        pokeortElegidoGO = InstanciarPokeort(2f, pokeortElegido.pokemonData.PokeortPrefab, player.transform);
+        UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
+        pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
     }
 
     // Update is called once per frame

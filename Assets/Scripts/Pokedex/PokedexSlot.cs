@@ -7,6 +7,7 @@ public class PokedexSlot : MonoBehaviour
     public Image icon;
     public TextMeshProUGUI pokemonNameText;
     public TextMeshProUGUI pokemonLevelText;
+    public int index;
 
     PokeortInstance pokeortInstance;
     public void AddPokeort(PokeortInstance pokeort)
@@ -30,7 +31,7 @@ public class PokedexSlot : MonoBehaviour
     }
     public void Clickeado()
     {
-        if(PokedexUIManager.instance.UsandoItem == true)
+        if (PokedexUIManager.instance.UsandoItem)
         {
             Debug.Log("Item " + PokedexUIManager.instance.ItemElejido.itemName + " usado en" + pokeortInstance.pokemonData.pokemonName);
 
@@ -54,8 +55,33 @@ public class PokedexSlot : MonoBehaviour
         }
         else
         {
-            CombateSalvajeManager.instance.indexPokeortElegido = 0;
-            CombateSalvajeManager.instance.pokeortElegido =  CombateSalvajeManager.instance.pokeortAmigos[CombateSalvajeManager.instance.indexPokeortElegido];
+            if (CombateSalvajeManager.instance != null)
+            {
+                if (index == CombateSalvajeManager.instance.indexPokeortElegido || CombateSalvajeManager.instance.pokeortAmigos[index].currentHP <= 0) 
+                {
+                    Debug.Log("No puedes elegir ese pokeort (vida 0 o ya esta en uso)");
+                    return;
+                }
+
+
+                CombateSalvajeManager.instance.indexPokeortElegido = index;
+                CombateSalvajeManager.instance.pokeortElegido = CombateSalvajeManager.instance.pokeortAmigos[CombateSalvajeManager.instance.indexPokeortElegido];
+                CombateSalvajeManager.instance.CambiarPokeort();
+                PokedexUIManager.instance.EsconderEleccionpokeorts();
+            }
+            else if (CombateNPCManager.instance != null)
+            {
+                if (index == CombateNPCManager.instance.indexPokeortElegido || CombateNPCManager.instance.pokeortAmigos[index].currentHP <= 0)
+                {
+                    Debug.Log("No puedes elegir ese pokeort (vida = 0 o ya esta en uso)");
+                    return;
+                }
+                CombateNPCManager.instance.indexPokeortElegido = index;
+                CombateNPCManager.instance.pokeortElegido = CombateNPCManager.instance.pokeortAmigos[CombateNPCManager.instance.indexPokeortElegido];
+                CombateNPCManager.instance.CambiarPokeort();
+                PokedexUIManager.instance.EsconderEleccionpokeorts();
+            }
+
         }
     }
 }

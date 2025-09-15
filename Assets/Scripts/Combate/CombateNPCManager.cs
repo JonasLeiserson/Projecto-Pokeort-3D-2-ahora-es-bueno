@@ -15,9 +15,9 @@ public class CombateNPCManager : MonoBehaviour
     public GameObject[] NPCs;
 
     Pokedex pokedex;
-    List<PokeortInstance> pokeortAmigos;
+    public List<PokeortInstance> pokeortAmigos;
     public PokeortInstance pokeortElegido;
-    int indexPokeortElegido;
+    public int indexPokeortElegido;
     GameObject pokeortElegidoGO;
     int cantidadJugador;
     List<PokeortInstance> pokeortsUtilizados = new List<PokeortInstance>();
@@ -145,11 +145,9 @@ public class CombateNPCManager : MonoBehaviour
         cantidad--;
         if (cantidad > 0)
         {
-            index++;
-            pokeortDerrotadoInstance = pokeorts[index];
-
             if (pokeortDerrotadoInstance == pokeortElegido)
             {
+                PokedexUIManager.instance.MostrarEleccionPokeorts();
                 pokeortsUtilizados.Add(pokeortDerrotadoInstance);
             }
             else
@@ -312,5 +310,13 @@ public class CombateNPCManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void CambiarPokeort()
+    {
+        Destroy(pokeortElegidoGO);
+        pokeortElegidoGO = InstanciarPokeort(2f, pokeortElegido.pokemonData.PokeortPrefab, player.transform);
+        UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
+        pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
     }
 }

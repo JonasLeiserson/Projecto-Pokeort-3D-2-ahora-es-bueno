@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -462,6 +462,7 @@ MonoBehaviour:
   player: {fileID: 3183447003146668400, guid: e65ad50409fdaee49b335ab8302cae92, type: 3}
   NPCs:
   - {fileID: 6653245723020113744, guid: 06d8a259ac1c1f34f9dc2a431a628270, type: 3}
+  pokeortAmigos: []
   pokeortElegido:
     pokemonData: {fileID: 0}
     equippedAttacks: []
@@ -483,6 +484,7 @@ MonoBehaviour:
     currentStatus: 0
     experiencePoints: 0
     experienceToNextLevel: 0
+  indexPokeortElegido: 0
 --- !u!4 &602369318
 Transform:
   m_ObjectHideFlags: 0
@@ -643,6 +645,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601521151797777812, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1877590419}
+    - target: {fileID: 3601521151797777812, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MostrarEleccionPokeorts
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80dd3f3bfc5b97145b1212a0f2e91a39, type: 3}
