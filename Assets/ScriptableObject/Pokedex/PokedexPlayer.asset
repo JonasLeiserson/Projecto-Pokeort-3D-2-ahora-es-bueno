@@ -14,46 +14,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokeorts:
   - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
-    equippedAttacks:
-    - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
-    - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
-    type1: 6
+    equippedAttacks: []
+    type1: 0
     type2: 0
-    level: 3
-    currentHP: 13
-    maxHP: 15
-    currentAttack: 7
-    maxAttack: 7
-    currentDefense: 7
-    maxDefense: 7
-    currentSpAttack: 8
-    maxSpAttack: 8
-    currentSpDefense: 8
-    maxSpDefense: 8
-    currentSpeed: 8
-    maxSpeed: 8
-    currentStatus: 0
-    experiencePoints: 9
-    experienceToNextLevel: 22
-  - pokemonData: {fileID: 11400000, guid: ef00c9b1997ed7f48a4af7303c7e23fa, type: 2}
-    equippedAttacks:
-    - {fileID: 11400000, guid: 0761801e9c5500544b1512c16c059c16, type: 2}
-    - {fileID: 11400000, guid: 0761801e9c5500544b1512c16c059c16, type: 2}
-    type1: 2
-    type2: 0
-    level: 3
+    level: 0
     currentHP: 0
-    maxHP: 15
-    currentAttack: 7
-    maxAttack: 7
-    currentDefense: 7
-    maxDefense: 7
-    currentSpAttack: 8
-    maxSpAttack: 8
-    currentSpDefense: 8
-    maxSpDefense: 8
-    currentSpeed: 8
-    maxSpeed: 8
+    maxHP: 0
+    currentAttack: 0
+    maxAttack: 0
+    currentDefense: 0
+    maxDefense: 0
+    currentSpAttack: 0
+    maxSpAttack: 0
+    currentSpDefense: 0
+    maxSpDefense: 0
+    currentSpeed: 0
+    maxSpeed: 0
     currentStatus: 0
-    experiencePoints: 9
-    experienceToNextLevel: 22
+    experiencePoints: 0
+    experienceToNextLevel: 0
+  - pokemonData: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
+    equippedAttacks: []
+    type1: 0
+    type2: 0
+    level: 0
+    currentHP: 0
+    maxHP: 0
+    currentAttack: 0
+    maxAttack: 0
+    currentDefense: 0
+    maxDefense: 0
+    currentSpAttack: 0
+    maxSpAttack: 0
+    currentSpDefense: 0
+    maxSpDefense: 0
+    currentSpeed: 0
+    maxSpeed: 0
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 0
+  - pokemonData: {fileID: 11400000, guid: ef00c9b1997ed7f48a4af7303c7e23fa, type: 2}
+    equippedAttacks: []
+    type1: 0
+    type2: 0
+    level: 0
+    currentHP: 0
+    maxHP: 0
+    currentAttack: 0
+    maxAttack: 0
+    currentDefense: 0
+    maxDefense: 0
+    currentSpAttack: 0
+    maxSpAttack: 0
+    currentSpDefense: 0
+    maxSpDefense: 0
+    currentSpeed: 0
+    maxSpeed: 0
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 0

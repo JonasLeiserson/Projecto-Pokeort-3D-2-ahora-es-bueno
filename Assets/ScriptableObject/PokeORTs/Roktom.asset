@@ -17,7 +17,7 @@ MonoBehaviour:
   pokemonName: Roktom
   primaryType: 6
   secondaryType: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 46449da412d056c4c9751ad2cdf5f7a1, type: 3}
   baseHP: 100
   baseAttack: 30
   baseDefense: 50

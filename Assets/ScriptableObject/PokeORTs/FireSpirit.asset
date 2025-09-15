@@ -17,7 +17,7 @@ MonoBehaviour:
   pokemonName: Fueguito
   primaryType: 2
   secondaryType: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7d90c6c95b6234e4893730278b5fa5fb, type: 3}
   baseHP: 34
   baseAttack: 46
   baseDefense: 37
