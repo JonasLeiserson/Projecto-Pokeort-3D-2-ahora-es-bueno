@@ -34,6 +34,7 @@ public class PokedexSlot : MonoBehaviour
         if (PokedexUIManager.instance.UsandoItem)
         {
             Debug.Log("Item " + PokedexUIManager.instance.ItemElejido.itemName + " usado en" + pokeortInstance.pokemonData.pokemonName);
+            InventarioManager.instance.EsconderInventario();
 
             switch (PokedexUIManager.instance.ItemElejido.tipo)
             {

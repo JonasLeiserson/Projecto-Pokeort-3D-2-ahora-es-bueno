@@ -56,11 +56,20 @@ MonoBehaviour:
     type2: 0
     level: 0
     currentHP: 0
+    maxHP: 0
     currentAttack: 0
+    maxAttack: 0
     currentDefense: 0
+    maxDefense: 0
     currentSpAttack: 0
+    maxSpAttack: 0
     currentSpDefense: 0
+    maxSpDefense: 0
     currentSpeed: 0
+    maxSpeed: 0
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 0
 --- !u!114 &8135758539423933643
 MonoBehaviour:
   m_ObjectHideFlags: 0
