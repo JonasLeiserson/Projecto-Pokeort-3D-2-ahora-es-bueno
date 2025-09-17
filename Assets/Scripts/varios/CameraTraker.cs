@@ -5,6 +5,7 @@ public class CameraTraker : MonoBehaviour
     private Vector2 Angulo = new Vector2(90 * Mathf.Deg2Rad, 0);
     public Transform Seguir;
     public float Distancia;
+    public float Altura;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -34,8 +35,8 @@ public class CameraTraker : MonoBehaviour
             -Mathf.Sin(Angulo.y),
             -Mathf.Sin(Angulo.x) * Mathf.Cos(Angulo.y)
         );
-
-        transform.position = Seguir.position + orbita * Distancia;
-        transform.rotation = Quaternion.LookRotation(Seguir.position - transform.position);
+        Vector3 puntoDeOrbita = Seguir.position + Vector3.up * Altura;
+        transform.position = puntoDeOrbita + orbita * Distancia;
+        transform.rotation = Quaternion.LookRotation(puntoDeOrbita - transform.position);
     }
 }
