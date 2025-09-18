@@ -193,6 +193,7 @@ public class CombateSalvajeManager : MonoBehaviour
 
         if (!ataque())
         {
+            yield return new WaitUntil(() => !dialogoManager.talking);
             Derrotado(ref pokeortAtacado, ref pokeortAtacadoGO);
         }
     }
