@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5059431085117371110}
-  - component: {fileID: 445185251520317160}
   - component: {fileID: 6590911104097434992}
   - component: {fileID: 5426261894487474230}
   - component: {fileID: 6940007615105589603}
   - component: {fileID: 6383127848796421217}
   - component: {fileID: 1286243128785672430}
+  - component: {fileID: 6020823473299365285}
   m_Layer: 0
   m_Name: FireSpirit
   m_TagString: FireSpirit
@@ -30,26 +30,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4203461898131196937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.691, y: 0.95624, z: 7.872}
-  m_LocalScale: {x: 0.30253986, y: 0.30253986, z: 0.30253986}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4623434548941386841}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &445185251520317160
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4203461898131196937}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.937091, y: 4.44658, z: 3.7712772}
-  m_Center: {x: 0.054231733, y: 5.6339583, z: -5.192559}
 --- !u!54 &6590911104097434992
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77,8 +64,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.4669013, y: 4.44658, z: 4.852419}
-  m_Center: {x: -0.029779198, y: 5.6339583, z: -5.2031507}
+  m_Size: {x: 3.8151124, y: 4.245892, z: 4.6549644}
+  m_Center: {x: -0.097102046, y: -0.9733789, z: 0.6439066}
 --- !u!114 &6940007615105589603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +124,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e297fc97c47600147a187a00f49718e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6020823473299365285
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4203461898131196937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8131995, y: 3.9752588, z: 3.4343648}
+  m_Center: {x: 0.02967, y: -1.2592645, z: 0.7131107}
 --- !u!1001 &4623434548941516505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,15 +150,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a9278a0f3a0fb8642a9b3a672e455423, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a9278a0f3a0fb8642a9b3a672e455423, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a9278a0f3a0fb8642a9b3a672e455423, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.97
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a9278a0f3a0fb8642a9b3a672e455423, type: 3}
       propertyPath: m_LocalRotation.x

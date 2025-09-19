@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6663166157315448014}
-  - component: {fileID: 6839720344080129479}
   - component: {fileID: 80130971427214640}
   - component: {fileID: 114669277455718112}
   - component: {fileID: 114035195687606370}
@@ -36,19 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6839720344080129479
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530276922107362725}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.0981674, y: 6.746063, z: 3.766922}
-  m_Center: {x: -0.03887558, y: 2.4540405, z: -1.5231247}
 --- !u!114 &80130971427214640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +109,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1300308199972031510
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686271260045730867}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 40.22945, y: 15.491733, z: 107.79044}
+  m_Center: {x: 18.311274, y: -0.07976411, z: 15.064081}
 --- !u!1001 &8686271260045632147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,6 +179,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24932fcc52b65e6439c0e0100f51592f, type: 3}
+--- !u!1 &8686271260045730867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 24932fcc52b65e6439c0e0100f51592f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8686271260045632147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8686271260045506579 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 24932fcc52b65e6439c0e0100f51592f,
