@@ -13,8 +13,12 @@ public class CamaraOrbiter : MonoBehaviour
     [SerializeField] private float x = 0.0f;
     [SerializeField] private float y = 0.0f;
 
+    private Camera CameraJugador;
     void Start()
     {
+        GameObject player = GameObject.Find("JugadorCamaraMan(Clone)");
+        target = player.transform;
+        CameraJugador = player.GetComponentInChildren<Camera>();
         DarVuelta();
     }
     void LateUpdate()
@@ -41,7 +45,7 @@ public class CamaraOrbiter : MonoBehaviour
     {
         StartCoroutine(DarVueltaCoroutine(tiempoDeVuelta));
     }
-     private IEnumerator DarVueltaCoroutine(float duration)
+    private IEnumerator DarVueltaCoroutine(float duration)
     {
         float initialX = x;
         float finalX = initialX + 180.0f;
@@ -55,7 +59,9 @@ public class CamaraOrbiter : MonoBehaviour
 
             yield return null;
         }
-        
+
         x = finalX; 
+        this.enabled = false;
+        CameraJugador.enabled = true;
     }
 }
