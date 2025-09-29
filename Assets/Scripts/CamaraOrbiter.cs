@@ -27,8 +27,11 @@ public class CamaraOrbiter : MonoBehaviour
     void LateUpdate()
     {
         // Calcular la rotación y posición de la órbita
+
+        Vector3 centerPoint = (target.position + target2.position) / 2.0f;
         Quaternion rotation = Quaternion.Euler(y, x, 0);
-        Vector3 position = rotation * new Vector3(0.0f, 3.0f, -distance) + target.position;
+
+        Vector3 position = rotation * new Vector3(0.0f, 3.0f, -distance) + centerPoint;
 
         // Actualizar la transformación de la cámara
         transform.rotation = rotation;

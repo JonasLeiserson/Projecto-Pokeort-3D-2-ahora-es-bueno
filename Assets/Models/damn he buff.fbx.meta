@@ -1,0 +1,256 @@
+fileFormatVersion: 2
+guid: 1b44303ddf2d8ec439a027805c227b58
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: arm01_l
+    100002: arm01_r
+    100004: arm02_l
+    100006: arm02_r
+    100008: body
+    100010: chest
+    100012: //RootNode
+    100014: eyebrow_l
+    100016: eyebrow_l_end
+    100018: eyebrow_r
+    100020: eyebrow_r_end
+    100022: fingerleft01_l
+    100024: fingerleft01_r
+    100026: fingerleft02_l
+    100028: fingerleft02_l_end
+    100030: fingerleft02_r
+    100032: fingerleft02_r_end
+    100034: fingermiddle01_l
+    100036: fingermiddle01_r
+    100038: fingermiddle02_l
+    100040: fingermiddle02_l_end
+    100042: fingermiddle02_r
+    100044: fingermiddle02_r_end
+    100046: fingerright01_l
+    100048: fingerright01_r
+    100050: fingerright02_l
+    100052: fingerright02_l_end
+    100054: fingerright02_r
+    100056: fingerright02_r_end
+    100058: foot01_l
+    100060: foot01_r
+    100062: foot02_l
+    100064: foot02_l_end
+    100066: foot02_r
+    100068: foot02_r_end
+    100070: hand_l
+    100072: hand_r
+    100074: head
+    100076: HellishBanbanNew_Fightpt2_New
+    100078: HellishBanbanNew_Fightpt2_New.001
+    100080: horn01_l
+    100082: horn01_r
+    100084: horn02_l
+    100086: horn02_l_end
+    100088: horn02_r
+    100090: horn02_r_end
+    100092: leg01_l
+    100094: leg01_r
+    100096: leg02_l
+    100098: leg02_r
+    100100: mouthbottom01
+    100102: mouthbottom01_end
+    100104: mouthbottom02
+    100106: mouthbottom02_end
+    100108: mouthbottom03
+    100110: mouthbottom03_end
+    100112: mouthtop01
+    100114: mouthtop01_end
+    100116: mouthtop02
+    100118: mouthtop02_end
+    100120: mouthtop03
+    100122: mouthtop03_end
+    100124: neck
+    100126: root
+    100128: tongue01
+    100130: tongue02
+    100132: tongue03
+    100134: tongue04
+    100136: tongue04_end
+    400000: arm01_l
+    400002: arm01_r
+    400004: arm02_l
+    400006: arm02_r
+    400008: body
+    400010: chest
+    400012: //RootNode
+    400014: eyebrow_l
+    400016: eyebrow_l_end
+    400018: eyebrow_r
+    400020: eyebrow_r_end
+    400022: fingerleft01_l
+    400024: fingerleft01_r
+    400026: fingerleft02_l
+    400028: fingerleft02_l_end
+    400030: fingerleft02_r
+    400032: fingerleft02_r_end
+    400034: fingermiddle01_l
+    400036: fingermiddle01_r
+    400038: fingermiddle02_l
+    400040: fingermiddle02_l_end
+    400042: fingermiddle02_r
+    400044: fingermiddle02_r_end
+    400046: fingerright01_l
+    400048: fingerright01_r
+    400050: fingerright02_l
+    400052: fingerright02_l_end
+    400054: fingerright02_r
+    400056: fingerright02_r_end
+    400058: foot01_l
+    400060: foot01_r
+    400062: foot02_l
+    400064: foot02_l_end
+    400066: foot02_r
+    400068: foot02_r_end
+    400070: hand_l
+    400072: hand_r
+    400074: head
+    400076: HellishBanbanNew_Fightpt2_New
+    400078: HellishBanbanNew_Fightpt2_New.001
+    400080: horn01_l
+    400082: horn01_r
+    400084: horn02_l
+    400086: horn02_l_end
+    400088: horn02_r
+    400090: horn02_r_end
+    400092: leg01_l
+    400094: leg01_r
+    400096: leg02_l
+    400098: leg02_r
+    400100: mouthbottom01
+    400102: mouthbottom01_end
+    400104: mouthbottom02
+    400106: mouthbottom02_end
+    400108: mouthbottom03
+    400110: mouthbottom03_end
+    400112: mouthtop01
+    400114: mouthtop01_end
+    400116: mouthtop02
+    400118: mouthtop02_end
+    400120: mouthtop03
+    400122: mouthtop03_end
+    400124: neck
+    400126: root
+    400128: tongue01
+    400130: tongue02
+    400132: tongue03
+    400134: tongue04
+    400136: tongue04_end
+    2100000: Red
+    2100002: Tongue
+    2100004: Eyes
+    2100006: Teeth
+    4300000: HellishBanbanNew_Fightpt2_New.001
+    9500000: //RootNode
+    13700000: HellishBanbanNew_Fightpt2_New.001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes
+    second: {fileID: 2100000, guid: a2470da26b3e25a4f847c69c9f185fcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: 708b1ef2fa8436e43960cee4872b2906, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Teeth
+    second: {fileID: 2100000, guid: 8ad3072bb66e9e74e9a1cb5e31a8c080, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tongue
+    second: {fileID: 2100000, guid: 6b4f7b45ab414f440a476e77955a5bb9, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
