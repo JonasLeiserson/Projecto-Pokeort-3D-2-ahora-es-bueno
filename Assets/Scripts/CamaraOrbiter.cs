@@ -5,9 +5,10 @@ public class CamaraOrbiter : MonoBehaviour
 {
     public float tiempoDeVuelta = 5.0f;
     public Transform target;
+    public Transform target2;
 
     // Distancia de la cámara al objetivo
-    public float distance = 5.0f;
+    public float distance = 3.0f;
 
     // Almacena la rotación de la órbita en ángulos de Euler
     [SerializeField] private float x = 0.0f;
@@ -17,7 +18,9 @@ public class CamaraOrbiter : MonoBehaviour
     void Start()
     {
         GameObject player = GameObject.Find("JugadorCamaraMan(Clone)");
+        GameObject Npc = GameObject.Find("darin"); 
         target = player.transform;
+        target2 = Npc.transform;
         CameraJugador = player.GetComponentInChildren<Camera>();
         DarVuelta();
     }
@@ -25,7 +28,7 @@ public class CamaraOrbiter : MonoBehaviour
     {
         // Calcular la rotación y posición de la órbita
         Quaternion rotation = Quaternion.Euler(y, x, 0);
-        Vector3 position = rotation * new Vector3(0.0f, 0.0f, -distance) + target.position;
+        Vector3 position = rotation * new Vector3(0.0f, 3.0f, -distance) + target.position;
 
         // Actualizar la transformación de la cámara
         transform.rotation = rotation;

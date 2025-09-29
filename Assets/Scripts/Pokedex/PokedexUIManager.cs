@@ -8,7 +8,7 @@ public class PokedexUIManager : MonoBehaviour
     public Transform pokeortParent;
     public GameObject pokedexSlotPrefab;
     public Item ItemElejido;
-    public bool UsandoItem;
+    public bool UsandoItem = false;
     public static PokedexUIManager instance;
     public GameObject panelPokedex;
 
