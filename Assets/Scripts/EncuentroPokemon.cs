@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EncuentroPokemon : MonoBehaviour
 {
-    string escenaCombate = "CombateSalvaje";
+    string escenaCombate = "Combate";
     string tagPokeort;
     private bool hasLoadedScene = false;
 

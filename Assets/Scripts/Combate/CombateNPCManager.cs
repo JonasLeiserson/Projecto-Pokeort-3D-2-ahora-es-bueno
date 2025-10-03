@@ -64,6 +64,11 @@ public class CombateNPCManager : MonoBehaviour
         //buscar pokeort encontrado por su tag
         NPC = NPCs.FirstOrDefault(n => n.CompareTag(encounteredNPCTag));
 
+        if (!NPC)
+        {
+            this.enabled = false;
+        }
+
         UIManager.instance.combatButtons.SetActive(true);
     }
 

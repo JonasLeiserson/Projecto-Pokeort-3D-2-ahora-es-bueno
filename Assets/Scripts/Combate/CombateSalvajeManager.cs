@@ -61,6 +61,12 @@ public class CombateSalvajeManager : MonoBehaviour
         //buscar pokeort encontrado por su tag
         encontrado = pokeorts.FirstOrDefault(p => p.CompareTag(encounteredPokemonTag));
 
+        if (!encontrado)
+        {
+            this.enabled = false;
+        }
+
+
         UIManager.instance.combatButtons.SetActive(true);
     }
 
