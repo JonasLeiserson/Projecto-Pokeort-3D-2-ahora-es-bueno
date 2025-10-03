@@ -8,7 +8,7 @@ public class CamaraOrbiter : MonoBehaviour
     public Transform target2;
 
     // Distancia de la cámara al objetivo
-    public float distance = 3.0f;
+    public float distance = 5.0f;
 
     // Almacena la rotación de la órbita en ángulos de Euler
     [SerializeField] private float x = 0.0f;
@@ -31,7 +31,7 @@ public class CamaraOrbiter : MonoBehaviour
         Vector3 centerPoint = (target.position + target2.position) / 2.0f;
         Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-        Vector3 position = rotation * new Vector3(0.0f, 3.0f, -distance) + centerPoint;
+        Vector3 position = rotation * new Vector3(0.0f, 3.0f, -(distance + 4f)) + centerPoint;
 
         // Actualizar la transformación de la cámara
         transform.rotation = rotation;

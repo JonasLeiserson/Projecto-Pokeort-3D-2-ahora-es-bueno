@@ -9,33 +9,45 @@ public class EncuentroPokemon : MonoBehaviour
     string tagPokeort;
     private bool hasLoadedScene = false;
 
-    // Start is called before the first frame update
-
     void Start()
     {
+        // Guardar el tag del objeto que representa al pokeort
         tagPokeort = gameObject.tag;
+
+        if (string.IsNullOrEmpty(tagPokeort))
+        {
+            Debug.LogError($"⚠️ El objeto {gameObject.name} no tiene un tag asignado. Asigna un tag válido en el inspector.");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
+        if (hasLoadedScene) return; // evitar doble entrada
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
-            Vector3 playerPosition = other.transform.position;
-            float playerRotation = other.transform.rotation.y;
-
-            PlayerPrefs.SetString("EncounteredPokemon", tagPokeort);
-            PlayerPrefs.SetFloat("PosX", playerPosition.x);
-            PlayerPrefs.SetFloat("PosY", playerPosition.y);
-            PlayerPrefs.SetFloat("PosZ", playerPosition.z);
-            PlayerPrefs.SetFloat("RotY", playerRotation);
-
-            if (!hasLoadedScene)
+        if (other.CompareTag("Player"))
+        {
+            if (!string.IsNullOrEmpty(tagPokeort))
             {
+                // Guardar info del Pokeort encontrado
+                PlayerPrefs.SetString("EncounteredPokemon", tagPokeort);
+
+                // Guardar posición y rotación del jugador
+                Vector3 playerPosition = other.transform.position;
+                float playerRotation = other.transform.rotation.eulerAngles.y;
+
+                PlayerPrefs.SetFloat("PosX", playerPosition.x);
+                PlayerPrefs.SetFloat("PosY", playerPosition.y);
+                PlayerPrefs.SetFloat("PosZ", playerPosition.z);
+                PlayerPrefs.SetFloat("RotY", playerRotation);
+
+                PlayerPrefs.Save();
+
+                hasLoadedScene = true;
                 SceneManager.LoadScene(escenaCombate);
+            }
+            else
+            {
+                Debug.LogError($"❌ El encuentro falló porque {gameObject.name} no tiene un tag válido.");
             }
         }
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PokedexPlayer
   m_EditorClassIdentifier: 
   pokeorts:
-  - pokemonData: {fileID: 11400000, guid: 595a37ca56ca76544bc383f53cb77bc2, type: 2}
+  - pokemonData: {fileID: 11400000, guid: ef00c9b1997ed7f48a4af7303c7e23fa, type: 2}
     equippedAttacks:
     - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
     - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
@@ -35,7 +35,7 @@ MonoBehaviour:
     currentStatus: 0
     experiencePoints: 0
     experienceToNextLevel: 800000
-  - pokemonData: {fileID: 11400000, guid: 595a37ca56ca76544bc383f53cb77bc2, type: 2}
+  - pokemonData: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
     equippedAttacks:
     - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
     - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
@@ -57,7 +57,7 @@ MonoBehaviour:
     currentStatus: 0
     experiencePoints: 0
     experienceToNextLevel: 800000
-  - pokemonData: {fileID: 11400000, guid: 595a37ca56ca76544bc383f53cb77bc2, type: 2}
+  - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
     equippedAttacks:
     - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
     - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}

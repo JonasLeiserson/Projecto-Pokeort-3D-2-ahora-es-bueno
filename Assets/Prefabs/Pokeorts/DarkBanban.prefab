@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2574043125412424124}
   - component: {fileID: 5368668197155166346}
   m_Layer: 0
-  m_Name: Dark Banban
+  m_Name: DarkBanban
   m_TagString: DarkBanban
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
