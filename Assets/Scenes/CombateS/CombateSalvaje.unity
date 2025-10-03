@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -507,7 +507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &469569591
 Transform:
   m_ObjectHideFlags: 0
@@ -1054,6 +1054,7 @@ MonoBehaviour:
   - {fileID: 7511928090184555776, guid: bbcc1d499ff820146a8a5577fcc42a0e, type: 3}
   - {fileID: 4203461898131196937, guid: a904e7696e00f3e438537642faa3cb6f, type: 3}
   - {fileID: 1530276922107362725, guid: 25d90ec4728004b4c84ccdb9b312296b, type: 3}
+  - {fileID: 2574043125412424098, guid: 241e1a66cbf125e45af8b91087b9bfd4, type: 3}
   pokeortAmigos: []
   pokeortElegido:
     pokemonData: {fileID: 0}
@@ -1465,7 +1466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1470254729
 Transform:
   m_ObjectHideFlags: 0
@@ -1494,6 +1495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiempoDeVuelta: 5
   target: {fileID: 0}
+  target2: {fileID: 0}
   distance: 5
   x: 0
   y: 0
