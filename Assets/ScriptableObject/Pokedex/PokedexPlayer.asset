@@ -13,47 +13,69 @@ MonoBehaviour:
   m_Name: PokedexPlayer
   m_EditorClassIdentifier: 
   pokeorts:
-  - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
+  - pokemonData: {fileID: 11400000, guid: 595a37ca56ca76544bc383f53cb77bc2, type: 2}
     equippedAttacks:
-    - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
-    - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
-    type1: 2
-    type2: 0
-    level: 10
-    currentHP: 10
-    maxHP: 10
-    currentAttack: 10
-    maxAttack: 10
-    currentDefense: 10
-    maxDefense: 10
-    currentSpAttack: 10
-    maxSpAttack: 10
-    currentSpDefense: 10
-    maxSpDefense: 10
-    currentSpeed: 10
-    maxSpeed: 10
+    - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
+    - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
+    type1: 10
+    type2: 11
+    level: 100
+    currentHP: 378
+    maxHP: 378
+    currentAttack: 432
+    maxAttack: 432
+    currentDefense: 271
+    maxDefense: 271
+    currentSpAttack: 191
+    maxSpAttack: 191
+    currentSpDefense: 194
+    maxSpDefense: 194
+    currentSpeed: 271
+    maxSpeed: 271
     currentStatus: 0
     experiencePoints: 0
-    experienceToNextLevel: 0
-  - pokemonData: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
+    experienceToNextLevel: 800000
+  - pokemonData: {fileID: 11400000, guid: 595a37ca56ca76544bc383f53cb77bc2, type: 2}
     equippedAttacks:
-    - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
-    - {fileID: 11400000, guid: f1f6393f9924e5b48bca2d753f861be1, type: 2}
-    type1: 8
-    type2: 0
-    level: 10
-    currentHP: 10
-    maxHP: 10
-    currentAttack: 10
-    maxAttack: 16
-    currentDefense: 11
-    maxDefense: 17
-    currentSpAttack: 16
-    maxSpAttack: 23
-    currentSpDefense: 17
-    maxSpDefense: 24
-    currentSpeed: 14
-    maxSpeed: 20
+    - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
+    - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
+    type1: 10
+    type2: 11
+    level: 100
+    currentHP: 378
+    maxHP: 378
+    currentAttack: 432
+    maxAttack: 432
+    currentDefense: 271
+    maxDefense: 271
+    currentSpAttack: 191
+    maxSpAttack: 191
+    currentSpDefense: 194
+    maxSpDefense: 194
+    currentSpeed: 271
+    maxSpeed: 271
     currentStatus: 0
     experiencePoints: 0
-    experienceToNextLevel: 0
+    experienceToNextLevel: 800000
+  - pokemonData: {fileID: 11400000, guid: 595a37ca56ca76544bc383f53cb77bc2, type: 2}
+    equippedAttacks:
+    - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
+    - {fileID: 11400000, guid: cf823d3bbb5bc3c49b459c804f11451a, type: 2}
+    type1: 10
+    type2: 11
+    level: 100
+    currentHP: 378
+    maxHP: 378
+    currentAttack: 432
+    maxAttack: 432
+    currentDefense: 271
+    maxDefense: 271
+    currentSpAttack: 191
+    maxSpAttack: 191
+    currentSpDefense: 194
+    maxSpDefense: 194
+    currentSpeed: 271
+    maxSpeed: 271
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 800000
