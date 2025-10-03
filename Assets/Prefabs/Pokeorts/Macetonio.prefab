@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6977027977017338760}
   m_Layer: 0
   m_Name: Macetonio
-  m_TagString: Untagged
+  m_TagString: Macetonio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530276922107362725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 129.09, y: -188.12, z: 103.19}
-  m_LocalScale: {x: 0.71537, y: 0.71537, z: 0.71537}
+  m_LocalPosition: {x: 129.09, y: -187.74, z: 102.95}
+  m_LocalScale: {x: 0.5609502, y: 0.5609502, z: 0.5609502}
   m_Children:
   - {fileID: 8686271260045506579}
   m_Father: {fileID: 0}

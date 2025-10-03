@@ -35,6 +35,7 @@ public class SpawnPokeort : MonoBehaviour
             yield return new WaitForSeconds(IntervaloDeSpawn);
 
             if (VerificarDistancia() && !VerificarCamara())
+
             {
                 indiceAleatorio = Random.Range(0, PokeortsSpawneables.Length);
                 Vector3 spawnPosition = GetRandomPointInCollider();
@@ -63,9 +64,16 @@ public class SpawnPokeort : MonoBehaviour
         return false; 
     }
     private bool VerificarCamara()
+{
+    Vector3 viewportPos = CamaraJugador.WorldToViewportPoint(areaDeSpawn.transform.position);
+
+    if (viewportPos.z > 0 && viewportPos.x > 0.1f && viewportPos.x < 0.9f &&
+        viewportPos.y > 0.1f && viewportPos.y < 0.9f)
     {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(CamaraJugador);
-        Debug.Log(GeometryUtility.TestPlanesAABB(planes, areaDeSpawn.bounds));
-        return GeometryUtility.TestPlanesAABB(planes, areaDeSpawn.bounds);
+        Debug.Log("Visible en cámara");
+        return true;
     }
+    return false;
+}
+
 }
