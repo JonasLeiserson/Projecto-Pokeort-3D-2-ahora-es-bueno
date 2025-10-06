@@ -134,4 +134,14 @@ public class UIManager : MonoBehaviour
 
         imagen.color = Color.Lerp(Color.red, Color.green, slider.value);
     }
+
+    public void ActualizarSliderPokedex(GameObject barraDeVida, PokeortInstance pokeort)
+    {
+        Slider slider = barraDeVida.GetComponentInChildren<Slider>();
+        Image imagen = slider.fillRect.GetComponent<Image>();
+        int vidaActual = pokeort.currentHP;
+        int vidaMaxima = pokeort.maxHP;
+        slider.value = (float)vidaActual / vidaMaxima;
+        imagen.color = Color.Lerp(Color.red, Color.green, slider.value);
+    }
 }

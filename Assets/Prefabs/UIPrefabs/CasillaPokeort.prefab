@@ -235,6 +235,7 @@ MonoBehaviour:
   icon: {fileID: 1688298149554910568}
   pokemonNameText: {fileID: 1688298149177355901}
   pokemonLevelText: {fileID: 8168532233198849398}
+  slider: {fileID: 1688298150087428882}
   index: 0
 --- !u!114 &5812948600401501033
 MonoBehaviour:

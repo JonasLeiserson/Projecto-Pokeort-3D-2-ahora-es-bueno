@@ -393,7 +393,7 @@ public class PokeortInstance
 
         return true;
     }
-    public void Curar(int valor)
+    public void Curar(int valor, Dialogue dialogo)
     {
         int cantidadACurar = maxHP * valor / 100;
         currentHP += cantidadACurar;
@@ -403,7 +403,12 @@ public class PokeortInstance
             currentHP = maxHP;
         }
 
-        Debug.Log($"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}");
+        DialogueLine line1 = new DialogueLine();
+        line1.speakerName = "Sistema";
+        line1.dialogueText = $"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}";
+
+        dialogo.dialogueLines = new List<DialogueLine> { line1 };
+        DialogoManager.instance.StartDialogue(dialogo);
     }
     public void Potenciar(int valor, Item.AtributoPotenciador atributo)
     {

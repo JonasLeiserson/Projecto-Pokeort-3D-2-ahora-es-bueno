@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Networking;
 
 public class PokedexSlot : MonoBehaviour
 {
     public Image icon;
     public TextMeshProUGUI pokemonNameText;
     public TextMeshProUGUI pokemonLevelText;
+    [SerializeField] GameObject slider;
     public int index;
 
     PokeortInstance pokeortInstance;
@@ -28,6 +30,11 @@ public class PokedexSlot : MonoBehaviour
         {
             pokemonLevelText.text = "Lvl: " + pokeort.level.ToString();
         }
+
+        if (slider != null)
+        {
+            UIManager.instance.ActualizarSliderPokedex(slider, pokeort);
+        }
     }
     public void Clickeado()
     {
@@ -36,22 +43,44 @@ public class PokedexSlot : MonoBehaviour
             Debug.Log("Item " + PokedexUIManager.instance.ItemElejido.itemName + " usado en" + pokeortInstance.pokemonData.pokemonName);
             InventarioManager.instance.EsconderInventario();
 
-            switch (PokedexUIManager.instance.ItemElejido.tipo)
+            if (CombateSalvajeManager.instance)
             {
-                case Item.Tipo.curacion:
-                    pokeortInstance.Curar(PokedexUIManager.instance.ItemElejido.ValorDeUso);
-                    break;
-                case Item.Tipo.pokeortbola:
-                    break;
-                case Item.Tipo.potenciador:
-                    pokeortInstance.Potenciar(PokedexUIManager.instance.ItemElejido.ValorDeUso, PokedexUIManager.instance.ItemElejido.atributoPotenciador);
-                    break;
-                case Item.Tipo.baya:
-                    break;
-                case Item.Tipo.otro:
-                    break;
-        }
-            PokedexUIManager.instance.EsconderEleccionpokeorts();
+                switch (PokedexUIManager.instance.ItemElejido.tipo)
+                {
+                    case Item.Tipo.curacion:
+                        pokeortInstance.Curar(PokedexUIManager.instance.ItemElejido.ValorDeUso, CombateSalvajeManager.instance.dialogoCombate);
+                        break;
+                    case Item.Tipo.pokeortbola:
+                        break;
+                    case Item.Tipo.potenciador:
+                        pokeortInstance.Potenciar(PokedexUIManager.instance.ItemElejido.ValorDeUso, PokedexUIManager.instance.ItemElejido.atributoPotenciador);
+                        break;
+                    case Item.Tipo.baya:
+                        break;
+                    case Item.Tipo.otro:
+                        break;
+                }
+            }
+            else
+            {
+                switch (PokedexUIManager.instance.ItemElejido.tipo)
+                {
+                    case Item.Tipo.curacion:
+                        pokeortInstance.Curar(PokedexUIManager.instance.ItemElejido.ValorDeUso, CombateNPCManager.instance.dialogoCombate);
+                        break;
+                    case Item.Tipo.pokeortbola:
+                        break;
+                    case Item.Tipo.potenciador:
+                        pokeortInstance.Potenciar(PokedexUIManager.instance.ItemElejido.ValorDeUso, PokedexUIManager.instance.ItemElejido.atributoPotenciador);
+                        break;
+                    case Item.Tipo.baya:
+                        break;
+                    case Item.Tipo.otro:
+                        break;
+                }
+            }
+
+                PokedexUIManager.instance.EsconderEleccionpokeorts();
                 PokedexUIManager.instance.ItemElejido = null;
         }
         else
@@ -63,7 +92,6 @@ public class PokedexSlot : MonoBehaviour
                     Debug.Log("No puedes elegir ese pokeort (vida 0 o ya esta en uso)");
                     return;
                 }
-
 
                 CombateSalvajeManager.instance.indexPokeortElegido = index;
                 CombateSalvajeManager.instance.pokeortElegido = CombateSalvajeManager.instance.pokeortAmigos[CombateSalvajeManager.instance.indexPokeortElegido];

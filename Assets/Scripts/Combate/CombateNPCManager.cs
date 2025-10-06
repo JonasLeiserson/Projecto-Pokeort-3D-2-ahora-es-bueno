@@ -111,7 +111,7 @@ public class CombateNPCManager : MonoBehaviour
         cantidadJugador = pokeortAmigos.Count;
 
         //instanciar pokeort amigo
-        pokeortElegidoGO = InstanciarPokeort(2f, pokeortElegido.pokemonData.PokeortPrefab, player.transform);
+        pokeortElegidoGO = InstanciarPokeort(4f, pokeortElegido.pokemonData.PokeortPrefab, player.transform);
 
         //instanciar pokeort amigo
         pokeortEnemigoGO = InstanciarPokeort(10f, pokeortEnemigo.pokemonData.PokeortPrefab, player.transform);
@@ -178,28 +178,29 @@ public class CombateNPCManager : MonoBehaviour
                 DialogueLine line1 = new DialogueLine();
                 line1.speakerName = "Sistema";
                 line1.dialogueText = "No tienes más Pokeorts.";
-                dialogoCombate.dialogueLines.Add(line1);
 
                 DialogueLine line2 = new DialogueLine();
                 line2.speakerName = "Sistema";
                 line2.dialogueText = "Has perdido la batalla.";
-                dialogoCombate.dialogueLines.Add(line2);
+
+                dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2 };
+                dialogoManager.StartDialogue(dialogoCombate);
             }
             else
             {
                 DialogueLine line1 = new DialogueLine();
                 line1.speakerName = "Sistema";
                 line1.dialogueText = "El rival no tiene mas pokeorts.";
-                dialogoCombate.dialogueLines.Add(line1);
 
                 DialogueLine line2 = new DialogueLine();
                 line2.speakerName = "Sistema";
                 line2.dialogueText = "Has ganado la batalla.";
-                dialogoCombate.dialogueLines.Add(line2);
+
+                dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2 };
+                dialogoManager.StartDialogue(dialogoCombate);
 
                 ganaste = true;
             }
-
 
             TerminarBatalla();
             return;
@@ -289,7 +290,7 @@ public class CombateNPCManager : MonoBehaviour
         {
             if (defensor1 == pokeortElegido)
             {
-                Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
+                Derrotado(4f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
             }
             else
             {
@@ -306,7 +307,7 @@ public class CombateNPCManager : MonoBehaviour
         {
             if (defensor2 == pokeortElegido)
             {
-                Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
+                Derrotado(4f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
             }
             else
             {
@@ -328,7 +329,7 @@ public class CombateNPCManager : MonoBehaviour
         {
             if (defensor == pokeortElegido)
             {
-                Derrotado(2f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
+                Derrotado(4f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador);
             }
             else
             {
@@ -369,17 +370,27 @@ public class CombateNPCManager : MonoBehaviour
         IEnumerator Wait()
         {
             yield return new WaitUntil(() => !dialogoManager.talking);
+            UIManager.instance.combatButtons.SetActive(false);
+            GameManager.instance.GameScene();
         }
 
         StartCoroutine(Wait());
-        GameManager.instance.GameScene();
     }
 
     public void CambiarPokeort()
     {
+        DialogueLine line1 = new DialogueLine();
+        line1.speakerName = "Sistema";
+        line1.dialogueText = "Has cambiado de " + pokeortElegidoGO.GetComponent<PokemonManager>().pokemonTemplate.pokemonName + " a " + pokeortElegido.pokemonData.pokemonName + ".";
+
+        dialogoCombate.dialogueLines = new List<DialogueLine> { line1 };
+        dialogoManager.StartDialogue(dialogoCombate);
+
         Destroy(pokeortElegidoGO);
-        pokeortElegidoGO = InstanciarPokeort(2f, pokeortElegido.pokemonData.PokeortPrefab, player.transform);
+        pokeortElegidoGO = InstanciarPokeort(4f, pokeortElegido.pokemonData.PokeortPrefab, player.transform);
         UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
         pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
+
+        StartCoroutine(EjecutarAtaqueConDialogo(AtaqueEnemigo, pokeortElegido, pokeortElegidoGO, UIManager.instance.sliderAmigo));
     }
 }
