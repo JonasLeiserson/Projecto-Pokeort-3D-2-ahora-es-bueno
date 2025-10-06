@@ -17,8 +17,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 25965d81c6bdb9f4698a80a95822143e, type: 3}
   prefab: {fileID: 0}
   valor: 100
-  cantidad: 10
-  ValorDeUso: 0
+  cantidad: 4
+  ValorDeUso: 10
   id: 1
   tipo: 0
   atributoPotenciador: 0
