@@ -725,6 +725,62 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 459222909}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &466640448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466640450}
+  - component: {fileID: 466640449}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &466640449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466640448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5632dcc1c7f1f2c4c805acd569252836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  file1: 
+  file2: 
+  file3: 
+  data:
+    pokeorts: []
+    playerPosition: {x: 0, y: 0, z: 0}
+    inventory: []
+    saveFile: 
+  pokeorts: []
+  pokedex: {fileID: 0}
+  playerPosition: {x: 0, y: 0, z: 0}
+  inventory: []
+  saveFile: 
+--- !u!4 &466640450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466640448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 227, y: 127.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &468221924
 GameObject:
   m_ObjectHideFlags: 0

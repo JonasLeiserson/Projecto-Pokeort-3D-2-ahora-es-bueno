@@ -24,6 +24,8 @@ public class CombatNPCInteraction : MonoBehaviour
             PlayerPrefs.SetFloat("PosY", playerPosition.y);
             PlayerPrefs.SetFloat("PosZ", playerPosition.z);
             PlayerPrefs.SetFloat("RotY", playerRotation);
+
+            GameManager.instance.RefreshData();
             SceneManager.LoadScene("Combate");
         }
     }

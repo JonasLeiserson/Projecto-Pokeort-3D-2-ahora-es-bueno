@@ -63,9 +63,8 @@ public class CombateSalvajeManager : MonoBehaviour
 
         if (!encontrado)
         {
-            this.enabled = false;
+            Destroy(this);
         }
-
 
         UIManager.instance.combatButtons.SetActive(true);
     }
@@ -121,6 +120,8 @@ public class CombateSalvajeManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
+        UIManager.instance.combatButtons.SetActive(true);
+        UIManager.instance.botonesIniciales.SetActive(true);
     }
 
     public bool AtaqueAmigo(GameObject botonClickeado) {
@@ -190,80 +191,114 @@ public class CombateSalvajeManager : MonoBehaviour
         return Instantiate(prefab, nuevaPosicion, Quaternion.identity);
     }
 
-    IEnumerator EjecutarAtaqueTrasDialogo(System.Func<bool> ataque, PokeortInstance pokeortAtacado, GameObject pokeortAtacadoGO)
-    {
-        yield return new WaitUntil(() => !dialogoManager.talking);
-
-        GameObject slider = (pokeortAtacado == pokeortElegido) ? UIManager.instance.sliderAmigo : UIManager.instance.sliderEnemigo;
-        UIManager.instance.ActualizarBarraDeVida(slider, pokeortAtacado);
-
-        if (!ataque())
-        {
-            Derrotado(ref pokeortAtacado, ref pokeortAtacadoGO);
-        }
-    }
-
     public void CheckBattleState(GameObject botonClickeado)
     {
         if (pokeortEnemigo.currentSpeed > pokeortElegido.currentSpeed)
         {
-
-            bool ataque = AtaqueEnemigo();
-            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
-
-            if (!ataque)
-            {
-                Derrotado(ref pokeortElegido, ref pokeortElegidoGO);
-                return;
-            }
-
-            StartCoroutine(EjecutarAtaqueTrasDialogo(() => AtaqueAmigo(botonClickeado), pokeortEnemigo, pokeortEnemigoGO));
+            // Enemigo ataca primero
+            StartCoroutine(SecuenciaDeAtaque(
+                () => AtaqueEnemigo(),
+                pokeortElegido,
+                pokeortElegidoGO,
+                () => AtaqueAmigo(botonClickeado),
+                pokeortEnemigo,
+                pokeortEnemigoGO
+            ));
         }
         else if (pokeortEnemigo.currentSpeed < pokeortElegido.currentSpeed)
         {
-            bool ataque = AtaqueAmigo(botonClickeado);
-            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
-
-            if (!ataque)
-            {
-                Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
-                return;
-            }
-
-            StartCoroutine((EjecutarAtaqueTrasDialogo(() => AtaqueEnemigo(), pokeortElegido, pokeortElegidoGO)));
+            // Amigo ataca primero
+            StartCoroutine(SecuenciaDeAtaque(
+                () => AtaqueAmigo(botonClickeado),
+                pokeortEnemigo,
+                pokeortEnemigoGO,
+                () => AtaqueEnemigo(),
+                pokeortElegido,
+                pokeortElegidoGO
+            ));
         }
         else
         {
+            // Velocidades iguales → aleatorio
             int random = Random.Range(0, 2);
             if (random == 0)
             {
-                bool ataque = AtaqueEnemigo();
-                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
-
-                if (!ataque)
-                {
-                    Derrotado(ref pokeortElegido, ref pokeortElegidoGO);
-                    return;
-                }
-
-                StartCoroutine(EjecutarAtaqueTrasDialogo(() => AtaqueAmigo(botonClickeado), pokeortEnemigo, pokeortEnemigoGO));
-
+                StartCoroutine(SecuenciaDeAtaque(
+                    () => AtaqueEnemigo(),
+                    pokeortElegido,
+                    pokeortElegidoGO,
+                    () => AtaqueAmigo(botonClickeado),
+                    pokeortEnemigo,
+                    pokeortEnemigoGO
+                ));
             }
             else
             {
-                bool ataque = AtaqueAmigo(botonClickeado);
-                UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
-
-                if (!ataque)
-                {
-                    Derrotado(ref pokeortEnemigo, ref pokeortEnemigoGO);
-                    return;
-                }
-
-                StartCoroutine((EjecutarAtaqueTrasDialogo(() => AtaqueEnemigo(), pokeortElegido, pokeortElegidoGO)));
+                StartCoroutine(SecuenciaDeAtaque(
+                    () => AtaqueAmigo(botonClickeado),
+                    pokeortEnemigo,
+                    pokeortEnemigoGO,
+                    () => AtaqueEnemigo(),
+                    pokeortElegido,
+                    pokeortElegidoGO
+                ));
             }
         }
     }
+
+    private IEnumerator SecuenciaDeAtaque(
+        System.Func<bool> ataquePrimero, PokeortInstance defensorPrimero, GameObject defensorPrimeroGO,
+        System.Func<bool> ataqueSegundo, PokeortInstance defensorSegundo, GameObject defensorSegundoGO)
+    {
+        bool ataque1 = ataquePrimero();
+
+        yield return new WaitUntil(() => !dialogoManager.talking);
+
+        GameObject slider1 = (defensorPrimero == pokeortElegido)
+            ? UIManager.instance.sliderAmigo
+            : UIManager.instance.sliderEnemigo;
+        UIManager.instance.ActualizarBarraDeVida(slider1, defensorPrimero);
+
+        if (!ataque1)
+        {
+            Derrotado(ref defensorPrimero, ref defensorPrimeroGO);
+            yield break;
+        }
+
+        bool ataque2 = ataqueSegundo();
+
+        yield return new WaitUntil(() => !dialogoManager.talking);
+
+        GameObject slider2 = (defensorSegundo == pokeortElegido)
+            ? UIManager.instance.sliderAmigo
+            : UIManager.instance.sliderEnemigo;
+        UIManager.instance.ActualizarBarraDeVida(slider2, defensorSegundo);
+
+        if (!ataque2)
+        {
+            Derrotado(ref defensorSegundo, ref defensorSegundoGO);
+        }
+    }
+
+    public IEnumerator SecuenciaDeAtaqueSimple(System.Func<bool> ataque, PokeortInstance defensor, GameObject defensorGO)
+    {
+        yield return new WaitUntil(() => !dialogoManager.talking);
+
+        bool ataqueExitoso = ataque();
+
+        yield return new WaitUntil(() => !dialogoManager.talking);
+
+        GameObject slider = (defensor == pokeortElegido)
+            ? UIManager.instance.sliderAmigo
+            : UIManager.instance.sliderEnemigo;
+        UIManager.instance.ActualizarBarraDeVida(slider, defensor);
+
+        if (!ataqueExitoso)
+        {
+            Derrotado(ref defensor, ref defensorGO);
+        }
+    }
+
 
     public void TerminarBatalla()
     {
@@ -281,6 +316,8 @@ public class CombateSalvajeManager : MonoBehaviour
                 pokeort.ChequearNivel();
             }
         }
+
+        GameManager.instance.GameScene();
     }
 
     public void CambiarPokeort()
@@ -289,6 +326,12 @@ public class CombateSalvajeManager : MonoBehaviour
         pokeortElegidoGO = InstanciarPokeort(2f, pokeortElegido.pokemonData.PokeortPrefab, player.transform);
         UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
         pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
+    }
+
+    public void HuirCombate()
+    {
+
+        TerminarBatalla();
     }
 
     // Update is called once per frame

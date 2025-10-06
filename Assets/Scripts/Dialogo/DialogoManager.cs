@@ -45,6 +45,11 @@ public class DialogoManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        if (CombateNPCManager.instance || CombateSalvajeManager.instance)
+        {
+            UIManager.instance.botonesIniciales.SetActive(false);
+        }
+
         currentDialogue = dialogue;
         currentLineIndex = 0;
         talking = true;
@@ -93,6 +98,11 @@ public class DialogoManager : MonoBehaviour
     {
         talking = false;
         dialoguePanel.SetActive(false);
+
+        if (CombateNPCManager.instance || CombateSalvajeManager.instance)
+        {
+            UIManager.instance.botonesIniciales.SetActive(true);
+        }
     }
 
     void Update()
