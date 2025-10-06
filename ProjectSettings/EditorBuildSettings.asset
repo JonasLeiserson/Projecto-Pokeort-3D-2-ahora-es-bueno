@@ -20,7 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: d8a785fd23ad2fe4894190509173ecf2
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/CombateS/CombateSalvaje.unity
-    guid: 7a8491507bcf2e34198651808b2d3438
+    path: Assets/Scenes/Estructuras/EscenaTienda.unity
+    guid: 94580b4344fe25d40a46e309d3b1409a
   m_configObjects: {}
