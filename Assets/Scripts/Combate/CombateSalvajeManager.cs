@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CombateSalvajeManager : MonoBehaviour
 {
@@ -348,6 +349,21 @@ public class CombateSalvajeManager : MonoBehaviour
         pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
 
         StartCoroutine(SecuenciaDeAtaqueSimple(AtaqueEnemigo, pokeortElegido, pokeortElegidoGO));
+    }
+
+    public void UsarPokebola(Item item)
+    {
+
+        float hpFrac = pokeortEnemigo.currentHP / pokeortEnemigo.maxHP;
+        float ratio = item.ValorDeUso;
+
+        float P = 0.05f + (1f - hpFrac) * 0.70f + (ratio - 1f) * 0.15f;
+
+        float random = UnityEngine.Random.Range(0f, 1f);
+        if (P > random)
+        {
+            pokedex.pokeorts.Add(pokeortEnemigo);
+        }
     }
 
     public void HuirCombate()

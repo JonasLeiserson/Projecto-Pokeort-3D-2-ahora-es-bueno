@@ -18,7 +18,7 @@ public class CombateNPCManager : MonoBehaviour
     public List<PokeortInstance> pokeortAmigos;
     public PokeortInstance pokeortElegido;
     public int indexPokeortElegido;
-    GameObject pokeortElegidoGO;
+    public GameObject pokeortElegidoGO;
     int cantidadJugador;
     List<PokeortInstance> pokeortsUtilizados = new List<PokeortInstance>();
 

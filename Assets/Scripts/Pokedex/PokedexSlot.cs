@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Networking;
+using System.Collections.Generic;
 
 public class PokedexSlot : MonoBehaviour
 {
@@ -40,7 +41,6 @@ public class PokedexSlot : MonoBehaviour
     {
         if (PokedexUIManager.instance.UsandoItem)
         {
-            Debug.Log("Item " + PokedexUIManager.instance.ItemElejido.itemName + " usado en" + pokeortInstance.pokemonData.pokemonName);
             InventarioManager.instance.EsconderInventario();
 
             if (CombateSalvajeManager.instance)
@@ -50,8 +50,6 @@ public class PokedexSlot : MonoBehaviour
                     case Item.Tipo.curacion:
                         pokeortInstance.Curar(PokedexUIManager.instance.ItemElejido.ValorDeUso, CombateSalvajeManager.instance.dialogoCombate);
                         break;
-                    case Item.Tipo.pokeortbola:
-                        break;
                     case Item.Tipo.potenciador:
                         pokeortInstance.Potenciar(PokedexUIManager.instance.ItemElejido.ValorDeUso, PokedexUIManager.instance.ItemElejido.atributoPotenciador);
                         break;
@@ -60,6 +58,11 @@ public class PokedexSlot : MonoBehaviour
                     case Item.Tipo.otro:
                         break;
                 }
+
+                PokedexUIManager.instance.EsconderEleccionpokeorts();
+                PokedexUIManager.instance.ItemElejido = null;
+                CombateSalvajeManager combate = CombateSalvajeManager.instance;
+                combate.StartCoroutine(combate.SecuenciaDeAtaqueSimple(combate.AtaqueEnemigo, combate.pokeortElegido, combate.pokeortElegidoGO));
             }
             else
             {
@@ -68,8 +71,6 @@ public class PokedexSlot : MonoBehaviour
                     case Item.Tipo.curacion:
                         pokeortInstance.Curar(PokedexUIManager.instance.ItemElejido.ValorDeUso, CombateNPCManager.instance.dialogoCombate);
                         break;
-                    case Item.Tipo.pokeortbola:
-                        break;
                     case Item.Tipo.potenciador:
                         pokeortInstance.Potenciar(PokedexUIManager.instance.ItemElejido.ValorDeUso, PokedexUIManager.instance.ItemElejido.atributoPotenciador);
                         break;
@@ -78,10 +79,12 @@ public class PokedexSlot : MonoBehaviour
                     case Item.Tipo.otro:
                         break;
                 }
-            }
 
                 PokedexUIManager.instance.EsconderEleccionpokeorts();
                 PokedexUIManager.instance.ItemElejido = null;
+                CombateNPCManager combate = CombateNPCManager.instance;
+                combate.StartCoroutine(combate.EjecutarAtaqueConDialogo(combate.AtaqueEnemigo, combate.pokeortElegido, combate.pokeortElegidoGO, UIManager.instance.sliderAmigo));
+            }   
         }
         else
         {
