@@ -340,6 +340,14 @@ public class CombateSalvajeManager : MonoBehaviour
                 {
                     dialogoCombate.dialogueLines = new List<DialogueLine> { line };
                 }
+
+                dialogoManager.StartDialogue(dialogoCombate);
+                
+                IEnumerator WaitXP() {
+                    yield return new WaitUntil(() => !dialogoManager.talking);
+                }
+
+                StartCoroutine(WaitXP());
             }
         }
 
@@ -372,6 +380,18 @@ public class CombateSalvajeManager : MonoBehaviour
 
     public void UsarPokebola(Item item)
     {
+        InventarioManager.instance.EsconderInventario();
+
+        if (Pokedex.MAX_POKEMONS <= pokedex.pokeorts.Count)
+        {
+            DialogueLine line1 = new DialogueLine();
+            line1.speakerName = "Sistema";
+            line1.dialogueText = "No puedes capturar más pokeorts. Tu pokedex está llena.";
+            dialogoCombate.dialogueLines = new List<DialogueLine> { line1 };
+            dialogoManager.StartDialogue(dialogoCombate);
+            return;
+        }
+
         float hpFrac = pokeortEnemigo.currentHP / pokeortEnemigo.maxHP;
         float ratio = item.ValorDeUso;
 
@@ -380,6 +400,9 @@ public class CombateSalvajeManager : MonoBehaviour
         float random = UnityEngine.Random.Range(0f, 1f);
         if (P > random)
         {
+            pokedex.pokeorts.Add(pokeortEnemigo);
+            Destroy(pokeortEnemigoGO);
+
             DialogueLine line1 = new DialogueLine();
             line1.speakerName = "Sistema";
             line1.dialogueText = "¡Has capturado a " + pokeortEnemigo.pokemonData.pokemonName + "!";
@@ -389,11 +412,29 @@ public class CombateSalvajeManager : MonoBehaviour
             line2.dialogueText = "¡Felicidades! Batalla finalizada";
 
             dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2 };
+            dialogoManager.StartDialogue(dialogoCombate);
 
-            pokedex.pokeorts.Add(pokeortEnemigo);
             ganaste = true;
 
-            TerminarBatalla();
+
+            IEnumerator Wait()
+            {
+                yield return new WaitUntil(() => !dialogoManager.talking);
+                TerminarBatalla();
+            }
+
+            StartCoroutine(Wait());
+        }
+        else
+        {
+            DialogueLine line1 = new DialogueLine();
+            line1.speakerName = "Sistema";
+            line1.dialogueText = pokeortEnemigo.pokemonData.pokemonName + " ha escapado de la pokeortbola.";
+
+            dialogoCombate.dialogueLines = new List<DialogueLine> { line1 };
+            dialogoManager.StartDialogue(dialogoCombate);
+
+            StartCoroutine(SecuenciaDeAtaqueSimple(AtaqueEnemigo, pokeortElegido, pokeortElegidoGO));
         }
     }
 
