@@ -408,6 +408,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9e7aa0c9c69d0746a787c34080704e8, type: 2}
   - {fileID: 11400000, guid: 9b85fbf942d18d745b3ce645386e64d3, type: 2}
   - {fileID: 11400000, guid: 99d50e4ec56416642b5c22f716aa30da, type: 2}
+  - {fileID: 11400000, guid: ee33587bb6f0c5e48ac7ae7c86aba4e8, type: 2}
 --- !u!4 &167618154
 Transform:
   m_ObjectHideFlags: 0
@@ -767,6 +768,7 @@ MonoBehaviour:
   playerPosition: {x: 0, y: 0, z: 0}
   inventory: []
   saveFile: 
+  playing: 0
 --- !u!4 &466640450
 Transform:
   m_ObjectHideFlags: 0

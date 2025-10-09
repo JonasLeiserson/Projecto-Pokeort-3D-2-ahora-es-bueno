@@ -352,6 +352,9 @@ public class CombateNPCManager : MonoBehaviour
         {
             foreach (PokeortInstance pokeort in pokeortsUtilizados)
             {
+                int nivelInicial = pokeort.level;
+                int totalXP = 0;
+
                 foreach (PokeortInstance pokeortEnemigo in pokeortsDerrotadosEnemigo)
                 {
                     int baseA = Mathf.RoundToInt(Mathf.Pow(2 * pokeortEnemigo.level + 10, 5 / 2));
@@ -361,9 +364,36 @@ public class CombateNPCManager : MonoBehaviour
                     int xp = baseC * baseA / baseB + 1;
                     Debug.Log(xp);
                     pokeort.experiencePoints += xp;
+                    totalXP += xp;
 
                     pokeort.ChequearNivel();
                 }
+
+                DialogueLine line = new DialogueLine();
+                line.speakerName = "Sistema";
+                line.dialogueText = pokeort.pokemonData.pokemonName + " ha ganado " + totalXP + " puntos de experiencia.";
+
+                if (pokeort.level > nivelInicial)
+                {
+                    DialogueLine line2 = new DialogueLine();
+                    line2.speakerName = "Sistema";
+                    line2.dialogueText = pokeort.pokemonData.pokemonName + " ha subido al nivel " + pokeort.level + "!";
+
+                    dialogoCombate.dialogueLines = new List<DialogueLine> { line, line2 };
+                }
+                else
+                {
+                    dialogoCombate.dialogueLines = new List<DialogueLine> { line };
+                }
+
+                dialogoManager.StartDialogue(dialogoCombate);
+
+                IEnumerator WaitXP()
+                {
+                    yield return new WaitUntil(() => !dialogoManager.talking);
+                }
+
+                StartCoroutine(WaitXP());
             }
         }
 

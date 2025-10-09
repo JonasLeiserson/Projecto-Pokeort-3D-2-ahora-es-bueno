@@ -7,19 +7,11 @@ public class Pokedex : ScriptableObject
     [SerializeField]
     public List<PokeortInstance> pokeorts = new List<PokeortInstance>();
 
-    private const int MAX_POKEMONS = 5;
+    public const int MAX_POKEMONS = 4;
 
-    public bool AddPokemon(PokeortInstance newPokemon)
+    public void AddPokemon(PokeortInstance newPokemon)
     {
-        if (pokeorts.Count < MAX_POKEMONS)
-        {
-            pokeorts.Add(newPokemon);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        pokeorts.Add(newPokemon);
     }
 
     public PokeortInstance GetPokemon(int index)
