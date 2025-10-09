@@ -9,16 +9,16 @@ public class Pokedex : ScriptableObject
 
     private const int MAX_POKEMONS = 5;
 
-    public void AddPokemon(PokeortInstance newPokemon)
+    public bool AddPokemon(PokeortInstance newPokemon)
     {
         if (pokeorts.Count < MAX_POKEMONS)
         {
             pokeorts.Add(newPokemon);
-            Debug.Log(newPokemon.pokemonData.pokemonName + " ha sido añadido al inventario.");
+            return true;
         }
         else
         {
-            Debug.Log("El inventario está lleno. No se puede añadir a " + newPokemon.pokemonData.pokemonName);
+            return false;
         }
     }
 

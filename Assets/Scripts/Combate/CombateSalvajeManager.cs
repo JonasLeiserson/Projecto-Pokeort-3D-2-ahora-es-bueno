@@ -133,7 +133,7 @@ public class CombateSalvajeManager : MonoBehaviour
     }
 
     public bool AtaqueEnemigo() {
-        int random = Random.Range(0, pokeortEnemigo.equippedAttacks.Count);
+        int random = UnityEngine.Random.Range(0, pokeortEnemigo.equippedAttacks.Count);
         ataqueElegidoEnemigo = pokeortEnemigo.equippedAttacks[random];
         return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, dialogoCombate, dialogoManager);
     }
@@ -227,7 +227,7 @@ public class CombateSalvajeManager : MonoBehaviour
         else
         {
             // Velocidades iguales → aleatorio
-            int random = Random.Range(0, 2);
+            int random = UnityEngine.Random.Range(0, 2);
             if (random == 0)
             {
                 StartCoroutine(SecuenciaDeAtaque(
@@ -313,6 +313,8 @@ public class CombateSalvajeManager : MonoBehaviour
         {
             foreach (PokeortInstance pokeort in PokeortsUtilizados)
             {
+                int nivelInicial = pokeort.level;
+
                 int baseA = Mathf.RoundToInt(Mathf.Pow(2 * pokeortEnemigo.level + 10, 5 / 2));
                 int baseB = Mathf.RoundToInt(Mathf.Pow(pokeortEnemigo.level + pokeort.level + 10, 5 / 2));
                 int baseC = Mathf.RoundToInt(pokeortEnemigo.pokemonData.baseXP * pokeortEnemigo.level / PokeortsUtilizados.Count / 5);
@@ -321,6 +323,23 @@ public class CombateSalvajeManager : MonoBehaviour
                 pokeort.experiencePoints += xp;
 
                 pokeort.ChequearNivel();
+
+                DialogueLine line = new DialogueLine();
+                line.speakerName = "Sistema";
+                line.dialogueText = pokeort.pokemonData.pokemonName + " ha ganado " + xp + " puntos de experiencia.";
+
+                if (pokeort.level > nivelInicial)
+                {
+                    DialogueLine line2 = new DialogueLine();
+                    line2.speakerName = "Sistema";
+                    line2.dialogueText = pokeort.pokemonData.pokemonName + " ha subido al nivel " + pokeort.level + "!";
+
+                    dialogoCombate.dialogueLines = new List<DialogueLine> { line, line2 };
+                }
+                else
+                {
+                    dialogoCombate.dialogueLines = new List<DialogueLine> { line };
+                }
             }
         }
 
@@ -353,7 +372,6 @@ public class CombateSalvajeManager : MonoBehaviour
 
     public void UsarPokebola(Item item)
     {
-
         float hpFrac = pokeortEnemigo.currentHP / pokeortEnemigo.maxHP;
         float ratio = item.ValorDeUso;
 
@@ -362,7 +380,20 @@ public class CombateSalvajeManager : MonoBehaviour
         float random = UnityEngine.Random.Range(0f, 1f);
         if (P > random)
         {
+            DialogueLine line1 = new DialogueLine();
+            line1.speakerName = "Sistema";
+            line1.dialogueText = "¡Has capturado a " + pokeortEnemigo.pokemonData.pokemonName + "!";
+
+            DialogueLine line2 = new DialogueLine();
+            line2.speakerName = "Sistema";
+            line2.dialogueText = "¡Felicidades! Batalla finalizada";
+
+            dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2 };
+
             pokedex.pokeorts.Add(pokeortEnemigo);
+            ganaste = true;
+
+            TerminarBatalla();
         }
     }
 
