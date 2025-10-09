@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     public GameObject botonesAtaque;
     public GameObject combatButtons;
 
+    public TextMeshProUGUI PlataText;
+
     public GameObject sliderAmigo;
     public GameObject sliderEnemigo;
 
@@ -108,7 +110,7 @@ public class UIManager : MonoBehaviour
             botonesAtaque.SetActive(true);
         }
     }
-    
+
     public void EsconderAtaques()
     {
         botonesIniciales.SetActive(true);
@@ -143,5 +145,9 @@ public class UIManager : MonoBehaviour
         int vidaMaxima = pokeort.maxHP;
         slider.value = (float)vidaActual / vidaMaxima;
         imagen.color = Color.Lerp(Color.red, Color.green, slider.value);
+    }
+    public void ActualizarTextPlata(int Plata)
+    {
+        PlataText.text = "$" + Plata.ToString();
     }
 }

@@ -345,11 +345,13 @@ public class CombateNPCManager : MonoBehaviour
 
     }
 
-    
+
     public void TerminarBatalla()
     {
         if (ganaste)
         {
+            int dineroGanado = 0;
+
             foreach (PokeortInstance pokeort in pokeortsUtilizados)
             {
                 foreach (PokeortInstance pokeortEnemigo in pokeortsDerrotadosEnemigo)
@@ -359,12 +361,26 @@ public class CombateNPCManager : MonoBehaviour
                     int baseC = Mathf.RoundToInt(pokeortEnemigo.pokemonData.baseXP * pokeortEnemigo.level / pokeortsUtilizados.Count / 5);
 
                     int xp = baseC * baseA / baseB + 1;
-                    Debug.Log(xp);
                     pokeort.experiencePoints += xp;
-
                     pokeort.ChequearNivel();
+
+                    int dineroPorPokeort = Mathf.RoundToInt(pokeortEnemigo.level * 15 + pokeortEnemigo.pokemonData.baseXP * 0.3f);
+                    dineroGanado += dineroPorPokeort;
                 }
             }
+
+            dineroGanado = Mathf.RoundToInt(dineroGanado * (1f + (pokeortsDerrotadosEnemigo.Count * 0.2f)));
+
+            // 💰 Guardar dinero en el manager
+            PlataManager.instance.AgregarPlata(dineroGanado);
+
+            // Mostrar diálogo de victoria
+            DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "El rival no tiene más Pokeorts." };
+            DialogueLine line2 = new DialogueLine { speakerName = "Sistema", dialogueText = "¡Has ganado la batalla!" };
+            DialogueLine line3 = new DialogueLine { speakerName = "Sistema", dialogueText = "Has ganado $" + dineroGanado + " por tu victoria." };
+
+            dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2, line3 };
+            dialogoManager.StartDialogue(dialogoCombate);
         }
 
         IEnumerator Wait()
@@ -376,8 +392,7 @@ public class CombateNPCManager : MonoBehaviour
 
         StartCoroutine(Wait());
     }
-
-    public void CambiarPokeort()
+        public void CambiarPokeort()
     {
         DialogueLine line1 = new DialogueLine();
         line1.speakerName = "Sistema";
