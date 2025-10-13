@@ -5,36 +5,42 @@ using TMPro;
 
 public class Vender : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject botonInteractuar; 
-    public GameObject jugador;  
-    public float distanciaActivacion = 3f; 
-    
+    public GameObject botonInteractuar;
+    public GameObject jugador;
+    public float distanciaActivacion = 6f;
     private bool dentroRango = false;
-
-
 
     void Start()
     {
         jugador = GameObject.Find("JugadorCamaraMan");
-        Debug.Log(jugador);
-        botonInteractuar = GameObject.Find("InteractuarVendedor");
+        botonInteractuar = GameObject.Find("Canvas").transform.Find("InteractuarVendedor").gameObject;
         botonInteractuar.SetActive(false);
     }
 
     void Update()
     {
-        float distancia = Vector3.Distance(transform.position, jugador.position);
+        if (jugador == null || botonInteractuar == null) return;
+
+        float distancia = Vector3.Distance(transform.position, jugador.transform.position);
 
         if (distancia <= distanciaActivacion && !dentroRango)
         {
             botonInteractuar.SetActive(true);
             dentroRango = true;
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                CargarTienda();
+            }
         }
         else if (distancia > distanciaActivacion && dentroRango)
         {
             botonInteractuar.SetActive(false);
             dentroRango = false;
         }
+    }
+    public void CargarTienda()
+    {
+
     }
 }
