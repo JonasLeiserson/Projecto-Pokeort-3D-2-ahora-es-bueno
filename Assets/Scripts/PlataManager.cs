@@ -8,7 +8,15 @@ public class PlataManager : MonoBehaviour
     public int PlataJugador = 0; 
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(this.gameObject);
     }
     void Start()
