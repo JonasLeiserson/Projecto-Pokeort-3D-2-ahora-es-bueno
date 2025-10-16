@@ -383,6 +383,8 @@ public class CombateNPCManager : MonoBehaviour
             dialogoManager.StartDialogue(dialogoCombate);
         }
 
+        GameManager.instance.trainersDefeated.Add(NPC.tag);
+
         IEnumerator Wait()
         {
             yield return new WaitUntil(() => !dialogoManager.talking);

@@ -20,8 +20,9 @@ public class GameManager : MonoBehaviour
     public List<Item> inventory;
     public string saveFile;
 
-    [SerializeField] bool playing = false;
-    
+    public List<string> trainersDefeated = new List<string>();
+    public List<string> gymsDefeated = new List<string>();
+
     void Awake() 
     {
         file1 = "1.json";
@@ -64,6 +65,8 @@ public class GameManager : MonoBehaviour
         data.playerPosition = playerPosition;
         data.inventory = inventory;
         data.saveFile = saveFile;
+        data.trainersDefeated = trainersDefeated;
+        data.gymsDefeated = gymsDefeated;
     }
 
     public void AssignData(SaveData saveData) 
@@ -72,6 +75,8 @@ public class GameManager : MonoBehaviour
 	    playerPosition = saveData.playerPosition;
 	    inventory = saveData.inventory;
 	    saveFile = saveData.saveFile;
+        trainersDefeated = saveData.trainersDefeated;
+        gymsDefeated = saveData.gymsDefeated;
 
         pokedex.pokeorts = pokeorts;
     }    
@@ -85,18 +90,21 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (playing)
+        if (scene.name == "GameScene")
         {
-            if (scene.name == "GameScene")
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
             {
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                if (player != null)
-                {
-                    player.transform.position = playerPosition;
-                }
+                player.transform.position = playerPosition;
+            }
 
-                PokedexPlayerManager.instance.pokedex = pokedex;
-                Inventario.instance.items = inventory;
+            PokedexPlayerManager.instance.pokedex = pokedex;
+            Inventario.instance.items = inventory;
+
+            foreach (string trainer in trainersDefeated)
+            {
+                GameObject trainerGO = GameObject.FindGameObjectWithTag(trainer);
+                trainerGO.GetComponent<CombatNPCInteraction>().enabled = false;
             }
         }
     }

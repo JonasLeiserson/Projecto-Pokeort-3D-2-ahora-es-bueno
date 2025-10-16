@@ -11,6 +11,8 @@ public class SaveData {
     public Vector3 playerPosition;
     public List<Item> inventory;
     public string saveFile;
+    public List<string> trainersDefeated = new List<string>();
+    public List<string> gymsDefeated = new List<string>();
 }
 
 
@@ -35,7 +37,7 @@ public static class SaveSystem {
             SaveData initialData = new SaveData 
             { 
                 pokeorts = GameManager.instance.pokedex.pokeorts, 
-                playerPosition = new Vector3(0, 0, 0), 
+                playerPosition = new Vector3(223.51f, 4.38f, 91.25f), 
                 inventory = Inventario.instance.items, 
                 saveFile = file
             };
