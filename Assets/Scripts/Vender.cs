@@ -13,7 +13,6 @@ public class Vender : MonoBehaviour
     void Start()
     {
         jugador = GameObject.Find("JugadorCamaraMan");
-        botonInteractuar = GameObject.Find("Canvas").transform.Find("InteractuarVendedor").gameObject;
         botonInteractuar.SetActive(false);
     }
 
@@ -23,24 +22,31 @@ public class Vender : MonoBehaviour
 
         float distancia = Vector3.Distance(transform.position, jugador.transform.position);
 
-        if (distancia <= distanciaActivacion && !dentroRango)
+        if (distancia <= distanciaActivacion)
         {
-            botonInteractuar.SetActive(true);
-            dentroRango = true;
+            if (!dentroRango)
+            {
+                botonInteractuar.SetActive(true);
+                dentroRango = true;
+            }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
                 CargarTienda();
             }
         }
-        else if (distancia > distanciaActivacion && dentroRango)
+        else
         {
-            botonInteractuar.SetActive(false);
-            dentroRango = false;
+            if (dentroRango)
+            {
+                botonInteractuar.SetActive(false);
+                dentroRango = false;
+            }
         }
+
     }
     public void CargarTienda()
     {
-
+        TiendaUiGenerador.instance.MostrarCanvas();
     }
 }

@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Estructuras/EscenaTienda.unity
     guid: 94580b4344fe25d40a46e309d3b1409a
+  - enabled: 1
+    path: Assets/Scenes/Estructuras/EscenaCentro.unity
+    guid: 1e8e0e13d7efbb248b527b2387c9ad15
   m_configObjects: {}

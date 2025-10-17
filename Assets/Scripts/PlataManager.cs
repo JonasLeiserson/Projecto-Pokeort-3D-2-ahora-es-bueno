@@ -17,7 +17,7 @@ public class PlataManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
     void Start()
     {
