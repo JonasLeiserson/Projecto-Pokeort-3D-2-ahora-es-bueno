@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
 
         GameManager.instance.data = SaveSystem.InitSaveFileIfNeeded(file);
         GameManager.instance.AssignData(GameManager.instance.data);
+        GameManager.instance.playing = true;
         SceneManager.LoadScene("GameScene");
     }
 
