@@ -23,24 +23,25 @@ public class GameManager : MonoBehaviour
     public List<string> trainersDefeated = new List<string>();
     public List<string> gymsDefeated = new List<string>();
 
-    void Awake() 
+    public bool playing;
+    void Awake()
     {
         file1 = "1.json";
         file2 = "2.json";
         file3 = "3.json";
 
         if (instance != null && instance != this)
-	    {
-	        Destroy(this.gameObject);
-	    }
-	    else
-	    {
-	        instance = this;
-	    }
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
 
         DontDestroyOnLoad(this.gameObject);
         PersistentRoot.Instance.AddToRoot(this.gameObject);
-        
+
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             RefreshData();
@@ -69,17 +70,17 @@ public class GameManager : MonoBehaviour
         data.gymsDefeated = gymsDefeated;
     }
 
-    public void AssignData(SaveData saveData) 
+    public void AssignData(SaveData saveData)
     {
-	    pokeorts = saveData.pokeorts;
-	    playerPosition = saveData.playerPosition;
-	    inventory = saveData.inventory;
-	    saveFile = saveData.saveFile;
+        pokeorts = saveData.pokeorts;
+        playerPosition = saveData.playerPosition;
+        inventory = saveData.inventory;
+        saveFile = saveData.saveFile;
         trainersDefeated = saveData.trainersDefeated;
         gymsDefeated = saveData.gymsDefeated;
 
         pokedex.pokeorts = pokeorts;
-    }    
+    }
 
     public void SaveGame()
     {
@@ -90,21 +91,24 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "GameScene")
+        if (playing)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
+            if (scene.name == "GameScene")
             {
-                player.transform.position = playerPosition;
-            }
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null)
+                {
+                    player.transform.position = playerPosition;
+                }
 
-            PokedexPlayerManager.instance.pokedex = pokedex;
-            Inventario.instance.items = inventory;
+                PokedexPlayerManager.instance.pokedex = pokedex;
+                Inventario.instance.items = inventory;
 
-            foreach (string trainer in trainersDefeated)
-            {
-                GameObject trainerGO = GameObject.FindGameObjectWithTag(trainer);
-                trainerGO.GetComponent<CombatNPCInteraction>().enabled = false;
+                foreach (string trainer in trainersDefeated)
+                {
+                    GameObject trainerGO = GameObject.FindGameObjectWithTag(trainer);
+                    trainerGO.GetComponent<CombatNPCInteraction>().enabled = false;
+                }
             }
         }
     }
