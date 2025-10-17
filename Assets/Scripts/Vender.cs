@@ -48,5 +48,6 @@ public class Vender : MonoBehaviour
     public void CargarTienda()
     {
         TiendaUiGenerador.instance.MostrarCanvas();
+        jugador.GetComponent<MovimientoJugador>();
     }
 }
