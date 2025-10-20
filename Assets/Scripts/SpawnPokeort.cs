@@ -49,8 +49,18 @@ public class SpawnPokeort : MonoBehaviour
         Bounds bordes = areaDeSpawn.bounds;
         float randomX = Random.Range(bordes.min.x, bordes.max.x);
         float randomZ = Random.Range(bordes.min.z, bordes.max.z);
+
+        Vector3 rayOrigin = new Vector3(randomX, bordes.max.y + 10f, randomZ);
+        RaycastHit hit;
+
+        if (Physics.Raycast(rayOrigin, Vector3.down, out hit, 100f))
+        {
+            return hit.point + Vector3.up * 0.1f;
+        }
+
         return new Vector3(randomX, bordes.center.y, randomZ);
     }
+
     private bool VerificarDistancia()
     {
         float distancia = Vector3.Distance(CamaraJugador.transform.position, areaDeSpawn.transform.position);

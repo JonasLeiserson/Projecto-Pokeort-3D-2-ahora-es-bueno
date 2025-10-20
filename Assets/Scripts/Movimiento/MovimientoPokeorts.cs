@@ -37,7 +37,7 @@ public class MovimientoPokeorts : MonoBehaviour
         float x = Random.Range(-1f, 1f);
         float z = Random.Range(-1f, 1f);
 
-        Vector3 direccionAleatoria = new Vector3(x, z).normalized;
+        Vector3 direccionAleatoria = new Vector3(x, 0f, z).normalized;
 
         Velocidad = direccionAleatoria * Random.Range(1f, 5f);
 

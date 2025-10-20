@@ -768,7 +768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &466640449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,6 +798,7 @@ MonoBehaviour:
   saveFile: 
   trainersDefeated: []
   gymsDefeated: []
+  playing: 0
 --- !u!4 &466640450
 Transform:
   m_ObjectHideFlags: 0

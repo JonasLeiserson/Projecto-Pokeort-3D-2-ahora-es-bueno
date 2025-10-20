@@ -95,6 +95,9 @@ public class GameManager : MonoBehaviour
         {
             if (scene.name == "GameScene")
             {
+                SaveGame();
+                AssignData(data);
+
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 if (player != null)
                 {
@@ -108,14 +111,20 @@ public class GameManager : MonoBehaviour
                 {
                     GameObject trainerGO = GameObject.FindGameObjectWithTag(trainer);
                     trainerGO.GetComponent<CombatNPCInteraction>().enabled = false;
+                    
+                    if (trainerGO.GetComponent<DialogoTrigger>())
+                    {
+                        trainerGO.GetComponent<DialogoTrigger>().enabled = true;
+                    }
                 }
             }
-        }
-    }
 
-    void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+            if (scene.name == "Combate")
+            {
+                SaveGame();
+                AssignData(data);
+            }
+        }
     }
 
     public void GameScene()
