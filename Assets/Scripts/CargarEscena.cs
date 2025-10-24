@@ -7,7 +7,8 @@ public enum Edificio
 {
   Casa,
   Tienda,
-  Centro
+  Centro,
+  Mundo
 }
 public class CargarEscena : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class CargarEscena : MonoBehaviour
 
                 case Edificio.Centro:
                     SceneManager.LoadScene("EscenaCentro");
+                    break;
+                case Edificio.Mundo:
+                    SceneManager.LoadScene("GameScene");
                     break;
             } 
         }

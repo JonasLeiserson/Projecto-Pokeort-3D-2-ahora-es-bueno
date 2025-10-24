@@ -202,10 +202,8 @@ public class TiendaUiGenerador : MonoBehaviour
             // Asumiendo que el prefab tiene Icono, TextoNombre y TextoCantidad
             TMP_Text nombreTxt = itemUI.transform.Find("TextoNombre")?.GetComponent<TMP_Text>();
             TMP_Text cantidadTxt = itemUI.transform.Find("TextoCantidad")?.GetComponent<TMP_Text>();
-            Image iconoImg = itemUI.transform.Find("Icono")?.GetComponent<Image>();
 
             if (nombreTxt != null) nombreTxt.text = par.Key.itemName;
-            if (iconoImg != null) iconoImg.sprite = par.Key.icon;
 
             int precioTotalItem = par.Key.valor * par.Value;
             if (cantidadTxt != null) cantidadTxt.text = $"x{par.Value} (${precioTotalItem})";
