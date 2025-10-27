@@ -15,13 +15,23 @@ public class CamaraOrbiter : MonoBehaviour
     [SerializeField] private float y = 0.0f;
 
     private Camera CameraJugador;
+
     void Start()
     {
         GameObject player = GameObject.Find("JugadorCamaraMan(Clone)");
-        GameObject Npc = GameObject.Find("darin"); 
-        target = player.transform;
-        target2 = Npc.transform;
-        CameraJugador = player.GetComponentInChildren<Camera>();
+        GameObject npc = GameObject.Find("NPCCombate(Clone)");
+
+        if (player != null) target = player.transform;
+        if (npc != null) target2 = npc.transform;
+
+        CameraJugador = player?.GetComponentInChildren<Camera>();
+
+        if (target == null || target2 == null)
+        {
+            Debug.LogError("CamaraOrbiter: Faltan referencias a target o target2.");
+            return;
+        }
+
         DarVuelta();
     }
     void LateUpdate()
