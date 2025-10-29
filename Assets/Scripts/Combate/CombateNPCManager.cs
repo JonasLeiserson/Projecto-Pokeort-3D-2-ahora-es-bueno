@@ -124,6 +124,9 @@ public class CombateNPCManager : MonoBehaviour
         pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
         pokeortEnemigoGO.GetComponent<MovimientoPokeorts>().enabled = false;
 
+        pokeortElegidoGO.GetComponent<EncuentroPokemon>().enabled = false;
+        pokeortEnemigoGO.GetComponent<EncuentroPokemon>().enabled = false;
+
         UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
         UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
 
