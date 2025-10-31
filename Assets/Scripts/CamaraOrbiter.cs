@@ -77,7 +77,5 @@ public class CamaraOrbiter : MonoBehaviour
         }
 
         x = finalX; 
-        this.enabled = false;
-        CameraJugador.enabled = true;
     }
 }

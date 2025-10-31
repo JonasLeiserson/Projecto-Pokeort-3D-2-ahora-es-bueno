@@ -17,6 +17,7 @@ public class PokedexPlayerManager : MonoBehaviour
         {
             instance = this;
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
