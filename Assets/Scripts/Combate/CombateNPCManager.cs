@@ -103,14 +103,13 @@ public class CombateNPCManager : MonoBehaviour
 
         //posicion npc enemigo (adelante del jugador, más lejos)
         float distanciaNPCEnemigo = 12f;
-        Vector3 direccionAdelante = player.transform.forward.normalized;
+        Vector3 direccionAdelante = player.transform.forward;
         Vector3 nuevaPosicionEnemigo = player.transform.position + (direccionAdelante * distanciaNPCEnemigo);
         nuevaPosicionEnemigo.y = player.transform.position.y;
 
-        // ROTACIÓN CORREGIDA NPC ENEMIGO
-        Vector3 puntoDeMiraDelNPC = player.transform.position + (direccionAdelante * 4f);
-        Vector3 direccionHaciaPuntoDeMira = (puntoDeMiraDelNPC - nuevaPosicionEnemigo).normalized;
-        Quaternion rotacionNPC = Quaternion.LookRotation(direccionHaciaPuntoDeMira, Vector3.up);
+        // ROTACIÓN NPC ENEMIGO - Debe mirar hacia el jugador
+        Vector3 direccionHaciaJugador = (player.transform.position - nuevaPosicionEnemigo).normalized;
+        Quaternion rotacionNPC = Quaternion.LookRotation(direccionHaciaJugador, Vector3.up);
         NPC = Instantiate(NPC, nuevaPosicionEnemigo, rotacionNPC);
 
         //cargar pokeorts enemigos en inventario
@@ -119,6 +118,8 @@ public class CombateNPCManager : MonoBehaviour
         {
             pokedexEnemigo = npcPokedexManager.pokedex;
             pokeortEnemigos = pokedexEnemigo.pokeorts;
+
+            ActualizarPokedexEnemiga();
 
             if (pokeortEnemigos != null && pokeortEnemigos.Count > 0)
             {
@@ -350,29 +351,24 @@ public class CombateNPCManager : MonoBehaviour
             return null;
         }
 
-        Vector3 direccionAdelante = posicionBase.forward.normalized;
+        // Usar la dirección forward del jugador (que ya tiene la rotación correcta de PlayerPrefs)
+        Vector3 direccionAdelante = posicionBase.forward;
         Vector3 nuevaPosicion = posicionBase.position + (direccionAdelante * distancia);
         nuevaPosicion.y = posicionBase.position.y;
 
         GameObject pokeortGO = Instantiate(prefab, nuevaPosicion, Quaternion.identity);
 
+        Transform children = pokeortGO.transform.GetChild(0);
+        Debug.Log("Transform hijo del Pokeort instanciado: " + children.name);
+
+        Debug.Log("PLAYERROTY"+playerRotY);
+        if (esEnemigo) children.rotation = Quaternion.Euler(children.eulerAngles.x, playerRotY - 180, children.eulerAngles.z);
+        else children.rotation = Quaternion.Euler(children.eulerAngles.x, playerRotY, children.eulerAngles.z);
+
         if (pokeortGO == null)
         {
             Debug.LogError("⚠️ No se pudo instanciar el Pokeort!");
             return null;
-        }
-
-        if (esEnemigo)
-        {
-            Vector3 puntoDeMiraAmigo = posicionBase.position + (direccionAdelante * 4f);
-            Vector3 direccionHaciaAmigo = (puntoDeMiraAmigo - pokeortGO.transform.position).normalized;
-            pokeortGO.transform.rotation = Quaternion.LookRotation(direccionHaciaAmigo, Vector3.up);
-        }
-        else // Pokeort Amigo
-        {
-            Vector3 puntoDeMiraEnemigo = posicionBase.position + (direccionAdelante * 10f);
-            Vector3 direccionHaciaEnemigo = (puntoDeMiraEnemigo - pokeortGO.transform.position).normalized;
-            pokeortGO.transform.rotation = Quaternion.LookRotation(direccionHaciaEnemigo, Vector3.up);
         }
 
         return pokeortGO;
@@ -625,5 +621,13 @@ public class CombateNPCManager : MonoBehaviour
         }
 
         StartCoroutine(EjecutarAtaqueConDialogo(AtaqueEnemigo, pokeortElegido, pokeortElegidoGO, UIManager.instance.sliderAmigo));
+    }
+
+    void ActualizarPokedexEnemiga()
+    {
+        foreach (PokeortInstance pokeort in pokeortEnemigos)
+        {
+            pokeort.currentHP = pokeort.maxHP;
+        }
     }
 }

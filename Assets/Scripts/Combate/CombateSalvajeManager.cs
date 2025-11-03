@@ -186,22 +186,25 @@ public class CombateSalvajeManager : MonoBehaviour
 
     GameObject InstanciarPokeort(float distancia, GameObject prefab, Transform posicionBase, bool esEnemigo = false)
     {
-        // Calcular posición adelante del jugador
-        Vector3 direccionAdelante = posicionBase.forward.normalized;
+        // Usar la dirección forward del jugador (que ya tiene la rotación correcta de PlayerPrefs)
+        Vector3 direccionAdelante = posicionBase.forward;
         Vector3 nuevaPosicion = posicionBase.position + (direccionAdelante * distancia);
         nuevaPosicion.y = posicionBase.position.y;
 
         GameObject pokeortGO = Instantiate(prefab, nuevaPosicion, Quaternion.identity);
 
-        // Si es enemigo, que mire hacia el jugador; si no, hacia el frente del jugador
+        // Ambos Pokémon deben mirarse entre sí a lo largo del eje forward del jugador
         if (esEnemigo)
         {
-            Vector3 direccionHaciaJugador = (posicionBase.position - pokeortGO.transform.position).normalized;
-            pokeortGO.transform.rotation = Quaternion.LookRotation(direccionHaciaJugador, Vector3.up);
+            // Pokeort enemigo mira en dirección OPUESTA al jugador (hacia atrás)
+            // Esto hace que mire hacia donde está el Pokémon amigo
+            pokeortGO.transform.rotation = Quaternion.LookRotation(-direccionAdelante, Vector3.up);
         }
         else
         {
-            pokeortGO.transform.rotation = Quaternion.LookRotation(posicionBase.forward, Vector3.up);
+            // Pokeort amigo mira en la MISMA dirección que el jugador (hacia adelante)
+            // Esto hace que mire hacia donde está el Pokémon enemigo
+            pokeortGO.transform.rotation = Quaternion.LookRotation(direccionAdelante, Vector3.up);
         }
 
         return pokeortGO;
