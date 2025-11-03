@@ -4,52 +4,62 @@ using UnityEngine;
 
 public class MovimientoPokeorts : MonoBehaviour
 {
-    private Vector2 Velocidad;
-    private float CambioDeTiempo;
-    private bool EnMovimiento;
-    // Start is called before the first frame update
+    public float velocidad = 0f; // Valor público para el Animator
+    private Vector3 direccion;
+    private float cambioDeTiempo;
+    private bool enMovimiento;
+
+    private Animator animator;
+
     void Start()
     {
+        // 🔹 Busca el Animator en los hijos del GameObject
+        animator = GetComponentInChildren<Animator>();
         EstablecerNuevaDireccion();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(EnMovimiento)
+        if (enMovimiento)
         {
-            transform.Translate(Velocidad * Time.deltaTime);
-            if (Time.time > CambioDeTiempo)
+            transform.Translate(direccion * velocidad * Time.deltaTime, Space.World);
+
+            if (Time.time > cambioDeTiempo)
             {
                 Pausa();
             }
         }
         else
         {
-            if (Time.time > CambioDeTiempo)
+            if (Time.time > cambioDeTiempo)
             {
                 EstablecerNuevaDireccion();
             }
         }
+
+        // 🔹 Enviamos la velocidad al Animator (si existe)
+        if (animator != null)
+        {
+            animator.SetFloat("Velocidad", velocidad);
+        }
     }
+
     void EstablecerNuevaDireccion()
     {
         float x = Random.Range(-1f, 1f);
         float z = Random.Range(-1f, 1f);
 
-        Vector3 direccionAleatoria = new Vector3(x, 0f, z).normalized;
+        direccion = new Vector3(x, 0f, z).normalized;
+        velocidad = Random.Range(1f, 5f);
 
-        Velocidad = direccionAleatoria * Random.Range(1f, 5f);
-
-        EnMovimiento = true;
-
-        CambioDeTiempo = Time.time + Random.Range(4f, 6f);
+        enMovimiento = true;
+        cambioDeTiempo = Time.time + Random.Range(4f, 6f);
     }
+
     void Pausa()
     {
-        Velocidad = Vector3.zero;
-        EnMovimiento = false;
-        CambioDeTiempo = Time.time + Random.Range(4f, 6f);
-
+        velocidad = 0f;
+        enMovimiento = false;
+        cambioDeTiempo = Time.time + Random.Range(4f, 6f);
     }
 }
