@@ -11,15 +11,15 @@ public class CamaraOrbiter : MonoBehaviour
     public float distance = 5.0f;
 
     // Almacena la rotación de la órbita en ángulos de Euler
-    [SerializeField] private float x = 0.0f;
-    [SerializeField] private float y = 0.0f;
+    private float x = -240.0f;
+    private float y = 10.0f;
 
     private Camera CameraJugador;
 
     void Start()
     {
-        GameObject player = GameObject.Find("JugadorCamaraMan(Clone)");
-        GameObject npc = GameObject.Find("NPCCombate(Clone)");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject npc = GameObject.FindGameObjectWithTag(PlayerPrefs.GetString("EncounteredPokemon"));
 
         if (player != null) target = player.transform;
         if (npc != null) target2 = npc.transform;
@@ -32,38 +32,59 @@ public class CamaraOrbiter : MonoBehaviour
             return;
         }
 
+        // ⭐ AJUSTAR el ángulo X inicial según la rotación del jugador
+        if (player != null)
+        {
+            // Obtener la rotación Y del jugador (guardada en PlayerPrefs)
+            float playerRotY = PlayerPrefs.GetFloat("RotY", 0f);
+            
+            // Ajustar el ángulo X de la órbita para que esté alineado con el jugador
+            // -90° es la posición lateral por defecto, sumamos la rotación del jugador
+            x = x + playerRotY;
+            
+            Debug.Log($"Rotación inicial del jugador: {playerRotY}°, ángulo X cámara: {x}°");
+        }
+
+        LateUpdate();
         DarVuelta();
     }
+
     void LateUpdate()
     {
-        // Calcular la rotación y posición de la órbita
+        if (target == null || target2 == null) return;
 
+        // Calcular la rotación y posición de la órbita
         Vector3 centerPoint = (target.position + target2.position) / 2.0f;
         Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-        Vector3 position = rotation * new Vector3(0.0f, 3.0f, -(distance + 4f)) + centerPoint;
+        Vector3 position = rotation * new Vector3(0.0f, 2.0f, -(distance + 4f)) + centerPoint;
 
         // Actualizar la transformación de la cámara
         transform.rotation = rotation;
         transform.position = position;
     }
+
     public void SetOrbitAngles(float newX, float newY)
     {
         x = newX;
         y = newY;
     }
+
     public void AdjustOrbitAngles(float deltaX, float deltaY)
     {
         x += deltaX;
         y += deltaY;
     }
+
     private void DarVuelta()
     {
         StartCoroutine(DarVueltaCoroutine(tiempoDeVuelta));
     }
+
     private IEnumerator DarVueltaCoroutine(float duration)
     {
         float initialX = x;
+        Debug.Log($"DarVuelta - Ángulo inicial: {initialX}°");
         float finalX = initialX + 180.0f;
         float timer = 0.0f;
 
@@ -76,6 +97,7 @@ public class CamaraOrbiter : MonoBehaviour
             yield return null;
         }
 
-        x = finalX; 
+        x = finalX;
+        Debug.Log($"DarVuelta - Ángulo final: {x}°");
     }
 }
