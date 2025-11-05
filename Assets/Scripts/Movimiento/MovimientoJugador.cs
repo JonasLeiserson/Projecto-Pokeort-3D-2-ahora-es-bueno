@@ -13,6 +13,7 @@ public class MovimientoJugador : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         controller = GetComponent<CharacterController>();
     }
 
