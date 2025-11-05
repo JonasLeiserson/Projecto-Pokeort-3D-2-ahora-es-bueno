@@ -8,7 +8,10 @@ public enum Edificio
   Casa,
   Tienda,
   Centro,
-  Mundo
+  Mundo,
+  Gimnasio,
+  Laboratorio
+    
 }
 public class CargarEscena : MonoBehaviour
 {
@@ -44,6 +47,12 @@ public class CargarEscena : MonoBehaviour
                     break;
                 case Edificio.Mundo:
                     SceneManager.LoadScene("GameScene");
+                    break;
+                case Edificio.Gimnasio:
+                    SceneManager.LoadScene("Gimnasio");
+                    break;
+                case Edificio.Laboratorio:
+                    SceneManager.LoadScene("Laboratorio");
                     break;
             } 
         }

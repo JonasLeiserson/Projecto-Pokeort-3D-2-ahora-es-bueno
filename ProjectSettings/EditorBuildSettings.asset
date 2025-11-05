@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Estructuras/EscenaCentro.unity
     guid: 1e8e0e13d7efbb248b527b2387c9ad15
+  - enabled: 1
+    path: Assets/Scenes/Estructuras/Gimnasio.unity
+    guid: b86610ff06f4d914188ec4b52acdeae5
+  - enabled: 1
+    path: Assets/Scenes/Estructuras/Laboratorio.unity
+    guid: 9517bf8362ad62c4888fda100e440cf2
   m_configObjects: {}

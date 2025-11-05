@@ -1,78 +1,75 @@
 fileFormatVersion: 2
-guid: 2e20c2a403eb74d4c943659d05b5caca
+guid: d4e12f85b586d1a4d8bccac5dd589de4
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: among us
-    100002: //RootNode
-    100004: Armature.001
-    100006: Bone
-    100008: Bone.001
-    100010: Bone.002
-    100012: Bone.003
-    100014: Bone.003.L
-    100016: Bone.003.R
-    100018: Bone.004
-    100020: Bone.004.L
-    100022: Bone.004.R
-    100024: Bone.005
-    100026: Bone.005.L
-    100028: Bone.005.R
-    100030: Bone.006
-    400000: among us
-    400002: //RootNode
-    400004: Armature.001
-    400006: Bone
-    400008: Bone.001
-    400010: Bone.002
-    400012: Bone.003
-    400014: Bone.003.L
-    400016: Bone.003.R
-    400018: Bone.004
-    400020: Bone.004.L
-    400022: Bone.004.R
-    400024: Bone.005
-    400026: Bone.005.L
-    400028: Bone.005.R
-    400030: Bone.006
-    2100000: Material.003
-    2100002: Material
-    2100004: ANTIFAZ
-    2100006: Material.002
-    2100008: Material.001
-    4300000: among us
-    7400000: Armature.001|ataque
-    7400002: Armature.001|idle
-    7400004: Armature.001|Kame kame ka
-    7400006: Armature.001|mov
+    100000: Armature
+    100002: cabeza
+    100004: Circle
+    100006: manodere
+    100008: manoizq
+    100010: roca1
+    100012: roca2
+    100014: roca3
+    100016: roca4
+    100018: roca5
+    100020: roca6
+    100022: rocoso
+    100024: //RootNode
+    400000: Armature
+    400002: cabeza
+    400004: Circle
+    400006: manodere
+    400008: manoizq
+    400010: roca1
+    400012: roca2
+    400014: roca3
+    400016: roca4
+    400018: roca5
+    400020: roca6
+    400022: rocoso
+    400024: //RootNode
+    2100000: Material.001
+    2100002: Material.002
+    2100004: Material.003
+    2100006: Material.004
+    2300000: Circle
+    3300000: Circle
+    4300000: rocoso
+    4300002: Circle
+    7400000: Armature|basico
+    7400002: Armature|golpesmultiples
+    7400004: Armature|idle
+    7400006: Armature|tormenta de roca
     9500000: //RootNode
-    13700000: among us
+    13700000: rocoso
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ANTIFAZ
-    second: {fileID: 2100000, guid: 689818e24bb7a2844bb9a1d5ac03d818, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: abc62045ce818bb419e5374c75c8d5c9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Material.001
-    second: {fileID: 2100000, guid: b2d3a5a9b9dd8634686831422c960c44, type: 2}
+    second: {fileID: 2100000, guid: 5a22a1d86e54dcd45b45828994740fb1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.002
-    second: {fileID: 2100000, guid: 1222cfa469722e04ab553b159c03ae65, type: 2}
+    second: {fileID: 2100000, guid: de9f0fd53c03b4f43b0869787e80e5d0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.003
-    second: {fileID: 2100000, guid: f008fd91e44a3b44993824e7fc77c728, type: 2}
+    second: {fileID: 2100000, guid: 67f3d25e569a21147ac41fba9f25cc73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 417ecc3ec393f604d89c962b196eea61, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: palette2-gradient
+    second: {fileID: 2800000, guid: ce4c5c9357cf11a44ae7b7a872c2e982, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
@@ -101,10 +98,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature.001|ataque
-      takeName: Armature.001|ataque
+      name: Armature|basico
+      takeName: Armature|basico
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 53
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -129,38 +126,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.001|idle
-      takeName: Armature.001|idle
+      name: Armature|golpesmultiples
+      takeName: Armature|golpesmultiples
       firstFrame: 0
-      lastFrame: 40
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature.001|Kame kame ka
-      takeName: Armature.001|Kame kame ka
-      firstFrame: 0
-      lastFrame: 40
+      lastFrame: 53
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -185,17 +154,45 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.001|mov
-      takeName: Armature.001|mov
+      name: Armature|idle
+      takeName: Armature|idle
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 52
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|tormenta de roca
+      takeName: Armature|tormenta de roca
+      firstFrame: 0
+      lastFrame: 110
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

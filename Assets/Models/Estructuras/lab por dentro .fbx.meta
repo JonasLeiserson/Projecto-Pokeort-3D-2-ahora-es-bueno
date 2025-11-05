@@ -1,26 +1,56 @@
 fileFormatVersion: 2
-guid: 775a85af89c83284a93993cb9b9ae9ad
+guid: ee1e01eb9591d284ca4914bb9d3360b2
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Circle
-    100002: rocoso
-    100004: //RootNode
-    400000: Circle
-    400002: rocoso
-    400004: //RootNode
-    2100000: Material.001
-    2100002: Material.002
-    2100004: Material.003
-    2100006: Material.004
-    2300000: Circle
-    2300002: rocoso
-    3300000: Circle
-    3300002: rocoso
-    4300000: rocoso
-    4300002: Circle
-    7400000: Circle|tormenta de roca
-    9500000: //RootNode
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Material.019
+    2100002: Material.009
+    2100004: Material.001
+    2100006: Material.005
+    2100008: Material.007
+    2100010: Material.011
+    2100012: Material.012
+    2100014: Material.013
+    2100016: Material.014
+    2100018: Material.015
+    2100020: Material.016
+    2100022: Material
+    2100024: Material.008
+    2100026: Material.030
+    2100028: Material.003
+    2100030: Material.002
+    2100032: Material.010
+    2100034: CORCHO
+    2100036: Material.004
+    2100038: Material.017
+    2100040: Material.028
+    2100042: Material.021
+    2100044: Material.018
+    2100046: CORCHO.001
+    2100048: Material.026
+    2100050: Material.023
+    2100052: CORCHO.002
+    2100054: Material.027
+    2100056: Material.029
+    2100058: Material.032
+    2100060: Material.037
+    2100062: Material.036
+    2100064: Material.035
+    2100066: Material.034
+    2100068: Material.033
+    2100070: Material.038
+    2100072: Material.041
+    2100074: Material.040
+    2100076: Material.043
+    2100078: Material.045
+    2100080: Material.046
+    2100082: Material.039
+    2100084: Material.031
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: lab por dentro.001
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -42,7 +72,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -74,8 +104,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -89,22 +119,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 2
     human: []
-    skeleton:
-    - name: rocosomovbueno(Clone)
-      parentName: 
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: rocoso
-      parentName: rocosomovbueno(Clone)
-      position: {x: -0, y: 2.5523276, z: 0.000000011175871}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1.5645372, y: 1.4959948, z: 1.6151767}
-    - name: Circle
-      parentName: rocosomovbueno(Clone)
-      position: {x: -0.0629114, y: 4.816319, z: 0.001029972}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1.3602945, y: 1.3602945, z: 1.3602945}
+    skeleton: []
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -114,10 +129,10 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
