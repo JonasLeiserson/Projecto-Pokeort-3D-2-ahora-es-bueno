@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4203461898131196937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.40086532, y: 0.40086532, z: 0.40086532}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1207891989954321575}
   m_Father: {fileID: 0}
@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.4669013, y: 4.44658, z: 4.852419}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.7601333, y: 4.1257215, z: 3.6518607}
+  m_Center: {x: 0.04939556, y: 2.1773708, z: -0.037922144}
 --- !u!54 &6590911104097434992
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77,8 +77,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.4669013, y: 4.44658, z: 4.852419}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.8414433, y: 4.1210527, z: 4.2730207}
+  m_Center: {x: 0.002475381, y: 2.1206455, z: 0.002581954}
 --- !u!114 &6940007615105589603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 2c6ac8406a9620142964e679f155e2eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.76
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 2c6ac8406a9620142964e679f155e2eb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -195,15 +195,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 2c6ac8406a9620142964e679f155e2eb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0928109
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 2c6ac8406a9620142964e679f155e2eb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0928109
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 2c6ac8406a9620142964e679f155e2eb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0928109
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 2c6ac8406a9620142964e679f155e2eb, type: 3}
       propertyPath: m_Controller

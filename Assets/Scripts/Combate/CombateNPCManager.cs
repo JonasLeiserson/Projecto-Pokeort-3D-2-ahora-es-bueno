@@ -358,12 +358,8 @@ public class CombateNPCManager : MonoBehaviour
 
         GameObject pokeortGO = Instantiate(prefab, nuevaPosicion, Quaternion.identity);
 
-        Transform children = pokeortGO.transform.GetChild(0);
-        Debug.Log("Transform hijo del Pokeort instanciado: " + children.name);
-
-        Debug.Log("PLAYERROTY"+playerRotY);
-        if (esEnemigo) children.rotation = Quaternion.Euler(children.eulerAngles.x, playerRotY - 180, children.eulerAngles.z);
-        else children.rotation = Quaternion.Euler(children.eulerAngles.x, playerRotY, children.eulerAngles.z);
+        if (esEnemigo) pokeortGO.transform.rotation = Quaternion.Euler(pokeortGO.transform.eulerAngles.x, playerRotY - 180, pokeortGO.transform.eulerAngles.z);
+        else pokeortGO.transform.rotation = Quaternion.Euler(pokeortGO.transform.eulerAngles.x, playerRotY, pokeortGO.transform.eulerAngles.z);
 
         if (pokeortGO == null)
         {
