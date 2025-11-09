@@ -97,7 +97,7 @@ public class CombateSalvajeManager : MonoBehaviour
 
         //instanciar y cargar pokeort enemigo (más lejos, mirando al jugador)
         Debug.Log(encontrado.name);
-        pokeortEnemigoGO = InstanciarPokeort(10f, encontrado, player.transform, true);
+        pokeortEnemigoGO = InstanciarPokeort(12f, encontrado, player.transform, true);
         pokeortEnemigoManager = pokeortEnemigoGO.GetComponent<PokemonManager>();
         pokeortEnemigo = pokeortEnemigoManager.currentPokemonInstance;
 
@@ -186,25 +186,33 @@ public class CombateSalvajeManager : MonoBehaviour
 
     GameObject InstanciarPokeort(float distancia, GameObject prefab, Transform posicionBase, bool esEnemigo = false)
     {
-        // Usar la dirección forward del jugador (que ya tiene la rotación correcta de PlayerPrefs)
-        Vector3 direccionAdelante = posicionBase.forward;
+        if (prefab == null || posicionBase == null)
+        {
+            Debug.LogError("⚠️ Prefab o posicionBase es null en InstanciarPokeort!");
+            return null;
+        }
+
+        Vector3 direccionAdelante = -posicionBase.right;
         Vector3 nuevaPosicion = posicionBase.position + (direccionAdelante * distancia);
         nuevaPosicion.y = posicionBase.position.y;
 
         GameObject pokeortGO = Instantiate(prefab, nuevaPosicion, Quaternion.identity);
 
-        // Ambos Pokémon deben mirarse entre sí a lo largo del eje forward del jugador
         if (esEnemigo)
         {
-            // Pokeort enemigo mira en dirección OPUESTA al jugador (hacia atrás)
-            // Esto hace que mire hacia donde está el Pokémon amigo
-            pokeortGO.transform.rotation = Quaternion.LookRotation(-direccionAdelante, Vector3.up);
+            Vector3 posicionAmigoEstimada = posicionBase.position + (direccionAdelante * 4f);
+            pokeortGO.transform.rotation = Quaternion.Euler(0, player.transform.eulerAngles.y - 180, 0);
         }
         else
         {
-            // Pokeort amigo mira en la MISMA dirección que el jugador (hacia adelante)
-            // Esto hace que mire hacia donde está el Pokémon enemigo
-            pokeortGO.transform.rotation = Quaternion.LookRotation(direccionAdelante, Vector3.up);
+            Vector3 posicionEnemigoEstimada = posicionBase.position + (direccionAdelante * 10f);
+            pokeortGO.transform.rotation = Quaternion.Euler(0, player.transform.eulerAngles.y, 0);
+        }
+
+        if (pokeortGO == null)
+        {
+            Debug.LogError("⚠️ No se pudo instanciar el Pokeort!");
+            return null;
         }
 
         return pokeortGO;

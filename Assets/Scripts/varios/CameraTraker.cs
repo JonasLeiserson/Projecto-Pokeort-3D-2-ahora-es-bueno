@@ -2,7 +2,7 @@
 
 public class CameraTraker : MonoBehaviour
 {
-    private Vector2 Angulo = new Vector2(90 * Mathf.Deg2Rad, 0);
+    private Vector2 Angulo = new Vector2(200, 0);
     public Transform Seguir;
     public float Distancia;
     public float Altura;

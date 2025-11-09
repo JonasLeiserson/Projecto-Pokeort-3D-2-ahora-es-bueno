@@ -18,6 +18,22 @@ public class MovimientoJugador : MonoBehaviour
 
     void Update()
     {
+        float distancia = 10f;
+
+        Vector3 direccion = -transform.right;
+
+        // Hacer el raycast
+        if (Physics.Raycast(transform.position, direccion, out RaycastHit hitInfo, distancia))
+        {
+            // Si pega, lo dibuja en rojo
+            Debug.DrawLine(transform.position, hitInfo.point, Color.red);
+        }
+        else
+        {
+            // Si no pega, lo dibuja en verde hasta la distancia máxima
+            Debug.DrawLine(transform.position, transform.position + direccion * distancia, Color.green);
+        }
+
         if (Stamina > 30)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -32,7 +48,7 @@ public class MovimientoJugador : MonoBehaviour
             MovimientoVelocidad = 5f;
         }
 
-        transform.rotation = Quaternion.Euler(0, CamaraPosicion.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Euler(0, CamaraPosicion.eulerAngles.y + 90, 0);
 
         if (controller.isGrounded)
         {

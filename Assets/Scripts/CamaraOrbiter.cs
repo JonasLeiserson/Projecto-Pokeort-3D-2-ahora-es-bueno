@@ -11,8 +11,8 @@ public class CamaraOrbiter : MonoBehaviour
     public float distance = 5.0f;
 
     // Almacena la rotación de la órbita en ángulos de Euler
-    private float x = -240.0f;
-    private float y = 10.0f;
+    public float x = 40.0f;
+    public float y = 10.0f;
 
     private Camera CameraJugador;
 

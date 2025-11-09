@@ -103,7 +103,7 @@ public class CombateNPCManager : MonoBehaviour
 
         //posicion npc enemigo (adelante del jugador, más lejos)
         float distanciaNPCEnemigo = 12f;
-        Vector3 direccionAdelante = player.transform.forward;
+        Vector3 direccionAdelante = -player.transform.right;
         Vector3 nuevaPosicionEnemigo = player.transform.position + (direccionAdelante * distanciaNPCEnemigo);
         nuevaPosicionEnemigo.y = player.transform.position.y;
 
@@ -166,7 +166,7 @@ public class CombateNPCManager : MonoBehaviour
         // Instanciar pokeorts en posiciones relativas al jugador
         if (pokeortElegido != null && pokeortElegido.pokemonData != null)
         {
-            pokeortElegidoGO = InstanciarPokeort(4f, pokeortElegido.pokemonData.PokeortPrefab, player.transform, false);
+            pokeortElegidoGO = InstanciarPokeort(3f, pokeortElegido.pokemonData.PokeortPrefab, player.transform, false);
 
             if (pokeortElegidoGO != null)
             {
@@ -180,7 +180,7 @@ public class CombateNPCManager : MonoBehaviour
 
         if (pokeortEnemigo != null && pokeortEnemigo.pokemonData != null)
         {
-            pokeortEnemigoGO = InstanciarPokeort(10f, pokeortEnemigo.pokemonData.PokeortPrefab, player.transform, true);
+            pokeortEnemigoGO = InstanciarPokeort(9f, pokeortEnemigo.pokemonData.PokeortPrefab, player.transform, true);
 
             if (pokeortEnemigoGO != null)
             {
@@ -263,7 +263,6 @@ public class CombateNPCManager : MonoBehaviour
 
                 if (PokedexUIManager.instance != null)
                 {
-                    // Al mostrar la elección, el PokedexUIManager debería gestionar la carga del nuevo Pokeort.
                     PokedexUIManager.instance.MostrarEleccionPokeorts();
                 }
             }
@@ -351,15 +350,22 @@ public class CombateNPCManager : MonoBehaviour
             return null;
         }
 
-        // Usar la dirección forward del jugador (que ya tiene la rotación correcta de PlayerPrefs)
-        Vector3 direccionAdelante = posicionBase.forward;
+        Vector3 direccionAdelante = -posicionBase.right;
         Vector3 nuevaPosicion = posicionBase.position + (direccionAdelante * distancia);
         nuevaPosicion.y = posicionBase.position.y;
 
         GameObject pokeortGO = Instantiate(prefab, nuevaPosicion, Quaternion.identity);
 
-        if (esEnemigo) pokeortGO.transform.rotation = Quaternion.Euler(pokeortGO.transform.eulerAngles.x, playerRotY - 180, pokeortGO.transform.eulerAngles.z);
-        else pokeortGO.transform.rotation = Quaternion.Euler(pokeortGO.transform.eulerAngles.x, playerRotY, pokeortGO.transform.eulerAngles.z);
+        if (esEnemigo)
+        {
+            Vector3 posicionAmigoEstimada = posicionBase.position + (direccionAdelante * 4f);
+            pokeortGO.transform.rotation = Quaternion.Euler(0, player.transform.eulerAngles.y - 180, 0);
+        }
+        else
+        {
+            Vector3 posicionEnemigoEstimada = posicionBase.position + (direccionAdelante * 10f);
+            pokeortGO.transform.rotation = Quaternion.Euler(0, player.transform.eulerAngles.y, 0);
+        }
 
         if (pokeortGO == null)
         {
@@ -454,11 +460,11 @@ public class CombateNPCManager : MonoBehaviour
         {
             if (defensor1 == pokeortElegido)
             {
-                Derrotado(4f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador, false);
+                Derrotado(3f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador, false);
             }
             else
             {
-                Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo, true);
+                Derrotado(9f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo, true);
             }
             yield break;
         }
@@ -475,11 +481,11 @@ public class CombateNPCManager : MonoBehaviour
         {
             if (defensor2 == pokeortElegido)
             {
-                Derrotado(4f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador, false);
+                Derrotado(3f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador, false);
             }
             else
             {
-                Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo, true);
+                Derrotado(9f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo, true);
             }
         }
     }
@@ -501,18 +507,18 @@ public class CombateNPCManager : MonoBehaviour
         {
             if (defensor == pokeortElegido)
             {
-                Derrotado(4f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador, false);
+                Derrotado(3f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador, false);
             }
             else
             {
-                Derrotado(10f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo, true);
+                Derrotado(9f, ref indexPokeortEnemigo, ref pokeortEnemigos, ref pokeortEnemigo, ref pokeortEnemigoGO, ref cantidadEnemigo, true);
             }
         }
     }
 
     void Update()
     {
-
+        
     }
 
     public void TerminarBatalla()
