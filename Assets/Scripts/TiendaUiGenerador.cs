@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System.Collections;
 
 public class TiendaUiGenerador : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class TiendaUiGenerador : MonoBehaviour
     }
 
     [Header("Referencias UI de la Tienda")]
-    public Transform contenedorTienda; // El padre donde se generan los ítems de la tienda
+    public Transform contenedorTienda;
     public TMP_FontAsset fuenteTMP;
     public Item[] itemsDisponibles;
     public TMP_Text textoDinero;
@@ -20,31 +21,31 @@ public class TiendaUiGenerador : MonoBehaviour
     public static TiendaUiGenerador instance;
 
     [Header("Referencias UI del Carrito")]
-    public GameObject panelCarrito; // El panel principal del carrito (ej: el área azul)
+    public GameObject panelCarrito;
     public Button botonConfirmar;
     public Button botonCancelar;
-    public Transform contenedorItemsCarrito; // El padre DENTRO del panelCarrito donde irá la lista
-    public GameObject prefabItemCarrito; // Prefab de UI para cada ítem del carrito
-    public TMP_Text textoTotalCompra; // Texto para mostrar el total
+    public Transform contenedorItemsCarrito;
+    public GameObject prefabItemCarrito;
+    public TMP_Text textoTotalCompra;
+    public Image fondoOscuro; // Opcional para el fondo oscuro detrás
 
     private List<CarritoItem> itemsEnCarrito = new List<CarritoItem>();
     private int totalCompraTemporal = 0;
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        // Asumimos que el Panel Principal del Canvas ya está desactivado al inicio
-        // y que panelCarrito es el área azul donde aparece la lista
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+
         if (panelCarrito != null)
-        {
             panelCarrito.SetActive(false);
+
+        if (fondoOscuro != null)
+        {
+            fondoOscuro.gameObject.SetActive(false);
+            CanvasGroup cgFondo = fondoOscuro.GetComponent<CanvasGroup>();
+            if (cgFondo == null) cgFondo = fondoOscuro.gameObject.AddComponent<CanvasGroup>();
+            cgFondo.alpha = 0f;
         }
     }
 
@@ -53,34 +54,31 @@ public class TiendaUiGenerador : MonoBehaviour
         CrearBotones();
         ActualizarDinero();
 
-        // Enlazar los métodos a los botones de Confirmar/Cancelar que ya existen en la escena
         if (botonConfirmar != null)
-        {
             botonConfirmar.onClick.AddListener(ConfirmarCompra);
-        }
+
         if (botonCancelar != null)
-        {
             botonCancelar.onClick.AddListener(CancelarCompra);
-        }
     }
 
+    // ========================
+    // CREACIÓN DE LOS BOTONES
+    // ========================
     void CrearBotones()
     {
         foreach (Item item in itemsDisponibles)
         {
-            // --- Panel del Ítem (Menos tosco) ---
             GameObject panel = new GameObject(item.itemName, typeof(RectTransform));
             panel.transform.SetParent(contenedorTienda, false);
 
             Image fondo = panel.AddComponent<Image>();
-            fondo.color = new Color(0.9f, 0.9f, 0.95f, 1f);
+            fondo.color = new Color(0.95f, 0.95f, 1f, 1f);
 
             RectTransform rect = panel.GetComponent<RectTransform>();
             rect.sizeDelta = new Vector2(250, 100);
 
-            // Efecto de borde/sombra
             Outline outline = panel.AddComponent<Outline>();
-            outline.effectColor = new Color(0f, 0f, 0f, 0.3f);
+            outline.effectColor = new Color(0f, 0f, 0f, 0.25f);
             outline.effectDistance = new Vector2(1, -1);
 
             // Icono
@@ -124,7 +122,7 @@ public class TiendaUiGenerador : MonoBehaviour
             rectPrecio.offsetMin = new Vector2(0, 10);
             rectPrecio.offsetMax = new Vector2(-10, 25);
 
-            // Botón Añadir al Carrito (El botón 'Añadir' verde en tu UI)
+            // Botón Añadir
             GameObject botonObj = new GameObject("BotonAnadir", typeof(Button), typeof(Image));
             botonObj.transform.SetParent(panel.transform, false);
             Image botonImg = botonObj.GetComponent<Image>();
@@ -136,7 +134,7 @@ public class TiendaUiGenerador : MonoBehaviour
             rectBoton.offsetMin = Vector2.zero;
             rectBoton.offsetMax = Vector2.zero;
 
-            // Texto del botón
+            // Texto botón
             GameObject textoBoton = new GameObject("Texto", typeof(TextMeshProUGUI));
             textoBoton.transform.SetParent(botonObj.transform, false);
             TMP_Text txtBoton = textoBoton.GetComponent<TMP_Text>();
@@ -155,17 +153,24 @@ public class TiendaUiGenerador : MonoBehaviour
         }
     }
 
+    // ========================
+    // FUNCIONALIDAD DE CARRITO
+    // ========================
     void AnadirAlCarrito(Item item)
     {
         CarritoItem carritoItem = new CarritoItem { itemReferencia = item, cantidad = 1 };
         itemsEnCarrito.Add(carritoItem);
         totalCompraTemporal += item.valor;
 
-        // Activa el panel azul central (panelCarrito) y el total.
-        if (panelCarrito != null)
+        // Feedback visual: rebote leve
+        Transform panel = contenedorTienda.Find(item.itemName);
+        if (panel != null)
         {
-            panelCarrito.SetActive(true);
+            StartCoroutine(UIAnimaciones.EscalarSuave(panel, Vector3.one * 1.1f, Vector3.one, 0.2f));
         }
+
+        if (panelCarrito != null)
+            panelCarrito.SetActive(true);
 
         ActualizarCarritoUI();
     }
@@ -174,48 +179,40 @@ public class TiendaUiGenerador : MonoBehaviour
     {
         if (contenedorItemsCarrito == null || prefabItemCarrito == null) return;
 
-        // Limpiar lista anterior
         foreach (Transform child in contenedorItemsCarrito)
-        {
             Destroy(child.gameObject);
-        }
 
-        // Resumen de ítems (agrupar)
         Dictionary<Item, int> resumen = new Dictionary<Item, int>();
         foreach (var item in itemsEnCarrito)
         {
             if (resumen.ContainsKey(item.itemReferencia))
-            {
                 resumen[item.itemReferencia]++;
-            }
             else
-            {
                 resumen.Add(item.itemReferencia, 1);
-            }
         }
 
-        // Generar UI para cada ítem agrupado
         foreach (var par in resumen)
         {
             GameObject itemUI = Instantiate(prefabItemCarrito, contenedorItemsCarrito);
-
-            // Asumiendo que el prefab tiene Icono, TextoNombre y TextoCantidad
             TMP_Text nombreTxt = itemUI.transform.Find("TextoNombre")?.GetComponent<TMP_Text>();
             TMP_Text cantidadTxt = itemUI.transform.Find("TextoCantidad")?.GetComponent<TMP_Text>();
 
             if (nombreTxt != null) nombreTxt.text = par.Key.itemName;
-
             int precioTotalItem = par.Key.valor * par.Value;
             if (cantidadTxt != null) cantidadTxt.text = $"x{par.Value} (${precioTotalItem})";
+
+            // Pequeña animación de aparición
+            itemUI.transform.localScale = Vector3.zero;
+            StartCoroutine(UIAnimaciones.EscalarSuave(itemUI.transform, Vector3.zero, Vector3.one, 0.25f));
         }
 
-        // Actualizar Total
         if (textoTotalCompra != null)
-        {
             textoTotalCompra.text = $"TOTAL: ${totalCompraTemporal}";
-        }
     }
 
+    // ========================
+    // BOTONES DE CONFIRMAR Y CANCELAR
+    // ========================
     public void ConfirmarCompra()
     {
         if (itemsEnCarrito.Count == 0) return;
@@ -225,20 +222,15 @@ public class TiendaUiGenerador : MonoBehaviour
             PlataManager.instance.QuitarDinero(totalCompraTemporal);
 
             foreach (var carritoItem in itemsEnCarrito)
-            {
                 if (Inventario.instance != null)
-                {
                     Inventario.instance.AñadirItem(carritoItem.itemReferencia, 1);
-                }
-            }
 
             ActualizarDinero();
-
             VaciarCarrito();
         }
         else
         {
-            Debug.Log("No tienes suficiente dinero para completar la compra de $" + totalCompraTemporal);
+            Debug.Log("No tienes suficiente dinero para completar la compra.");
         }
     }
 
@@ -252,28 +244,68 @@ public class TiendaUiGenerador : MonoBehaviour
         itemsEnCarrito.Clear();
         totalCompraTemporal = 0;
         if (panelCarrito != null)
-        {
             panelCarrito.SetActive(false);
-        }
         ActualizarCarritoUI();
     }
 
+    // ========================
+    // ACTUALIZAR DINERO
+    // ========================
     void ActualizarDinero()
     {
         if (textoDinero != null)
+        {
             textoDinero.text = "Dinero: $" + PlataManager.instance.PlataJugador;
+            StartCoroutine(UIAnimaciones.EscalarSuave(textoDinero.transform, Vector3.one * 1.2f, Vector3.one, 0.3f));
+        }
     }
 
+    // ========================
+    // MOSTRAR / OCULTAR TIENDA
+    // ========================
     public void MostrarCanvas()
     {
-        contenedorTienda.gameObject.transform.parent.gameObject.SetActive(true); // Activa el Canvas completo
+        GameObject canvasObj = contenedorTienda.gameObject.transform.parent.gameObject;
+        canvasObj.SetActive(true);
         InteractuarVendedor.gameObject.SetActive(false);
+
+        CanvasGroup cg = canvasObj.GetComponent<CanvasGroup>();
+        if (cg == null) cg = canvasObj.AddComponent<CanvasGroup>();
+
+        cg.alpha = 0f;
+        StartCoroutine(UIAnimaciones.CambiarAlpha(cg, 1f, 0.4f));
+        StartCoroutine(UIAnimaciones.EscalarSuave(canvasObj.transform, Vector3.zero, Vector3.one, 0.4f));
+
+        if (fondoOscuro != null)
+        {
+            fondoOscuro.gameObject.SetActive(true);
+            CanvasGroup cgFondo = fondoOscuro.GetComponent<CanvasGroup>();
+            StartCoroutine(UIAnimaciones.CambiarAlpha(cgFondo, 0.6f, 0.3f));
+        }
     }
 
     public void EsconderCanvas()
     {
-        contenedorTienda.gameObject.transform.parent.gameObject.SetActive(false); // Desactiva el Canvas completo
+        GameObject canvasObj = contenedorTienda.gameObject.transform.parent.gameObject;
+        CanvasGroup cg = canvasObj.GetComponent<CanvasGroup>();
+        if (cg == null) cg = canvasObj.AddComponent<CanvasGroup>();
+
+        StartCoroutine(CerrarTiendaSuave(canvasObj, cg));
+    }
+
+    private IEnumerator CerrarTiendaSuave(GameObject canvasObj, CanvasGroup cg)
+    {
+        yield return StartCoroutine(UIAnimaciones.CambiarAlpha(cg, 0f, 0.25f));
+        canvasObj.SetActive(false);
         InteractuarVendedor.gameObject.SetActive(true);
         CancelarCompra();
+
+        if (fondoOscuro != null)
+        {
+            CanvasGroup cgFondo = fondoOscuro.GetComponent<CanvasGroup>();
+            StartCoroutine(UIAnimaciones.CambiarAlpha(cgFondo, 0f, 0.25f));
+            yield return new WaitForSeconds(0.25f);
+            fondoOscuro.gameObject.SetActive(false);
+        }
     }
 }
