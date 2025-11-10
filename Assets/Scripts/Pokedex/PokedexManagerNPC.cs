@@ -14,6 +14,8 @@ public class PokedexManagerNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float velocidad = GetComponent<Rigidbody>().velocity.magnitude;
+        Animator animator = GetComponentInChildren<Animator>();
+        animator.SetFloat("Velocidad", velocidad); 
     }
 }

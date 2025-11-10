@@ -10,6 +10,7 @@ public class MovimientoJugador : MonoBehaviour
     public Transform CamaraPosicion; 
     private CharacterController controller;
     private Vector3 moveDirection;
+    float velocidad;
 
     void Start()
     {
@@ -70,13 +71,16 @@ public class MovimientoJugador : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                moveDirection.y = FuerzaSalto;
                 Animador.SetBool("Saltando", true);
+                moveDirection.y = FuerzaSalto;
             }
         }
 
         moveDirection.y -= Gravedad * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
+        velocidad = controller.velocity.magnitude;
+        Animador.SetFloat("Velocidad", velocidad);
     }
 
     public void LanzarPokebola()
