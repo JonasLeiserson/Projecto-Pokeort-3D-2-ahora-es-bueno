@@ -8,9 +8,6 @@ using UnityEngine.UI;
 /// </summary>
 public class UIAnimaciones : MonoBehaviour
 {
-    /// <summary>
-    /// Escala un objeto desde un tamaño inicial a uno final durante cierta duración.
-    /// </summary>
     public static IEnumerator EscalarSuave(Transform obj, Vector3 inicio, Vector3 fin, float duracion)
     {
         float t = 0;
@@ -24,9 +21,6 @@ public class UIAnimaciones : MonoBehaviour
         obj.localScale = fin;
     }
 
-    /// <summary>
-    /// Cambia la opacidad de un CanvasGroup (ideal para fades).
-    /// </summary>
     public static IEnumerator CambiarAlpha(CanvasGroup cg, float alphaFinal, float duracion)
     {
         float alphaInicial = cg.alpha;

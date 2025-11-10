@@ -267,14 +267,17 @@ public class TiendaUiGenerador : MonoBehaviour
     {
         GameObject canvasObj = contenedorTienda.gameObject.transform.parent.gameObject;
         canvasObj.SetActive(true);
+        ControlCursor.instance.MostrarCursor();
         InteractuarVendedor.gameObject.SetActive(false);
 
         CanvasGroup cg = canvasObj.GetComponent<CanvasGroup>();
         if (cg == null) cg = canvasObj.AddComponent<CanvasGroup>();
-
         cg.alpha = 0f;
+
+        contenedorTienda.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+
         StartCoroutine(UIAnimaciones.CambiarAlpha(cg, 1f, 0.4f));
-        StartCoroutine(UIAnimaciones.EscalarSuave(canvasObj.transform, Vector3.zero, Vector3.one, 0.4f));
+        StartCoroutine(UIAnimaciones.EscalarSuave(contenedorTienda, contenedorTienda.localScale, Vector3.one, 0.4f));
 
         if (fondoOscuro != null)
         {
@@ -289,7 +292,7 @@ public class TiendaUiGenerador : MonoBehaviour
         GameObject canvasObj = contenedorTienda.gameObject.transform.parent.gameObject;
         CanvasGroup cg = canvasObj.GetComponent<CanvasGroup>();
         if (cg == null) cg = canvasObj.AddComponent<CanvasGroup>();
-
+        ControlCursor.instance.BloquearCursor();
         StartCoroutine(CerrarTiendaSuave(canvasObj, cg));
     }
 
