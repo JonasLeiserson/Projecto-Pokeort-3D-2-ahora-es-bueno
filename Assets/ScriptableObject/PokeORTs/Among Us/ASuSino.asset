@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
+  m_Name: ASuSino
+  m_EditorClassIdentifier: 
+  PokeortPrefab: {fileID: 1530276922107362725, guid: 29beba4a69fc3e5478e367b226be48a2,
+    type: 3}
+  pokemonName: ASuSino
+  primaryType: 12
+  secondaryType: 5
+  icon: {fileID: 21300000, guid: 7d90c6c95b6234e4893730278b5fa5fb, type: 3}
+  baseHP: 72
+  baseAttack: 68
+  baseDefense: 48
+  baseSpAttack: 75
+  baseSpDefense: 60
+  baseSpeed: 73
+  baseXP: 70
+  experienceScale: 0
+  learnableAttacks:
+  - {fileID: 11400000, guid: 359814807d8a41d4f962402552099cab, type: 2}
+  - {fileID: 11400000, guid: 8cbf2555d0e54244995e67af6f7efc16, type: 2}
+  - {fileID: 11400000, guid: 7a9cdcb16ca0bee46a52884bcb5653f8, type: 2}
+  - {fileID: 11400000, guid: a19404c12471d5e4da1aaa31abad9097, type: 2}

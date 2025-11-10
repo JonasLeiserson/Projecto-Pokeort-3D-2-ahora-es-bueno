@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
+  m_Name: Mr peanut
+  m_EditorClassIdentifier: 
+  PokeortPrefab: {fileID: 7511928090184555776, guid: cbf3ed7f849876f46bf37b060b9b067b,
+    type: 3}
+  pokemonName: Mr. Peanut
+  primaryType: 7
+  secondaryType: 4
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  baseHP: 100
+  baseAttack: 57
+  baseDefense: 80
+  baseSpAttack: 45
+  baseSpDefense: 76
+  baseSpeed: 59
+  baseXP: 80
+  experienceScale: 2
+  learnableAttacks:
+  - {fileID: 11400000, guid: cc7d6022e9cdbd049ab2448dc60351f3, type: 2}
+  - {fileID: 11400000, guid: d8f1e2b74b76f124cbbcf70ebc6911d8, type: 2}
+  - {fileID: 11400000, guid: b51b948f2b8821e4e94c36112226abfc, type: 2}
+  - {fileID: 11400000, guid: e074227a962571b439bc5b7778979312, type: 2}
