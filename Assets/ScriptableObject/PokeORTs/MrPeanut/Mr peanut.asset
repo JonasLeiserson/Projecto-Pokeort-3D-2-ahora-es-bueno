@@ -17,7 +17,7 @@ MonoBehaviour:
   pokemonName: Mr. Peanut
   primaryType: 7
   secondaryType: 4
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 92eb7a5c655799c4c8c6835e8ac4ac8e, type: 3}
   baseHP: 100
   baseAttack: 57
   baseDefense: 80
