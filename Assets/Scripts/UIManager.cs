@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,9 +15,7 @@ public class UIManager : MonoBehaviour
     public GameObject botonesIniciales;
     public GameObject botonesAtaque;
     public GameObject combatButtons;
-
-    public TextMeshProUGUI PlataText;
-
+    public TMP_Text PlataText;
     public GameObject sliderAmigo;
     public GameObject sliderEnemigo;
 
@@ -36,8 +35,39 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         PersistentRoot.Instance.AddToRoot(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDestroy()
+    {
+        // Evita duplicar el evento si el objeto se destruye
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 👇 Cada vez que se carga una escena, busca el objeto "Dinero"
+        BuscarTextoDinero();
     }
 
+    private void Start()
+    {
+        // También lo buscamos la primera vez
+        BuscarTextoDinero();
+    }
+
+    private void BuscarTextoDinero()
+    {
+        GameObject dineroObj = GameObject.Find("Dinero");
+        if (dineroObj != null)
+        {
+            PlataText = dineroObj.GetComponent<TMP_Text>();
+            Debug.Log($"💰 Texto de dinero encontrado en la escena '{SceneManager.GetActiveScene().name}'.");
+        }
+        else
+        {
+            Debug.LogWarning($"⚠️ No se encontró el objeto 'Dinero' en la escena '{SceneManager.GetActiveScene().name}'.");
+        }
+    }
     public void CargarAtaques()
     {
         int index = 0;

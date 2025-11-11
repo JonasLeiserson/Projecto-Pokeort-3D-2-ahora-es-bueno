@@ -202,8 +202,14 @@ public class TiendaUiGenerador : MonoBehaviour
             if (cantidadTxt != null) cantidadTxt.text = $"x{par.Value} (${precioTotalItem})";
 
             // Pequeña animación de aparición
-            itemUI.transform.localScale = Vector3.zero;
-            StartCoroutine(UIAnimaciones.EscalarSuave(itemUI.transform, Vector3.zero, Vector3.one, 0.25f));
+            itemUI.transform.localScale = new Vector3(0f, 0f, 0f);
+            StartCoroutine(UIAnimaciones.EscalarSuave(
+                itemUI.transform,
+                new Vector3(0f, 0f, 0f),
+                new Vector3(1f, 0.5f, 1f),
+                0.25f
+            ));
+
         }
 
         if (textoTotalCompra != null)
@@ -277,7 +283,7 @@ public class TiendaUiGenerador : MonoBehaviour
         contenedorTienda.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
         StartCoroutine(UIAnimaciones.CambiarAlpha(cg, 1f, 0.4f));
-        StartCoroutine(UIAnimaciones.EscalarSuave(contenedorTienda, contenedorTienda.localScale, Vector3.one, 0.4f));
+        StartCoroutine(UIAnimaciones.EscalarSuave(contenedorTienda, contenedorTienda.localScale, new Vector3(1f, 1.3f, 1f), 0.4f));
 
         if (fondoOscuro != null)
         {
