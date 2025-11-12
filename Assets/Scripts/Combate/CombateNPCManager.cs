@@ -109,8 +109,10 @@ public class CombateNPCManager : MonoBehaviour
 
         // ROTACIÓN NPC ENEMIGO - Debe mirar hacia el jugador
         Vector3 direccionHaciaJugador = (player.transform.position - nuevaPosicionEnemigo).normalized;
-        Quaternion rotacionNPC = Quaternion.LookRotation(direccionHaciaJugador, Vector3.up);
+        Quaternion rotacionNPC = Quaternion.Euler(0, playerRotY - 180f, 0);
         NPC = Instantiate(NPC, nuevaPosicionEnemigo, rotacionNPC);
+
+        NPC.GetComponentInChildren<CombatNPCInteraction>().enabled = false;
 
         //cargar pokeorts enemigos en inventario
         PokedexManagerNPC npcPokedexManager = NPC.GetComponent<PokedexManagerNPC>();
