@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Plugins.meta
 guid: c3cbbbcd7ca744847b63cd0acbf1b901
+========
+guid: ee89ff03b0451aa469e452e8d28ac93d
+>>>>>>>> b33f18ed556eefd855f16b820af3b50b8693f433:Assets/Scripts/Tienda.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
