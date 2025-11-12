@@ -27,7 +27,7 @@ public class TiendaUiGenerador : MonoBehaviour
     public Transform contenedorItemsCarrito;
     public GameObject prefabItemCarrito;
     public TMP_Text textoTotalCompra;
-    public Image fondoOscuro; // Opcional para el fondo oscuro detrás
+    public Image fondoOscuro; 
 
     private List<CarritoItem> itemsEnCarrito = new List<CarritoItem>();
     private int totalCompraTemporal = 0;

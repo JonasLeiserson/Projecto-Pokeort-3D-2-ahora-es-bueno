@@ -9,7 +9,11 @@ public class Vender : MonoBehaviour
     public GameObject jugador;
     public float distanciaActivacion = 6f;
     private bool dentroRango = false;
-
+    public enum opcion{
+        CargarTienda,
+        CargarCentro
+    }
+    public opcion OpcionActual;
     void Start()
     {
         jugador = GameObject.Find("JugadorCamaraMan");
@@ -32,7 +36,15 @@ public class Vender : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                CargarTienda();
+                if(OpcionActual == opcion.CargarTienda)
+                {
+                    CargarTienda();
+                }
+                else if (OpcionActual == opcion.CargarCentro)
+                {
+                    CuracionCentro.instance.CurarPokeorts();
+                }
+
             }
         }
         else
