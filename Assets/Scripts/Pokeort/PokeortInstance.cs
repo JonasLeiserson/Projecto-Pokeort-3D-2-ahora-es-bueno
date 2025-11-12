@@ -345,8 +345,7 @@ public class PokeortInstance
                     break;
             }
 
-            dialogo.dialogueLines.Add(linea1);
-            dialogo.dialogueLines.Add(linea2);
+            dialogo.dialogueLines = new List<DialogueLine> { linea1, linea2 };
 
             Debug.Log($"{pokemonData.pokemonName} utilizo {b.attackName} y vio aumentado su {b.buffStat}");
             dialogoManager.StartDialogue(dialogo);
@@ -382,8 +381,7 @@ public class PokeortInstance
                     break;
             }
 
-            dialogo.dialogueLines.Add(linea1);
-            dialogo.dialogueLines.Add(linea2);
+            dialogo.dialogueLines = new List<DialogueLine> { linea1, linea2 };
 
             Debug.Log($"{pokemonData.pokemonName} utilizo {debuff.attackName} y vio reducido su {debuff.debuffStat}");
             dialogoManager.StartDialogue(dialogo);
@@ -393,6 +391,7 @@ public class PokeortInstance
 
         return true;
     }
+
     public void Curar(int valor, Dialogue dialogo)
     {
         int cantidadACurar = maxHP * valor / 100;

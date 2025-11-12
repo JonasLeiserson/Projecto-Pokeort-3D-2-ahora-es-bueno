@@ -72,8 +72,14 @@ public class UIManager : MonoBehaviour
     {
         int index = 0;
 
+        int cancelcount = 0;
         foreach (Transform child in botonesAtaque.transform)
         {
+            if (child == cancelar.transform && cancelcount == 0)
+            {
+                cancelcount++;
+                continue;
+            }
             Destroy(child.gameObject);
         }
 
@@ -101,13 +107,6 @@ public class UIManager : MonoBehaviour
                 {
                     nuevoTextoBoton.text = ataque.attackName;
                 }
-
-                if (index == CombateSalvajeManager.instance.pokeortElegido.equippedAttacks.Count)
-                {
-                    GameObject nuevoCancelarGO = Instantiate(cancelar.gameObject, botonesAtaque.transform);
-                    RectTransform cancelarRT = nuevoCancelarGO.GetComponent<RectTransform>();
-                    cancelarRT.anchoredPosition = posicionActual;
-                }
             }
 
             botonesAtaque.SetActive(true);
@@ -127,13 +126,6 @@ public class UIManager : MonoBehaviour
                 if (nuevoTextoBoton != null)
                 {
                     nuevoTextoBoton.text = ataque.attackName;
-                }
-
-                if (index == CombateNPCManager.instance.pokeortElegido.equippedAttacks.Count)
-                {
-                    GameObject nuevoCancelarGO = Instantiate(cancelar.gameObject, botonesAtaque.transform);
-                    RectTransform cancelarRT = nuevoCancelarGO.GetComponent<RectTransform>();
-                    cancelarRT.anchoredPosition = posicionActual;
                 }
             }
 

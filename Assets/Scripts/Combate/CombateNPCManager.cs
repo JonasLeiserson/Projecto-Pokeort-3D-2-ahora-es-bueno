@@ -112,7 +112,7 @@ public class CombateNPCManager : MonoBehaviour
         Quaternion rotacionNPC = Quaternion.Euler(0, playerRotY - 180f, 0);
         NPC = Instantiate(NPC, nuevaPosicionEnemigo, rotacionNPC);
 
-        NPC.GetComponentInChildren<CombatNPCInteraction>().enabled = false;
+        NPC.transform.Find("Campo de Vision").GetComponent<VisionNPC>().enabled = false;
 
         //cargar pokeorts enemigos en inventario
         PokedexManagerNPC npcPokedexManager = NPC.GetComponent<PokedexManagerNPC>();
@@ -217,6 +217,8 @@ public class CombateNPCManager : MonoBehaviour
         //UI Cursor
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        UIManager.instance.EsconderAtaques();
     }
 
     public bool AtaqueAmigo(GameObject botonClickeado)
@@ -238,11 +240,14 @@ public class CombateNPCManager : MonoBehaviour
     {
         if (pokeortEnemigo == null || pokeortEnemigo.equippedAttacks == null || pokeortEnemigo.equippedAttacks.Count == 0)
         {
+            Debug.Log("bege5");
             return false;
         }
 
         int random = Random.Range(0, pokeortEnemigo.equippedAttacks.Count);
         ataqueElegidoEnemigo = pokeortEnemigo.equippedAttacks[random];
+        UIManager.instance.EsconderAtaques();
+        InventarioManager.instance.EsconderInventario();
         return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, dialogoCombate, dialogoManager);
     }
 
@@ -460,6 +465,7 @@ public class CombateNPCManager : MonoBehaviour
 
         if (!resultado1)
         {
+            Debug.Log("bege");
             if (defensor1 == pokeortElegido)
             {
                 Derrotado(3f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador, false);
@@ -481,6 +487,7 @@ public class CombateNPCManager : MonoBehaviour
 
         if (!resultado2)
         {
+            Debug.Log("bege");
             if (defensor2 == pokeortElegido)
             {
                 Derrotado(3f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador, false);
@@ -525,6 +532,12 @@ public class CombateNPCManager : MonoBehaviour
 
     public void TerminarBatalla()
     {
+        pokeortElegido.currentAttack = pokeortElegido.maxAttack;
+        pokeortElegido.currentSpAttack = pokeortElegido.maxSpAttack;
+        pokeortElegido.currentDefense = pokeortElegido.maxDefense;
+        pokeortElegido.currentSpDefense = pokeortElegido.maxSpDefense;
+        pokeortElegido.currentSpeed = pokeortElegido.maxSpeed;
+
         if (ganaste)
         {
             int dineroGanado = 0;
@@ -590,6 +603,7 @@ public class CombateNPCManager : MonoBehaviour
 
     public void CambiarPokeort()
     {
+        bool fueDerrotado = pokeortElegido.currentHP <= 0;
         if (pokeortElegidoGO == null || pokeortElegido == null) return;
 
         PokemonManager pokemonManager = pokeortElegidoGO.GetComponent<PokemonManager>();
@@ -624,6 +638,7 @@ public class CombateNPCManager : MonoBehaviour
             if (movPokeort != null) movPokeort.enabled = false;
         }
 
+        if (fueDerrotado) return;
         StartCoroutine(EjecutarAtaqueConDialogo(AtaqueEnemigo, pokeortElegido, pokeortElegidoGO, UIManager.instance.sliderAmigo));
     }
 

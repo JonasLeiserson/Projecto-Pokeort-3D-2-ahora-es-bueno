@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &26995610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3601521152173417097, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+    type: 3}
+  m_PrefabInstance: {fileID: 3601521151037965178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &42261888 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3601521150064274088, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
@@ -624,6 +630,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279609933}
   m_CullTransparentMesh: 0
+--- !u!114 &313959913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 22777045101289966, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+    type: 3}
+  m_PrefabInstance: {fileID: 3601521151037965178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &319846683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,7 +1619,7 @@ MonoBehaviour:
     type: 3}
   ItemElejido: {fileID: 0}
   UsandoItem: 0
-  panelPokedex: {fileID: 0}
+  panelPokedex: {fileID: 26995610}
 --- !u!4 &787541451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3110878860643193337, guid: 77a63aa899398ea4f90897dc15003eca,
@@ -2624,6 +2642,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 30861ce94a10db54eb5a2669cac5b87f, type: 3}
+--- !u!114 &1513733833 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5056898964635606538, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+    type: 3}
+  m_PrefabInstance: {fileID: 3601521151037965178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1540993567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3601521151688651109, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
@@ -2977,11 +3007,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botonAtaque: {fileID: 772541982141672749, guid: 000aa39b4f865c84691d2873779ebc8d,
     type: 3}
-  cancelar: {fileID: 0}
+  cancelar: {fileID: 313959913}
   botonesIniciales: {fileID: 949576692}
   botonesAtaque: {fileID: 1898766305}
   combatButtons: {fileID: 2146677307}
-  PlataText: {fileID: 0}
+  PlataText: {fileID: 1513733833}
   sliderAmigo: {fileID: 1313294436}
   sliderEnemigo: {fileID: 184432150}
   enCombate: 0
@@ -4163,6 +4193,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993788589939113909, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80dd3f3bfc5b97145b1212a0f2e91a39, type: 3}
