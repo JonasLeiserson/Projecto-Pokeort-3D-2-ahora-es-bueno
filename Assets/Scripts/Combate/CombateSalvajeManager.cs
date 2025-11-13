@@ -123,14 +123,15 @@ public class CombateSalvajeManager : MonoBehaviour
         TextMeshProUGUI nombreAtaque = botonClickeado.GetComponentInChildren<TextMeshProUGUI>();
         ataqueElegido = pokeortElegido.equippedAttacks.FirstOrDefault(a => a.attackName == nombreAtaque.text);
         UIManager.instance.EsconderAtaques();
-        return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager);
+        return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager, pokeortElegidoGO.GetComponentInChildren<Animator>(), this);
     }
 
     public bool AtaqueEnemigo()
     {
         int random = UnityEngine.Random.Range(0, pokeortEnemigo.equippedAttacks.Count);
         ataqueElegidoEnemigo = pokeortEnemigo.equippedAttacks[random];
-        return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, dialogoCombate, dialogoManager);
+        UIManager.instance.EsconderAtaques();
+        return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, dialogoCombate, dialogoManager, pokeortEnemigoGO.GetComponentInChildren<Animator>(), this);
     }
 
     void Derrotado(ref PokeortInstance pokeortDerrotadoInstance, ref GameObject pokeortDerrotadoGO)

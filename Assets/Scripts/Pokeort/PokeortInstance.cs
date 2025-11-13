@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
+using System.Collections;
+using JetBrains.Annotations;
 
 [System.Serializable]
 public class PokeortInstance
@@ -234,7 +236,7 @@ public class PokeortInstance
 
     }
 
-    public bool atacar(Attack ataque, PokeortInstance enemigo, Dialogue dialogo, DialogoManager dialogoManager)
+    public bool atacar(Attack ataque, PokeortInstance enemigo, Dialogue dialogo, DialogoManager dialogoManager, Animator anim, MonoBehaviour invoker)
     {
         if (ataque is DamageAttack d)
         {
@@ -294,6 +296,20 @@ public class PokeortInstance
                     return false;
                 }
 
+                IEnumerator WaitAnimation()
+                { 
+                        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+                }
+
+                if (d.animationName != null)
+                {
+                    Debug.Log(anim);
+                    anim.Play(d.animationName);
+                }
+
+                invoker.StartCoroutine(WaitAnimation());
+
+                anim.Play("idle");
                 dialogoManager.StartDialogue(dialogo);
                 return true;
             }

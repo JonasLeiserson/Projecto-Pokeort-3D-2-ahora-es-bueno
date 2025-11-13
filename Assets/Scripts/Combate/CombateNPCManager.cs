@@ -233,22 +233,27 @@ public class CombateNPCManager : MonoBehaviour
         if (ataqueElegido == null) return false;
 
         UIManager.instance.EsconderAtaques();
-        return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager);
+        
+        // ⭐ Pasar 'this' (CombateNPCManager) como el MonoBehaviour que ejecutará la corrutina
+        Animator animAmigo = pokeortElegidoGO?.GetComponent<Animator>();
+        return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager, animAmigo, this);
     }
 
     public bool AtaqueEnemigo()
     {
         if (pokeortEnemigo == null || pokeortEnemigo.equippedAttacks == null || pokeortEnemigo.equippedAttacks.Count == 0)
         {
-            Debug.Log("bege5");
             return false;
         }
 
         int random = Random.Range(0, pokeortEnemigo.equippedAttacks.Count);
         ataqueElegidoEnemigo = pokeortEnemigo.equippedAttacks[random];
+        
         UIManager.instance.EsconderAtaques();
-        InventarioManager.instance.EsconderInventario();
-        return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, dialogoCombate, dialogoManager);
+
+        // ⭐ Pasar 'this' como invoker
+        Animator animEnemigo = pokeortEnemigoGO?.GetComponent<Animator>();
+        return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, dialogoCombate, dialogoManager, animEnemigo, this);
     }
 
     void Derrotado(float distancia, ref int index, ref List<PokeortInstance> pokeorts, ref PokeortInstance pokeortDerrotadoInstance, ref GameObject pokeortDerrotadoGO, ref int cantidad, bool esEnemigo)

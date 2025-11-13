@@ -13,6 +13,7 @@ public class DamageAttack : Attack
     public int accuracy;
     public bool isPhysic;
     public int criticChance;
+    public string animationName;
 }
 
 [CreateAssetMenu(menuName = "Pokemon/Attack/Buff")]

@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6274670ecc370846a672ae4c880bf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pokemonTemplate: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
+  pokemonTemplate: {fileID: 11400000, guid: 3254abe3d494ad146a46f85f132581d0, type: 2}
   currentPokemonInstance:
     pokemonData: {fileID: 0}
     equippedAttacks: []
