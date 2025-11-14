@@ -382,20 +382,46 @@ public class CombateSalvajeManager : MonoBehaviour
         StartCoroutine(Wait());
     }
 
-    public void CambiarPokeort()
+    public void CambiarPokeort(bool fueDerrotado)
     {
+        if (pokeortElegidoGO == null || pokeortElegido == null) return;
+
+        PokemonManager pokemonManager = pokeortElegidoGO.GetComponent<PokemonManager>();
+        string nombreAnterior = (pokemonManager != null && pokemonManager.pokemonTemplate != null)
+            ? pokemonManager.pokemonTemplate.pokemonName
+            : "Pokeort anterior";
+
         DialogueLine line1 = new DialogueLine();
         line1.speakerName = "Sistema";
-        line1.dialogueText = "Has cambiado de " + pokeortElegidoGO.GetComponent<PokemonManager>().pokemonTemplate.pokemonName + " a " + pokeortElegido.pokemonData.pokemonName + ".";
+        line1.dialogueText = "Has cambiado de " + nombreAnterior + " a " + pokeortElegido.pokemonData.pokemonName + ".";
 
         dialogoCombate.dialogueLines = new List<DialogueLine> { line1 };
-        dialogoManager.StartDialogue(dialogoCombate);
+
+        if (dialogoManager != null)
+        {
+            dialogoManager.StartDialogue(dialogoCombate);
+        }
 
         Destroy(pokeortElegidoGO);
         pokeortElegidoGO = InstanciarPokeort(4f, pokeortElegido.pokemonData.PokeortPrefab, player.transform, false);
-        UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
-        pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
 
+
+        if (UIManager.instance != null)
+        {
+            UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
+            // ⭐ CORRECCIÓN: Cargar los ataques del nuevo Pokeort
+            UIManager.instance.CargarAtaques();
+        }
+
+        if (pokeortElegidoGO != null)
+        {
+            MovimientoPokeorts movPokeort = pokeortElegidoGO.GetComponent<MovimientoPokeorts>();
+            if (movPokeort != null) movPokeort.enabled = false;
+        }
+
+        if (!PokeortsUtilizados.Contains(pokeortElegido)) PokeortsUtilizados.Add(pokeortElegido);
+
+        if (fueDerrotado) return;
         StartCoroutine(SecuenciaDeAtaqueSimple(AtaqueEnemigo, pokeortElegido, pokeortElegidoGO));
     }
 
