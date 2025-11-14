@@ -457,6 +457,8 @@ MonoBehaviour:
   - {fileID: 1530276922107362725, guid: 25d90ec4728004b4c84ccdb9b312296b, type: 3}
   - {fileID: 1530276922107362725, guid: 29beba4a69fc3e5478e367b226be48a2, type: 3}
   - {fileID: 7511928090184555776, guid: cbf3ed7f849876f46bf37b060b9b067b, type: 3}
+  - {fileID: 7511928090184555776, guid: c0d4a10243b26464eb3dce3b861a4f87, type: 3}
+  - {fileID: 2574043125412424098, guid: 241e1a66cbf125e45af8b91087b9bfd4, type: 3}
   pokeortAmigos: []
   pokeortElegido:
     pokemonData: {fileID: 0}

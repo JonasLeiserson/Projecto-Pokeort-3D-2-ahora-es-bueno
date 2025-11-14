@@ -121,7 +121,7 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: ladrillos lab
-    second: {fileID: 2800000, guid: 60a9f991a73b232489478e7bc4fb1920, type: 3}
+    second: {fileID: 2800000, guid: 894e5361625285a48b3ab2b0dfbb4a9d, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
