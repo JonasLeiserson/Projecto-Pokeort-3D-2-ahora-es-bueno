@@ -21,6 +21,7 @@ public class CombateNPCManager : MonoBehaviour
     public GameObject pokeortElegidoGO;
     int cantidadJugador;
     List<PokeortInstance> pokeortsUtilizados = new List<PokeortInstance>();
+    List<PokeortInstance> pokeortsDerrotadosJugador = new List<PokeortInstance>();
 
     string encounteredNPCTag;
     GameObject NPC;
@@ -268,9 +269,9 @@ public class CombateNPCManager : MonoBehaviour
         {
             if (pokeortDerrotadoInstance == pokeortElegido)
             {
-                if (!pokeortsUtilizados.Contains(pokeortDerrotadoInstance))
+                if (!pokeortsDerrotadosJugador.Contains(pokeortDerrotadoInstance))
                 {
-                    pokeortsUtilizados.Add(pokeortDerrotadoInstance);
+                    pokeortsDerrotadosJugador.Add(pokeortDerrotadoInstance);
                 }
 
                 if (PokedexUIManager.instance != null)
@@ -492,7 +493,6 @@ public class CombateNPCManager : MonoBehaviour
 
         if (!resultado2)
         {
-            Debug.Log("bege");
             if (defensor2 == pokeortElegido)
             {
                 Derrotado(3f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador, false);
@@ -606,9 +606,8 @@ public class CombateNPCManager : MonoBehaviour
         StartCoroutine(Wait());
     }
 
-    public void CambiarPokeort()
+    public void CambiarPokeort(bool fueDerrotado)
     {
-        bool fueDerrotado = pokeortElegido.currentHP <= 0;
         if (pokeortElegidoGO == null || pokeortElegido == null) return;
 
         PokemonManager pokemonManager = pokeortElegidoGO.GetComponent<PokemonManager>();
@@ -630,6 +629,7 @@ public class CombateNPCManager : MonoBehaviour
         Destroy(pokeortElegidoGO);
         pokeortElegidoGO = InstanciarPokeort(4f, pokeortElegido.pokemonData.PokeortPrefab, player.transform, false);
 
+
         if (UIManager.instance != null)
         {
             UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
@@ -642,6 +642,8 @@ public class CombateNPCManager : MonoBehaviour
             MovimientoPokeorts movPokeort = pokeortElegidoGO.GetComponent<MovimientoPokeorts>();
             if (movPokeort != null) movPokeort.enabled = false;
         }
+
+        if (!pokeortsUtilizados.Contains(pokeortElegido)) pokeortsUtilizados.Add(pokeortElegido);
 
         if (fueDerrotado) return;
         StartCoroutine(EjecutarAtaqueConDialogo(AtaqueEnemigo, pokeortElegido, pokeortElegidoGO, UIManager.instance.sliderAmigo));

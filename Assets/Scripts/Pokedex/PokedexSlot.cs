@@ -108,10 +108,13 @@ public class PokedexSlot : MonoBehaviour
                     Debug.Log("No puedes elegir ese pokeort (vida = 0 o ya esta en uso)");
                     return;
                 }
+                bool fueDerrotado = CombateNPCManager.instance.pokeortElegido.currentHP <= 0;
                 CombateNPCManager.instance.indexPokeortElegido = index;
                 CombateNPCManager.instance.pokeortElegido = CombateNPCManager.instance.pokeortAmigos[CombateNPCManager.instance.indexPokeortElegido];
-                CombateNPCManager.instance.CambiarPokeort();
+                CombateNPCManager.instance.CambiarPokeort(fueDerrotado);
                 PokedexUIManager.instance.EsconderEleccionpokeorts();
+                InventarioManager.instance.EsconderInventario();
+                UIManager.instance.EsconderAtaques();
             }
 
         }
