@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Tormenta Rocosa
-  m_EditorClassIdentifier: Assembly-CSharp::DamageAttack
-  attackName: Tormenta Rocosa
-  type: 6
-  power: 240
-  accuracy: 50
-  isPhysic: 0
-  criticChance: 50
+  m_Name: Fuerza
+  m_EditorClassIdentifier: Assembly-CSharp::BuffAttack
+  attackName: Fuerza
+  type: 2
+  buffMultiplier: 1.5
+  buffStat: 0

@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Punio Roca
-  m_EditorClassIdentifier: Assembly-CSharp::DamageAttack
-  attackName: Punio Roca
-  type: 6
-  power: 100
-  accuracy: 100
-  isPhysic: 1
-  criticChance: 10
+  m_Name: Traicion
+  m_EditorClassIdentifier: Assembly-CSharp::DebuffAttack
+  attackName: Traicion
+  type: 12
+  debuffMultiplier: 1.5
+  debuffStat: 4

@@ -1,28 +1,26 @@
 fileFormatVersion: 2
-guid: bd1ec7cc60176cb43b43b9dbb67727d4
+guid: f75cbc8c84e9ba94eba7ecb852892969
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Circle
-    100002: rocoso
-    100004: //RootNode
-    400000: Circle
-    400002: rocoso
-    400004: //RootNode
-    2100000: Material.001
-    2100002: Material.002
-    2100004: Material.003
-    2100006: Material.004
-    2300000: Circle
-    2300002: rocoso
-    3300000: Circle
-    3300002: rocoso
-    4300000: rocoso
-    4300002: Circle
-    7400000: Circle|tormenta de roca
-    7400002: Circle|tornado pedroso
+    100000: Bone
+    100002: Bone.001
+    100004: Bone.002
+    100006: Bone.003
+    100008: Bone.004
+    100010: Bone.005
+    100012: //RootNode
+    400000: Bone
+    400002: Bone.001
+    400004: Bone.002
+    400006: Bone.003
+    400008: Bone.004
+    400010: Bone.005
+    400012: //RootNode
+    7400000: Armature|ataque 1
+    7400002: Armature|caminando ando
+    7400004: Armature|idle
     9500000: //RootNode
-    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1

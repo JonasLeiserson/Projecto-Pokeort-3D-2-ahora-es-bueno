@@ -27,7 +27,7 @@ MonoBehaviour:
   baseXP: 70
   experienceScale: 0
   learnableAttacks:
-  - {fileID: 11400000, guid: 359814807d8a41d4f962402552099cab, type: 2}
-  - {fileID: 11400000, guid: 8cbf2555d0e54244995e67af6f7efc16, type: 2}
-  - {fileID: 11400000, guid: 7a9cdcb16ca0bee46a52884bcb5653f8, type: 2}
+  - {fileID: 11400000, guid: a3af51d79466b954fb2ef9e186f81be8, type: 2}
+  - {fileID: 11400000, guid: 3711f7c54e558004d93523a097e6c5fe, type: 2}
   - {fileID: 11400000, guid: a19404c12471d5e4da1aaa31abad9097, type: 2}
+  - {fileID: 11400000, guid: a39da7e9e442d3b4095d3459d6ed7a79, type: 2}

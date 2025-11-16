@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Cuerpo Firme
+  m_Name: Aleteo Magico
   m_EditorClassIdentifier: Assembly-CSharp::BuffAttack
-  attackName: Cuerpo Firme
-  type: 6
-  buffMultiplier: 2.5
-  buffStat: 1
+  attackName: Aleteo Magico
+  type: 9
+  buffMultiplier: 1.5
+  buffStat: 2

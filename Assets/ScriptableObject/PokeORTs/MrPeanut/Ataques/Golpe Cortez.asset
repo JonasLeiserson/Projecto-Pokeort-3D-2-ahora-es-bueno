@@ -18,3 +18,4 @@ MonoBehaviour:
   accuracy: 100
   isPhysic: 1
   criticChance: 10
+  animationName: ataque1

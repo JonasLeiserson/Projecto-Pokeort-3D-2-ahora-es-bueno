@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
-using System.Collections;
-using JetBrains.Annotations;
+using UnityEngine;
 
 [System.Serializable]
 public class PokeortInstance
@@ -92,12 +93,12 @@ public class PokeortInstance
         type1 = data.primaryType;
         type2 = data.secondaryType;
 
-        int hpIVs = Random.Range(0, 32);
-        int attackIVs = Random.Range(0, 32);
-        int defenseIVs = Random.Range(0, 32);
-        int spAttackIVs = Random.Range(0, 32);
-        int spDefenseIVs = Random.Range(0, 32);
-        int speedIVs = Random.Range(0, 32);
+        int hpIVs = UnityEngine.Random.Range(0, 32);
+        int attackIVs = UnityEngine.Random.Range(0, 32);
+        int defenseIVs = UnityEngine.Random.Range(0, 32);
+        int spAttackIVs = UnityEngine.Random.Range(0, 32);
+        int spDefenseIVs = UnityEngine.Random.Range(0, 32);
+        int speedIVs = UnityEngine.Random.Range(0, 32);
 
         maxHP = Mathf.RoundToInt(((2 * data.baseHP + (hpIVs * (level / 100))) * level) / 100 + level + 10);
         currentHP = maxHP;
@@ -244,15 +245,15 @@ public class PokeortInstance
 
             dialogo.dialogueLines.Clear();
 
-            bool acerto = Random.Range(0, 101) <= d.accuracy;
+            bool acerto = UnityEngine.Random.Range(0, 101) <= d.accuracy;
 
             if (acerto)
             {
                 //calculo de danio
-                bool isCritic = Random.Range(0, 101) <= d.criticChance;
+                bool isCritic = UnityEngine.Random.Range(0, 101) <= d.criticChance;
                 float e = TipoEfectividad.ObtenerEfectividad(d.type, enemigo.type1, enemigo.type2);
                 float b = d.type == type1 ? 1.5f : 1;
-                int v = Random.Range(85, 101);
+                int v = UnityEngine.Random.Range(85, 101);
 
                 int danio;
 
@@ -284,6 +285,13 @@ public class PokeortInstance
                 Debug.Log($"{pokemonData.pokemonName} utilizo {d.attackName} e hizo {danio} de danio");
                 Debug.Log($"{enemigo.pokemonData.pokemonName} tiene {enemigo.currentHP} de vida");
 
+                if (d.animationName != null)
+                {
+                    Debug.Log(anim);
+                    Debug.Log(d.animationName);
+                    anim.Play(d.animationName);
+                }
+
                 if (enemigo.currentHP == 0)
                 {
                     DialogueLine linea3 = new DialogueLine();
@@ -296,20 +304,6 @@ public class PokeortInstance
                     return false;
                 }
 
-                IEnumerator WaitAnimation()
-                { 
-                        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-                }
-
-                if (d.animationName != null)
-                {
-                    Debug.Log(anim);
-                    anim.Play(d.animationName);
-                }
-
-                invoker.StartCoroutine(WaitAnimation());
-
-                anim.Play("idle");
                 dialogoManager.StartDialogue(dialogo);
                 return true;
             }
@@ -326,6 +320,13 @@ public class PokeortInstance
 
                 Debug.Log($"{pokemonData.pokemonName} utilizo {d.attackName} y fallo");
                 Debug.Log($"{enemigo.pokemonData.pokemonName} se mantiene con {enemigo.currentHP} de vida");
+
+                if (d.animationName != null)
+                {
+                    Debug.Log(anim);
+                    Debug.Log(d.animationName);
+                    anim.Play(d.animationName);
+                }
 
                 dialogoManager.StartDialogue(dialogo);
                 return true;

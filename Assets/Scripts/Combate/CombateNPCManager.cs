@@ -236,7 +236,7 @@ public class CombateNPCManager : MonoBehaviour
         UIManager.instance.EsconderAtaques();
         
         // ⭐ Pasar 'this' (CombateNPCManager) como el MonoBehaviour que ejecutará la corrutina
-        Animator animAmigo = pokeortElegidoGO?.GetComponent<Animator>();
+        Animator animAmigo = pokeortElegidoGO?.GetComponentInChildren<Animator>();
         return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager, animAmigo, this);
     }
 
@@ -253,7 +253,7 @@ public class CombateNPCManager : MonoBehaviour
         UIManager.instance.EsconderAtaques();
 
         // ⭐ Pasar 'this' como invoker
-        Animator animEnemigo = pokeortEnemigoGO?.GetComponent<Animator>();
+        Animator animEnemigo = pokeortEnemigoGO?.GetComponentInChildren<Animator>();
         return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, dialogoCombate, dialogoManager, animEnemigo, this);
     }
 

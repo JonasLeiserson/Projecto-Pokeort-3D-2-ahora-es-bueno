@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Combo
+  m_Name: Picotazo Veneno
   m_EditorClassIdentifier: Assembly-CSharp::DamageAttack
-  attackName: Triple Combo
-  type: 6
-  power: 180
-  accuracy: 70
+  attackName: Picotazo Veneno
+  type: 2
+  power: 80
+  accuracy: 100
   isPhysic: 1
-  criticChance: 30
+  criticChance: 20
+  animationName: ataque2
