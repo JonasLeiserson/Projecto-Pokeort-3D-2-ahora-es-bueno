@@ -15,4 +15,6 @@ MonoBehaviour:
   attackName: Banio de Lava
   type: 2
   buffMultiplier: 2
-  buffStat: 3
+  buffStat: 0
+  aura: {fileID: 8229206756561509850, guid: cdd40e222f42466418778bd4be8661e7, type: 3}
+  color: {r: 1, g: 0.5481836, b: 0, a: 0.5176471}

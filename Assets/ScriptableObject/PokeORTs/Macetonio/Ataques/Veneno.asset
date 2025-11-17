@@ -16,3 +16,5 @@ MonoBehaviour:
   type: 4
   debuffMultiplier: 2
   debuffStat: 0
+  aura: {fileID: 8229206756561509850, guid: cdd40e222f42466418778bd4be8661e7, type: 3}
+  color: {r: 0.93840027, g: 0, b: 1, a: 0.49019608}

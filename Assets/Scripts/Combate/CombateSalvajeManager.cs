@@ -123,7 +123,10 @@ public class CombateSalvajeManager : MonoBehaviour
         TextMeshProUGUI nombreAtaque = botonClickeado.GetComponentInChildren<TextMeshProUGUI>();
         ataqueElegido = pokeortElegido.equippedAttacks.FirstOrDefault(a => a.attackName == nombreAtaque.text);
         UIManager.instance.EsconderAtaques();
-        return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager, pokeortElegidoGO.GetComponentInChildren<Animator>(), this);
+        Animator animAmigo = pokeortElegidoGO?.GetComponentInChildren<Animator>();
+        Transform TRenemigo = pokeortEnemigoGO.GetComponent<Transform>();
+        Transform TRamigo = pokeortElegidoGO.GetComponent<Transform>();
+        return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, TRenemigo, TRamigo, dialogoCombate, dialogoManager, animAmigo, this);
     }
 
     public bool AtaqueEnemigo()
@@ -131,7 +134,10 @@ public class CombateSalvajeManager : MonoBehaviour
         int random = UnityEngine.Random.Range(0, pokeortEnemigo.equippedAttacks.Count);
         ataqueElegidoEnemigo = pokeortEnemigo.equippedAttacks[random];
         UIManager.instance.EsconderAtaques();
-        return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, dialogoCombate, dialogoManager, pokeortEnemigoGO.GetComponentInChildren<Animator>(), this);
+        Animator animEnemigo = pokeortEnemigoGO?.GetComponentInChildren<Animator>();
+        Transform TRamigo = pokeortEnemigoGO.GetComponent<Transform>();
+        Transform TRenemigo = pokeortElegidoGO.GetComponent<Transform>();
+        return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, TRenemigo, TRamigo, dialogoCombate, dialogoManager, animEnemigo, this);
     }
 
     void Derrotado(ref PokeortInstance pokeortDerrotadoInstance, ref GameObject pokeortDerrotadoGO)

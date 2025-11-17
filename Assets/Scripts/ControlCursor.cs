@@ -24,6 +24,11 @@ public class ControlCursor: MonoBehaviour
             else
                 MostrarCursor();
         }
+
+        if (CombateNPCManager.instance != null || CombateSalvajeManager.instance != null)
+        {
+            MostrarCursor();
+        }
     }
 
     public void MostrarCursor()

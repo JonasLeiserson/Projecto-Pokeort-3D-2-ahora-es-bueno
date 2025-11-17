@@ -29,6 +29,8 @@ public class BuffAttack : Attack
         SpecialDefense
     }
     public buffType buffStat;
+    public GameObject aura;
+    public Color color;
 }
 
 [CreateAssetMenu(menuName = "Pokemon/Attack/Debuff")]
@@ -44,6 +46,8 @@ public class DebuffAttack : Attack
         SpecialDefense
     }
     public debuffType debuffStat;
+    public GameObject aura;
+    public Color color;
 }
 
 

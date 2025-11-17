@@ -16,3 +16,5 @@ MonoBehaviour:
   type: 7
   buffMultiplier: 2
   buffStat: 1
+  aura: {fileID: 8229206756561509850, guid: cdd40e222f42466418778bd4be8661e7, type: 3}
+  color: {r: 0.7264151, g: 0.44688973, b: 0.01027944, a: 0.5254902}

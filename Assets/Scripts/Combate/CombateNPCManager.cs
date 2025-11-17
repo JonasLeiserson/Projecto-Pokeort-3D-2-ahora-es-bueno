@@ -239,7 +239,9 @@ public class CombateNPCManager : MonoBehaviour
         
         // ⭐ Pasar 'this' (CombateNPCManager) como el MonoBehaviour que ejecutará la corrutina
         Animator animAmigo = pokeortElegidoGO?.GetComponentInChildren<Animator>();
-        return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, dialogoCombate, dialogoManager, animAmigo, this);
+        Transform TRenemigo = pokeortEnemigoGO.GetComponent<Transform>();
+        Transform TRamigo = pokeortElegidoGO.GetComponent<Transform>();
+        return pokeortElegido.atacar(ataqueElegido, pokeortEnemigo, TRenemigo, TRamigo, dialogoCombate, dialogoManager, animAmigo, this);
     }
 
     public bool AtaqueEnemigo()
@@ -256,7 +258,9 @@ public class CombateNPCManager : MonoBehaviour
 
         // ⭐ Pasar 'this' como invoker
         Animator animEnemigo = pokeortEnemigoGO?.GetComponentInChildren<Animator>();
-        return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, dialogoCombate, dialogoManager, animEnemigo, this);
+        Transform TRamigo = pokeortEnemigoGO.GetComponent<Transform>();
+        Transform TRenemigo = pokeortElegidoGO.GetComponent<Transform>();
+        return pokeortEnemigo.atacar(ataqueElegidoEnemigo, pokeortElegido, TRenemigo, TRamigo, dialogoCombate, dialogoManager, animEnemigo, this);
     }
 
     void Derrotado(float distancia, ref int index, ref List<PokeortInstance> pokeorts, ref PokeortInstance pokeortDerrotadoInstance, ref GameObject pokeortDerrotadoGO, ref int cantidad, bool esEnemigo)
@@ -473,7 +477,6 @@ public class CombateNPCManager : MonoBehaviour
 
         if (!resultado1)
         {
-            Debug.Log("bege");
             if (defensor1 == pokeortElegido)
             {
                 Derrotado(3f, ref indexPokeortElegido, ref pokeortAmigos, ref pokeortElegido, ref pokeortElegidoGO, ref cantidadJugador, false);

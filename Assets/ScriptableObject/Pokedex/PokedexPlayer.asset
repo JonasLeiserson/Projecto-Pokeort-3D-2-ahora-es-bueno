@@ -17,25 +17,25 @@ MonoBehaviour:
     equippedAttacks:
     - {fileID: 11400000, guid: b51b948f2b8821e4e94c36112226abfc, type: 2}
     - {fileID: 11400000, guid: d8f1e2b74b76f124cbbcf70ebc6911d8, type: 2}
-    - {fileID: 11400000, guid: 4dc3d765be1df2247bbd9c44919a3b35, type: 2}
-    - {fileID: 11400000, guid: 96b8c97a391cada47b33e7f91811cde8, type: 2}
+    - {fileID: 11400000, guid: cc7d6022e9cdbd049ab2448dc60351f3, type: 2}
+    - {fileID: 11400000, guid: e074227a962571b439bc5b7778979312, type: 2}
     type1: 6
     type2: 9
     level: 100
-    currentHP: 134046
+    currentHP: 118311
     maxHP: 200000
-    currentAttack: 7
+    currentAttack: 4
     maxAttack: 117
-    currentDefense: 189
+    currentDefense: 1512
     maxDefense: 189
     currentSpAttack: 101
     maxSpAttack: 101
-    currentSpDefense: 85
+    currentSpDefense: 3
     maxSpDefense: 190
-    currentSpeed: 1000
+    currentSpeed: 4000
     maxSpeed: 1000
     currentStatus: 0
-    experiencePoints: 801
+    experiencePoints: 1202
     experienceToNextLevel: 1250000
   - pokemonData: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
     equippedAttacks:
@@ -46,7 +46,7 @@ MonoBehaviour:
     type1: 4
     type2: 9
     level: 100
-    currentHP: 25
+    currentHP: 247
     maxHP: 247
     currentAttack: 67
     maxAttack: 134
@@ -94,8 +94,8 @@ MonoBehaviour:
     type1: 12
     type2: 5
     level: 100
-    currentHP: 2147483647
-    maxHP: 280
+    currentHP: 2147483459
+    maxHP: 2147483647
     currentAttack: 166
     maxAttack: 166
     currentDefense: 115
@@ -107,5 +107,5 @@ MonoBehaviour:
     currentSpeed: 154
     maxSpeed: 154
     currentStatus: 0
-    experiencePoints: 0
+    experiencePoints: 401
     experienceToNextLevel: 800000

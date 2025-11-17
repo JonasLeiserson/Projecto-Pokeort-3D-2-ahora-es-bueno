@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Sigilo
   m_EditorClassIdentifier: Assembly-CSharp::BuffAttack
-  attackName: Sigilo
+  attackName: Elegancia
   type: 1
   buffMultiplier: 2
   buffStat: 2
+  aura: {fileID: 8229206756561509850, guid: cdd40e222f42466418778bd4be8661e7, type: 3}
+  color: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 0.49803922}

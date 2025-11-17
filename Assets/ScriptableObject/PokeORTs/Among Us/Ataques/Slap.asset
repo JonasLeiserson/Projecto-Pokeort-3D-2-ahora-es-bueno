@@ -17,5 +17,5 @@ MonoBehaviour:
   power: 60
   accuracy: 100
   isPhysic: 1
-  criticChance: 40
+  criticChance: 30
   animationName: ataque1

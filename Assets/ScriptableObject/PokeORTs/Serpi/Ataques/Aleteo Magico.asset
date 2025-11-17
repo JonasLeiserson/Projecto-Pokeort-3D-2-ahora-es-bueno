@@ -16,3 +16,5 @@ MonoBehaviour:
   type: 9
   buffMultiplier: 1.5
   buffStat: 2
+  aura: {fileID: 8229206756561509850, guid: cdd40e222f42466418778bd4be8661e7, type: 3}
+  color: {r: 0.8854994, g: 0.23602703, b: 0.9811321, a: 0.5254902}

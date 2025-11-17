@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
@@ -237,7 +238,7 @@ public class PokeortInstance
 
     }
 
-    public bool atacar(Attack ataque, PokeortInstance enemigo, Dialogue dialogo, DialogoManager dialogoManager, Animator anim, MonoBehaviour invoker)
+    public bool atacar(Attack ataque, PokeortInstance enemigo, Transform TRenemigo, Transform TRamigo, Dialogue dialogo, DialogoManager dialogoManager, Animator anim, MonoBehaviour invoker)
     {
         if (ataque is DamageAttack d)
         {
@@ -282,13 +283,13 @@ public class PokeortInstance
                 dialogo.dialogueLines.Add(linea1);
                 dialogo.dialogueLines.Add(linea2);
 
-                Debug.Log($"{pokemonData.pokemonName} utilizo {d.attackName} e hizo {danio} de danio");
-                Debug.Log($"{enemigo.pokemonData.pokemonName} tiene {enemigo.currentHP} de vida");
+                UnityEngine.Debug.Log($"{pokemonData.pokemonName} utilizo {d.attackName} e hizo {danio} de danio");
+                UnityEngine.Debug.Log($"{enemigo.pokemonData.pokemonName} tiene {enemigo.currentHP} de vida");
 
                 if (d.animationName != null)
                 {
-                    Debug.Log(anim);
-                    Debug.Log(d.animationName);
+                    UnityEngine.Debug.Log(anim);
+                    UnityEngine.Debug.Log(d.animationName);
                     anim.Play(d.animationName);
                 }
 
@@ -298,7 +299,7 @@ public class PokeortInstance
                     linea3.dialogueText = $"{enemigo.pokemonData.pokemonName} fue derrotado";
 
                     dialogo.dialogueLines.Add(linea3);
-                    Debug.Log($"{enemigo.pokemonData.pokemonName} fue derrotado");
+                    UnityEngine.Debug.Log($"{enemigo.pokemonData.pokemonName} fue derrotado");
 
                     dialogoManager.StartDialogue(dialogo);
                     return false;
@@ -318,13 +319,13 @@ public class PokeortInstance
                 dialogo.dialogueLines.Add(linea1);
                 dialogo.dialogueLines.Add(linea2);
 
-                Debug.Log($"{pokemonData.pokemonName} utilizo {d.attackName} y fallo");
-                Debug.Log($"{enemigo.pokemonData.pokemonName} se mantiene con {enemigo.currentHP} de vida");
+                UnityEngine.Debug.Log($"{pokemonData.pokemonName} utilizo {d.attackName} y fallo");
+                UnityEngine.Debug.Log($"{enemigo.pokemonData.pokemonName} se mantiene con {enemigo.currentHP} de vida");
 
                 if (d.animationName != null)
                 {
-                    Debug.Log(anim);
-                    Debug.Log(d.animationName);
+                    UnityEngine.Debug.Log(anim);
+                    UnityEngine.Debug.Log(d.animationName);
                     anim.Play(d.animationName);
                 }
 
@@ -342,6 +343,17 @@ public class PokeortInstance
 
             DialogueLine linea2 = new DialogueLine();
             linea2.dialogueText = $"{pokemonData.pokemonName} vio aumentado su {b.buffStat}";
+
+            b.aura.transform.position = TRamigo.position;
+            ParticleSystem particles = b.aura.GetComponent<ParticleSystem>();
+
+            var main = particles.main;
+            main.startColor = b.color;
+            main.duration = 3f;
+            main.loop = false;
+            GameObject aura = MonoBehaviour.Instantiate(b.aura);
+            MonoBehaviour.Destroy(aura, 4f);
+            
 
             switch (b.buffStat)
             {
@@ -364,7 +376,7 @@ public class PokeortInstance
 
             dialogo.dialogueLines = new List<DialogueLine> { linea1, linea2 };
 
-            Debug.Log($"{pokemonData.pokemonName} utilizo {b.attackName} y vio aumentado su {b.buffStat}");
+            UnityEngine.Debug.Log($"{pokemonData.pokemonName} utilizo {b.attackName} y vio aumentado su {b.buffStat}");
             dialogoManager.StartDialogue(dialogo);
 
             return true;
@@ -378,6 +390,18 @@ public class PokeortInstance
 
             DialogueLine linea2 = new DialogueLine();
             linea2.dialogueText = $"{enemigo.pokemonData.pokemonName} vio reducido su {debuff.debuffStat}";
+
+            debuff.aura.transform.position = TRenemigo.position;
+            ParticleSystem particles = debuff.aura.GetComponent<ParticleSystem>();
+
+            var main = particles.main;
+            main.startColor = debuff.color;
+            main.duration = 3f;
+            main.loop = false; 
+
+            GameObject aura = MonoBehaviour.Instantiate(debuff.aura);
+            MonoBehaviour.Destroy(aura, 4f);
+
 
             switch (debuff.debuffStat)
             {
@@ -400,7 +424,7 @@ public class PokeortInstance
 
             dialogo.dialogueLines = new List<DialogueLine> { linea1, linea2 };
 
-            Debug.Log($"{pokemonData.pokemonName} utilizo {debuff.attackName} y vio reducido su {debuff.debuffStat}");
+            UnityEngine.Debug.Log($"{pokemonData.pokemonName} utilizo {debuff.attackName} y vio reducido su {debuff.debuffStat}");
             dialogoManager.StartDialogue(dialogo);
 
             return true;
@@ -436,7 +460,7 @@ public class PokeortInstance
             currentHP = maxHP;
         }
 
-        Debug.Log($"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}");
+        UnityEngine.Debug.Log($"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}");
     }
 
     public void ChequearNivel()
@@ -465,7 +489,7 @@ public class PokeortInstance
 
             experiencePoints -= experienceToNextLevel;
             experienceToNextLevel = CalculateExperienceToNextLevel();
-            Debug.Log(pokemonData.pokemonName + " subio al nivel " + level + experienceToNextLevel);
+            UnityEngine.Debug.Log(pokemonData.pokemonName + " subio al nivel " + level + experienceToNextLevel);
         }
     }
 }
