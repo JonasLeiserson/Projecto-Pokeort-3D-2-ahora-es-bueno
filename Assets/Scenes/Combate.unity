@@ -1496,6 +1496,8 @@ MonoBehaviour:
   PlataText: {fileID: 626983540}
   sliderAmigo: {fileID: 626983528}
   sliderEnemigo: {fileID: 626983527}
+  InventarioUI: {fileID: 626983533}
+  Pokedex: {fileID: 626983541}
   enCombate: 0
 --- !u!4 &1684880334
 Transform:

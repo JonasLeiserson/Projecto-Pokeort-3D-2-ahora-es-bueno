@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     public TMP_Text PlataText;
     public GameObject sliderAmigo;
     public GameObject sliderEnemigo;
+    public GameObject InventarioUI;
+    public GameObject Pokedex;
 
     public bool enCombate = false;
 
@@ -40,18 +42,15 @@ public class UIManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        // Evita duplicar el evento si el objeto se destruye
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 👇 Cada vez que se carga una escena, busca el objeto "Dinero"
         BuscarTextoDinero();
     }
 
     private void Start()
     {
-        // También lo buscamos la primera vez
         BuscarTextoDinero();
     }
 
@@ -137,6 +136,16 @@ public class UIManager : MonoBehaviour
     {
         botonesIniciales.SetActive(true);
         botonesAtaque.SetActive(false);
+    }
+    public void EsconderInventario()
+    {
+        botonesIniciales.SetActive(true);
+        InventarioUI.SetActive(false);
+    }
+    public void EsconderCambioPokeort ()
+    {
+        botonesIniciales.SetActive(true);
+        Pokedex.SetActive(false);
     }
 
     public void DialogoCombate(Dialogue dialogo, DialogoManager dialogoManager)

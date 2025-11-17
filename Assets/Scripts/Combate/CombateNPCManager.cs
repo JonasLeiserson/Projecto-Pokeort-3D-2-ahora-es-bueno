@@ -229,6 +229,8 @@ public class CombateNPCManager : MonoBehaviour
         TextMeshProUGUI nombreAtaque = botonClickeado.GetComponentInChildren<TextMeshProUGUI>();
         if (nombreAtaque == null) return false;
 
+        ControlCursor.instance.MostrarCursor();
+
         ataqueElegido = pokeortElegido.equippedAttacks.FirstOrDefault(a => a.attackName == nombreAtaque.text);
 
         if (ataqueElegido == null) return false;

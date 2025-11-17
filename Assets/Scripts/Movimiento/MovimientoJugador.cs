@@ -11,7 +11,6 @@ public class MovimientoJugador : MonoBehaviour
     private CharacterController controller;
     private Vector3 moveDirection;
     float velocidad;
-
     void Start()
     {
         controller = GetComponent<CharacterController>();
