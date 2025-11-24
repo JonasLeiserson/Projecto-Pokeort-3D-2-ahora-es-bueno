@@ -5,7 +5,6 @@ public class MovimientoJugador : MonoBehaviour
     public float MovimientoVelocidad = 5f; 
     public float FuerzaSalto = 8f; 
     public float Gravedad = 20f;
-    private float Stamina = 100f;
     public Animator Animador; 
     public Transform CamaraPosicion; 
     private CharacterController controller;
@@ -34,26 +33,7 @@ public class MovimientoJugador : MonoBehaviour
             Debug.DrawLine(transform.position, transform.position + direccion * distancia, Color.green);
         }
 
-        if (Stamina > 30)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                MovimientoVelocidad = 10f; 
-                Stamina -= 5;
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            MovimientoVelocidad = 5f;
-        }
-
         transform.rotation = Quaternion.Euler(0, CamaraPosicion.eulerAngles.y + 90, 0);
-
-        if (controller.isGrounded)
-        {
-            if (Animador.GetBool("Saltando"))
-                Animador.SetBool("Saltando", false);
 
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -67,13 +47,6 @@ public class MovimientoJugador : MonoBehaviour
 
             Vector3 desiredMoveDirection = forward * vertical + right * horizontal;
             moveDirection = desiredMoveDirection * MovimientoVelocidad;
-
-            if (Input.GetButtonDown("Jump"))
-            {
-                Animador.SetBool("Saltando", true);
-                moveDirection.y = FuerzaSalto;
-            }
-        }
 
         moveDirection.y -= Gravedad * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
