@@ -16,6 +16,8 @@ public class VisionNPC : MonoBehaviour
                 velocidadMovimiento * Time.deltaTime
             );
             transform.parent.position = nuevaPosicion;
+
+            transform.parent.Find("npc model").GetComponent<Animator>().SetBool("isWalking", true);
         }
     }
 
