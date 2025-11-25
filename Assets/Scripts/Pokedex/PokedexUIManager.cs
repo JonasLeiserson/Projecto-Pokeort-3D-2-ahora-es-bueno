@@ -65,25 +65,50 @@ public class PokedexUIManager : MonoBehaviour
         int index = 0;
         foreach (PokeortInstance pokeort in PokedexPlayerManager.instance.pokedex.pokeorts)
         {
-            if (pokeort == CombateNPCManager.instance.pokeortElegido || pokeort == CombateSalvajeManager.instance.pokeortElegido)
+            if (CombateNPCManager.instance || CombateSalvajeManager.instance)
             {
-                GameObject newSlot = Instantiate(pokedexSlotPrefab, pokeortParentIzq);
-                PokedexSlot pokedexSlot = newSlot.GetComponent<PokedexSlot>();
+                if (pokeort == CombateNPCManager.instance.pokeortElegido || pokeort == CombateSalvajeManager.instance.pokeortElegido)
+                {
+                    GameObject newSlot = Instantiate(pokedexSlotPrefab, pokeortParentIzq);
+                    PokedexSlot pokedexSlot = newSlot.GetComponent<PokedexSlot>();
 
-                pokedexSlot.index = index;
-                index++;
-                slots.Add(pokedexSlot);
-                pokedexSlot.AddPokeort(pokeort);
+                    pokedexSlot.index = index;
+                    index++;
+                    slots.Add(pokedexSlot);
+                    pokedexSlot.AddPokeort(pokeort);
+                }
+                else
+                {
+                    GameObject newSlot = Instantiate(pokedexSlotPrefab, pokeortParentDer);
+                    PokedexSlot pokedexSlot = newSlot.GetComponent<PokedexSlot>();
+
+                    pokedexSlot.index = index;
+                    index++;
+                    slots.Add(pokedexSlot);
+                    pokedexSlot.AddPokeort(pokeort);
+                }
             }
             else
             {
-                GameObject newSlot = Instantiate(pokedexSlotPrefab, pokeortParentDer);
-                PokedexSlot pokedexSlot = newSlot.GetComponent<PokedexSlot>();
+                if (index == 0)
+                {
+                    GameObject newSlot = Instantiate(pokedexSlotPrefab, pokeortParentIzq);
+                    PokedexSlot pokedexSlot = newSlot.GetComponent<PokedexSlot>();
 
-                pokedexSlot.index = index;
-                index++;
-                slots.Add(pokedexSlot);
-                pokedexSlot.AddPokeort(pokeort);
+                    pokedexSlot.index = index;
+                    index++;
+                    slots.Add(pokedexSlot);
+                    pokedexSlot.AddPokeort(pokeort);
+                }
+                else
+                {
+                    GameObject newSlot = Instantiate(pokedexSlotPrefab, pokeortParentDer);
+                    PokedexSlot pokedexSlot = newSlot.GetComponent<PokedexSlot>();
+                    pokedexSlot.index = index;
+                    index++;
+                    slots.Add(pokedexSlot);
+                    pokedexSlot.AddPokeort(pokeort);
+                }
             }
         }
     }
@@ -93,13 +118,18 @@ public class PokedexUIManager : MonoBehaviour
         panelPokedex.gameObject.SetActive(false);
 
         if (CombateNPCManager.instance != null || CombateSalvajeManager.instance != null)
-            UIManager.instance.combatButtons.SetActive(true);           
+            UIManager.instance.combatButtons.SetActive(true);   
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void MostrarEleccionPokeorts() 
     {
         UpdateUI();
         panelPokedex.SetActive(true);
+        PauseMenuManager.instance.Resume();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
 

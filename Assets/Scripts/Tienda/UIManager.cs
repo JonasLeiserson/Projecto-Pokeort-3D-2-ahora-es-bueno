@@ -144,7 +144,16 @@ public class UIManager : MonoBehaviour
     }
     public void EsconderCambioPokeort ()
     {
-        botonesIniciales.SetActive(true);
+        if (CombateNPCManager.instance || CombateSalvajeManager.instance)
+        {
+            botonesIniciales.SetActive(true);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
         Pokedex.SetActive(false);
     }
 
