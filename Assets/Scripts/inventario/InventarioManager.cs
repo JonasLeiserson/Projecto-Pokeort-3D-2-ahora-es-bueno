@@ -72,10 +72,15 @@ public class InventarioManager : MonoBehaviour {
     {
         InventarioUI.SetActive(false);
         if (CombateSalvajeManager.instance != null || CombateNPCManager.instance != null) combatButtons.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void MostrarInventario()
     {
         InventarioUI.SetActive(true);
         combatButtons.SetActive(false);
+        PauseMenuManager.instance.Resume();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
