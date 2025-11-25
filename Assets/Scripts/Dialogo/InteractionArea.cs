@@ -7,20 +7,45 @@ public class InteractionArea : MonoBehaviour
     GameObject currentInteractable;
     public GameObject interactButton;
 
+    List<string> tags = new List<string> { "NPC", "NPCCombate", "NPCGym", "Lider" };
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("NPC"))
+        foreach (string tag in tags)
         {
-            GameObject npc = other.gameObject;
-            currentInteractable = npc;
+            if (other.CompareTag(tag))
+            {
+                if (other.gameObject.GetComponent<DialogoTrigger>() != null)
+                {
+                    if (other.gameObject.GetComponent<DialogoTrigger>().enabled)
+                    {
+                        GameObject npc = other.gameObject;
+                        currentInteractable = npc;
+                        return;
+                    }
+                }
+                else if (other.gameObject.GetComponent<LiderScript>() != null)
+                {
+                    if (other.gameObject.GetComponent<LiderScript>().enabled)
+                    {
+                        GameObject npc = other.gameObject;
+                        currentInteractable = npc;
+                        return;
+                    }
+                }
+            }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("NPC"))
+        foreach (string tag in tags)
         {
-            currentInteractable = null;
+            if (other.CompareTag(tag))
+            {
+                currentInteractable = null;
+                return;
+            }
         }
     }
 

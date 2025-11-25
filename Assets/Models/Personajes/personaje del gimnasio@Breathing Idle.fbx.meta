@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 91d09803d0cea9043a79a7c466fd41e8
+guid: 9ddc22533b2b90b41833428c71214132
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -14,38 +14,30 @@ ModelImporter:
     100016: mixamorig:LeftHandIndex2
     100018: mixamorig:LeftHandIndex3
     100020: mixamorig:LeftHandIndex4
-    100022: mixamorig:LeftHandThumb1
-    100024: mixamorig:LeftHandThumb2
-    100026: mixamorig:LeftHandThumb3
-    100028: mixamorig:LeftHandThumb4
-    100030: mixamorig:LeftLeg
-    100032: mixamorig:LeftShoulder
-    100034: mixamorig:LeftToe_End
-    100036: mixamorig:LeftToeBase
-    100038: mixamorig:LeftUpLeg
-    100040: mixamorig:Neck
-    100042: mixamorig:RightArm
-    100044: mixamorig:RightFoot
-    100046: mixamorig:RightForeArm
-    100048: mixamorig:RightHand
-    100050: mixamorig:RightHandIndex1
-    100052: mixamorig:RightHandIndex2
-    100054: mixamorig:RightHandIndex3
-    100056: mixamorig:RightHandIndex4
-    100058: mixamorig:RightHandThumb1
-    100060: mixamorig:RightHandThumb2
-    100062: mixamorig:RightHandThumb3
-    100064: mixamorig:RightHandThumb4
-    100066: mixamorig:RightLeg
-    100068: mixamorig:RightShoulder
-    100070: mixamorig:RightToe_End
-    100072: mixamorig:RightToeBase
-    100074: mixamorig:RightUpLeg
-    100076: mixamorig:Spine
-    100078: mixamorig:Spine1
-    100080: mixamorig:Spine2
-    100082: personaje de la tienda
-    100084: //RootNode
+    100022: mixamorig:LeftLeg
+    100024: mixamorig:LeftShoulder
+    100026: mixamorig:LeftToe_End
+    100028: mixamorig:LeftToeBase
+    100030: mixamorig:LeftUpLeg
+    100032: mixamorig:Neck
+    100034: mixamorig:RightArm
+    100036: mixamorig:RightFoot
+    100038: mixamorig:RightForeArm
+    100040: mixamorig:RightHand
+    100042: mixamorig:RightHandIndex1
+    100044: mixamorig:RightHandIndex2
+    100046: mixamorig:RightHandIndex3
+    100048: mixamorig:RightHandIndex4
+    100050: mixamorig:RightLeg
+    100052: mixamorig:RightShoulder
+    100054: mixamorig:RightToe_End
+    100056: mixamorig:RightToeBase
+    100058: mixamorig:RightUpLeg
+    100060: mixamorig:Spine
+    100062: mixamorig:Spine1
+    100064: mixamorig:Spine2
+    100066: //RootNode
+    100068: prota gym
     400000: mixamorig:Head
     400002: mixamorig:HeadTop_End
     400004: mixamorig:Hips
@@ -57,51 +49,43 @@ ModelImporter:
     400016: mixamorig:LeftHandIndex2
     400018: mixamorig:LeftHandIndex3
     400020: mixamorig:LeftHandIndex4
-    400022: mixamorig:LeftHandThumb1
-    400024: mixamorig:LeftHandThumb2
-    400026: mixamorig:LeftHandThumb3
-    400028: mixamorig:LeftHandThumb4
-    400030: mixamorig:LeftLeg
-    400032: mixamorig:LeftShoulder
-    400034: mixamorig:LeftToe_End
-    400036: mixamorig:LeftToeBase
-    400038: mixamorig:LeftUpLeg
-    400040: mixamorig:Neck
-    400042: mixamorig:RightArm
-    400044: mixamorig:RightFoot
-    400046: mixamorig:RightForeArm
-    400048: mixamorig:RightHand
-    400050: mixamorig:RightHandIndex1
-    400052: mixamorig:RightHandIndex2
-    400054: mixamorig:RightHandIndex3
-    400056: mixamorig:RightHandIndex4
-    400058: mixamorig:RightHandThumb1
-    400060: mixamorig:RightHandThumb2
-    400062: mixamorig:RightHandThumb3
-    400064: mixamorig:RightHandThumb4
-    400066: mixamorig:RightLeg
-    400068: mixamorig:RightShoulder
-    400070: mixamorig:RightToe_End
-    400072: mixamorig:RightToeBase
-    400074: mixamorig:RightUpLeg
-    400076: mixamorig:Spine
-    400078: mixamorig:Spine1
-    400080: mixamorig:Spine2
-    400082: personaje de la tienda
-    400084: //RootNode
+    400022: mixamorig:LeftLeg
+    400024: mixamorig:LeftShoulder
+    400026: mixamorig:LeftToe_End
+    400028: mixamorig:LeftToeBase
+    400030: mixamorig:LeftUpLeg
+    400032: mixamorig:Neck
+    400034: mixamorig:RightArm
+    400036: mixamorig:RightFoot
+    400038: mixamorig:RightForeArm
+    400040: mixamorig:RightHand
+    400042: mixamorig:RightHandIndex1
+    400044: mixamorig:RightHandIndex2
+    400046: mixamorig:RightHandIndex3
+    400048: mixamorig:RightHandIndex4
+    400050: mixamorig:RightLeg
+    400052: mixamorig:RightShoulder
+    400054: mixamorig:RightToe_End
+    400056: mixamorig:RightToeBase
+    400058: mixamorig:RightUpLeg
+    400060: mixamorig:Spine
+    400062: mixamorig:Spine1
+    400064: mixamorig:Spine2
+    400066: //RootNode
+    400068: prota gym
     2100000: Material.007
-    2100002: Material.001
-    2100004: Material.002
-    2100006: Material.003
-    2100008: Material
-    2100010: Material.004
-    2100012: Material.005
-    2100014: Material.006
-    2100016: Material.009
-    4300000: personaje de la tienda
+    2100002: Material.008
+    2100004: material.002
+    2100006: Material.005
+    2100008: Material.001
+    2100010: Material.006
+    2100012: Material.004
+    2100014: Material.003
+    2100016: Material.002
+    4300000: prota gym
     7400000: mixamo.com
     9500000: //RootNode
-    13700000: personaje de la tienda
+    13700000: prota gym
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -18,7 +18,6 @@ public class PokedexManagerNPC : MonoBehaviour
     {
         float velocidad = rb.velocity.magnitude;
         Animator animator = GetComponentInChildren<Animator>();
-        animator.SetFloat("Velocidad", velocidad);
 
         // 🔹 SOLUCIÓN: Solo rotar en el eje Y y no interferir con el Rigidbody
         if (velocidad > 0.1f)
