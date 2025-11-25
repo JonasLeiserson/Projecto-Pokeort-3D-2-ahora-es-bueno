@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1395,12 +1395,12 @@ PrefabInstance:
     - target: {fileID: 3183447003445726479, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
       propertyPath: Distancia
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3183447003445726479, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
       propertyPath: Altura
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e65ad50409fdaee49b335ab8302cae92, type: 3}
@@ -1597,7 +1597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113018864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.35, y: 15.21, z: 67.8}
+  m_LocalPosition: {x: -54.68, y: 15.21, z: 69.76}
   m_LocalScale: {x: 1, y: 7.161036, z: 10.502367}
   m_Children: []
   m_Father: {fileID: 5087860791870206380}
@@ -1611,7 +1611,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113018864}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1628,7 +1628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6154c1e25a1f04997e598e1436e180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EdificioSeleccionado: 2
+  EdificioSeleccionado: 3
+  idDeSalida: TiendaSpawn
 --- !u!1 &1216290241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2689,7 +2690,7 @@ MonoBehaviour:
   fuenteTMP: {fileID: 0}
   itemsDisponibles:
   - {fileID: 11400000, guid: ee33587bb6f0c5e48ac7ae7c86aba4e8, type: 2}
-  - {fileID: 11400000, guid: b9e7aa0c9c69d0746a787c34080704e8, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 9b85fbf942d18d745b3ce645386e64d3, type: 2}
   - {fileID: 11400000, guid: 99d50e4ec56416642b5c22f716aa30da, type: 2}
   textoDinero: {fileID: 1916449600}

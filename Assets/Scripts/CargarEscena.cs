@@ -1,28 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum Edificio
 {
-  Casa,
-  Tienda,
-  Centro,
-  Mundo,
-  Gimnasio,
-  Laboratorio
-    
+    Casa,
+    Tienda,
+    Centro,
+    Mundo,
+    Gimnasio,
+    Laboratorio
 }
+
 public class CargarEscena : MonoBehaviour
 {
     public Edificio EdificioSeleccionado;
-    // Start is called before the first frame update
+    public string idDeSalida;
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -32,6 +30,14 @@ public class CargarEscena : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (EdificioSeleccionado == Edificio.Mundo)
+            {
+                if (GameManager.instance != null && !string.IsNullOrEmpty(idDeSalida))
+                {
+                    GameManager.instance.spawnPointIDDeRetorno = idDeSalida;
+                }
+            }
+
             switch (EdificioSeleccionado)
             {
                 case Edificio.Casa:
@@ -54,8 +60,7 @@ public class CargarEscena : MonoBehaviour
                 case Edificio.Laboratorio:
                     SceneManager.LoadScene("Laboratorio");
                     break;
-            } 
+            }
         }
     }
 }
-    

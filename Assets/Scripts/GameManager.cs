@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public List<string> gymsDefeated = new List<string>();
 
     public bool playing;
+    public string spawnPointIDDeRetorno;
+
     void Awake()
     {
         file1 = "1.json";
@@ -98,22 +100,31 @@ public class GameManager : MonoBehaviour
                 SaveGame();
                 AssignData(data);
             }
-            // ⭐ NUEVO: Ejecutar siempre que se cargue GameScene
         }
 
         if (scene.name == "GameScene")
         {
-            // Usar Coroutine para asegurar que los objetos estén cargados
             StartCoroutine(ConfigurarGameScene());
         }
     }
 
-    // ⭐ NUEVO: Método separado para configurar GameScene
     private IEnumerator ConfigurarGameScene()
     {
-        // Esperar un frame para asegurar que todos los objetos estén instanciados
         yield return null;
-        
+
+        if (!string.IsNullOrEmpty(spawnPointIDDeRetorno))
+        {
+            SpawnPoint[] allSpawns = FindObjectsOfType<SpawnPoint>();
+            SpawnPoint destino = System.Array.Find(allSpawns, sp => sp.spawnID == spawnPointIDDeRetorno);
+
+            if (destino != null)
+            {
+                playerPosition = destino.transform.position;
+            }
+
+            spawnPointIDDeRetorno = string.Empty;
+        }
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
@@ -122,7 +133,7 @@ public class GameManager : MonoBehaviour
                 playerPosition = new Vector3(223, 6, 83);
             }
             player.transform.position = playerPosition;
-            Debug.Log($"Jugador posicionado en: {playerPosition}");
+            Debug.Log("Jugador posicionado en: " + playerPosition.ToString());
         }
         else
         {
@@ -131,9 +142,9 @@ public class GameManager : MonoBehaviour
 
         foreach (string trainer in trainersDefeated)
         {
-            Debug.Log($"Procesando entrenador: {trainer}");
+            Debug.Log("Procesando entrenador: " + trainer);
             GameObject trainerGO = GameObject.FindGameObjectWithTag(trainer);
-            
+
             if (trainerGO != null)
             {
                 CombatNPCInteraction combatComponent = trainerGO.GetComponentInChildren<CombatNPCInteraction>();
@@ -149,18 +160,17 @@ public class GameManager : MonoBehaviour
                     visionComponent.gameObject.SetActive(false);
                 }
 
-                // Activar diálogo si existe
                 DialogoTrigger dialogoComponent = trainerGO.GetComponent<DialogoTrigger>();
                 if (dialogoComponent != null)
                 {
                     dialogoComponent.enabled = true;
                 }
-                
-                Debug.Log($"Entrenador {trainer} configurado correctamente");
+
+                Debug.Log("Entrenador " + trainer + " configurado correctamente");
             }
             else
             {
-                Debug.LogWarning($"No se encontró el entrenador con tag: {trainer}");
+                Debug.LogWarning("No se encontró el entrenador con tag: " + trainer);
             }
         }
     }
@@ -168,18 +178,15 @@ public class GameManager : MonoBehaviour
     public void GameScene()
     {
         SceneManager.LoadScene("GameScene");
-        // ⭐ REMOVIDO: El código se ejecutará automáticamente en OnSceneLoaded
-        // Ya no necesitamos duplicar la lógica aquí
     }
 
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

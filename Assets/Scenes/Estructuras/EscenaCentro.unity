@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -268,6 +268,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 8f25ea58d1e5ce242b34a7fd056ddcce, type: 3}
+      propertyPath: m_Name
+      value: Puerta
+      objectReference: {fileID: 0}
     - target: {fileID: 100020, guid: 8f25ea58d1e5ce242b34a7fd056ddcce, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -452,7 +456,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482479779}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.9253389, y: 2.7913623, z: 4.51}
@@ -498,6 +502,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.343215, y: 0.43040404, z: 79.68744}
   m_Center: {x: 0.14411333, y: -2.43193, z: 43.98454}
+--- !u!114 &482479795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482479779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e6154c1e25a1f04997e598e1436e180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EdificioSeleccionado: 2
+  idDeSalida: CentroSpawn
 --- !u!64 &482479796
 MeshCollider:
   m_ObjectHideFlags: 0
