@@ -12,6 +12,7 @@ public class BtnCancelar : MonoBehaviour
     public void EsconderPokedex()
     {
         UIManager.instance.EsconderCambioPokeort();
+        PokedexUIManager.instance.UsandoItem = false;
     }
 
     void Start()
