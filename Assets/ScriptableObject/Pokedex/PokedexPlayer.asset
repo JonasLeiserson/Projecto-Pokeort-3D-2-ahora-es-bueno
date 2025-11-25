@@ -22,9 +22,9 @@ MonoBehaviour:
     type1: 6
     type2: 9
     level: 100
-    currentHP: 118311
+    currentHP: 107962
     maxHP: 200000
-    currentAttack: 4
+    currentAttack: 58
     maxAttack: 117
     currentDefense: 1512
     maxDefense: 189

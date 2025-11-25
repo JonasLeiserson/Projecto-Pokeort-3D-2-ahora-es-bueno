@@ -158,10 +158,16 @@ public class UIManager : MonoBehaviour
         Slider slider = barraDeVida.GetComponentInChildren<Slider>();
         Image imagen = slider.fillRect.GetComponent<Image>();
 
-        TextMeshProUGUI textoVida = barraDeVida.GetComponentInChildren<TextMeshProUGUI>();
+        TextMeshProUGUI textoNombre = barraDeVida.transform.Find("name").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI textoHP = barraDeVida.transform.Find("hp").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI textoLevel = barraDeVida.transform.Find("level").GetComponent<TextMeshProUGUI>();
+
         int vidaActual = pokeort.currentHP;
         int vidaMaxima = pokeort.maxHP;
-        textoVida.text = pokeort.pokemonData.pokemonName;
+
+        textoNombre.text = pokeort.pokemonData.pokemonName;
+        textoLevel.text = $"NV. {pokeort.level}";
+        textoHP.text = $"{vidaActual} / {vidaMaxima}";
 
         slider.value = (float)vidaActual / vidaMaxima;
 

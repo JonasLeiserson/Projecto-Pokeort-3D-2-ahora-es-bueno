@@ -38,7 +38,7 @@ public class HuirButton : MonoBehaviour
                 line1.dialogueText = "Has huido con exito";
                 dialogo.dialogueLines = new List<DialogueLine> { line1 };
                 DialogoManager.instance.StartDialogue(dialogo);
-                CombateSalvajeManager.instance.HuirCombate();
+                CombateSalvajeManager.instance.HuirCombate(true);
             }
             else
             {
@@ -46,8 +46,7 @@ public class HuirButton : MonoBehaviour
                 line1.dialogueText = "No has podido huir del combate";
                 dialogo.dialogueLines = new List<DialogueLine> { line1 };
                 DialogoManager.instance.StartDialogue(dialogo);
-
-                StartCoroutine(CombateSalvajeManager.instance.SecuenciaDeAtaqueSimple(CombateSalvajeManager.instance.AtaqueEnemigo, CombateSalvajeManager.instance.pokeortElegido, CombateSalvajeManager.instance.pokeortElegidoGO));
+                CombateSalvajeManager.instance.HuirCombate(false);
             }
         }
     }

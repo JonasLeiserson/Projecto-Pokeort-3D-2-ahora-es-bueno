@@ -79,6 +79,7 @@ public class CombateSalvajeManager : MonoBehaviour
         Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
         Quaternion playerRotation = Quaternion.Euler(0, playerRotY, 0);
         player = Instantiate(player, playerPosition, playerRotation);
+        GameManager.instance.playerPosition = playerPosition;
         GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
 
         movementScript = player.GetComponent<MovimientoJugador>();
@@ -490,9 +491,17 @@ public class CombateSalvajeManager : MonoBehaviour
         }
     }
 
-    public void HuirCombate()
+    public void HuirCombate(bool huyo)
     {
-        TerminarBatalla();
+        if (huyo)
+        {
+            TerminarBatalla();
+        }
+        else
+        {
+            StartCoroutine(SecuenciaDeAtaqueSimple(AtaqueEnemigo, pokeortElegido, pokeortElegidoGO));
+        }
+
     }
 
     void Update()

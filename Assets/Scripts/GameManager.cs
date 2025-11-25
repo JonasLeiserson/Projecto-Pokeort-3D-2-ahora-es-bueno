@@ -93,36 +93,74 @@ public class GameManager : MonoBehaviour
     {
         if (playing)
         {
-            if (scene.name == "GameScene")
-            {
-                SaveGame();
-                AssignData(data);
-
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                if (player != null)
-                {
-                    player.transform.position = playerPosition;
-                }
-
-                PokedexPlayerManager.instance.pokedex = pokedex;
-                Inventario.instance.items = inventory;
-
-                foreach (string trainer in trainersDefeated)
-                {
-                    GameObject trainerGO = GameObject.FindGameObjectWithTag(trainer);
-                    trainerGO.GetComponent<CombatNPCInteraction>().enabled = false;
-                    
-                    if (trainerGO.GetComponent<DialogoTrigger>())
-                    {
-                        trainerGO.GetComponent<DialogoTrigger>().enabled = true;
-                    }
-                }
-            }
-
             if (scene.name == "Combate")
             {
                 SaveGame();
                 AssignData(data);
+            }
+            // ⭐ NUEVO: Ejecutar siempre que se cargue GameScene
+        }
+
+        if (scene.name == "GameScene")
+        {
+            // Usar Coroutine para asegurar que los objetos estén cargados
+            StartCoroutine(ConfigurarGameScene());
+        }
+    }
+
+    // ⭐ NUEVO: Método separado para configurar GameScene
+    private IEnumerator ConfigurarGameScene()
+    {
+        // Esperar un frame para asegurar que todos los objetos estén instanciados
+        yield return null;
+        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            if (playerPosition == new Vector3(0, 0, 0))
+            {
+                playerPosition = new Vector3(223, 6, 83);
+            }
+            player.transform.position = playerPosition;
+            Debug.Log($"Jugador posicionado en: {playerPosition}");
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró el jugador en GameScene");
+        }
+
+        foreach (string trainer in trainersDefeated)
+        {
+            Debug.Log($"Procesando entrenador: {trainer}");
+            GameObject trainerGO = GameObject.FindGameObjectWithTag(trainer);
+            
+            if (trainerGO != null)
+            {
+                CombatNPCInteraction combatComponent = trainerGO.GetComponentInChildren<CombatNPCInteraction>();
+                if (combatComponent != null)
+                {
+                    trainerGO.GetComponentInChildren<CombatNPCInteraction>().gameObject.SetActive(false);
+                    Debug.Log("Begetativo");
+                }
+
+                VisionNPC visionComponent = trainerGO.GetComponentInChildren<VisionNPC>();
+                if (visionComponent != null)
+                {
+                    visionComponent.gameObject.SetActive(false);
+                }
+
+                // Activar diálogo si existe
+                DialogoTrigger dialogoComponent = trainerGO.GetComponent<DialogoTrigger>();
+                if (dialogoComponent != null)
+                {
+                    dialogoComponent.enabled = true;
+                }
+                
+                Debug.Log($"Entrenador {trainer} configurado correctamente");
+            }
+            else
+            {
+                Debug.LogWarning($"No se encontró el entrenador con tag: {trainer}");
             }
         }
     }
@@ -130,6 +168,8 @@ public class GameManager : MonoBehaviour
     public void GameScene()
     {
         SceneManager.LoadScene("GameScene");
+        // ⭐ REMOVIDO: El código se ejecutará automáticamente en OnSceneLoaded
+        // Ya no necesitamos duplicar la lógica aquí
     }
 
     void Start()

@@ -385,12 +385,6 @@ public class PokeortInstance
         {
             debuff = (DebuffAttack)ataque;
 
-            DialogueLine linea1 = new DialogueLine();
-            linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {debuff.attackName}";
-
-            DialogueLine linea2 = new DialogueLine();
-            linea2.dialogueText = $"{enemigo.pokemonData.pokemonName} vio reducido su {debuff.debuffStat}";
-
             debuff.aura.transform.position = TRenemigo.position;
             ParticleSystem particles = debuff.aura.GetComponent<ParticleSystem>();
 
@@ -402,29 +396,41 @@ public class PokeortInstance
             GameObject aura = MonoBehaviour.Instantiate(debuff.aura);
             MonoBehaviour.Destroy(aura, 4f);
 
-
+            string debuffStatTxt = "";
             switch (debuff.debuffStat)
             {
                 case DebuffAttack.debuffType.Attack:
                     enemigo.currentAttack = Mathf.RoundToInt(enemigo.currentAttack / debuff.debuffMultiplier);
+                    debuffStatTxt = "ataque";
                     break;
                 case DebuffAttack.debuffType.Defense:
                     enemigo.currentDefense = Mathf.RoundToInt(enemigo.currentDefense / debuff.debuffMultiplier);
+                    debuffStatTxt = "defensa";
                     break;
                 case DebuffAttack.debuffType.Speed:
                     enemigo.currentSpeed = Mathf.RoundToInt(enemigo.currentSpeed / debuff.debuffMultiplier);
+                    debuffStatTxt = "velocidad";
                     break;
                 case DebuffAttack.debuffType.SpecialAttack:
                     enemigo.currentSpAttack = Mathf.RoundToInt(enemigo.currentSpAttack / debuff.debuffMultiplier);
+                    debuffStatTxt = "ataque especial";
                     break;
                 case DebuffAttack.debuffType.SpecialDefense:
                     enemigo.currentSpDefense = Mathf.RoundToInt(enemigo.currentSpDefense / debuff.debuffMultiplier);
+                    debuffStatTxt = "defensa especial";
                     break;
             }
 
-            dialogo.dialogueLines = new List<DialogueLine> { linea1, linea2 };
 
-            UnityEngine.Debug.Log($"{pokemonData.pokemonName} utilizo {debuff.attackName} y vio reducido su {debuff.debuffStat}");
+            UnityEngine.Debug.Log($"{pokemonData.pokemonName} utilizo {debuff.attackName} y vio reducido su {debuffStatTxt}");
+
+            DialogueLine linea1 = new DialogueLine();
+            linea1.dialogueText = $"{pokemonData.pokemonName} utilizo {debuff.attackName}";
+
+            DialogueLine linea2 = new DialogueLine();
+            linea2.dialogueText = $"{enemigo.pokemonData.pokemonName} vio reducido su {debuffStatTxt}";
+
+            dialogo.dialogueLines = new List<DialogueLine> { linea1, linea2 };
             dialogoManager.StartDialogue(dialogo);
 
             return true;
@@ -450,17 +456,47 @@ public class PokeortInstance
         dialogo.dialogueLines = new List<DialogueLine> { line1 };
         DialogoManager.instance.StartDialogue(dialogo);
     }
-    public void Potenciar(int valor, Item.AtributoPotenciador atributo)
+    public void Potenciar(int valor, Item.AtributoPotenciador atributo, Dialogue dialogo)
     {
-        int cantidadACurar = maxHP * valor / 100;
-        currentHP += cantidadACurar;
-
-        if (currentHP > maxHP)
+        string buffStatTxt = "";
+        switch (atributo)
         {
-            currentHP = maxHP;
+            case Item.AtributoPotenciador.Ataque:
+                int ataqueSumado = maxAttack * valor / 100;
+                currentAttack += ataqueSumado;
+                buffStatTxt = "ataque";
+                break;
+
+            case Item.AtributoPotenciador.Defensa:
+                int defensaSumada = maxDefense * valor / 100;
+                currentDefense += defensaSumada;
+                buffStatTxt = "defensa";
+                break;
+
+            case Item.AtributoPotenciador.DefensaEspecial:
+                int spDefensaSumada = maxSpDefense * valor / 100;
+                currentSpDefense += spDefensaSumada;
+                buffStatTxt = "defensa especial";
+                break;
+
+            case Item.AtributoPotenciador.AtaqueEspecial:
+                int spAtaqueSumado = maxSpAttack * valor / 100;
+                currentSpAttack += spAtaqueSumado;
+                buffStatTxt = "ataque especial";
+                break;
+
+            case Item.AtributoPotenciador.Velocidad:
+                int velocidadSumada = maxSpeed * valor / 100;
+                currentSpeed += velocidadSumada;
+                buffStatTxt = "velocidad";
+                break;
         }
 
-        UnityEngine.Debug.Log($"{pokemonData.pokemonName} fue curado por {cantidadACurar} HP. Su nueva vida es {currentHP}");
+        DialogueLine linea = new DialogueLine();
+        linea.dialogueText = $"{pokemonData.pokemonName} vio aumentado su {buffStatTxt}";
+
+        dialogo.dialogueLines = new List<DialogueLine> { linea };
+        DialogoManager.instance.StartDialogue(dialogo);
     }
 
     public void ChequearNivel()

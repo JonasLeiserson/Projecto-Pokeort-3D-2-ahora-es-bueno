@@ -10,6 +10,7 @@ public class PokedexSlot : MonoBehaviour
     public TextMeshProUGUI pokemonNameText;
     public TextMeshProUGUI pokemonLevelText;
     [SerializeField] GameObject slider;
+    public TextMeshProUGUI hpText;
     public int index;
 
     PokeortInstance pokeortInstance;
@@ -36,6 +37,8 @@ public class PokedexSlot : MonoBehaviour
         {
             UIManager.instance.ActualizarSliderPokedex(slider, pokeort);
         }
+
+        hpText.text = $"{pokeort.currentHP} / {pokeort.maxHP}";
     }
     public void Clickeado()
     {
@@ -51,7 +54,7 @@ public class PokedexSlot : MonoBehaviour
                         pokeortInstance.Curar(PokedexUIManager.instance.ItemElejido.ValorDeUso, CombateSalvajeManager.instance.dialogoCombate);
                         break;
                     case Item.Tipo.potenciador:
-                        pokeortInstance.Potenciar(PokedexUIManager.instance.ItemElejido.ValorDeUso, PokedexUIManager.instance.ItemElejido.atributoPotenciador);
+                        pokeortInstance.Potenciar(PokedexUIManager.instance.ItemElejido.ValorDeUso, PokedexUIManager.instance.ItemElejido.atributoPotenciador, CombateSalvajeManager.instance.dialogoCombate);
                         break;
                     case Item.Tipo.baya:
                         break;
@@ -72,7 +75,7 @@ public class PokedexSlot : MonoBehaviour
                         pokeortInstance.Curar(PokedexUIManager.instance.ItemElejido.ValorDeUso, CombateNPCManager.instance.dialogoCombate);
                         break;
                     case Item.Tipo.potenciador:
-                        pokeortInstance.Potenciar(PokedexUIManager.instance.ItemElejido.ValorDeUso, PokedexUIManager.instance.ItemElejido.atributoPotenciador);
+                        pokeortInstance.Potenciar(PokedexUIManager.instance.ItemElejido.ValorDeUso, PokedexUIManager.instance.ItemElejido.atributoPotenciador, CombateNPCManager.instance.dialogoCombate);
                         break;
                     case Item.Tipo.baya:
                         break;
@@ -82,6 +85,7 @@ public class PokedexSlot : MonoBehaviour
 
                 PokedexUIManager.instance.EsconderEleccionpokeorts();
                 PokedexUIManager.instance.ItemElejido = null;
+                PokedexUIManager.instance.UsandoItem = false;
                 CombateNPCManager combate = CombateNPCManager.instance;
                 combate.StartCoroutine(combate.EjecutarAtaqueConDialogo(combate.AtaqueEnemigo, combate.pokeortElegido, combate.pokeortElegidoGO, UIManager.instance.sliderAmigo));
             }   

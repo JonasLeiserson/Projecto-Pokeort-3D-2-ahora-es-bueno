@@ -4,7 +4,7 @@ public class VisionNPC : MonoBehaviour
 {
     public float velocidadMovimiento = 5f;
     private Transform jugadorTransform;
-    private bool persiguiendoJugador = false;
+    public bool persiguiendoJugador = false;
 
     void Update()
     {
@@ -34,6 +34,7 @@ public class VisionNPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             persiguiendoJugador = false;
+            other.GetComponent<MovimientoJugador>().MovimientoVelocidad = 6f;
         }
     }
 }

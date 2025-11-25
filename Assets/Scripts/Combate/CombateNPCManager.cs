@@ -84,6 +84,7 @@ public class CombateNPCManager : MonoBehaviour
         Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
         Quaternion playerRotation = Quaternion.Euler(0, playerRotY, 0);
         player = Instantiate(player, playerPosition, playerRotation);
+        GameManager.instance.playerPosition = playerPosition;
 
         // Desactivar cámara principal
         GameObject mainCamera = GameObject.Find("Camara Principal");
@@ -256,7 +257,6 @@ public class CombateNPCManager : MonoBehaviour
         
         UIManager.instance.EsconderAtaques();
 
-        // ⭐ Pasar 'this' como invoker
         Animator animEnemigo = pokeortEnemigoGO?.GetComponentInChildren<Animator>();
         Transform TRamigo = pokeortEnemigoGO.GetComponent<Transform>();
         Transform TRenemigo = pokeortElegidoGO.GetComponent<Transform>();

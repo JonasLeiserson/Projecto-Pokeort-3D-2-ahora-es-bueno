@@ -9,6 +9,11 @@ public class BtnCancelar : MonoBehaviour
         UIManager.instance.EsconderAtaques();
     }
 
+    public void EsconderPokedex()
+    {
+        UIManager.instance.EsconderCambioPokeort();
+    }
+
     void Start()
     {
         
