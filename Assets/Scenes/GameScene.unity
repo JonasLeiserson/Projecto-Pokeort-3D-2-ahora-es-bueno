@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EdificioSeleccionado: 4
-  puntoDeRetorno: {fileID: 0}
+  idDeSalida: 
 --- !u!65 &233091702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -734,7 +734,7 @@ PrefabInstance:
     - target: {fileID: 3183447003146668398, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
       propertyPath: MovimientoVelocidad
-      value: 6
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3183447003146668400, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
@@ -1080,6 +1080,7 @@ MonoBehaviour:
   trainersDefeated: []
   gymsDefeated: []
   playing: 0
+  spawnPointIDDeRetorno: 
 --- !u!4 &466640450
 Transform:
   m_ObjectHideFlags: 0

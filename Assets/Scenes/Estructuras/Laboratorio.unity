@@ -402,17 +402,17 @@ PrefabInstance:
     - target: {fileID: 3183447003146668396, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7
+      value: 7.64
       objectReference: {fileID: 0}
     - target: {fileID: 3183447003146668396, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5.02
       objectReference: {fileID: 0}
     - target: {fileID: 3183447003146668396, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.6
+      value: 14.44
       objectReference: {fileID: 0}
     - target: {fileID: 3183447003146668396, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
@@ -454,10 +454,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3183447003146668396, guid: e65ad50409fdaee49b335ab8302cae92,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2328
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183447003146668396, guid: e65ad50409fdaee49b335ab8302cae92,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2328
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183447003146668396, guid: e65ad50409fdaee49b335ab8302cae92,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2328
+      objectReference: {fileID: 0}
     - target: {fileID: 3183447003146668400, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
       propertyPath: m_Name
       value: JugadorCamaraMan
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183447003445726479, guid: e65ad50409fdaee49b335ab8302cae92,
+        type: 3}
+      propertyPath: Distancia
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183447003445726479, guid: e65ad50409fdaee49b335ab8302cae92,
+        type: 3}
+      propertyPath: Altura
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e65ad50409fdaee49b335ab8302cae92, type: 3}

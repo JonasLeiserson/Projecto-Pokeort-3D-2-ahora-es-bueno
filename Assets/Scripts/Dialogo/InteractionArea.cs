@@ -51,13 +51,12 @@ public class InteractionArea : MonoBehaviour
 
     private void Update()
     {
-        if (currentInteractable != null && !DialogoManager.instance.talking)
+        if (interactButton != null)
         {
-            interactButton.SetActive(true);
-        }
-        else
-        {
-            interactButton.SetActive(false);
+            if (currentInteractable != null && !DialogoManager.instance.talking)
+                interactButton.SetActive(true);
+            else
+                interactButton.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
