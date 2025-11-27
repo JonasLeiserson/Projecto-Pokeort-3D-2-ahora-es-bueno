@@ -64,6 +64,6 @@ public class CargarEscena : MonoBehaviour
     }
     public void CargarMundo()
     {
-    SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GameScene");
     }
 }

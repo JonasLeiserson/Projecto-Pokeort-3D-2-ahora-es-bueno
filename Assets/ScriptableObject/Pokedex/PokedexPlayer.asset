@@ -56,7 +56,7 @@ MonoBehaviour:
     maxSpAttack: 13
     currentSpDefense: 12
     maxSpDefense: 12
-    currentSpeed: 12
+    currentSpeed: 1
     maxSpeed: 12
     currentStatus: 0
     experiencePoints: 0

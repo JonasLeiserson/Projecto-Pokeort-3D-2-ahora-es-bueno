@@ -187,6 +187,50 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &107263844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107263845}
+  - component: {fileID: 107263846}
+  m_Layer: 0
+  m_Name: SpawnPoing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &107263845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107263844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.95, y: 0, z: 6.95}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 233091700}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &107263846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107263844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913db42e31e2d4c408489ff4e7bf15b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnID: SpawnCueva
 --- !u!4 &131338200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3110878860643193337, guid: 77a63aa899398ea4f90897dc15003eca,
@@ -445,7 +489,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0.63840073, z: -0, w: -0.76970416}
   m_LocalPosition: {x: 145.43, y: 13.51, z: 189.82}
   m_LocalScale: {x: 3.3747208, y: 4.68512, z: 2.44433}
-  m_Children: []
+  m_Children:
+  - {fileID: 107263845}
   m_Father: {fileID: 1756945111}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 79.345, z: 0}

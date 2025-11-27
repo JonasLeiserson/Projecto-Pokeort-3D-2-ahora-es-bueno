@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CombateNPCManager : MonoBehaviour
 {
@@ -583,34 +584,49 @@ public class CombateNPCManager : MonoBehaviour
             {
                 dialogoManager.StartDialogue(dialogoCombate);
             }
-        }
+        
 
-        if (GameManager.instance != null && NPC != null)
-        {
-            GameManager.instance.trainersDefeated.Add(NPC.tag);
-        }
-
-        IEnumerator Wait()
-        {
-            yield return new WaitUntil(() => !dialogoManager.talking);
-
-            if (UIManager.instance != null)
+            if (GameManager.instance != null && NPC != null)
             {
-                UIManager.instance.combatButtons.SetActive(false);
-            }
-
-            if (GameManager.instance != null)
-            {
-                if (NPC.tag != "Lider" && NPC.tag != "NPCGym" && NPC.tag != "NPCGym2")
-                {
-                    GameManager.instance.GameScene();
-                }
-                else
-                {
-                    GameManager.instance.GymScene();
-                }
+                GameManager.instance.trainersDefeated.Add(NPC.tag);
             }
         }
+        else
+        {
+            DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "No tienes más Pokeorts." };
+            DialogueLine line2 = new DialogueLine { speakerName = "Sistema", dialogueText = "Has perdido la batalla." };
+            dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2 };
+            if (dialogoManager != null)
+            {
+                dialogoManager.StartDialogue(dialogoCombate);
+            }
+        }
+
+            IEnumerator Wait()
+            {
+                yield return new WaitUntil(() => !dialogoManager.talking);
+
+                if (UIManager.instance != null)
+                {
+                    UIManager.instance.combatButtons.SetActive(false);
+                }
+
+                if (GameManager.instance != null && ganaste)
+                {
+                    if (NPC.tag != "Lider" && NPC.tag != "NPCGym" && NPC.tag != "NPCGym2")
+                    {
+                        GameManager.instance.GameScene();
+                    }
+                    else
+                    {
+                        GameManager.instance.GymScene();
+                    }
+                }
+                else if (GameManager.instance != null && !ganaste)
+                {
+                SceneManager.LoadScene("EscenaCentro");
+                }
+            }
 
         StartCoroutine(Wait());
     }

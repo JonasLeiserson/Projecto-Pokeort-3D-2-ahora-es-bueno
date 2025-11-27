@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CombateSalvajeManager : MonoBehaviour
@@ -74,14 +75,14 @@ public class CombateSalvajeManager : MonoBehaviour
 
     void Start()
     {
-        Animator anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        anim.SetBool("Lanzamiento", true);
         //CARGAR MODELOS Y DATOS DE JUGADOR Y POKEORTS:
 
         //posicion jugador
         Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
         Quaternion playerRotation = Quaternion.Euler(0, playerRotY, 0);
         player = Instantiate(player, playerPosition, playerRotation);
+        //Animator anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        //anim.SetBool("Lanzamiento", true);
         GameManager.instance.playerPosition = playerPosition;
         GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
 
@@ -381,12 +382,25 @@ public class CombateSalvajeManager : MonoBehaviour
                 StartCoroutine(WaitXP());
             }
         }
+        else
+        {
+            DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "No tienes más Pokeorts." };
+            DialogueLine line2 = new DialogueLine { speakerName = "Sistema", dialogueText = "Has perdido la batalla." };
+            dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2 };
+            if (DialogoManager.instance != null)
+            {
+                DialogoManager.instance.StartDialogue(dialogoCombate);
+            }
+        }
 
         IEnumerator Wait()
         {
             yield return new WaitUntil(() => !dialogoManager.talking);
             UIManager.instance.combatButtons.SetActive(false);
-            GameManager.instance.GameScene();
+            if (ganaste)
+                GameManager.instance.GameScene();
+            else
+                SceneManager.LoadScene("EscenaCentro");
         }
 
         StartCoroutine(Wait());
