@@ -12,6 +12,7 @@ public class CombateSalvajeManager : MonoBehaviour
 
     readonly DialogoManager dialogoManager = DialogoManager.instance;
     public Dialogue dialogoCombate;
+    public Animator anim;
 
     public GameObject player;
     public GameObject[] pokeorts;
@@ -73,6 +74,8 @@ public class CombateSalvajeManager : MonoBehaviour
 
     void Start()
     {
+        Animator anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        anim.SetBool("Lanzamiento", true);
         //CARGAR MODELOS Y DATOS DE JUGADOR Y POKEORTS:
 
         //posicion jugador
@@ -436,6 +439,7 @@ public class CombateSalvajeManager : MonoBehaviour
     public void UsarPokebola(Item item)
     {
         InventarioManager.instance.EsconderInventario();
+        
 
         if (Pokedex.MAX_POKEMONS <= pokedex.pokeorts.Count)
         {
