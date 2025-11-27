@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552a8fbcb378e584081116ee2ca7c18f, type: 3}
+  m_Name: NPCDarin
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - speakerName: Prof. Darin
+    dialogueText: Hola! Parece que vienes aqui a recibir un pokeort. Primero dejame
+      explicarte algunas cosas.
+    speakerPortrait: {fileID: 0}
+  - speakerName: Prof. Darin
+    dialogueText: 'Los pokeORTs sirven para luchar. Existen dos tipos de combates:
+      combate salvaje y combate contra personas.'
+    speakerPortrait: {fileID: 0}
+  - speakerName: Prof. Darin
+    dialogueText: Un combate salvaje es aquel en el cual luchas contra un pokemon
+      que se encuentra libre por el mundo. A estos pokemones puedes atraparlos lanzandoles
+      pokebolas desde tu inventario. Para entrar en combate salvaje, solo debes chocar
+      contra el pokemon al cual deseas atacar.
+    speakerPortrait: {fileID: 0}
+  - speakerName: Prof. Darin
+    dialogueText: Luego, puedes luchar contra otros entrenadores. Estos tendran un
+      equipo formado por 1 o mas pokeORTs y tendras que derrotarlos a todos para vencer.
+      Ojo! Tus pokeORTs pueden caer tambien. Si ese es el caso, visita el centro pokeORT,
+      el edificio con una cruz roja, para curarlos a todos.
+    speakerPortrait: {fileID: 0}
+  - speakerName: Prof. Darin
+    dialogueText: Tus pokeORTs ganaran experiencia en cada combate. Esta sirve para
+      subir de nivel y que se vuelvan mas fuertes, facilitando los combates.
+    speakerPortrait: {fileID: 0}
+  - speakerName: Prof. Darin
+    dialogueText: Ahora si, elige una de estas 3 pokeORT bolas para llevar contigo.
+      Cada una contiene un pokeORT distinto, asi que elige sabiamente!
+    speakerPortrait: {fileID: 0}

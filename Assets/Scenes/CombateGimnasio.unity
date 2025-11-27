@@ -2487,6 +2487,7 @@ MonoBehaviour:
   NPCs:
   - {fileID: 4656585926780724999, guid: 5e80430d38c02b348912f6009004a551, type: 3}
   - {fileID: 4656585926780724999, guid: 73f89ad5a44a9ec4ebff163a5847dfbc, type: 3}
+  - {fileID: 4656585926780724999, guid: f1eb6faf6d4fcaf4598f7ac85e9124b1, type: 3}
   pokeortAmigos: []
   pokeortElegido:
     pokemonData: {fileID: 0}

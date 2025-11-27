@@ -39,6 +39,7 @@ public class EncuentroPokemon : MonoBehaviour
                 PlayerPrefs.SetFloat("PosY", playerPosition.y);
                 PlayerPrefs.SetFloat("PosZ", playerPosition.z);
                 PlayerPrefs.SetFloat("RotY", playerRotation);
+                PlayerPrefs.SetInt("Level", GetComponent<PokemonManager>().currentPokemonInstance.level);
 
                 PlayerPrefs.Save();
 

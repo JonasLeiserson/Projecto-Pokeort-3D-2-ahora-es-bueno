@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class AdminDebugger : MonoBehaviour
 {
+    public PokedexPlayerManager pokedexPlayerManager;
+    public GameObject[] pokeorts;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,42 @@ public class AdminDebugger : MonoBehaviour
             player.transform.position = new Vector3(177.0843f, 3f, 18.66978f);
 
             if (cc != null) cc.enabled = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.H))
+        {
+            GameObject pokeort = Instantiate(pokeorts[0]);
+            pokeort.GetComponent<PokemonManager>().Init(5);
+            pokedexPlayerManager.pokedex.AddPokemon(pokeort.GetComponent<PokemonManager>().currentPokemonInstance);
+        }
+        else if (Input.GetKeyDown(KeyCode.J))
+        {
+            GameObject pokeort = Instantiate(pokeorts[1]);
+            pokeort.GetComponent<PokemonManager>().Init(3);
+            pokedexPlayerManager.pokedex.AddPokemon(pokeort.GetComponent<PokemonManager>().currentPokemonInstance);
+        }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            GameObject pokeort = Instantiate(pokeorts[2]);
+            pokeort.GetComponent<PokemonManager>().Init(3);
+            pokedexPlayerManager.pokedex.AddPokemon(pokeort.GetComponent<PokemonManager>().currentPokemonInstance);
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            GameObject pokeort = Instantiate(pokeorts[3]);
+            pokeort.GetComponent<PokemonManager>().Init(3);
+            pokedexPlayerManager.pokedex.AddPokemon(pokeort.GetComponent<PokemonManager>().currentPokemonInstance);
+        }
+        else if (Input.GetKeyDown(KeyCode.G))
+        {
+            GameObject pokeort = Instantiate(pokeorts[4]);
+            pokeort.GetComponent<PokemonManager>().Init(4);
+            pokedexPlayerManager.pokedex.AddPokemon(pokeort.GetComponent<PokemonManager>().currentPokemonInstance);
+        }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            GameObject pokeort = Instantiate(pokeorts[5]);
+            pokeort.GetComponent<PokemonManager>().Init(5);
+            pokedexPlayerManager.pokedex.AddPokemon(pokeort.GetComponent<PokemonManager>().currentPokemonInstance);
         }
     }
 }

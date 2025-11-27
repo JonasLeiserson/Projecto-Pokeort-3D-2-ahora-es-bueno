@@ -135,6 +135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf2cc5819af76545b56aeaf51cfbc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pokeorts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &3183447003393045275
 GameObject:
   m_ObjectHideFlags: 0

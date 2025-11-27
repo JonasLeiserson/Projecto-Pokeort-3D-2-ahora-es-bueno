@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6898b5d06d1d538479eba91e349e286c, type: 3}
+  m_Name: PokedexLider
+  m_EditorClassIdentifier: 
+  pokeorts:
+  - pokemonData: {fileID: 11400000, guid: dce708c0922063b43bface7f16bfb24b, type: 2}
+    equippedAttacks:
+    - {fileID: 11400000, guid: cc7d6022e9cdbd049ab2448dc60351f3, type: 2}
+    - {fileID: 11400000, guid: d8f1e2b74b76f124cbbcf70ebc6911d8, type: 2}
+    - {fileID: 11400000, guid: b51b948f2b8821e4e94c36112226abfc, type: 2}
+    - {fileID: 11400000, guid: e074227a962571b439bc5b7778979312, type: 2}
+    type1: 7
+    type2: 4
+    level: 3
+    currentHP: 19
+    maxHP: 19
+    currentAttack: 8
+    maxAttack: 8
+    currentDefense: 9
+    maxDefense: 9
+    currentSpAttack: 7
+    maxSpAttack: 7
+    currentSpDefense: 9
+    maxSpDefense: 9
+    currentSpeed: 8
+    maxSpeed: 8
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 34
+  - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
+    equippedAttacks:
+    - {fileID: 11400000, guid: 9317e98d99cf6fa43bfe86091d683f00, type: 2}
+    - {fileID: 11400000, guid: 9ff37433f035dac4e96e6591af5430b1, type: 2}
+    - {fileID: 11400000, guid: 4dc3d765be1df2247bbd9c44919a3b35, type: 2}
+    - {fileID: 11400000, guid: 96b8c97a391cada47b33e7f91811cde8, type: 2}
+    type1: 6
+    type2: 9
+    level: 4
+    currentHP: 23
+    maxHP: 23
+    currentAttack: 8
+    maxAttack: 8
+    currentDefense: 11
+    maxDefense: 11
+    currentSpAttack: 8
+    maxSpAttack: 8
+    currentSpDefense: 11
+    maxSpDefense: 11
+    currentSpeed: 8
+    maxSpeed: 8
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 80
+  - pokemonData: {fileID: 11400000, guid: 7360d6084f6f41a448f7e28fc5192919, type: 2}
+    equippedAttacks:
+    - {fileID: 11400000, guid: 4d3846dd6ccc00041b0a35c7eb371846, type: 2}
+    - {fileID: 11400000, guid: d19f6ad723b7de447819bab293966c53, type: 2}
+    - {fileID: 11400000, guid: c90c76ebc41a34040ac7abd78c201649, type: 2}
+    - {fileID: 11400000, guid: 32f4dc9346828994695b38964b756604, type: 2}
+    type1: 9
+    type2: 2
+    level: 5
+    currentHP: 23
+    maxHP: 23
+    currentAttack: 11
+    maxAttack: 11
+    currentDefense: 12
+    maxDefense: 12
+    currentSpAttack: 13
+    maxSpAttack: 13
+    currentSpDefense: 9
+    maxSpDefense: 9
+    currentSpeed: 14
+    maxSpeed: 14
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 100

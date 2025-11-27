@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
+            return;
         }
         else
         {
@@ -106,6 +107,11 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(ConfigurarGameScene());
         }
+
+        if (scene.name == "Gimnasio")
+        {
+            StartCoroutine(ConfigurarGym());
+        }
     }
 
     private IEnumerator ConfigurarGameScene()
@@ -175,9 +181,68 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator ConfigurarGym()
+    {
+        yield return null;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            if (playerPosition == new Vector3(0, 0, 0))
+            {
+                playerPosition = new Vector3(29, 2, -1);
+            }
+            player.transform.position = playerPosition;
+            Debug.Log("Jugador posicionado en: " + playerPosition.ToString());
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró el jugador en escena");
+        }
+
+        foreach (string trainer in trainersDefeated)
+        {
+            Debug.Log("Procesando entrenador: " + trainer);
+            GameObject trainerGO = GameObject.FindGameObjectWithTag(trainer);
+
+            if (trainerGO != null)
+            {
+                GymCombatScript combatComponent = trainerGO.GetComponentInChildren<GymCombatScript>();
+                if (combatComponent != null)
+                {
+                    trainerGO.GetComponentInChildren<GymCombatScript>().gameObject.SetActive(false);
+                    Debug.Log("Begetativo");
+                }
+
+                VisionNPC visionComponent = trainerGO.GetComponentInChildren<VisionNPC>();
+                if (visionComponent != null)
+                {
+                    visionComponent.gameObject.SetActive(false);
+                }
+
+                DialogoTrigger dialogoComponent = trainerGO.GetComponent<DialogoTrigger>();
+                if (dialogoComponent != null)
+                {
+                    dialogoComponent.enabled = true;
+                }
+
+                Debug.Log("Entrenador " + trainer + " configurado correctamente");
+            }
+            else
+            {
+                Debug.LogWarning("No se encontró el entrenador con tag: " + trainer);
+            }
+        }
+    }
+
     public void GameScene()
     {
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void GymScene()
+    {
+        SceneManager.LoadScene("Gimnasio");
     }
 
     void Start()

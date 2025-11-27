@@ -205,6 +205,7 @@ public class CombateSalvajeManager : MonoBehaviour
         nuevaPosicion.y = posicionBase.position.y;
 
         GameObject pokeortGO = Instantiate(prefab, nuevaPosicion, Quaternion.identity);
+        pokeortGO.GetComponent<PokemonManager>().Init(PlayerPrefs.GetInt("Level"));
 
         if (esEnemigo)
         {

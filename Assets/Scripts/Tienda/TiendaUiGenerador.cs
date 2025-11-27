@@ -317,5 +317,7 @@ public class TiendaUiGenerador : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
             fondoOscuro.gameObject.SetActive(false);
         }
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoJugador>().enabled = true;
     }
 }

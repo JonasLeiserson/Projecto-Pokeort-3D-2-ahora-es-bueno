@@ -73,8 +73,8 @@ GameObject:
   - component: {fileID: 1408801208602089739}
   - component: {fileID: 8949595045565284704}
   m_Layer: 0
-  m_Name: NPCCombate
-  m_TagString: NPCCombate
+  m_Name: NPCCombate2
+  m_TagString: NPCCombate2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38e2d218c299ab4bac07a35f8b78c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pokedex: {fileID: 11400000, guid: cbe4434279ca9b54da3cd3982f7afe60, type: 2}
+  pokedex: {fileID: 11400000, guid: af6d75f8e428f4b41a9e3d3b89553440, type: 2}
 --- !u!114 &8949595045565284704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71b0afe9b6d22741bd45fd9e47a0efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToTrigger: {fileID: 11400000, guid: 57937c377a00fc3439b0b6b8af422ca3, type: 2}
+  dialogueToTrigger: {fileID: 11400000, guid: f4ab7e29e8ca88948b14932a5a1ad4f5, type: 2}
 --- !u!1 &8811523367293448456
 GameObject:
   m_ObjectHideFlags: 0

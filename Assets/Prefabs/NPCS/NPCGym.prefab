@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38e2d218c299ab4bac07a35f8b78c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pokedex: {fileID: 0}
+  pokedex: {fileID: 11400000, guid: 19897e0e1d82db0469f5958c43c4b04b, type: 2}
 --- !u!114 &8949595045565284704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71b0afe9b6d22741bd45fd9e47a0efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToTrigger: {fileID: 11400000, guid: f8013fde0dab3f8419f1bba09442e29a, type: 2}
+  dialogueToTrigger: {fileID: 11400000, guid: 4d326e6210b77354a8556930785fb24c, type: 2}
 --- !u!1 &5684116003479869880
 GameObject:
   m_ObjectHideFlags: 0

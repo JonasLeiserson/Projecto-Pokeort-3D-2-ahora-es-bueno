@@ -12,6 +12,8 @@ public class SpawnPokeort : MonoBehaviour
     public bool Activado;
     private Coroutine spawnCoroutine;
     public float DistanciaMaxima = 5f;
+    public float nivelMin = 1;
+    public float nivelMax = 4;
 
     void Start()
     {
@@ -40,7 +42,10 @@ public class SpawnPokeort : MonoBehaviour
                 indiceAleatorio = Random.Range(0, PokeortsSpawneables.Length);
                 Vector3 spawnPosition = GetRandomPointInCollider();
                 GameObject enemigoElegido = PokeortsSpawneables[indiceAleatorio];
-                Instantiate(enemigoElegido, spawnPosition, Quaternion.identity);
+                GameObject enemigo = Instantiate(enemigoElegido, spawnPosition, Quaternion.identity);
+                PokemonManager pokemonManager = enemigo.GetComponent<PokemonManager>();
+                int level = (int)Random.Range(nivelMin, nivelMax);
+                pokemonManager.Init(level);
             }
         }
     }

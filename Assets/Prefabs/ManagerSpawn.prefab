@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6186779648032886495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6186779648032886480}
+  - component: {fileID: 6186779648032886481}
+  m_Layer: 0
+  m_Name: ManagerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6186779648032886480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186779648032886495}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.070367455, y: 178.81409, z: 0.07680784}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6186779648032886481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186779648032886495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c5b9cdfa778fd949804102c0497fa7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PokeortsSpawneables:
+  - {fileID: 4203461898131196937, guid: a904e7696e00f3e438537642faa3cb6f, type: 3}
+  - {fileID: 1530276922107362725, guid: 25d90ec4728004b4c84ccdb9b312296b, type: 3}
+  - {fileID: 7511928090184555776, guid: bbcc1d499ff820146a8a5577fcc42a0e, type: 3}
+  - {fileID: 1530276922107362725, guid: 29beba4a69fc3e5478e367b226be48a2, type: 3}
+  - {fileID: 7511928090184555776, guid: cbf3ed7f849876f46bf37b060b9b067b, type: 3}
+  - {fileID: 2574043125412424098, guid: 241e1a66cbf125e45af8b91087b9bfd4, type: 3}
+  CamaraJugador: {fileID: 0}
+  IntervaloDeSpawn: 5
+  areaDeSpawn: {fileID: 0}
+  Activado: 1
+  DistanciaMaxima: 30
+  nivelMin: 1
+  nivelMax: 4

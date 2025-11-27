@@ -78,7 +78,7 @@ public class CombateNPCManager : MonoBehaviour
 
     void Start()
     {
-        if (NPC.tag != "Lider" && NPC.tag != "NPCGym")
+        if (NPC.tag != "Lider" && NPC.tag != "NPCGym" && NPC.tag != "NPCGym2")
         {
             //CARGAR MODELOS Y DATOS DE JUGADOR Y POKEORTS:
 
@@ -617,7 +617,14 @@ public class CombateNPCManager : MonoBehaviour
 
             if (GameManager.instance != null)
             {
-                GameManager.instance.GameScene();
+                if (NPC.tag != "Lider" && NPC.tag != "NPCGym" && NPC.tag != "NPCGym2")
+                {
+                    GameManager.instance.GameScene();
+                }
+                else
+                {
+                    GameManager.instance.GymScene();
+                }
             }
         }
 

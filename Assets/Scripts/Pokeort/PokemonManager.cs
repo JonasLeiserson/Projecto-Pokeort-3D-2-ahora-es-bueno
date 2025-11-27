@@ -6,11 +6,11 @@ public class PokemonManager : MonoBehaviour
     public PokeortData pokemonTemplate;
     public PokeortInstance currentPokemonInstance;
 
-    void Awake()
+    public void Init(int level)
     {
         if (pokemonTemplate != null)
         {
-            currentPokemonInstance = new PokeortInstance(pokemonTemplate, 100);
+            currentPokemonInstance = new PokeortInstance(pokemonTemplate, level);
         }
         else
         {

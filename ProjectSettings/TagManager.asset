@@ -22,6 +22,8 @@ TagManager:
   - Serpi
   - NPCGym
   - Lider
+  - NPCCombate2
+  - NPCGym2
   layers:
   - Default
   - TransparentFX

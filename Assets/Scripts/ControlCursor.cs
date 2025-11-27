@@ -7,8 +7,16 @@ public class ControlCursor: MonoBehaviour
 
     void Awake()
     {
-        instance = this;
         DontDestroyOnLoad(gameObject);
+
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
     void Start()
     {

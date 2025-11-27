@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552a8fbcb378e584081116ee2ca7c18f, type: 3}
-  m_Name: DialogoEjemplo1
+  m_Name: NPCCombate1
   m_EditorClassIdentifier: 
   dialogueLines:
-  - speakerName: Ejemplo
-    dialogueText: Hola, esto es un ejemplo de dialogo, pulsa para ir a la siguiente
-      linea
+  - speakerName: Bege
+    dialogueText: Eres muy fuerte! Me derrotaste
     speakerPortrait: {fileID: 0}
-  - speakerName: Ejemplo
-    dialogueText: Esta es la segunda linea del dialogo, pulsa para salir.
+  - speakerName: Bege
+    dialogueText: Deberias probar suerte en el gimnasio Pokeort!
     speakerPortrait: {fileID: 0}
