@@ -24,6 +24,7 @@ TagManager:
   - Lider
   - NPCCombate2
   - NPCGym2
+  - Bola
   layers:
   - Default
   - TransparentFX
