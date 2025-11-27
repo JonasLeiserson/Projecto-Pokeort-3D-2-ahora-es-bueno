@@ -12,4 +12,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6898b5d06d1d538479eba91e349e286c, type: 3}
   m_Name: PokedexPlayer
   m_EditorClassIdentifier: 
-  pokeorts: []
+  pokeorts:
+  - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
+    equippedAttacks:
+    - {fileID: 11400000, guid: 9317e98d99cf6fa43bfe86091d683f00, type: 2}
+    - {fileID: 11400000, guid: 9ff37433f035dac4e96e6591af5430b1, type: 2}
+    - {fileID: 11400000, guid: 4dc3d765be1df2247bbd9c44919a3b35, type: 2}
+    - {fileID: 11400000, guid: 96b8c97a391cada47b33e7f91811cde8, type: 2}
+    type1: 6
+    type2: 9
+    level: 6
+    currentHP: 0
+    maxHP: 30
+    currentAttack: 10
+    maxAttack: 10
+    currentDefense: 14
+    maxDefense: 14
+    currentSpAttack: 10
+    maxSpAttack: 10
+    currentSpDefense: 14
+    maxSpDefense: 14
+    currentSpeed: 9
+    maxSpeed: 9
+    currentStatus: 0
+    experiencePoints: 80
+    experienceToNextLevel: 270
+  - pokemonData: {fileID: 11400000, guid: ef00c9b1997ed7f48a4af7303c7e23fa, type: 2}
+    equippedAttacks:
+    - {fileID: 11400000, guid: f1d6e5d86f4cb8f41ba11133b43d5b99, type: 2}
+    - {fileID: 11400000, guid: c636ccd81582c7d4a85cbf45975a1f49, type: 2}
+    - {fileID: 11400000, guid: 47ec76fa02d033844a97d40c1ecbde77, type: 2}
+    - {fileID: 11400000, guid: b892e698b7f1a874fb79f671cf1cf36c, type: 2}
+    type1: 2
+    type2: 0
+    level: 5
+    currentHP: 0
+    maxHP: 20
+    currentAttack: 2
+    maxAttack: 10
+    currentDefense: 10
+    maxDefense: 10
+    currentSpAttack: 13
+    maxSpAttack: 13
+    currentSpDefense: 12
+    maxSpDefense: 12
+    currentSpeed: 12
+    maxSpeed: 12
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 100
+  - pokemonData: {fileID: 11400000, guid: dce708c0922063b43bface7f16bfb24b, type: 2}
+    equippedAttacks:
+    - {fileID: 11400000, guid: cc7d6022e9cdbd049ab2448dc60351f3, type: 2}
+    - {fileID: 11400000, guid: d8f1e2b74b76f124cbbcf70ebc6911d8, type: 2}
+    - {fileID: 11400000, guid: b51b948f2b8821e4e94c36112226abfc, type: 2}
+    - {fileID: 11400000, guid: e074227a962571b439bc5b7778979312, type: 2}
+    type1: 7
+    type2: 4
+    level: 1
+    currentHP: 0
+    maxHP: 13
+    currentAttack: 6
+    maxAttack: 6
+    currentDefense: 6
+    maxDefense: 6
+    currentSpAttack: 5
+    maxSpAttack: 5
+    currentSpDefense: 6
+    maxSpDefense: 6
+    currentSpeed: 6
+    maxSpeed: 6
+    currentStatus: 0
+    experiencePoints: 0
+    experienceToNextLevel: 1

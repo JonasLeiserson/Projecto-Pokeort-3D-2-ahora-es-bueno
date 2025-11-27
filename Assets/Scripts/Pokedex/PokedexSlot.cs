@@ -101,9 +101,12 @@ public class PokedexSlot : MonoBehaviour
                 }
                 bool fueDerrotado = CombateSalvajeManager.instance.pokeortElegido.currentHP <= 0;
                 CombateSalvajeManager.instance.indexPokeortElegido = index;
+                Debug.Log("ayuda" + index);
                 CombateSalvajeManager.instance.pokeortElegido = CombateSalvajeManager.instance.pokeortAmigos[CombateSalvajeManager.instance.indexPokeortElegido];
                 CombateSalvajeManager.instance.CambiarPokeort(fueDerrotado);
                 PokedexUIManager.instance.EsconderEleccionpokeorts();
+                InventarioManager.instance.EsconderInventario();
+                UIManager.instance.EsconderAtaques();
             }
             else if (CombateNPCManager.instance != null)
             {

@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasTalked: 0
-  dialogueToTrigger: {fileID: 11400000, guid: f8013fde0dab3f8419f1bba09442e29a, type: 2}
+  dialogueToTrigger: {fileID: 11400000, guid: 26baf8cd30c3b2942aa55e1bedc54bcd, type: 2}
 --- !u!65 &2691341431800260279
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -150,19 +150,18 @@ public class CombateSalvajeManager : MonoBehaviour
         line1.dialogueText = pokeortDerrotadoInstance.pokemonData.pokemonName + " ha sido derrotado.";
         dialogoCombate.dialogueLines.Add(line1);
 
-        Destroy(pokeortDerrotadoGO);
-
         if (pokeortDerrotadoInstance == pokeortElegido)
         {
             cantidadJugador--;
             if (cantidadJugador > 0)
             {
-                indexPokeortElegido++;
-                pokeortDerrotadoInstance = pokeortAmigos[indexPokeortElegido];
-                pokeortDerrotadoGO = InstanciarPokeort(4f, pokeortDerrotadoInstance.pokemonData.PokeortPrefab, player.transform, false);
-                pokeortDerrotadoGO.GetComponent<MovimientoPokeorts>().enabled = false;
-
-                dialogoManager.StartDialogue(dialogoCombate);
+                if (pokeortDerrotadoInstance == pokeortElegido)
+                {
+                    if (PokedexUIManager.instance != null)
+                    {
+                        PokedexUIManager.instance.MostrarEleccionPokeorts();
+                    }
+                }
             }
             else
             {
@@ -393,7 +392,6 @@ public class CombateSalvajeManager : MonoBehaviour
     public void CambiarPokeort(bool fueDerrotado)
     {
         if (pokeortElegidoGO == null || pokeortElegido == null) return;
-
         PokemonManager pokemonManager = pokeortElegidoGO.GetComponent<PokemonManager>();
         string nombreAnterior = (pokemonManager != null && pokemonManager.pokemonTemplate != null)
             ? pokemonManager.pokemonTemplate.pokemonName

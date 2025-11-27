@@ -67,6 +67,7 @@ public class CombateNPCManager : MonoBehaviour
 
         if (!NPC)
         {
+            Destroy(this);
             Debug.LogError($"⚠️ No se encontró ningún NPC con nombre: {encounteredNPCTag}");
             Debug.LogError($"NPCs disponibles: {string.Join(", ", NPCs.Select(n => n.name))}");
             return;
@@ -278,11 +279,6 @@ public class CombateNPCManager : MonoBehaviour
 
     void Derrotado(float distancia, ref int index, ref List<PokeortInstance> pokeorts, ref PokeortInstance pokeortDerrotadoInstance, ref GameObject pokeortDerrotadoGO, ref int cantidad, bool esEnemigo)
     {
-        if (pokeortDerrotadoGO != null)
-        {
-            Destroy(pokeortDerrotadoGO);
-        }
-
         cantidad--;
         if (cantidad > 0)
         {
@@ -309,23 +305,11 @@ public class CombateNPCManager : MonoBehaviour
                 if (index < pokeortEnemigos.Count)
                 {
                     pokeortDerrotadoInstance = pokeortEnemigos[index];
-                }
-            }
+                    Destroy(pokeortDerrotadoGO);
+                    pokeortDerrotadoGO = InstanciarPokeort(distancia, pokeortDerrotadoInstance.pokemonData.PokeortPrefab, player.transform, true);
+                    pokeortDerrotadoGO.GetComponent<MovimientoPokeorts>().enabled = false;
 
-            if (pokeortDerrotadoInstance != null && pokeortDerrotadoInstance.pokemonData != null)
-            {
-                pokeortDerrotadoGO = InstanciarPokeort(distancia, pokeortDerrotadoInstance.pokemonData.PokeortPrefab, player.transform, esEnemigo);
-
-                if (pokeortDerrotadoGO != null)
-                {
-                    MovimientoPokeorts movPokeort = pokeortDerrotadoGO.GetComponent<MovimientoPokeorts>();
-                    if (movPokeort != null) movPokeort.enabled = false;
-                }
-
-                GameObject slider = (pokeortDerrotadoInstance == pokeortElegido) ? UIManager.instance.sliderAmigo : UIManager.instance.sliderEnemigo;
-                if (UIManager.instance != null && slider != null)
-                {
-                    UIManager.instance.ActualizarBarraDeVida(slider, pokeortDerrotadoInstance);
+                    UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortDerrotadoInstance);
                 }
             }
         }
