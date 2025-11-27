@@ -340,6 +340,12 @@ public class CombateSalvajeManager : MonoBehaviour
 
     public void TerminarBatalla()
     {
+        pokeortElegido.currentAttack = pokeortElegido.maxAttack;
+        pokeortElegido.currentSpAttack = pokeortElegido.maxSpAttack;
+        pokeortElegido.currentDefense = pokeortElegido.maxDefense;
+        pokeortElegido.currentSpDefense = pokeortElegido.maxSpDefense;
+        pokeortElegido.currentSpeed = pokeortElegido.maxSpeed;
+
         if (ganaste)
         {
             foreach (PokeortInstance pokeort in PokeortsUtilizados)

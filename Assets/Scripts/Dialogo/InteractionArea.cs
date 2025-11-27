@@ -7,7 +7,7 @@ public class InteractionArea : MonoBehaviour
     GameObject currentInteractable;
     public GameObject interactButton;
 
-    List<string> tags = new List<string> { "NPC", "NPCCombate", "NPCGym", "Lider" };
+    List<string> tags = new List<string> { "NPC", "NPCCombate", "NPCGym", "Lider", "NPCCombate2", "NPCGym2" };
 
     void Start()
     {

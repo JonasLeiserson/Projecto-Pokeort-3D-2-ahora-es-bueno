@@ -170,6 +170,7 @@ public class GameManager : MonoBehaviour
                 if (dialogoComponent != null)
                 {
                     dialogoComponent.enabled = true;
+                    Debug.Log("brrr");
                 }
 
                 Debug.Log("Entrenador " + trainer + " configurado correctamente");
