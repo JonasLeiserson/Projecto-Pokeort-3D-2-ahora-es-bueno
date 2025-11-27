@@ -2,10 +2,6 @@
 using System.Collections;
 using UnityEngine.UI;
 
-/// <summary>
-/// Script auxiliar para animaciones de interfaz (sin plugins externos).
-/// Incluye funciones para escalar suavemente y cambiar la opacidad.
-/// </summary>
 public class UIAnimaciones : MonoBehaviour
 {
     public static IEnumerator EscalarSuave(Transform obj, Vector3 inicio, Vector3 fin, float duracion)

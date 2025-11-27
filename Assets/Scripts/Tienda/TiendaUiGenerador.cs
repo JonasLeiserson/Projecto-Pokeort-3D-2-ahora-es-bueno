@@ -300,6 +300,7 @@ public class TiendaUiGenerador : MonoBehaviour
         if (cg == null) cg = canvasObj.AddComponent<CanvasGroup>();
         ControlCursor.instance.BloquearCursor();
         StartCoroutine(CerrarTiendaSuave(canvasObj, cg));
+        
     }
 
     private IEnumerator CerrarTiendaSuave(GameObject canvasObj, CanvasGroup cg)

@@ -2690,9 +2690,8 @@ MonoBehaviour:
   fuenteTMP: {fileID: 0}
   itemsDisponibles:
   - {fileID: 11400000, guid: ee33587bb6f0c5e48ac7ae7c86aba4e8, type: 2}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: 9b85fbf942d18d745b3ce645386e64d3, type: 2}
   - {fileID: 11400000, guid: 99d50e4ec56416642b5c22f716aa30da, type: 2}
+  - {fileID: 11400000, guid: 9b85fbf942d18d745b3ce645386e64d3, type: 2}
   textoDinero: {fileID: 1916449600}
   InteractuarVendedor: {fileID: 646995677}
   panelCarrito: {fileID: 1653575573}
