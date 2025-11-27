@@ -9,6 +9,22 @@ public class InteractionArea : MonoBehaviour
 
     List<string> tags = new List<string> { "NPC", "NPCCombate", "NPCGym", "Lider" };
 
+    void Start()
+    {
+        Canvas canvas = FindObjectOfType<Canvas>();
+
+        if (canvas != null)
+        {
+            foreach (Transform t in canvas.transform)
+            {
+                if (t.name == "Interact")
+                {
+                    interactButton = t.gameObject;
+                }
+            }
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         foreach (string tag in tags)
@@ -26,6 +42,7 @@ public class InteractionArea : MonoBehaviour
                 }
                 else if (other.gameObject.GetComponent<LiderScript>() != null)
                 {
+                    Debug.Log("hola");
                     if (other.gameObject.GetComponent<LiderScript>().enabled)
                     {
                         GameObject npc = other.gameObject;
@@ -53,17 +70,40 @@ public class InteractionArea : MonoBehaviour
     {
         if (interactButton != null)
         {
-            if (currentInteractable != null && !DialogoManager.instance.talking)
-                interactButton.SetActive(true);
+            if (currentInteractable != null && !DialogoManager.instance.talking && !PauseMenuManager.instance.pauseMenuUI.activeSelf)
+                if (currentInteractable.GetComponent<LiderScript>() != null)
+                {
+                    if (!currentInteractable.GetComponent<LiderScript>().hasTalked)
+                    {
+                        interactButton.SetActive(true);
+                    }
+                    else
+                    {
+                        interactButton.SetActive(false);
+                    }
+                } 
+                else
+                {
+                    interactButton.SetActive(true);
+                }
             else
-                interactButton.SetActive(false);
+                    interactButton.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
             Debug.Log("Interacting with " + currentInteractable.name);
-            DialogoTrigger dialogoTrigger = currentInteractable.GetComponent<DialogoTrigger>();
-            dialogoTrigger.TriggerDialogue();
+            if (currentInteractable.GetComponent<DialogoTrigger>() != null)
+            {
+                DialogoTrigger dialogoTrigger = currentInteractable.GetComponent<DialogoTrigger>();
+                dialogoTrigger.TriggerDialogue();
+            }
+            else if (currentInteractable.GetComponent<LiderScript>() != null)
+            {
+                LiderScript liderScript = currentInteractable.GetComponent<LiderScript>();
+                liderScript.TriggerDialogue();
+            }
+
             interactButton.SetActive(false);
         }
     }

@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 3764803652006870831}
   - component: {fileID: 3701976446410457434}
   - component: {fileID: 1408801208602089739}
+  - component: {fileID: 6112172992501363375}
+  - component: {fileID: 2691341431800260279}
   m_Layer: 0
-  m_Name: LiderGym
+  m_Name: Lider
   m_TagString: Lider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +32,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3014418322230553189}
   - {fileID: 1518589597474629131}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -78,77 +79,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokedex: {fileID: 0}
---- !u!1 &8811523367293448456
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3014418322230553189}
-  - component: {fileID: 612968326608686939}
-  - component: {fileID: 409295722050725528}
-  - component: {fileID: 5775425823232550281}
-  m_Layer: 0
-  m_Name: InteractionArea
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3014418322230553189
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8811523367293448456}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.01, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3181601103481593902}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &612968326608686939
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8811523367293448456}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &409295722050725528
+--- !u!114 &6112172992501363375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8811523367293448456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3ddcb9ca598ce4e8e9d2b3fb541afa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5775425823232550281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8811523367293448456}
+  m_GameObject: {fileID: 4656585926780724999}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bca73464026a176449fbf24eba55ec3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasTalked: 0
   dialogueToTrigger: {fileID: 11400000, guid: f8013fde0dab3f8419f1bba09442e29a, type: 2}
+--- !u!65 &2691341431800260279
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656585926780724999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &1518589597474503819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5fb955bbc6ff856438b55cffa552242d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5fb955bbc6ff856438b55cffa552242d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

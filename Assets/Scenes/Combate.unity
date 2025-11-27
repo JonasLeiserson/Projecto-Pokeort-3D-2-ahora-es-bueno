@@ -599,7 +599,7 @@ MonoBehaviour:
   dialogoCombate: {fileID: 11400000, guid: 0f4bfab01e9bf15409102f6720039693, type: 2}
   player: {fileID: 3183447003146668400, guid: e65ad50409fdaee49b335ab8302cae92, type: 3}
   NPCs:
-  - {fileID: 6653245723020113744, guid: 06d8a259ac1c1f34f9dc2a431a628270, type: 3}
+  - {fileID: 4656585926780724999, guid: 25f36de7ea15255458d8a0d71087bcdd, type: 3}
   pokeortAmigos: []
   pokeortElegido:
     pokemonData: {fileID: 0}
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: b9e7aa0c9c69d0746a787c34080704e8, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 99d50e4ec56416642b5c22f716aa30da, type: 2}
 --- !u!4 &1021395611
 Transform:
@@ -1272,7 +1272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots: []
-  pokeortParent: {fileID: 0}
+  pokeortParentDer: {fileID: 0}
+  pokeortParentIzq: {fileID: 0}
   pokedexSlotPrefab: {fileID: 0}
   ItemElejido: {fileID: 0}
   UsandoItem: 0

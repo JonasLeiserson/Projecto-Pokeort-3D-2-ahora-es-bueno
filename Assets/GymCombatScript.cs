@@ -3,41 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LiderScript : MonoBehaviour
+public class GymCombatScript : MonoBehaviour
 {
     string tagNPC;
-    public bool hasTalked = false;
-
-    public Dialogue dialogueToTrigger;
-
-    IEnumerator WaitDialogue()
-    {
-        yield return new WaitUntil(() => !DialogoManager.instance.talking);
-
-        hasTalked = true;
-    }
-
-    public void TriggerDialogue()
-    {
-        DialogoManager.GetInstance().StartDialogue(dialogueToTrigger);
-
-        StartCoroutine(WaitDialogue());
-    }
 
     void Start()
     {
         tagNPC = gameObject.tag;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && hasTalked)
+        if (other.CompareTag("Player"))
         {
             Vector3 playerPosition = other.transform.position;
             Vector3 playerRotation = other.transform.rotation.eulerAngles;
 
             // Guardar el NOMBRE del prefab del padre, no el tag
-            string npcPrefabName = name.Replace("(Clone)", "").Trim();
+            string npcPrefabName = transform.parent.name.Replace("(Clone)", "").Trim();
 
             PlayerPrefs.SetString("EncounteredPokemon", npcPrefabName);
             PlayerPrefs.SetFloat("PosX", playerPosition.x);

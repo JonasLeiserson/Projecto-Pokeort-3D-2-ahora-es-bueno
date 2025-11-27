@@ -78,13 +78,23 @@ public class CombateNPCManager : MonoBehaviour
 
     void Start()
     {
-        //CARGAR MODELOS Y DATOS DE JUGADOR Y POKEORTS:
+        if (NPC.tag != "Lider" && NPC.tag != "NPCGym")
+        {
+            //CARGAR MODELOS Y DATOS DE JUGADOR Y POKEORTS:
 
-        //posicion jugador
-        Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
-        Quaternion playerRotation = Quaternion.Euler(0, playerRotY, 0);
-        player = Instantiate(player, playerPosition, playerRotation);
-        GameManager.instance.playerPosition = playerPosition;
+            //posicion jugador
+            Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
+            Quaternion playerRotation = Quaternion.Euler(0, playerRotY, 0);
+            player = Instantiate(player, playerPosition, playerRotation);
+            GameManager.instance.playerPosition = playerPosition;
+        }
+        else
+        {
+            player = Instantiate(player, new Vector3(26.59f, 1.95f, 0.02f), Quaternion.Euler(0, 0, 0));
+            Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
+            GameManager.instance.playerPosition = playerPosition;
+            playerRotY = player.transform.rotation.eulerAngles.y;
+        }
 
         // Desactivar cámara principal
         GameObject mainCamera = GameObject.Find("Camara Principal");
@@ -114,7 +124,10 @@ public class CombateNPCManager : MonoBehaviour
         Quaternion rotacionNPC = Quaternion.Euler(0, playerRotY - 180f, 0);
         NPC = Instantiate(NPC, nuevaPosicionEnemigo, rotacionNPC);
 
-        NPC.transform.Find("Campo de Vision").GetComponent<VisionNPC>().enabled = false;
+        if (NPC.transform.Find("Campo de Vision") != null)
+        {
+            NPC.transform.Find("Campo de Vision").GetComponent<VisionNPC>().enabled = false;
+        }
 
         //cargar pokeorts enemigos en inventario
         PokedexManagerNPC npcPokedexManager = NPC.GetComponent<PokedexManagerNPC>();

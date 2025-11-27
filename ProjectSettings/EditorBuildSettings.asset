@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: d8a785fd23ad2fe4894190509173ecf2
+  - enabled: 1
+    path: Assets/Scenes/CombateGimnasio.unity
+    guid: 6e9231eddc39ca543b874ec29890540b
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
