@@ -188,10 +188,7 @@ public class GameManager : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            if (playerPosition == new Vector3(0, 0, 0))
-            {
-                playerPosition = new Vector3(29, 2, -1);
-            }
+              playerPosition = new Vector3(29, 2, -1);
             player.transform.position = playerPosition;
             Debug.Log("Jugador posicionado en: " + playerPosition.ToString());
         }
