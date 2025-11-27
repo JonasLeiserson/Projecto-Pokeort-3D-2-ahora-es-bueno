@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6898b5d06d1d538479eba91e349e286c, type: 3}
-  m_Name: PokedexPlayer
+  m_Script: {fileID: 11500000, guid: 552a8fbcb378e584081116ee2ca7c18f, type: 3}
+  m_Name: PokeORTInicial
   m_EditorClassIdentifier: 
-  pokeorts: []
+  dialogueLines: []
