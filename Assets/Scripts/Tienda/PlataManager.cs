@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlataManager : MonoBehaviour
 {
     public static PlataManager instance;
-    public int PlataJugador = 0; 
+    public int PlataJugador = 300; 
     void Awake()
     {
         instance = this;
