@@ -501,12 +501,22 @@ public class PokeortInstance
 
     public void ChequearNivel()
     {
-        if (experiencePoints >= experienceToNextLevel)
+        while (experiencePoints >= experienceToNextLevel)
         {
             level++;
 
+            int hpAnterior = maxHP;
             maxHP = Mathf.RoundToInt(((2 * pokemonData.baseHP + hpIVs * (level / 100)) * level) / 100 + level + 10);
-            currentHP = maxHP;
+            int diferencia = maxHP - hpAnterior;
+            if (currentHP != 0)
+            {
+                currentHP += diferencia;
+
+                if (currentHP > maxHP)
+                {
+                    currentHP = maxHP;
+                }
+            }
 
             maxAttack = Mathf.RoundToInt(((2 * pokemonData.baseAttack + (attackIVs * (level / 100))) * level) / 100 + 5);
             currentAttack = maxAttack;
@@ -525,7 +535,6 @@ public class PokeortInstance
 
             experiencePoints -= experienceToNextLevel;
             experienceToNextLevel = CalculateExperienceToNextLevel();
-            UnityEngine.Debug.Log(pokemonData.pokemonName + " subio al nivel " + level + experienceToNextLevel);
         }
     }
 }

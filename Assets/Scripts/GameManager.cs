@@ -21,10 +21,13 @@ public class GameManager : MonoBehaviour
     public string saveFile;
 
     public List<string> trainersDefeated = new List<string>();
-    public List<string> gymsDefeated = new List<string>();
 
     public bool playing;
     public string spawnPointIDDeRetorno;
+
+    [Header("Scene Management")]
+    public string previousSceneName = "";
+    public string currentSceneName = "";
 
     void Awake()
     {
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
             RefreshData();
         }
 
+        currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -70,7 +74,6 @@ public class GameManager : MonoBehaviour
         data.inventory = inventory;
         data.saveFile = saveFile;
         data.trainersDefeated = trainersDefeated;
-        data.gymsDefeated = gymsDefeated;
     }
 
     public void AssignData(SaveData saveData)
@@ -80,7 +83,6 @@ public class GameManager : MonoBehaviour
         inventory = saveData.inventory;
         saveFile = saveData.saveFile;
         trainersDefeated = saveData.trainersDefeated;
-        gymsDefeated = saveData.gymsDefeated;
 
         pokedex.pokeorts = pokeorts;
     }
@@ -94,6 +96,9 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        previousSceneName = currentSceneName;
+        currentSceneName = scene.name;
+
         if (playing)
         {
             if (scene.name == "Combate")
@@ -110,7 +115,7 @@ public class GameManager : MonoBehaviour
 
         if (scene.name == "Gimnasio")
         {
-            StartCoroutine(ConfigurarGym());
+            StartCoroutine(ConfigurarGym(previousSceneName));
         }
     }
 
@@ -137,6 +142,7 @@ public class GameManager : MonoBehaviour
             if (playerPosition == new Vector3(0, 0, 0))
             {
                 playerPosition = new Vector3(223, 6, 83);
+                player.transform.rotation = Quaternion.Euler(0, 90, 0);
             }
             player.transform.position = playerPosition;
             Debug.Log("Jugador posicionado en: " + playerPosition.ToString());
@@ -182,14 +188,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ConfigurarGym()
+    private IEnumerator ConfigurarGym(string name)
     {
         yield return null;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-              playerPosition = new Vector3(29, 2, -1);
+            if (previousSceneName == "GameScene")
+            {
+                playerPosition = new Vector3(29, 2, -1);
+                player.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
             player.transform.position = playerPosition;
             Debug.Log("Jugador posicionado en: " + playerPosition.ToString());
         }
@@ -222,6 +232,13 @@ public class GameManager : MonoBehaviour
                 if (dialogoComponent != null)
                 {
                     dialogoComponent.enabled = true;
+                }
+
+                LiderScript liderScript = trainerGO.GetComponent<LiderScript>();
+                if (liderScript != null)
+                {
+                    liderScript.hasTalked = true;
+                    liderScript.fueDerrotado = true;
                 }
 
                 Debug.Log("Entrenador " + trainer + " configurado correctamente");

@@ -144,7 +144,6 @@ public class CombateNPCManager : MonoBehaviour
             {
                 indexPokeortEnemigo = 0;
                 pokeortEnemigo = pokeortEnemigos[indexPokeortEnemigo];
-                pokeortsDerrotadosEnemigo.Add(pokeortEnemigo);
                 cantidadEnemigo = pokeortEnemigos.Count;
             }
             else
@@ -300,6 +299,7 @@ public class CombateNPCManager : MonoBehaviour
                 if (!pokeortsDerrotadosEnemigo.Contains(pokeortDerrotadoInstance))
                 {
                     pokeortsDerrotadosEnemigo.Add(pokeortDerrotadoInstance);
+                    Debug.Log("anadido a derrotados");
                 }
                 index++;
 
@@ -336,6 +336,12 @@ public class CombateNPCManager : MonoBehaviour
             }
             else
             {
+                if (!pokeortsDerrotadosEnemigo.Contains(pokeortDerrotadoInstance))
+                {
+                    pokeortsDerrotadosEnemigo.Add(pokeortDerrotadoInstance);
+                    Debug.Log("anadido a derrotados");
+                }
+
                 DialogueLine line1 = new DialogueLine();
                 line1.speakerName = "Sistema";
                 line1.dialogueText = "El rival no tiene más Pokeorts.";
@@ -540,20 +546,44 @@ public class CombateNPCManager : MonoBehaviour
 
     public void TerminarBatalla()
     {
-        pokeortElegido.currentAttack = pokeortElegido.maxAttack;
-        pokeortElegido.currentSpAttack = pokeortElegido.maxSpAttack;
-        pokeortElegido.currentDefense = pokeortElegido.maxDefense;
-        pokeortElegido.currentSpDefense = pokeortElegido.maxSpDefense;
-        pokeortElegido.currentSpeed = pokeortElegido.maxSpeed;
+        // Restaurar stats de los Pokeorts
+        foreach (PokeortInstance pokeort in pokeortAmigos)
+        {
+            pokeort.currentAttack = pokeort.maxAttack;
+            pokeort.currentSpAttack = pokeort.maxSpAttack;
+            pokeort.currentDefense = pokeort.maxDefense;
+            pokeort.currentSpDefense = pokeort.maxSpDefense;
+            pokeort.currentSpeed = pokeort.maxSpeed;
+        }
 
+        // Iniciar la secuencia de diálogos como una sola corrutina
+        StartCoroutine(SecuenciaDialogosFinales());
+    }
+
+    private IEnumerator SecuenciaDialogosFinales()
+    {
         if (ganaste)
         {
-            int dineroGanado = 0;
+            // 1. Diálogo inicial de victoria
+            DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "El rival no tiene más Pokeorts." };
+            DialogueLine line2 = new DialogueLine { speakerName = "Sistema", dialogueText = "¡Has ganado la batalla!" };
+            
+            dialogoCombate.dialogueLines = new List<DialogueLine>() { line1, line2 };
+            dialogoManager.StartDialogue(dialogoCombate);
+            
+            // Esperar a que termine este diálogo
+            yield return new WaitUntil(() => !dialogoManager.talking);
 
+            // 2. Procesar experiencia para cada Pokeort
+            int dineroGanado = 0;
+            
             foreach (PokeortInstance pokeort in pokeortsUtilizados)
             {
                 foreach (PokeortInstance pokeortEnemigo in pokeortsDerrotadosEnemigo)
                 {
+                    int nivelInicial = pokeort.level;
+
+                    // Cálculo de experiencia
                     int baseA = Mathf.RoundToInt(Mathf.Pow(2 * pokeortEnemigo.level + 10, 2.5f));
                     int baseB = Mathf.RoundToInt(Mathf.Pow(pokeortEnemigo.level + pokeort.level + 10, 2.5f));
                     int baseC = Mathf.RoundToInt(pokeortEnemigo.pokemonData.baseXP * pokeortEnemigo.level / pokeortsUtilizados.Count / 5);
@@ -562,11 +592,36 @@ public class CombateNPCManager : MonoBehaviour
                     pokeort.experiencePoints += xp;
                     pokeort.ChequearNivel();
 
+                    // Diálogo de experiencia
+                    DialogueLine lineXp1 = new DialogueLine();
+                    lineXp1.speakerName = "Sistema";
+                    lineXp1.dialogueText = pokeort.pokemonData.pokemonName + " ha ganado " + xp + " puntos de experiencia por derrotar a " + pokeortEnemigo.pokemonData.pokemonName + ".";
+
+                    if (pokeort.level > nivelInicial)
+                    {
+                        DialogueLine lineXp2 = new DialogueLine();
+                        lineXp2.speakerName = "Sistema";
+                        lineXp2.dialogueText = pokeort.pokemonData.pokemonName + " ha subido al nivel " + pokeort.level + "!";
+
+                        dialogoCombate.dialogueLines = new List<DialogueLine> { lineXp1, lineXp2 };
+                    }
+                    else
+                    {
+                        dialogoCombate.dialogueLines = new List<DialogueLine> { lineXp1 };
+                    }
+
+                    dialogoManager.StartDialogue(dialogoCombate);
+                    
+                    // Esperar a que termine este diálogo antes de continuar
+                    yield return new WaitUntil(() => !dialogoManager.talking);
+
+                    // Calcular dinero
                     int dineroPorPokeort = Mathf.RoundToInt(pokeortEnemigo.level * 15 + pokeortEnemigo.pokemonData.baseXP * 0.3f);
                     dineroGanado += dineroPorPokeort;
                 }
             }
 
+            // 3. Calcular dinero total y agregarlo
             dineroGanado = Mathf.RoundToInt(dineroGanado * (1f + (pokeortsDerrotadosEnemigo.Count * 0.2f)));
 
             if (PlataManager.instance != null)
@@ -574,18 +629,19 @@ public class CombateNPCManager : MonoBehaviour
                 PlataManager.instance.AgregarPlata(dineroGanado);
             }
 
-            DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "El rival no tiene más Pokeorts." };
-            DialogueLine line2 = new DialogueLine { speakerName = "Sistema", dialogueText = "¡Has ganado la batalla!" };
+            // 4. Diálogo final del dinero
             DialogueLine line3 = new DialogueLine { speakerName = "Sistema", dialogueText = "Has ganado $" + dineroGanado + " por tu victoria." };
-
-            dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2, line3 };
-
+            dialogoCombate.dialogueLines = new List<DialogueLine> { line3 };
+            
             if (dialogoManager != null)
             {
                 dialogoManager.StartDialogue(dialogoCombate);
             }
-        
+            
+            // Esperar a que termine este diálogo
+            yield return new WaitUntil(() => !dialogoManager.talking);
 
+            // 5. Registrar entrenador derrotado
             if (GameManager.instance != null && NPC != null)
             {
                 GameManager.instance.trainersDefeated.Add(NPC.tag);
@@ -593,42 +649,42 @@ public class CombateNPCManager : MonoBehaviour
         }
         else
         {
+            // Diálogo de derrota
             DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "No tienes más Pokeorts." };
             DialogueLine line2 = new DialogueLine { speakerName = "Sistema", dialogueText = "Has perdido la batalla." };
+            
             dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2 };
+            
             if (dialogoManager != null)
             {
                 dialogoManager.StartDialogue(dialogoCombate);
             }
+            
+            // Esperar a que termine este diálogo
+            yield return new WaitUntil(() => !dialogoManager.talking);
         }
 
-            IEnumerator Wait()
+        // 6. Finalizar batalla y cambiar escena
+        if (UIManager.instance != null)
+        {
+            UIManager.instance.combatButtons.SetActive(false);
+        }
+
+        if (GameManager.instance != null && ganaste)
+        {
+            if (NPC.tag != "Lider" && NPC.tag != "NPCGym" && NPC.tag != "NPCGym2")
             {
-                yield return new WaitUntil(() => !dialogoManager.talking);
-
-                if (UIManager.instance != null)
-                {
-                    UIManager.instance.combatButtons.SetActive(false);
-                }
-
-                if (GameManager.instance != null && ganaste)
-                {
-                    if (NPC.tag != "Lider" && NPC.tag != "NPCGym" && NPC.tag != "NPCGym2")
-                    {
-                        GameManager.instance.GameScene();
-                    }
-                    else
-                    {
-                        GameManager.instance.GymScene();
-                    }
-                }
-                else if (GameManager.instance != null && !ganaste)
-                {
-                SceneManager.LoadScene("EscenaCentro");
-                }
+                GameManager.instance.GameScene();
             }
-
-        StartCoroutine(Wait());
+            else
+            {
+                GameManager.instance.GymScene();
+            }
+        }
+        else if (GameManager.instance != null && !ganaste)
+        {
+            SceneManager.LoadScene("EscenaCentro");
+        }
     }
 
     public void CambiarPokeort(bool fueDerrotado)
@@ -668,7 +724,11 @@ public class CombateNPCManager : MonoBehaviour
             if (movPokeort != null) movPokeort.enabled = false;
         }
 
-        if (!pokeortsUtilizados.Contains(pokeortElegido)) pokeortsUtilizados.Add(pokeortElegido);
+        if (!pokeortsUtilizados.Contains(pokeortElegido))
+        {
+            pokeortsUtilizados.Add(pokeortElegido);
+            Debug.Log("anadido a utilizados");
+        }
 
         if (fueDerrotado) return;
         StartCoroutine(EjecutarAtaqueConDialogo(AtaqueEnemigo, pokeortElegido, pokeortElegidoGO, UIManager.instance.sliderAmigo));
@@ -679,6 +739,11 @@ public class CombateNPCManager : MonoBehaviour
         foreach (PokeortInstance pokeort in pokeortEnemigos)
         {
             pokeort.currentHP = pokeort.maxHP;
+            pokeort.currentAttack = pokeort.maxAttack;
+            pokeort.currentSpAttack = pokeort.maxSpAttack;
+            pokeort.currentDefense = pokeort.maxDefense;
+            pokeort.currentSpDefense = pokeort.maxSpDefense;
+            pokeort.currentSpeed = pokeort.maxSpeed;
         }
     }
 }

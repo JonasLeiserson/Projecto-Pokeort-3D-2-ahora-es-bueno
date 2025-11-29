@@ -43,6 +43,7 @@ public class CombateSalvajeManager : MonoBehaviour
 
     List<PokeortInstance> PokeortsUtilizados = new List<PokeortInstance>();
     bool ganaste = false;
+    bool huiste = false;
 
     void Awake()
     {
@@ -340,11 +341,14 @@ public class CombateSalvajeManager : MonoBehaviour
 
     public void TerminarBatalla()
     {
-        pokeortElegido.currentAttack = pokeortElegido.maxAttack;
-        pokeortElegido.currentSpAttack = pokeortElegido.maxSpAttack;
-        pokeortElegido.currentDefense = pokeortElegido.maxDefense;
-        pokeortElegido.currentSpDefense = pokeortElegido.maxSpDefense;
-        pokeortElegido.currentSpeed = pokeortElegido.maxSpeed;
+        foreach (PokeortInstance pokeort in pokeortAmigos)
+        {
+            pokeort.currentAttack = pokeort.maxAttack;
+            pokeort.currentSpAttack = pokeort.maxSpAttack;
+            pokeort.currentDefense = pokeort.maxDefense;
+            pokeort.currentSpDefense = pokeort.maxSpDefense;
+            pokeort.currentSpeed = pokeort.maxSpeed;
+        }
 
         if (ganaste)
         {
@@ -388,6 +392,15 @@ public class CombateSalvajeManager : MonoBehaviour
                 StartCoroutine(WaitXP());
             }
         }
+        else if (huiste)
+        {
+            DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "Has escapado con exito." };
+            dialogoCombate.dialogueLines = new List<DialogueLine> { line1 };
+            if (DialogoManager.instance != null)
+            {
+                DialogoManager.instance.StartDialogue(dialogoCombate);
+            }
+        }
         else
         {
             DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "No tienes más Pokeorts." };
@@ -403,7 +416,7 @@ public class CombateSalvajeManager : MonoBehaviour
         {
             yield return new WaitUntil(() => !dialogoManager.talking);
             UIManager.instance.combatButtons.SetActive(false);
-            if (ganaste)
+            if (ganaste || huiste)
                 GameManager.instance.GameScene();
             else
                 SceneManager.LoadScene("EscenaCentro");
@@ -518,6 +531,7 @@ public class CombateSalvajeManager : MonoBehaviour
     {
         if (huyo)
         {
+            huiste = true;
             TerminarBatalla();
         }
         else

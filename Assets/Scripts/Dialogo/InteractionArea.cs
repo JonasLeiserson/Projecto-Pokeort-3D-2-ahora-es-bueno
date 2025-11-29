@@ -73,14 +73,7 @@ public class InteractionArea : MonoBehaviour
             if (currentInteractable != null && !DialogoManager.instance.talking && !PauseMenuManager.instance.pauseMenuUI.activeSelf)
                 if (currentInteractable.GetComponent<LiderScript>() != null)
                 {
-                    if (!currentInteractable.GetComponent<LiderScript>().hasTalked)
-                    {
                         interactButton.SetActive(true);
-                    }
-                    else
-                    {
-                        interactButton.SetActive(false);
-                    }
                 } 
                 else
                 {
@@ -101,7 +94,15 @@ public class InteractionArea : MonoBehaviour
             else if (currentInteractable.GetComponent<LiderScript>() != null)
             {
                 LiderScript liderScript = currentInteractable.GetComponent<LiderScript>();
-                liderScript.TriggerDialogue();
+                if (!liderScript.fueDerrotado)
+                {
+                    liderScript.TriggerDialogue(liderScript.dialogueToTrigger1);
+                }
+                else
+                {
+                    liderScript.TriggerDialogue(liderScript.dialogueToTrigger2);
+                }
+
             }
 
             interactButton.SetActive(false);

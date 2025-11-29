@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CuracionCentro : MonoBehaviour
 {
+    public Dialogue dialogo;
     public static CuracionCentro instance;
     private AudioSource AudioCurar;
     private void Awake()
@@ -26,6 +27,8 @@ public class CuracionCentro : MonoBehaviour
         {
             pokeort.currentHP = pokeort.maxHP;
         }
+
+        DialogoManager.instance.StartDialogue(dialogo);
 
         AudioCurar.Play();
     }

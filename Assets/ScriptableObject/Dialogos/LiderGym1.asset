@@ -10,9 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552a8fbcb378e584081116ee2ca7c18f, type: 3}
-  m_Name: NewDialogue
+  m_Name: LiderGym1
   m_EditorClassIdentifier: 
   dialogueLines:
   - speakerName: Verruga
-    dialogueText: Begebe, a pelar!!!!!!!!!
+    dialogueText: Lograste derrotar a mis secuaces? Debes ser fuerte!
+    speakerPortrait: {fileID: 0}
+  - speakerName: Verruga
+    dialogueText: Soy el lider del gimnasio, mi nombre es Verruga. Soy un maestro
+      pokeORT de tipo roca, me especializo en los pokeORT de ese tipo.
+    speakerPortrait: {fileID: 0}
+  - speakerName: Verruga
+    dialogueText: Estas listo para pelear? Vamos!
     speakerPortrait: {fileID: 0}
