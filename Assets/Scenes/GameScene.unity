@@ -861,7 +861,7 @@ PrefabInstance:
     - target: {fileID: 3183447003146668398, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
       propertyPath: MovimientoVelocidad
-      value: 30
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3183447003146668400, guid: e65ad50409fdaee49b335ab8302cae92,
         type: 3}
@@ -2407,7 +2407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb85f5fd43dc62408d3031a23c575ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlataJugador: 0
+  PlataJugador: 100
 --- !u!4 &995087136
 Transform:
   m_ObjectHideFlags: 0
@@ -3048,7 +3048,7 @@ PrefabInstance:
     - target: {fileID: 3181601103481593902, guid: fb879edbdf057d94ba28cf27d77f75f4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 413.9909
+      value: 419.5
       objectReference: {fileID: 0}
     - target: {fileID: 3181601103481593902, guid: fb879edbdf057d94ba28cf27d77f75f4,
         type: 3}
@@ -3509,7 +3509,7 @@ PrefabInstance:
     - target: {fileID: 3181601103481593902, guid: 25f36de7ea15255458d8a0d71087bcdd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 423.9567
+      value: 429.5
       objectReference: {fileID: 0}
     - target: {fileID: 3181601103481593902, guid: 25f36de7ea15255458d8a0d71087bcdd,
         type: 3}

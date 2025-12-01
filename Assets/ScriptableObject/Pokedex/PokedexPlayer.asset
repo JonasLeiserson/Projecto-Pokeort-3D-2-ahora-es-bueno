@@ -12,28 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6898b5d06d1d538479eba91e349e286c, type: 3}
   m_Name: PokedexPlayer
   m_EditorClassIdentifier: 
-  pokeorts:
-  - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
-    equippedAttacks:
-    - {fileID: 11400000, guid: 9317e98d99cf6fa43bfe86091d683f00, type: 2}
-    - {fileID: 11400000, guid: 9ff37433f035dac4e96e6591af5430b1, type: 2}
-    - {fileID: 11400000, guid: 4dc3d765be1df2247bbd9c44919a3b35, type: 2}
-    - {fileID: 11400000, guid: 96b8c97a391cada47b33e7f91811cde8, type: 2}
-    type1: 6
-    type2: 9
-    level: 6
-    currentHP: 13
-    maxHP: 30
-    currentAttack: 10
-    maxAttack: 10
-    currentDefense: 14
-    maxDefense: 14
-    currentSpAttack: 10
-    maxSpAttack: 10
-    currentSpDefense: 14
-    maxSpDefense: 14
-    currentSpeed: 9
-    maxSpeed: 9
-    currentStatus: 0
-    experiencePoints: 0
-    experienceToNextLevel: 270
+  pokeorts: []
