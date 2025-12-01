@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
         {
             if (playerPosition == new Vector3(0, 0, 0))
             {
-                playerPosition = new Vector3(223, 6, 83);
+                playerPosition = new Vector3(223.4f, 2, 86.6f);
                 player.transform.rotation = Quaternion.Euler(0, 90, 0);
             }
             player.transform.position = playerPosition;

@@ -44,6 +44,7 @@ public class CombateSalvajeManager : MonoBehaviour
     List<PokeortInstance> PokeortsUtilizados = new List<PokeortInstance>();
     bool ganaste = false;
     bool huiste = false;
+    bool noPokeorts = false;
 
     void Awake()
     {
@@ -90,28 +91,42 @@ public class CombateSalvajeManager : MonoBehaviour
         movementScript = player.GetComponent<MovimientoJugador>();
         movementScript.enabled = false;
 
+        pokeortEnemigoGO = InstanciarPokeort(12f, encontrado, player.transform, true);
+        pokeortEnemigoManager = pokeortEnemigoGO.GetComponent<PokemonManager>();
+        pokeortEnemigo = pokeortEnemigoManager.currentPokemonInstance;
+
+        pokeortEnemigoGO.GetComponent<MovimientoPokeorts>().enabled = false;
+        pokeortEnemigoGO.GetComponent<EncuentroPokemon>().enabled = false;
+
         //cargar pokeorts en inventario
         pokedex = PokedexPlayerManager.instance.pokedex;
         pokeortAmigos = pokedex.pokeorts;
+        cantidadJugador = pokeortAmigos.Count;
         indexPokeortElegido = 0;
+        while (pokeortAmigos[indexPokeortElegido].currentHP <= 0)
+        {
+            indexPokeortElegido++;
+            cantidadJugador--;
+            if (indexPokeortElegido >= pokeortAmigos.Count)
+            {
+                noPokeorts = true;
+                TerminarBatalla();
+                break;
+            }
+        }
         pokeortElegido = pokeortAmigos[indexPokeortElegido];
         PokeortsUtilizados.Add(pokeortElegido);
-        cantidadJugador = pokeortAmigos.Count;
 
         //instanciar pokeort amigo (adelante del jugador)
         pokeortElegidoGO = InstanciarPokeort(4f, pokeortElegido.pokemonData.PokeortPrefab, player.transform, false);
 
         //instanciar y cargar pokeort enemigo (más lejos, mirando al jugador)
         Debug.Log(encontrado.name);
-        pokeortEnemigoGO = InstanciarPokeort(12f, encontrado, player.transform, true);
-        pokeortEnemigoManager = pokeortEnemigoGO.GetComponent<PokemonManager>();
-        pokeortEnemigo = pokeortEnemigoManager.currentPokemonInstance;
 
         //cancelar movimiento pokeorts
         pokeortElegidoGO.GetComponent<MovimientoPokeorts>().enabled = false;
         pokeortElegidoGO.GetComponent<EncuentroPokemon>().enabled = false;
-        pokeortEnemigoGO.GetComponent<MovimientoPokeorts>().enabled = false;
-        pokeortEnemigoGO.GetComponent<EncuentroPokemon>().enabled = false;
+
 
         UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderAmigo, pokeortElegido);
         UIManager.instance.ActualizarBarraDeVida(UIManager.instance.sliderEnemigo, pokeortEnemigo);
@@ -399,6 +414,18 @@ public class CombateSalvajeManager : MonoBehaviour
             if (DialogoManager.instance != null)
             {
                 DialogoManager.instance.StartDialogue(dialogoCombate);
+            }
+        }
+        else if (noPokeorts)
+        {
+            DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "Huiste del combate porque todos tus pokeORTs tienen 0 de vida." };
+            DialogueLine line2 = new DialogueLine { speakerName = "Sistema", dialogueText = "Ve a un centro pokeORT para curarlos." };
+
+            dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2 };
+
+            if (dialogoManager != null)
+            {
+                dialogoManager.StartDialogue(dialogoCombate);
             }
         }
         else

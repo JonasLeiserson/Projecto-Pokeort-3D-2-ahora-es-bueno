@@ -43,6 +43,7 @@ public class CombateNPCManager : MonoBehaviour
     Attack ataqueElegidoEnemigo;
 
     bool ganaste = false;
+    bool huiste = false;
     public static CombateNPCManager instance;
 
     void Awake()
@@ -166,10 +167,21 @@ public class CombateNPCManager : MonoBehaviour
 
             if (pokeortAmigos != null && pokeortAmigos.Count > 0)
             {
+                cantidadJugador = pokeortAmigos.Count;
                 indexPokeortElegido = 0;
+                while (pokeortAmigos[indexPokeortElegido].currentHP <= 0)
+                {
+                    indexPokeortElegido++;
+                    cantidadJugador--;
+                    if (indexPokeortElegido >= pokeortAmigos.Count)
+                    {
+                        huiste = true;
+                        TerminarBatalla();
+                        break;
+                    }
+                }
                 pokeortElegido = pokeortAmigos[indexPokeortElegido];
                 pokeortsUtilizados.Add(pokeortElegido);
-                cantidadJugador = pokeortAmigos.Count;
             }
             else
             {
@@ -647,19 +659,34 @@ public class CombateNPCManager : MonoBehaviour
                 GameManager.instance.trainersDefeated.Add(NPC.tag);
             }
         }
+        else if (huiste)
+        {
+            DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "Huiste del combate porque todos tus pokeORTs tienen 0 de vida." };
+            DialogueLine line2 = new DialogueLine { speakerName = "Sistema", dialogueText = "Ve a un centro pokeORT para curarlos." };
+
+            dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2 };
+
+            if (dialogoManager != null)
+            {
+                dialogoManager.StartDialogue(dialogoCombate);
+            }
+
+            // Esperar a que termine este diálogo
+            yield return new WaitUntil(() => !dialogoManager.talking);
+        }
         else
         {
             // Diálogo de derrota
             DialogueLine line1 = new DialogueLine { speakerName = "Sistema", dialogueText = "No tienes más Pokeorts." };
             DialogueLine line2 = new DialogueLine { speakerName = "Sistema", dialogueText = "Has perdido la batalla." };
-            
+
             dialogoCombate.dialogueLines = new List<DialogueLine> { line1, line2 };
-            
+
             if (dialogoManager != null)
             {
                 dialogoManager.StartDialogue(dialogoCombate);
             }
-            
+
             // Esperar a que termine este diálogo
             yield return new WaitUntil(() => !dialogoManager.talking);
         }

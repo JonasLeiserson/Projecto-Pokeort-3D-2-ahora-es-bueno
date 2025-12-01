@@ -96,7 +96,8 @@ public class InteractionArea : MonoBehaviour
                 LiderScript liderScript = currentInteractable.GetComponent<LiderScript>();
                 if (!liderScript.fueDerrotado)
                 {
-                    liderScript.TriggerDialogue(liderScript.dialogueToTrigger1);
+                    liderScript. nobjujnk pjlbno  hbjinhob vvuhv gcvyfv uh fyguihkjnb bbiyguhijlnvnkn guhhhbbguihkvbugiyopog htuikkvño{y
+                            'ghýgg}bg8y9ghy9hy8vgt789 f gt8655 re'TriggerDialogue(liderScript.dialogueToTrigger1);
                 }
                 else
                 {
