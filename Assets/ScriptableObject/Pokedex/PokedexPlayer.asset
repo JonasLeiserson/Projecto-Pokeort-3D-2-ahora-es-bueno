@@ -35,7 +35,7 @@ MonoBehaviour:
     currentSpeed: 14
     maxSpeed: 14
     currentStatus: 0
-    experiencePoints: 62
+    experiencePoints: 88
     experienceToNextLevel: 173
   - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
     equippedAttacks:
@@ -45,19 +45,19 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 96b8c97a391cada47b33e7f91811cde8, type: 2}
     type1: 6
     type2: 9
-    level: 4
-    currentHP: 23
-    maxHP: 23
-    currentAttack: 8
-    maxAttack: 8
-    currentDefense: 11
-    maxDefense: 11
-    currentSpAttack: 8
-    maxSpAttack: 8
-    currentSpDefense: 11
-    maxSpDefense: 11
+    level: 5
+    currentHP: 0
+    maxHP: 27
+    currentAttack: 9
+    maxAttack: 9
+    currentDefense: 13
+    maxDefense: 13
+    currentSpAttack: 9
+    maxSpAttack: 9
+    currentSpDefense: 13
+    maxSpDefense: 13
     currentSpeed: 8
     maxSpeed: 8
     currentStatus: 0
-    experiencePoints: 76
-    experienceToNextLevel: 80
+    experiencePoints: 29
+    experienceToNextLevel: 156
