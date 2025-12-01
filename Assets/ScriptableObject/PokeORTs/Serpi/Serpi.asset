@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5c9280d96343249970fd812d82a775, type: 3}
   m_Name: Serpi
   m_EditorClassIdentifier: 
-  PokeortPrefab: {fileID: 100058, guid: 6e7098fff9d9a514ea0663abffee0d78, type: 3}
+  PokeortPrefab: {fileID: 7511928090184555776, guid: c0d4a10243b26464eb3dce3b861a4f87,
+    type: 3}
   pokemonName: Serpi
   primaryType: 9
   secondaryType: 2
