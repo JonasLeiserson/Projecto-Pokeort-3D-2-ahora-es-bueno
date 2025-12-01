@@ -26,6 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8229206756561509850}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   m_LocalPosition: {x: 310.34473, y: 1.9387159, z: 413.88956}
 =======
@@ -35,6 +36,9 @@ Transform:
   m_LocalPosition: {x: 310.34473, y: 1.9387159, z: 413.88956}
 >>>>>>> 598a1b9039550ca8c7980c9a667820f39ac5e00f
 >>>>>>> Stashed changes
+=======
+  m_LocalPosition: {x: 313.60385, y: 1.9782443, z: 424.6493}
+>>>>>>> parent of 1284563 (a ver si funciona)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -230,6 +234,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       maxColor: {r: 1, g: 0.5481836, b: 0, a: 0.5176471}
 =======
@@ -239,6 +244,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 0.5481836, b: 0, a: 0.5176471}
 >>>>>>> 598a1b9039550ca8c7980c9a667820f39ac5e00f
 >>>>>>> Stashed changes
+=======
+      maxColor: {r: 1, g: 0.8640462, b: 0, a: 0.50980395}
+>>>>>>> parent of 1284563 (a ver si funciona)
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
