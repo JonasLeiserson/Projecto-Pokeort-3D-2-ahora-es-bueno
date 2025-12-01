@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     public GameObject sliderEnemigo;
     public GameObject InventarioUI;
     public GameObject Pokedex;
-
+    public GameObject interact;
     public bool enCombate = false;
 
     private void Awake()

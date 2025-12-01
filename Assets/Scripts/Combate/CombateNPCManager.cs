@@ -81,6 +81,8 @@ public class CombateNPCManager : MonoBehaviour
 
     void Start()
     {
+        UIManager.instance.interact.SetActive(false);
+
         if (NPC.tag != "Lider" && NPC.tag != "NPCGym" && NPC.tag != "NPCGym2")
         {
             //CARGAR MODELOS Y DATOS DE JUGADOR Y POKEORTS:

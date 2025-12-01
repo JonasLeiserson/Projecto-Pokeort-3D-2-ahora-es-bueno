@@ -4121,6 +4121,7 @@ MonoBehaviour:
   sliderEnemigo: {fileID: 919369008}
   InventarioUI: {fileID: 1540993567}
   Pokedex: {fileID: 26995610}
+  interact: {fileID: 400255833}
   enCombate: 0
 --- !u!4 &1655740848 stripped
 Transform:
