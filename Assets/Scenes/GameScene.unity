@@ -2407,7 +2407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb85f5fd43dc62408d3031a23c575ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlataJugador: 0
+  PlataJugador: 100
 --- !u!4 &995087136
 Transform:
   m_ObjectHideFlags: 0

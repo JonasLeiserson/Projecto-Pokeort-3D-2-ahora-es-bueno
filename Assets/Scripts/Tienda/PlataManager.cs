@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlataManager : MonoBehaviour
 {
@@ -10,10 +11,20 @@ public class PlataManager : MonoBehaviour
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
     void Start()
     {
         
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "EscenaTienda")
+        {
+            UIManager.instance.ActualizarTextPlata(PlataJugador);
+        }
     }
 
     // Update is called once per frame
@@ -36,4 +47,5 @@ public class PlataManager : MonoBehaviour
         }
 
     }
+   
 }
