@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class CombateNPCManager : MonoBehaviour
 {
+    public AudioClip[] sonidos;   
+    private AudioSource audioSource;
     DialogoManager dialogoManager = DialogoManager.instance;
     public Dialogue dialogoCombate;
 
@@ -81,6 +83,7 @@ public class CombateNPCManager : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if (NPC.tag != "Lider" && NPC.tag != "NPCGym" && NPC.tag != "NPCGym2")
         {
             //CARGAR MODELOS Y DATOS DE JUGADOR Y POKEORTS:
@@ -251,6 +254,9 @@ public class CombateNPCManager : MonoBehaviour
 
     public bool AtaqueAmigo(GameObject botonClickeado)
     {
+        int index = Random.Range(0, sonidos.Length); 
+        audioSource.clip = sonidos[index];
+        audioSource.Play();
         if (botonClickeado == null || pokeortElegido == null) return false;
 
         TextMeshProUGUI nombreAtaque = botonClickeado.GetComponentInChildren<TextMeshProUGUI>();
