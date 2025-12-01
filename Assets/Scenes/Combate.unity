@@ -989,6 +989,7 @@ MonoBehaviour:
     experienceToNextLevel: 0
   indexPokeortElegido: 0
   pokeortElegidoGO: {fileID: 0}
+  interact: {fileID: 2050110918}
 --- !u!4 &602369318
 Transform:
   m_ObjectHideFlags: 0
@@ -4546,6 +4547,12 @@ MonoBehaviour:
 --- !u!1 &2050110917 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3601521151688651109, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+    type: 3}
+  m_PrefabInstance: {fileID: 2050110909}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2050110918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8518799153686855255, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
     type: 3}
   m_PrefabInstance: {fileID: 2050110909}
   m_PrefabAsset: {fileID: 0}

@@ -38,6 +38,8 @@ public class LiderScript : MonoBehaviour
     {
         if (other.CompareTag("Player") && hasTalked && !fueDerrotado)
         {
+            InteractionArea.instance.interactButton.SetActive(false);
+
                 Vector3 playerPosition = other.transform.position;
                 Vector3 playerRotation = other.transform.rotation.eulerAngles;
 

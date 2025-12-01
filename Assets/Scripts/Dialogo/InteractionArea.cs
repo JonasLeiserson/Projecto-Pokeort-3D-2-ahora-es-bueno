@@ -6,11 +6,13 @@ public class InteractionArea : MonoBehaviour
 {
     GameObject currentInteractable;
     public GameObject interactButton;
+    public static InteractionArea instance;
 
     List<string> tags = new List<string> { "NPC", "NPCCombate", "NPCGym", "Lider", "NPCCombate2", "NPCGym2" };
 
     void Start()
     {
+        instance = this;
         Canvas canvas = FindObjectOfType<Canvas>();
 
         if (canvas != null)

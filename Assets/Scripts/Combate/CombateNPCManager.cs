@@ -83,7 +83,16 @@ public class CombateNPCManager : MonoBehaviour
 
     void Start()
     {
+<<<<<<< Updated upstream
         audioSource = GetComponent<AudioSource>();
+=======
+<<<<<<< HEAD
+        UIManager.instance.interact.SetActive(false);
+
+=======
+        audioSource = GetComponent<AudioSource>();
+>>>>>>> 598a1b9039550ca8c7980c9a667820f39ac5e00f
+>>>>>>> Stashed changes
         if (NPC.tag != "Lider" && NPC.tag != "NPCGym" && NPC.tag != "NPCGym2")
         {
             //CARGAR MODELOS Y DATOS DE JUGADOR Y POKEORTS:

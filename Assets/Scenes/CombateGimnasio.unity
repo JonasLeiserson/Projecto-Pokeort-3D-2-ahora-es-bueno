@@ -1092,6 +1092,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3601521151688651098, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.110839844
+      objectReference: {fileID: 0}
     - target: {fileID: 3601521151688651109, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
         type: 3}
       propertyPath: m_IsActive
@@ -1289,6 +1294,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80dd3f3bfc5b97145b1212a0f2e91a39, type: 3}
+--- !u!1 &832278066 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8518799153686855255, guid: 80dd3f3bfc5b97145b1212a0f2e91a39,
+    type: 3}
+  m_PrefabInstance: {fileID: 832278065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &913837397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogoCombate: {fileID: 11400000, guid: 0f4bfab01e9bf15409102f6720039693, type: 2}
+  anim: {fileID: 0}
   player: {fileID: 3183447003146668400, guid: e65ad50409fdaee49b335ab8302cae92, type: 3}
   pokeorts:
   - {fileID: 7511928090184555776, guid: bbcc1d499ff820146a8a5577fcc42a0e, type: 3}
@@ -2512,6 +2524,7 @@ MonoBehaviour:
     experienceToNextLevel: 0
   indexPokeortElegido: 0
   pokeortElegidoGO: {fileID: 0}
+  interact: {fileID: 832278066}
 --- !u!4 &1696965472
 Transform:
   m_ObjectHideFlags: 0

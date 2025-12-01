@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: PokedexNPC
   m_EditorClassIdentifier: 
   pokeorts:
-  - pokemonData: {fileID: 11400000, guid: 3254abe3d494ad146a46f85f132581d0, type: 2}
+  - pokemonData: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
     equippedAttacks:
-    - {fileID: 11400000, guid: a3af51d79466b954fb2ef9e186f81be8, type: 2}
-    - {fileID: 11400000, guid: 3711f7c54e558004d93523a097e6c5fe, type: 2}
-    - {fileID: 11400000, guid: a19404c12471d5e4da1aaa31abad9097, type: 2}
-    - {fileID: 11400000, guid: a39da7e9e442d3b4095d3459d6ed7a79, type: 2}
-    type1: 12
-    type2: 5
+    - {fileID: 11400000, guid: 978ff4d097cd7e24d9da0e751358b429, type: 2}
+    - {fileID: 11400000, guid: e41314a73bff84c4bb4970c470a8df53, type: 2}
+    - {fileID: 11400000, guid: 5578f756dbcd1d44c9d78766706c8175, type: 2}
+    - {fileID: 11400000, guid: 8f74d88c65abe554db5f7a5642baa89f, type: 2}
+    type1: 4
+    type2: 7
     level: 3
-    currentHP: 17
+    currentHP: 0
     maxHP: 17
     currentAttack: 9
     maxAttack: 9
@@ -37,18 +37,18 @@ MonoBehaviour:
     currentStatus: 0
     experiencePoints: 0
     experienceToNextLevel: 22
-  - pokemonData: {fileID: 11400000, guid: ef00c9b1997ed7f48a4af7303c7e23fa, type: 2}
+  - pokemonData: {fileID: 11400000, guid: 7360d6084f6f41a448f7e28fc5192919, type: 2}
     equippedAttacks:
-    - {fileID: 11400000, guid: f1d6e5d86f4cb8f41ba11133b43d5b99, type: 2}
-    - {fileID: 11400000, guid: c636ccd81582c7d4a85cbf45975a1f49, type: 2}
-    - {fileID: 11400000, guid: 47ec76fa02d033844a97d40c1ecbde77, type: 2}
-    - {fileID: 11400000, guid: b892e698b7f1a874fb79f671cf1cf36c, type: 2}
+    - {fileID: 11400000, guid: 4d3846dd6ccc00041b0a35c7eb371846, type: 2}
+    - {fileID: 11400000, guid: d19f6ad723b7de447819bab293966c53, type: 2}
+    - {fileID: 11400000, guid: c90c76ebc41a34040ac7abd78c201649, type: 2}
+    - {fileID: 11400000, guid: 32f4dc9346828994695b38964b756604, type: 2}
     type1: 2
-    type2: 0
+    type2: 9
     level: 3
-    currentHP: 16
+    currentHP: 0
     maxHP: 16
-    currentAttack: 8
+    currentAttack: 12
     maxAttack: 8
     currentDefense: 8
     maxDefense: 8
@@ -56,7 +56,7 @@ MonoBehaviour:
     maxSpAttack: 9
     currentSpDefense: 9
     maxSpDefense: 9
-    currentSpeed: 9
+    currentSpeed: 14
     maxSpeed: 9
     currentStatus: 0
     experiencePoints: 0
