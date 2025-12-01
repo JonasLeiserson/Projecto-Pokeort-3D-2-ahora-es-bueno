@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf2cc5819af76545b56aeaf51cfbc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pokedexPlayerManager: {fileID: 0}
   pokeorts:
   - {fileID: 0}
   - {fileID: 0}

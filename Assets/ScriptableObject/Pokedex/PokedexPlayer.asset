@@ -21,43 +21,43 @@ MonoBehaviour:
     - {fileID: 11400000, guid: b892e698b7f1a874fb79f671cf1cf36c, type: 2}
     type1: 2
     type2: 0
-    level: 8
-    currentHP: 19
-    maxHP: 26
-    currentAttack: 13
-    maxAttack: 13
-    currentDefense: 14
-    maxDefense: 14
-    currentSpAttack: 18
-    maxSpAttack: 18
-    currentSpDefense: 16
-    maxSpDefense: 16
-    currentSpeed: 17
-    maxSpeed: 17
-    currentStatus: 0
-    experiencePoints: 0
-    experienceToNextLevel: 410
-  - pokemonData: {fileID: 11400000, guid: d9ec4f6adb9575140850b639f9ddb749, type: 2}
-    equippedAttacks:
-    - {fileID: 11400000, guid: 978ff4d097cd7e24d9da0e751358b429, type: 2}
-    - {fileID: 11400000, guid: e41314a73bff84c4bb4970c470a8df53, type: 2}
-    - {fileID: 11400000, guid: 5578f756dbcd1d44c9d78766706c8175, type: 2}
-    - {fileID: 11400000, guid: 8f74d88c65abe554db5f7a5642baa89f, type: 2}
-    type1: 4
-    type2: 9
-    level: 5
-    currentHP: 21
-    maxHP: 21
-    currentAttack: 10
-    maxAttack: 10
+    level: 6
+    currentHP: 0
+    maxHP: 22
+    currentAttack: 11
+    maxAttack: 11
     currentDefense: 11
     maxDefense: 11
-    currentSpAttack: 13
-    maxSpAttack: 13
+    currentSpAttack: 14
+    maxSpAttack: 14
+    currentSpDefense: 13
+    maxSpDefense: 13
+    currentSpeed: 14
+    maxSpeed: 14
+    currentStatus: 0
+    experiencePoints: 62
+    experienceToNextLevel: 173
+  - pokemonData: {fileID: 11400000, guid: d51a1a1ea6631d44982e87acfe03eb3f, type: 2}
+    equippedAttacks:
+    - {fileID: 11400000, guid: 9317e98d99cf6fa43bfe86091d683f00, type: 2}
+    - {fileID: 11400000, guid: 9ff37433f035dac4e96e6591af5430b1, type: 2}
+    - {fileID: 11400000, guid: 4dc3d765be1df2247bbd9c44919a3b35, type: 2}
+    - {fileID: 11400000, guid: 96b8c97a391cada47b33e7f91811cde8, type: 2}
+    type1: 6
+    type2: 9
+    level: 4
+    currentHP: 23
+    maxHP: 23
+    currentAttack: 8
+    maxAttack: 8
+    currentDefense: 11
+    maxDefense: 11
+    currentSpAttack: 8
+    maxSpAttack: 8
     currentSpDefense: 11
     maxSpDefense: 11
-    currentSpeed: 10
-    maxSpeed: 10
+    currentSpeed: 8
+    maxSpeed: 8
     currentStatus: 0
-    experiencePoints: 2
-    experienceToNextLevel: 125
+    experiencePoints: 76
+    experienceToNextLevel: 80

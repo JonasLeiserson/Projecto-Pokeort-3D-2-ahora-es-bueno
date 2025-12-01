@@ -4471,6 +4471,12 @@ PrefabInstance:
       propertyPath: areaDeSpawn
       value: 
       objectReference: {fileID: 57204939}
+    - target: {fileID: 6186779648032886481, guid: bd3d2012c545aa34fb26f77de7ad0374,
+        type: 3}
+      propertyPath: PokeortsSpawneables.Array.data[5]
+      value: 
+      objectReference: {fileID: 7511928090184555776, guid: c0d4a10243b26464eb3dce3b861a4f87,
+        type: 3}
     - target: {fileID: 6186779648032886495, guid: bd3d2012c545aa34fb26f77de7ad0374,
         type: 3}
       propertyPath: m_Name
