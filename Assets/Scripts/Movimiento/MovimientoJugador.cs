@@ -57,12 +57,6 @@ public class MovimientoJugador : MonoBehaviour
             Vector3 desiredMoveDirection = forward * vertical + right * horizontal;
             moveDirection = desiredMoveDirection * MovimientoVelocidad;
 
-            // Lógica de salto
-            if (Input.GetButtonDown("Jump"))
-            {
-                moveDirection.y = FuerzaSalto;
-                Animador.SetBool("Saltando", true);
-            }
         }
         else
         {
